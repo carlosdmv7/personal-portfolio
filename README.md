@@ -11,111 +11,152 @@ Visit the live site at: `https://yourusername.github.io/portfolio`
 ```
 portfolio/
 │
-├── index.html          # Main HTML file
-├── styles.css          # Styling
-├── projects.json       # Project data (easy to update)
-└── README.md          # This file
+├── index.html          # Main HTML structure
+├── styles.css          # All styling and animations
+├── config.js           # ⭐ YOUR PERSONAL DATA (edit this!)
+├── app.js              # JavaScript logic (no need to edit)
+└── README.md           # Documentation
 ```
 
-## 🛠️ Setup Instructions
+## 🚀 Quick Start - Edit Your Info
 
-### 1. Create GitHub Repository
+### Step 1: Update `config.js`
 
-1. Go to GitHub and create a new repository
-2. Name it: `portfolio` (or `yourusername.github.io` for direct hosting)
-3. Make it public
-4. Don't initialize with README (we'll upload files)
+Open `config.js` and update your personal information:
 
-### 2. Upload Files
-
-**Option A: Using GitHub Web Interface**
-1. Click "uploading an existing file"
-2. Drag and drop `index.html`, `styles.css`, and `README.md`
-3. Commit changes
-
-**Option B: Using Git Command Line**
-```bash
-git init
-git add .
-git commit -m "Initial portfolio commit"
-git branch -M main
-git remote add origin https://github.com/yourusername/portfolio.git
-git push -u origin main
-```
-
-### 3. Enable GitHub Pages
-
-1. Go to repository Settings
-2. Navigate to "Pages" in the left sidebar
-3. Under "Source", select "main" branch
-4. Click Save
-5. Your site will be live at `https://yourusername.github.io/portfolio`
-
-## ✏️ How to Add Projects
-
-### Method 1: Direct HTML Edit (Simple)
-
-Edit `index.html` and find the `<section id="projects">` section. Add a new project card:
-
-```html
-<div class="project-card">
-    <h3>Project Name</h3>
-    <p>Project description goes here. Explain what the project does and its impact.</p>
-    <div class="tech-stack">
-        <span class="tech-tag">Python</span>
-        <span class="tech-tag">SQL</span>
-        <span class="tech-tag">Power BI</span>
-    </div>
-    <div class="project-links">
-        <a href="https://github.com/yourusername/project" class="project-link">View Project →</a>
-    </div>
-</div>
-```
-
-### Method 2: Using projects.json (Advanced - Optional)
-
-Create a `projects.json` file to manage projects separately:
-
-```json
-{
-  "projects": [
-    {
-      "title": "Trustworthy AI Framework",
-      "description": "Open-source framework for building explainable and fair AI models in healthcare.",
-      "technologies": ["Python", "SHAP", "Scikit-learn"],
-      "link": "https://github.com/yourusername/trustworthy-ai",
-      "image": "images/project1.png"
+```javascript
+const CONFIG = {
+    contact: {
+        email: "carlos@example.com",           // ← Change this
+        phone: "+34 123 456 789",              // ← Change this
+        linkedin: "https://linkedin.com/in/carlos-demanuel",  // ← Change this
+        github: "https://github.com/carlosdemanuel",          // ← Change this
     },
+    
+    personal: {
+        name: "Carlos De Manuel",
+        shortName: "Carlos",
+        availableForWork: true,  // Set to false if not available
+    },
+    
+    // ... and so on
+};
+```
+
+**Everything you need to update is in this one file!** The rest updates automatically.
+
+### Step 2: Upload to GitHub
+
+1. Create repository named `portfolio` or `yourusername.github.io`
+2. Upload ALL files: `index.html`, `styles.css`, `config.js`, `app.js`, `README.md`
+3. Go to Settings → Pages → Enable GitHub Pages
+4. Done! 🎉
+
+## ✏️ How to Update Your Portfolio
+
+### Add New Projects
+
+Open `config.js` and add to the `projects` array:
+
+```javascript
+projects: [
+    // ... existing projects
     {
-      "title": "KPI Dashboard System",
-      "description": "Enterprise-wide KPI management application built with Streamlit.",
-      "technologies": ["Python", "Streamlit", "Snowflake", "Power BI"],
-      "link": "https://github.com/yourusername/kpi-dashboard",
-      "image": "images/project2.png"
+        title: "My New Project",
+        description: "Description of what this project does...",
+        technologies: ["Python", "React", "PostgreSQL"],
+        links: {
+            github: "https://github.com/yourname/project",
+            demo: "https://project-demo.com"
+        },
+        image: "images/new-project.jpg" // Optional
     }
-  ]
+]
+```
+
+### Add New Certifications
+
+Add to the `certifications` array in `config.js`:
+
+```javascript
+certifications: [
+    // ... existing certs
+    {
+        name: "AWS Solutions Architect",
+        issuer: "Amazon Web Services",
+        date: "Jan 2025",
+        technologies: ["AWS", "Cloud", "Architecture"],
+        credentialId: "ABC123",
+        credentialUrl: "https://credential-link.com"
+    }
+]
+```
+
+### Update Skills
+
+Modify the `skills` object in `config.js`:
+
+```javascript
+skills: {
+    "Languages & Databases": {
+        icon: "💻",
+        items: ["Python", "SQL", "JavaScript"] // Add or remove skills
+    },
+    // ... other categories
 }
 ```
 
-Then add JavaScript to `index.html` to load projects dynamically (see Advanced Setup below).
+### Update Work Experience
+
+Add new positions to `experience` array:
+
+```javascript
+experience: [
+    {
+        title: "Senior Data Analyst",
+        company: "New Company",
+        type: "Full-time",
+        location: "Madrid, Spain",
+        locationType: "Remote",
+        period: "Jan 2026 - Present",
+        current: true,
+        description: "What you do here...",
+        technologies: ["Python", "Snowflake", "Power BI"]
+    },
+    // ... previous experience
+]
+```
+
+### Change Theme Colors
+
+Edit CSS variables in `styles.css`:
+
+```css
+:root {
+    --accent: #3b82f6;  /* Change to your color */
+    --gradient-1: #3b82f6;
+    --gradient-2: #8b5cf6;
+}
+```
 
 ## 🎨 Customization
 
-### Update Personal Information
+### Update Contact Information (Most Important!)
 
-1. **Contact Links**: Edit the contact section in `index.html`
-   - Update LinkedIn URL
-   - Update GitHub URL
-   - Update email address
-
-2. **Hero Section**: Modify your name and description in the hero section
-
-3. **Colors**: Change colors in `styles.css` by modifying the `:root` variables:
-```css
-:root {
-    --accent: #3b82f6;  /* Change to your preferred color */
+1. Open `config.js`
+2. Find the `contact` section:
+```javascript
+contact: {
+    email: "your.email@example.com",      // ← Update
+    phone: "+34 123 456 789",             // ← Update
+    linkedin: "https://linkedin.com/in/your-profile",  // ← Update
+    github: "https://github.com/your-username",        // ← Update
 }
 ```
+3. Save the file
+4. Push to GitHub - **done!**
+
+All contact buttons, footer links, and email addresses will update automatically across the entire site.
 
 ### Add Images
 
