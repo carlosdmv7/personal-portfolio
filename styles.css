@@ -1301,6 +1301,12 @@ section {
     align-items: flex-start;
     margin-bottom: 1rem;
     gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.experience-header > div {
+    flex: 1;
+    min-width: 250px;
 }
 
 .experience-content h3 {
