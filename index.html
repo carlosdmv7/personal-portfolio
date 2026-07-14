@@ -108,19 +108,14 @@
 
                 <div class="timeline">
                     <div class="exp-item open" data-reveal>
-                        <button class="exp-toggle" aria-expanded="true" onclick="toggleExp(this)">
-                            <div class="exp-head">
-                                <div>
-                                    <div class="exp-role">Analytics Engineer</div>
-                                    <div class="exp-company">RESRG Automotive · Global automotive manufacturer</div>
-                                </div>
-                                <div class="exp-head-right">
-                                    <span class="exp-date">Jan 2025 — Present</span>
-                                    <svg class="icon exp-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-                                </div>
+                        <div class="exp-head">
+                            <div>
+                                <div class="exp-role">Analytics Engineer</div>
+                                <div class="exp-company">RESRG Automotive · Global automotive manufacturer</div>
                             </div>
-                            <p class="exp-summary">Own the analytics layer of a global operations platform — near-real-time models over 800M+ rows in Snowflake, incremental pipelines, event-driven orchestration, and governed self-serve reporting for 200+ users across 20+ plants.</p>
-                        </button>
+                            <span class="exp-date">Jan 2025 — Present</span>
+                        </div>
+                        <p class="exp-summary">Own the analytics layer of a global operations platform — near-real-time models over 800M+ rows in Snowflake, incremental pipelines, event-driven orchestration, and governed self-serve reporting for 200+ users across 20+ plants.</p>
                         <div class="exp-body">
                             <div class="exp-points">
                                 <div class="exp-point">
@@ -151,22 +146,22 @@
                                 <span class="tag">AWS</span>
                             </div>
                         </div>
+                        <button class="exp-more" aria-expanded="true" onclick="toggleExp(this)">
+                            <span class="more-closed">See more details</span>
+                            <span class="more-open">Show less</span>
+                            <svg class="icon exp-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+                        </button>
                     </div>
 
                     <div class="exp-item secondary" data-reveal>
-                        <button class="exp-toggle" aria-expanded="false" onclick="toggleExp(this)">
-                            <div class="exp-head">
-                                <div>
-                                    <div class="exp-role">Data Scientist — Internship</div>
-                                    <div class="exp-company">Biomedical Data Science Lab (BDS Lab) · ITACA — UPV</div>
-                                </div>
-                                <div class="exp-head-right">
-                                    <span class="exp-date">Nov 2023 — Jul 2024</span>
-                                    <svg class="icon exp-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-                                </div>
+                        <div class="exp-head">
+                            <div>
+                                <div class="exp-role">Data Scientist — Internship</div>
+                                <div class="exp-company">Biomedical Data Science Lab (BDS Lab) · ITACA — UPV</div>
                             </div>
-                            <p class="exp-summary">Research internship — an end-to-end Python framework to evaluate healthcare ML models for fairness, robustness and explainability (XAI).</p>
-                        </button>
+                            <span class="exp-date">Nov 2023 — Jul 2024</span>
+                        </div>
+                        <p class="exp-summary">Research internship — an end-to-end Python framework to evaluate healthcare ML models for fairness, robustness and explainability (XAI).</p>
                         <div class="exp-body">
                             <div class="exp-points">
                                 <div class="exp-point">
@@ -189,6 +184,11 @@
                                 <span class="tag">XAI</span>
                             </div>
                         </div>
+                        <button class="exp-more" aria-expanded="false" onclick="toggleExp(this)">
+                            <span class="more-closed">See more details</span>
+                            <span class="more-open">Show less</span>
+                            <svg class="icon exp-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -283,71 +283,6 @@
                             <a class="plink" href="#" target="_blank" rel="noopener">
                                 <svg class="icon" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                                 Live demo
-                            </a>
-                        </div>
-                    </article>
-
-                    <!-- Project: Enterprise KPI Platform -->
-                    <article class="project" data-reveal>
-                        <div class="project-top">
-                            <div class="project-mark">
-                                <svg class="icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="12" width="4" height="9"/><rect x="10" y="7" width="4" height="14"/><rect x="17" y="3" width="4" height="18"/></svg>
-                            </div>
-                            <span class="project-badge live">In production</span>
-                        </div>
-                        <h3>Enterprise KPI Platform</h3>
-                        <div class="tags">
-                            <span class="tag accent">Snowflake</span>
-                            <span class="tag accent">dbt</span>
-                            <span class="tag">Streamlit</span>
-                            <span class="tag">AWS</span>
-                            <span class="tag">Power BI</span>
-                        </div>
-                        <p class="project-desc">
-                            Replaced manual Excel KPI trackers with a governed, automated reporting platform across 20+ plants.
-                            Standardized 130+ operations KPIs and re-engineered the refresh pipeline for a fraction of the cost and time.
-                        </p>
-                        <div class="project-impact">
-                            <div class="impact-stat"><div class="impact-num">~98%</div><span class="impact-label">Faster refresh</span></div>
-                            <div class="impact-stat"><div class="impact-num">200+</div><span class="impact-label">Active users</span></div>
-                        </div>
-                        <div class="project-links">
-                            <button class="plink solid" onclick="toggleCase('case-kpi')">Case study
-                                <svg class="icon" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                            </button>
-                            <span class="plink" style="cursor:default; opacity:.7;">
-                                <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                                Proprietary
-                            </span>
-                        </div>
-                    </article>
-
-                    <!-- Project: Trustworthy AI -->
-                    <article class="project" data-reveal>
-                        <div class="project-top">
-                            <div class="project-mark">
-                                <svg class="icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5l-8-3z"/><path d="m9 12 2 2 4-4"/></svg>
-                            </div>
-                            <span class="project-badge">Thesis · 10/10</span>
-                        </div>
-                        <h3>Trustworthy AI Framework</h3>
-                        <div class="tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">scikit-learn</span>
-                            <span class="tag">SHAP</span>
-                        </div>
-                        <p class="project-desc">
-                            A modular Python framework to evaluate healthcare ML models against four Trustworthy AI pillars —
-                            robustness, fairness, interpretability and data governance. Awarded the top academic grade (10/10).
-                        </p>
-                        <div class="project-impact">
-                            <div class="impact-stat"><div class="impact-num">~40%</div><span class="impact-label">Bias reduction</span></div>
-                            <div class="impact-stat"><div class="impact-num">4</div><span class="impact-label">AI pillars</span></div>
-                        </div>
-                        <div class="project-links">
-                            <a class="plink solid" href="https://github.com/carlosdmv7/trustworthyai" target="_blank" rel="noopener">
-                                <svg class="icon" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.79-.26.79-.58v-2.23c-3.34.73-4.03-1.42-4.03-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.19.69.8.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
-                                Repo
                             </a>
                         </div>
                     </article>
@@ -551,61 +486,6 @@
                             <div class="block-label"><span class="num">05</span> What I'd do differently now</div>
                             <div class="callout">
                                 Coverage is still growing, so most listings currently benchmark at <strong>city grain</strong>. I'd prioritize <strong>backfilling history</strong> so neighborhood-level scores become the default, switch the gold models to <strong>incremental</strong> materializations instead of full refresh as volume grows, and add explicit <strong>freshness tests + scraping SLAs</strong> so stale data is caught automatically.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Case: Enterprise KPI Platform -->
-                <div id="case-kpi" class="case-study">
-                    <div class="case-card">
-                        <button class="case-close" onclick="toggleCase('case-kpi')">
-                            <svg class="icon" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Close
-                        </button>
-                        <div class="case-head">
-                            <h3>Enterprise KPI Platform</h3>
-                            <p>From manual Excel trackers to a governed, automated reporting platform across 20+ plants.</p>
-                        </div>
-
-                        <div class="case-block">
-                            <div class="block-label"><span class="num">01</span> The problem</div>
-                            <p>A global manufacturer tracked operations KPIs manually in Excel. Each region calculated metrics differently, so executive summaries didn't reconcile — Finance in one continent reported different numbers than Operations in another, and monthly reviews stalled while people argued about whose figures were right. There was <strong>no shared definition, no ownership, and no single source of truth</strong>.</p>
-                        </div>
-
-                        <div class="case-block">
-                            <div class="block-label"><span class="num">02</span> Key decisions &amp; why</div>
-                            <ul class="decision-list">
-                                <li><strong>Governance before automation.</strong> Before building pipelines, I established a KPI contract — definition, owner, calculation rule and source — for 130+ metrics. Automating an ambiguous KPI just produces wrong numbers faster.</li>
-                                <li><strong>A Streamlit intake app, not more spreadsheets.</strong> Some inputs and targets are genuinely manual. Rather than fight that, I built a governed intake app (Streamlit on AWS) so manual data enters through one validated door instead of scattered files.</li>
-                                <li><strong>Unify third-party sources in the warehouse.</strong> Operational, safety/EHS, HR and ERP data lived in separate third-party systems. I landed them in Snowflake and modeled governed views (with dbt for modular SQL) so every region computes KPIs from the same tables.</li>
-                                <li><strong>Optimize the whole refresh path, not one tool.</strong> The bottleneck spanned Streamlit → Snowflake → Power BI. Tuning the models, incremental logic and the semantic layer together is what delivered the step-change, not any single fix.</li>
-                            </ul>
-                            <div class="code">
-                                <div class="code-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span>&nbsp;pattern — unify third-party sources into a governed model</div>
-                                <pre><code><span class="c">-- Illustrative pattern (generic placeholders, not production schemas)</span>
-<span class="k">create or replace view</span> analytics.kpi_operations <span class="k">as</span>
-<span class="k">select</span> plant_id, metric_date, metric_name, metric_value, source_system
-<span class="k">from</span> staging.erp_operations
-<span class="k">union all select</span> ... <span class="k">from</span> staging.ehs_platform   <span class="c">-- safety / environment</span>
-<span class="k">union all select</span> ... <span class="k">from</span> staging.hr_platform;   <span class="c">-- workforce</span></code></pre>
-                            </div>
-                        </div>
-
-                        <div class="case-block">
-                            <div class="block-label"><span class="num">03</span> Results</div>
-                            <div class="results-grid">
-                                <div class="result"><div class="result-num">~98%</div><span class="result-label">Faster refresh runtime</span></div>
-                                <div class="result"><div class="result-num">~90%</div><span class="result-label">Lower compute cost</span></div>
-                                <div class="result"><div class="result-num">200+</div><span class="result-label">Users, one source of truth</span></div>
-                                <div class="result"><div class="result-num">130+</div><span class="result-label">Standardized KPIs</span></div>
-                            </div>
-                            <p>All regions now report from the same definitions with clear ownership. Monthly executive summaries generate from a single trusted source, and manual reconciliation is gone.</p>
-                        </div>
-
-                        <div class="case-block">
-                            <div class="block-label"><span class="num">04</span> What I'd do differently now</div>
-                            <div class="callout">
-                                I'd promote the bespoke Snowflake views into a <strong>full dbt project</strong> where tests and documentation are the contract, add <strong>data-freshness SLAs with alerting</strong> so stakeholders learn about a late source from the system rather than a meeting, and expose <strong>lineage</strong> so KPI owners can self-audit how each number is built.
                             </div>
                         </div>
                     </div>
@@ -867,18 +747,26 @@
             btn.setAttribute('aria-expanded', open ? 'true' : 'false');
         }
 
-        // Case study expand / collapse
+        // Case study modal open / close
+        function closeCase() {
+            document.querySelectorAll('.case-study.open').forEach(c => c.classList.remove('open'));
+            document.body.style.overflow = '';
+        }
         function toggleCase(id) {
             const el = document.getElementById(id);
             const isOpen = el.classList.contains('open');
-            document.querySelectorAll('.case-study.open').forEach(c => c.classList.remove('open'));
+            closeCase();
             if (!isOpen) {
                 el.classList.add('open');
-                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            } else {
-                document.getElementById('projects').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                el.scrollTop = 0;
+                document.body.style.overflow = 'hidden';
             }
         }
+        // Click on backdrop closes; Esc closes
+        document.querySelectorAll('.case-study').forEach(m => {
+            m.addEventListener('click', e => { if (e.target === m) closeCase(); });
+        });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeCase(); });
 
         // Smooth scroll for in-page anchors
         document.querySelectorAll('a[href^="#"]').forEach(a => {

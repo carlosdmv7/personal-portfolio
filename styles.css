@@ -367,26 +367,34 @@ section + section { border-top: 1px solid var(--border); }
 }
 .exp-desc { color: var(--text-muted); margin: 0.9rem 0 1.4rem; line-height: 1.7; }
 
-/* Experience accordion */
-.exp-toggle {
-    width: 100%;
-    padding: 0;
-    background: none;
-    border: none;
-    text-align: left;
-    cursor: pointer;
-    color: inherit;
-    font: inherit;
-    display: block;
-}
-.exp-head-right { display: flex; align-items: center; gap: 1rem; flex-shrink: 0; }
-.exp-chevron { width: 20px; height: 20px; color: var(--text-dim); transition: transform 0.3s, color 0.3s; }
-.exp-item.open .exp-chevron { transform: rotate(180deg); color: var(--accent); }
+/* Experience accordion — "See more details" toggle */
 .exp-summary { color: var(--text-muted); margin-top: 0.6rem; line-height: 1.65; }
-.exp-role { transition: color 0.2s; }
-.exp-toggle:hover .exp-role { color: var(--accent); }
 .exp-body { display: none; padding-top: 1.5rem; }
 .exp-item.open .exp-body { display: block; animation: slideDown 0.3s ease; }
+
+.exp-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.4rem;
+    padding: 0.5rem 0.95rem;
+    background: none;
+    border: 1px solid var(--border-strong);
+    border-radius: 8px;
+    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+.exp-more:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+.exp-chevron { width: 16px; height: 16px; transition: transform 0.3s; }
+.exp-item.open .exp-more .exp-chevron { transform: rotate(180deg); }
+.exp-more .more-open { display: none; }
+.exp-item.open .exp-more .more-closed { display: none; }
+.exp-item.open .exp-more .more-open { display: inline; }
+
 /* de-emphasized (internship) */
 .exp-item.secondary .exp-role { font-size: 1.12rem; }
 .exp-item.secondary .exp-company { color: var(--text-muted); }
@@ -413,7 +421,7 @@ section + section { border-top: 1px solid var(--border); }
 /* ---------- Projects ---------- */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 1.5rem;
 }
 .project {
@@ -488,21 +496,38 @@ section + section { border-top: 1px solid var(--border); }
 .plink.solid:hover { background: #34e3cd; }
 .plink .icon { width: 16px; height: 16px; }
 
-/* ---------- Case studies (expandable) ---------- */
-.case-study { display: none; margin-top: 1.5rem; }
-.case-study.open { display: block; animation: slideDown 0.35s ease; }
+/* ---------- Case studies (modal overlay) ---------- */
 @keyframes slideDown { from { opacity: 0; transform: translateY(-12px); } to { opacity: 1; transform: none; } }
+.case-study {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 3000;                     /* above navbar (1000) */
+    background: rgba(6, 7, 9, 0.975);  /* near-opaque so nothing bleeds through */
+    padding: 5vh 1rem;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    isolation: isolate;
+}
+.case-study.open { display: block; animation: fadeIn 0.2s ease; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes popIn { from { opacity: 0; transform: translateY(14px) scale(0.99); } to { opacity: 1; transform: none; } }
 
 .case-card {
     position: relative;
+    max-width: 860px;
+    margin: 0 auto;
     background: var(--bg-1);
     border: 1px solid var(--border-strong);
     border-radius: var(--radius);
     padding: 2.5rem;
+    box-shadow: 0 40px 120px -30px rgba(0, 0, 0, 0.9);
+    animation: popIn 0.28s ease;
 }
 .case-close {
     position: absolute;
     top: 1.5rem; right: 1.5rem;
+    z-index: 1;
     display: inline-flex; align-items: center; gap: 0.4rem;
     background: var(--bg-3);
     border: 1px solid var(--border);
