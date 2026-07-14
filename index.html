@@ -3,194 +3,190 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carlos De Manuel - Data Analyst & Data Scientist</title>
+    <title>Carlos De Manuel — Analytics Engineer</title>
+    <meta name="description" content="Analytics Engineer building reliable, scalable data platforms — dbt, Snowflake, DuckDB, Prefect and Python. Case studies in data modeling, orchestration and self-serve analytics.">
+    <meta name="author" content="Carlos De Manuel Vicente">
+
+    <!-- Open Graph / social preview -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Carlos De Manuel — Analytics Engineer">
+    <meta property="og:description" content="Analytics Engineer building reliable, scalable data platforms with dbt, Snowflake, DuckDB, Prefect and Python.">
+    <meta property="og:url" content="https://carlosdmv7.github.io/personal-portfolio/">
+    <meta property="og:image" content="https://carlosdmv7.github.io/personal-portfolio/images/profile.jpg">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Carlos De Manuel — Analytics Engineer">
+    <meta name="twitter:description" content="Analytics Engineer building reliable, scalable data platforms with dbt, Snowflake, DuckDB, Prefect and Python.">
+
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
     <link rel="icon" type="image/png" href="images/LOGODMV.png">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Background Effects -->
-    <div class="bg-gradient"></div>
-    <div class="bg-gradient-2"></div>
+    <div class="bg-grid" aria-hidden="true"></div>
 
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
             <a href="#" class="logo">
-                <span class="logo-bracket">&lt;</span>
-                DMV
-                <span class="logo-bracket">/&gt;</span>
+                <span class="logo-dot"></span>carlos<span class="muted">.de.manuel</span>
             </a>
             <ul class="nav-links">
-                <li><a href="#experience">Experience</a></li>
+                <li><a href="#work">Work</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#tech-stack">Tech Stack</a></li>
-                <li><a href="#education">Education</a></li>
+                <li><a href="#stack">Stack</a></li>
                 <li><a href="#contact" class="nav-cta">Contact</a></li>
             </ul>
         </div>
     </nav>
 
     <main>
-        <!-- Hero Section -->
+        <!-- Hero -->
         <section class="hero">
             <div class="container">
-                <div class="hero-badge">
-                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                        <circle cx="6" cy="6" r="6" fill="#10b981"/>
-                    </svg>
-                    <span>Currently working</span>
-                </div>
-                
-                <h1 class="hero-title">
-                    Hey, I'm <span class="gradient-text">Carlos</span>
-                </h1>
-                
-                <p class="hero-description">
-                    <strong>Data Analyst specializing in Business Intelligence & Analytics Engineering.</strong> 
-                    I build scalable data solutions that turn complex information into actionable insights for decision-makers. 
-                    Currently driving analytics transformation at RESRG Automotive, serving 100+ users across 20+ plants in NA/APAC and EMEA.
-                </p>
+                <div class="hero-inner">
+                    <span class="status-badge"><span class="status-dot"></span>Open to Analytics Engineer roles · EU / Netherlands</span>
 
-                <div class="hero-buttons">
-                    <a href="mailto:carlosdmv7@gmail.com" class="btn-primary">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                            <polyline points="22,6 12,13 2,6"></polyline>
-                        </svg>
-                        Contact me
-                    </a>
-                    <a href="https://www.linkedin.com/in/carlos-de-manuel/" target="_blank" class="btn-secondary">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                        </svg>
-                        LinkedIn
-                    </a>
-                    <a href="https://github.com/carlosdmv7" target="_blank" class="btn-secondary">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                        </svg>
-                        GitHub
-                    </a>
-                </div>
+                    <h1 class="hero-title">
+                        Hi, I'm <span class="accent">Carlos</span>.
+                        <span class="hero-role">Analytics Engineer — data modeling, orchestration &amp; ELT</span>
+                    </h1>
 
-                <!-- Impact Metrics -->
-                <div class="hero-metrics">
-                    <div class="metric-item">
-                        <span class="metric-number">100+</span>
-                        <span class="metric-label">Users Impacted</span>
+                    <p class="hero-desc">
+                        I build the layer between raw data and decisions: <strong>reliable, tested, well-documented data models</strong>
+                        on top of warehouses like Snowflake and DuckDB, orchestrated with Prefect and served as self-serve analytics.
+                        Currently building analytics infrastructure at <strong>RESRG Automotive</strong> for 200+ users across 20+ plants.
+                    </p>
+
+                    <div class="hero-buttons">
+                        <a href="mailto:carlosdmv7@gmail.com" class="btn btn-primary">
+                            <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></svg>
+                            Get in touch
+                        </a>
+                        <a href="https://www.linkedin.com/in/carlos-de-manuel/" target="_blank" rel="noopener" class="btn btn-ghost">
+                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+                            LinkedIn
+                        </a>
+                        <a href="https://github.com/carlosdmv7" target="_blank" rel="noopener" class="btn btn-ghost">
+                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.79-.26.79-.58v-2.23c-3.34.73-4.03-1.42-4.03-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.19.69.8.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                            GitHub
+                        </a>
                     </div>
-                    <div class="metric-item">
-                        <span class="metric-number">80+</span>
-                        <span class="metric-label">KPIs Managed</span>
-                    </div>
-                    <div class="metric-item">
-                        <span class="metric-number">98%</span>
-                        <span class="metric-label">Faster Runtime</span>
-                    </div>
-                    <div class="metric-item">
-                        <span class="metric-number">20+</span>
-                        <span class="metric-label">Plants</span>
+
+                    <div class="metrics">
+                        <div class="metric-item">
+                            <div class="metric-num">200<span class="unit">+</span></div>
+                            <span class="metric-label">Users served</span>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-num">130<span class="unit">+</span></div>
+                            <span class="metric-label">KPIs governed</span>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-num">~98<span class="unit">%</span></div>
+                            <span class="metric-label">Faster refresh</span>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-num">20<span class="unit">+</span></div>
+                            <span class="metric-label">Plants · 3 regions</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Experience Section -->
-        <section id="experience" class="experience">
+        <!-- Experience -->
+        <section id="work">
             <div class="container">
-                <h2 class="section-title">Work Experience</h2>
-                
-                <div class="experience-timeline">
-                    <div class="experience-item" data-aos="fade-up">
-                        <div class="experience-dot"></div>
-                        <div class="experience-content">
-                            <div class="experience-header">
+                <div class="section-head">
+                    <span class="eyebrow">01 — Experience</span>
+                    <h2 class="section-title">Where I've worked</h2>
+                </div>
+
+                <div class="timeline">
+                    <div class="exp-item open" data-reveal>
+                        <button class="exp-toggle" aria-expanded="true" onclick="toggleExp(this)">
+                            <div class="exp-head">
                                 <div>
-                                    <h3>Data Analyst</h3>
-                                    <h4>RESRG Automotive</h4>
+                                    <div class="exp-role">Analytics Engineer</div>
+                                    <div class="exp-company">RESRG Automotive · Global automotive manufacturer</div>
                                 </div>
-                                <span class="experience-date">Jan 2025 - Present</span>
-                            </div>
-                            <p class="experience-description">
-                                Leading enterprise-wide analytics transformation in a global automotive manufacturer. Replaced manual Excel tracking with automated KPI systems serving 100+ users across NA/APAC and EMEA regions.
-                            </p>
-                            <div class="experience-highlights">
-                                <div class="highlight-item">
-                                    <span class="highlight-icon">🚀</span>
-                                    <div class="highlight-content">
-                                        <strong>KPI Standardization:</strong> Set governance for 80+ operations KPIs (definitions, owners, calculation rules) across 20+ plants, ensuring all regions report the same metrics. Built KPI Governance App (Streamlit, AWS) as central intake for inputs and targets.
-                                    </div>
-                                </div>
-                                <div class="highlight-item">
-                                    <span class="highlight-icon">📊</span>
-                                    <div class="highlight-content">
-                                        <strong>Data Integration:</strong> Created Snowflake views and scheduled ingestions to unify ODS/ERP data with third-party systems (Enablon for EHS, Dayforce for HR), enabling automated KPIs and single source for reporting.
-                                    </div>
-                                </div>
-                                <div class="highlight-item">
-                                    <span class="highlight-icon">⚡</span>
-                                    <div class="highlight-content">
-                                        <strong>Performance Optimization:</strong> Optimized end-to-end refresh pipeline (Streamlit → Snowflake → Power BI), cutting refresh runtime by ~98%, reducing compute cost by ~90%, and cutting model/measure footprint by ~80%.
-                                    </div>
+                                <div class="exp-head-right">
+                                    <span class="exp-date">Jan 2025 — Present</span>
+                                    <svg class="icon exp-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
                                 </div>
                             </div>
-                            <div class="tech-stack">
-                                <span class="tech-tag">Python</span>
-                                <span class="tech-tag">Streamlit</span>
-                                <span class="tech-tag">Snowflake SQL</span>
-                                <span class="tech-tag">Power BI</span>
-                                <span class="tech-tag">DAX</span>
-                                <span class="tech-tag">Azure DevOps</span>
-                                <span class="tech-tag">Docker</span>
-                                <span class="tech-tag">AWS</span>
+                            <p class="exp-summary">Own the analytics layer of a global operations platform — near-real-time models over 800M+ rows in Snowflake, incremental pipelines, event-driven orchestration, and governed self-serve reporting for 200+ users across 20+ plants.</p>
+                        </button>
+                        <div class="exp-body">
+                            <div class="exp-points">
+                                <div class="exp-point">
+                                    <svg class="icon" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg>
+                                    <span><strong>Near-real-time modeling at scale.</strong> Architected near-real-time analytical models for a warehouse/operations system processing 800M+ rows in Snowflake, with event-driven Prefect orchestrations triggered when upstream ERP/operations data lands via CDC replication.</span>
+                                </div>
+                                <div class="exp-point">
+                                    <svg class="icon" viewBox="0 0 24 24"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                                    <span><strong>Incremental loading.</strong> Implemented strict incremental loading strategies in SQL, cutting stock/inventory data load times by ~95%, and automated supply-policy and role-based inventory logic.</span>
+                                </div>
+                                <div class="exp-point">
+                                    <svg class="icon" viewBox="0 0 24 24"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/></svg>
+                                    <span><strong>Data integration &amp; governance.</strong> Unified operational data with multiple third-party source systems (EHS, HR, quality) into governed Snowflake models; set standards for 130+ KPIs across 20+ plants via a Streamlit/dbt governance app.</span>
+                                </div>
+                                <div class="exp-point">
+                                    <svg class="icon" viewBox="0 0 24 24"><polyline points="22 17 13.5 8.5 8.5 13.5 2 7"/><polyline points="16 17 22 17 22 11"/></svg>
+                                    <span><strong>Performance &amp; cost.</strong> Re-engineered the end-to-end refresh pipeline (Streamlit → Snowflake → Power BI), cutting runtime by ~98%, compute cost by ~90%, and model/measure footprint by ~80%.</span>
+                                </div>
+                            </div>
+                            <div class="tags">
+                                <span class="tag accent">Snowflake</span>
+                                <span class="tag accent">dbt</span>
+                                <span class="tag">Python</span>
+                                <span class="tag">SQL</span>
+                                <span class="tag">Prefect</span>
+                                <span class="tag">Streamlit</span>
+                                <span class="tag">Power BI</span>
+                                <span class="tag">AWS</span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="experience-item" data-aos="fade-up" data-aos-delay="100">
-                        <div class="experience-dot"></div>
-                        <div class="experience-content">
-                            <div class="experience-header">
+                    <div class="exp-item secondary" data-reveal>
+                        <button class="exp-toggle" aria-expanded="false" onclick="toggleExp(this)">
+                            <div class="exp-head">
                                 <div>
-                                    <h3>Data Scientist Junior</h3>
-                                    <h4>Biomedical Data Science Lab (BDS Lab) – ITACA UPV</h4>
+                                    <div class="exp-role">Data Scientist — Internship</div>
+                                    <div class="exp-company">Biomedical Data Science Lab (BDS Lab) · ITACA — UPV</div>
                                 </div>
-                                <span class="experience-date">Nov 2023 - Jul 2024</span>
-                            </div>
-                            <p class="experience-description">
-                                Research internship focused on developing ethical AI systems for healthcare applications. Built a modular, notebook-based Python pipeline to evaluate ML models against Trustworthy AI pillars.
-                            </p>
-                            <div class="experience-highlights">
-                                <div class="highlight-item">
-                                    <span class="highlight-icon">🧠</span>
-                                    <div class="highlight-content">
-                                        <strong>Data Quality & Model Evaluation:</strong> Handled missing and noisy clinical data (MICE imputation, PCA/Hotelling's T² outlier checks) and compared models via AUC using cross-validation plus bootstrap confidence intervals.
-                                    </div>
-                                </div>
-                                <div class="highlight-item">
-                                    <span class="highlight-icon">⚖️</span>
-                                    <div class="highlight-content">
-                                        <strong>Fairness Engineering:</strong> Identified performance gaps across sensitive subgroups and tested mitigations (re-weighting/SMOTE), documenting which approaches reduced disparities without sacrificing overall AUC.
-                                    </div>
-                                </div>
-                                <div class="highlight-item">
-                                    <span class="highlight-icon">🔬</span>
-                                    <div class="highlight-content">
-                                        <strong>Explainability:</strong> Produced SHAP-based explanation reports to show key drivers of predictions and support model review, translating complex ML outputs into clinician-friendly insights.
-                                    </div>
+                                <div class="exp-head-right">
+                                    <span class="exp-date">Nov 2023 — Jul 2024</span>
+                                    <svg class="icon exp-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
                                 </div>
                             </div>
-                            <div class="tech-stack">
-                                <span class="tech-tag">Python</span>
-                                <span class="tech-tag">Scikit-learn</span>
-                                <span class="tech-tag">SHAP</span>
-                                <span class="tech-tag">Machine Learning</span>
-                                <span class="tech-tag">XAI</span>
+                            <p class="exp-summary">Research internship — an end-to-end Python framework to evaluate healthcare ML models for fairness, robustness and explainability (XAI).</p>
+                        </button>
+                        <div class="exp-body">
+                            <div class="exp-points">
+                                <div class="exp-point">
+                                    <svg class="icon" viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0H5a2 2 0 0 1-2-2v-4m6 6h10a2 2 0 0 0 2-2v-4"/></svg>
+                                    <span><strong>Model evaluation.</strong> Handled missing/noisy clinical data (MICE imputation, PCA/Hotelling's T² outlier checks) and compared models via AUC with cross-validation and bootstrap confidence intervals.</span>
+                                </div>
+                                <div class="exp-point">
+                                    <svg class="icon" viewBox="0 0 24 24"><path d="M12 3v18"/><path d="M5 7h14"/><path d="m5 7-2 6a4 4 0 0 0 8 0L9 7M19 7l-2 6a4 4 0 0 0 8 0l-2-6"/></svg>
+                                    <span><strong>Fairness engineering.</strong> Measured performance gaps across sensitive subgroups and tested mitigations (re-weighting, SMOTE), documenting which reduced disparities without sacrificing overall AUC.</span>
+                                </div>
+                                <div class="exp-point">
+                                    <svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
+                                    <span><strong>Explainability.</strong> Produced SHAP-based explanation reports translating model drivers into clinician-friendly insights to support review and trust.</span>
+                                </div>
+                            </div>
+                            <div class="tags">
+                                <span class="tag">Python</span>
+                                <span class="tag">scikit-learn</span>
+                                <span class="tag">SHAP</span>
+                                <span class="tag">XAI</span>
                             </div>
                         </div>
                     </div>
@@ -198,550 +194,418 @@
             </div>
         </section>
 
-        <!-- Featured Projects Section -->
-        <section id="projects" class="projects">
+        <!-- Projects -->
+        <section id="projects">
             <div class="container">
-                <h2 class="section-title">Featured Projects</h2>
-                
+                <div class="section-head">
+                    <span class="eyebrow">02 — Selected work</span>
+                    <h2 class="section-title">Projects &amp; case studies</h2>
+                    <p class="section-sub">End-to-end data products I've built. Each expands into a case study: the business problem, the technical decisions and <em>why</em>, quantified results, and what I'd do differently now.</p>
+                </div>
+
                 <div class="projects-grid">
-                    <article class="project-card" data-aos="zoom-in">
-                        <div class="project-image">
-                            <div class="project-image-placeholder">
-                                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-                                    <path d="M2 17l10 5 10-5M2 12l10 5 10-5"></path>
-                                </svg>
+                    <!-- Project: Job Market Intelligence -->
+                    <article class="project featured" data-reveal>
+                        <div class="project-top">
+                            <div class="project-mark">
+                                <svg class="icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 14 3-4 4 3 5-7"/></svg>
                             </div>
+                            <span class="project-badge">Personal · open source</span>
                         </div>
-                        <div class="project-content">
-                            <div class="project-badge">🏆 Grade 10/10</div>
-                            <h3>Trustworthy AI Framework</h3>
-                            <div class="project-tags">
-                                <span class="project-tag">Python</span>
-                                <span class="project-tag">SHAP</span>
-                                <span class="project-tag">Scikit-learn</span>
-                            </div>
-                            <p>Modular, notebook-based Python pipeline to evaluate healthcare ML models against Trustworthy AI pillars: robustness, fairness, interpretability, and privacy/data governance. Awarded highest academic distinction (10/10).</p>
-                            <div class="project-impact">
-                                <div class="impact-stat">
-                                    <span class="impact-number">40%</span>
-                                    <span class="impact-label">Bias Reduction</span>
-                                </div>
-                                <div class="impact-stat">
-                                    <span class="impact-number">4</span>
-                                    <span class="impact-label">AI Pillars</span>
-                                </div>
-                            </div>
-                            <div class="project-links">
-                                <button class="project-link-primary expand-btn" onclick="toggleCaseStudy('case-study-1')">
-                                    Read Full Case Study →
-                                </button>
-                                <a href="https://github.com/bdslab-upv/trustworthy-ai" target="_blank" class="project-link">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                                    </svg>
-                                    Code
-                                </a>
-                            </div>
+                        <h3>Job Market Intelligence Engine</h3>
+                        <div class="tags">
+                            <span class="tag accent">dbt</span>
+                            <span class="tag accent">Prefect</span>
+                            <span class="tag">DuckDB / MotherDuck</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">Streamlit</span>
                         </div>
-                    </article>
-
-                    <article class="project-card" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="project-image">
-                            <div class="project-image-placeholder">
-                                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <rect x="3" y="3" width="7" height="7"></rect>
-                                    <rect x="14" y="3" width="7" height="7"></rect>
-                                    <rect x="14" y="14" width="7" height="7"></rect>
-                                    <rect x="3" y="14" width="7" height="7"></rect>
-                                </svg>
-                            </div>
+                        <p class="project-desc">
+                            A full ELT pipeline that ingests jobs from public APIs, enriches them with an LLM (visa-sponsorship classifier),
+                            models them through a dbt medallion, and serves a Streamlit app with a natural-language "Ask the Data" text-to-SQL agent.
+                        </p>
+                        <div class="project-impact">
+                            <div class="impact-stat"><div class="impact-num">42</div><span class="impact-label">dbt models + tests</span></div>
+                            <div class="impact-stat"><div class="impact-num">3</div><span class="impact-label">Sources unified</span></div>
+                            <div class="impact-stat"><div class="impact-num">€0</div><span class="impact-label">Infra cost</span></div>
                         </div>
-                        <div class="project-content">
-                            <div class="project-badge">🚀 In Production</div>
-                            <h3>Enterprise KPI Management System</h3>
-                            <div class="project-tags">
-                                <span class="project-tag">Streamlit</span>
-                                <span class="project-tag">Python</span>
-                                <span class="project-tag">Snowflake</span>
-                                <span class="project-tag">AWS</span>
-                            </div>
-                            <p>Replaced manual Excel KPI tracker with automated reporting system across 20+ plants in NA/APAC and EMEA. Set governance for 80+ operations KPIs, serving 100+ users with centralized definitions and automated data pipelines.</p>
-                            <div class="project-impact">
-                                <div class="impact-stat">
-                                    <span class="impact-number">98%</span>
-                                    <span class="impact-label">Faster Runtime</span>
-                                </div>
-                                <div class="impact-stat">
-                                    <span class="impact-number">100+</span>
-                                    <span class="impact-label">Active Users</span>
-                                </div>
-                            </div>
-                            <div class="project-links">
-                                <button class="project-link-primary expand-btn" onclick="toggleCaseStudy('case-study-2')">
-                                    Read Full Case Study →
-                                </button>
-                            </div>
+                        <div class="project-links">
+                            <button class="plink solid" onclick="toggleCase('case-jobs')">Case study
+                                <svg class="icon" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                            </button>
+                            <a class="plink" href="https://github.com/carlosdmv7/job-market-intelligence" target="_blank" rel="noopener">
+                                <svg class="icon" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.79-.26.79-.58v-2.23c-3.34.73-4.03-1.42-4.03-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.19.69.8.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                                Repo
+                            </a>
+                            <!-- TODO: paste Streamlit Community Cloud URL here when deployed -->
+                            <a class="plink" href="#" target="_blank" rel="noopener">
+                                <svg class="icon" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                Live demo
+                            </a>
                         </div>
                     </article>
 
-                    <article class="project-card project-placeholder" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="project-image">
-                            <div class="project-image-placeholder">
-                                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <line x1="12" y1="5" x2="12" y2="19"></line>
-                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                </svg>
+                    <!-- Project: Spanish Housing Radar -->
+                    <article class="project featured" data-reveal>
+                        <div class="project-top">
+                            <div class="project-mark">
+                                <svg class="icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-6h6v6"/></svg>
                             </div>
+                            <span class="project-badge">Personal · open source</span>
                         </div>
-                        <div class="project-content">
-                            <h3>More Projects Coming Soon</h3>
-                            <div class="project-tags">
-                                <span class="project-tag">Power BI</span>
-                                <span class="project-tag">Python</span>
-                                <span class="project-tag">SQL</span>
+                        <h3>Spanish Housing Radar</h3>
+                        <div class="tags">
+                            <span class="tag accent">dbt</span>
+                            <span class="tag">Scrapfly</span>
+                            <span class="tag">MotherDuck</span>
+                            <span class="tag">Prefect</span>
+                            <span class="tag">Streamlit</span>
+                        </div>
+                        <p class="project-desc">
+                            An analytics pipeline that finds under-priced Spanish property listings. Scraped listings flow through
+                            validation and idempotent upserts into MotherDuck, a dbt medallion computes an <em>Opportunity Score</em>
+                            (€/m² vs. neighborhood benchmarks), and a Streamlit app surfaces the deals.
+                        </p>
+                        <div class="project-impact">
+                            <div class="impact-stat"><div class="impact-num">3</div><span class="impact-label">Medallion layers</span></div>
+                            <div class="impact-stat"><div class="impact-num">4</div><span class="impact-label">App pages</span></div>
+                            <div class="impact-stat"><div class="impact-num">z-score</div><span class="impact-label">Opportunity engine</span></div>
+                        </div>
+                        <div class="project-links">
+                            <button class="plink solid" onclick="toggleCase('case-housing')">Case study
+                                <svg class="icon" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                            </button>
+                            <a class="plink" href="https://github.com/carlosdmv7/spanish-housing-radar" target="_blank" rel="noopener">
+                                <svg class="icon" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.79-.26.79-.58v-2.23c-3.34.73-4.03-1.42-4.03-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.19.69.8.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                                Repo
+                            </a>
+                            <!-- TODO: paste Streamlit Community Cloud URL here when deployed -->
+                            <a class="plink" href="#" target="_blank" rel="noopener">
+                                <svg class="icon" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                Live demo
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Project: Enterprise KPI Platform -->
+                    <article class="project" data-reveal>
+                        <div class="project-top">
+                            <div class="project-mark">
+                                <svg class="icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="12" width="4" height="9"/><rect x="10" y="7" width="4" height="14"/><rect x="17" y="3" width="4" height="18"/></svg>
                             </div>
-                            <p>Currently working on additional analytics solutions and data engineering projects. Check back soon for updates!</p>
+                            <span class="project-badge live">In production</span>
+                        </div>
+                        <h3>Enterprise KPI Platform</h3>
+                        <div class="tags">
+                            <span class="tag accent">Snowflake</span>
+                            <span class="tag accent">dbt</span>
+                            <span class="tag">Streamlit</span>
+                            <span class="tag">AWS</span>
+                            <span class="tag">Power BI</span>
+                        </div>
+                        <p class="project-desc">
+                            Replaced manual Excel KPI trackers with a governed, automated reporting platform across 20+ plants.
+                            Standardized 130+ operations KPIs and re-engineered the refresh pipeline for a fraction of the cost and time.
+                        </p>
+                        <div class="project-impact">
+                            <div class="impact-stat"><div class="impact-num">~98%</div><span class="impact-label">Faster refresh</span></div>
+                            <div class="impact-stat"><div class="impact-num">200+</div><span class="impact-label">Active users</span></div>
+                        </div>
+                        <div class="project-links">
+                            <button class="plink solid" onclick="toggleCase('case-kpi')">Case study
+                                <svg class="icon" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                            </button>
+                            <span class="plink" style="cursor:default; opacity:.7;">
+                                <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                                Proprietary
+                            </span>
+                        </div>
+                    </article>
+
+                    <!-- Project: Trustworthy AI -->
+                    <article class="project" data-reveal>
+                        <div class="project-top">
+                            <div class="project-mark">
+                                <svg class="icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5l-8-3z"/><path d="m9 12 2 2 4-4"/></svg>
+                            </div>
+                            <span class="project-badge">Thesis · 10/10</span>
+                        </div>
+                        <h3>Trustworthy AI Framework</h3>
+                        <div class="tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">scikit-learn</span>
+                            <span class="tag">SHAP</span>
+                        </div>
+                        <p class="project-desc">
+                            A modular Python framework to evaluate healthcare ML models against four Trustworthy AI pillars —
+                            robustness, fairness, interpretability and data governance. Awarded the top academic grade (10/10).
+                        </p>
+                        <div class="project-impact">
+                            <div class="impact-stat"><div class="impact-num">~40%</div><span class="impact-label">Bias reduction</span></div>
+                            <div class="impact-stat"><div class="impact-num">4</div><span class="impact-label">AI pillars</span></div>
+                        </div>
+                        <div class="project-links">
+                            <a class="plink solid" href="https://github.com/carlosdmv7/trustworthyai" target="_blank" rel="noopener">
+                                <svg class="icon" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.79-.26.79-.58v-2.23c-3.34.73-4.03-1.42-4.03-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.19.69.8.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                                Repo
+                            </a>
                         </div>
                     </article>
                 </div>
-            </div>
-        </section>
 
-        <!-- Case Studies Section (Collapsible) -->
-        <section id="case-studies" class="case-studies">
-            <div class="container">
-                <!-- Case Study 1 - Hidden by default -->
-                <div id="case-study-1" class="case-study-expandable" style="display: none;">
-                    <div class="case-study-card" data-aos="fade-up">
-                        <button class="close-case-study" onclick="toggleCaseStudy('case-study-1')">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <line x1="18" y1="6" x2="6" y2="18"></line>
-                                <line x1="6" y1="6" x2="18" y2="18"></line>
-                            </svg>
-                            Close
+                <!-- ============ CASE STUDIES ============ -->
+
+                <!-- Case: Job Market Intelligence -->
+                <div id="case-jobs" class="case-study">
+                    <div class="case-card">
+                        <button class="case-close" onclick="toggleCase('case-jobs')">
+                            <svg class="icon" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Close
                         </button>
-                        <div class="case-study-header">
-                            <h3>Trustworthy AI Framework for Healthcare</h3>
-                            <span class="case-study-tag">Research Project</span>
-                        </div>
-                    
-                    <div class="case-study-content">
-                        <div class="case-study-section">
-                            <h4>🎯 The Challenge</h4>
-                            <p>Healthcare AI systems face a critical trust problem. Models achieve high accuracy but lack transparency, making clinicians hesitant to adopt them. Additionally, demographic biases can lead to unfair treatment recommendations, potentially harming vulnerable populations. Standard validation metrics like accuracy miss critical issues around fairness, robustness, and interpretability.</p>
-                            <div class="challenge-stats">
-                                <div class="stat-box">
-                                    <span class="stat-title">The Problem</span>
-                                    <ul>
-                                        <li>Black-box models reduce clinical trust</li>
-                                        <li>Hidden biases risk patient safety</li>
-                                        <li>Missing/noisy clinical data affects reliability</li>
-                                        <li>Standard validation misses demographic disparities</li>
-                                    </ul>
-                                </div>
-                            </div>
+                        <div class="case-head">
+                            <h3>Job Market Intelligence Engine</h3>
+                            <p>An end-to-end ELT + LLM enrichment pipeline for relocation-friendly job search.</p>
                         </div>
 
-                        <div class="case-study-section">
-                            <h4>💡 My Approach</h4>
-                            <p>I developed a modular, notebook-based Python pipeline to evaluate ML models against four Trustworthy AI pillars: robustness, fairness, interpretability, and privacy/data governance. Each component was designed to provide actionable insights for healthcare AI deployment.</p>
-                            
-                            <div class="approach-grid">
-                                <div class="approach-item">
-                                    <div class="approach-icon">🛡️</div>
-                                    <h5>Data Quality & Robustness</h5>
-                                    <p>Handled missing and noisy clinical data using MICE imputation and PCA/Hotelling's T² for outlier detection. Compared models via AUC using cross-validation plus bootstrap confidence intervals (1000+ iterations) to ensure reliability.</p>
-                                    <div class="code-snippet">
-                                        <code>
-# Robust validation with bootstrapping
-from sklearn.utils import resample
-bootstrap_aucs = []
-for i in range(1000):
-    X_boot, y_boot = resample(X_test, y_test)
-    auc = roc_auc_score(y_boot, model.predict_proba(X_boot)[:, 1])
-    bootstrap_aucs.append(auc)
-                                        </code>
+                        <div class="case-block">
+                            <div class="block-label"><span class="num">01</span> The problem</div>
+                            <p>Searching for jobs abroad as an EU relocator is noisy: postings live on dozens of boards, few clearly state whether they offer <strong>visa sponsorship</strong>, and there's no easy way to spot trends across the market. I wanted a system that <strong>aggregates postings, flags sponsorship, and lets me ask questions in plain English</strong> — built entirely on free infrastructure so it costs nothing to run.</p>
+                        </div>
+
+                        <div class="case-block">
+                            <div class="block-label"><span class="num">02</span> Architecture</div>
+                            <div class="arch">
+                                <div class="arch-flow">
+                                    <div class="arch-stage">
+                                        <span class="arch-stage-label">Extract</span>
+                                        <div class="arch-nodes">
+                                            <div class="arch-node">Remotive <small>public API</small></div>
+                                            <div class="arch-node">Arbeitnow <small>public API</small></div>
+                                            <div class="arch-node">RemoteOK <small>public API</small></div>
+                                        </div>
+                                    </div>
+                                    <div class="arch-arrow"><svg class="icon" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+                                    <div class="arch-stage">
+                                        <span class="arch-stage-label">Orchestrate</span>
+                                        <div class="arch-nodes">
+                                            <div class="arch-node key">Prefect <small>ingest flow</small></div>
+                                            <div class="arch-node ai">Prefect + LLM <small>enrichment flow</small></div>
+                                        </div>
+                                    </div>
+                                    <div class="arch-arrow"><svg class="icon" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+                                    <div class="arch-stage">
+                                        <span class="arch-stage-label">Store</span>
+                                        <div class="arch-nodes">
+                                            <div class="arch-node">MotherDuck <small>DuckDB warehouse</small></div>
+                                            <div class="arch-node"><small>local DuckDB (dev)</small></div>
+                                        </div>
+                                    </div>
+                                    <div class="arch-arrow"><svg class="icon" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+                                    <div class="arch-stage">
+                                        <span class="arch-stage-label">Transform</span>
+                                        <div class="arch-nodes">
+                                            <div class="arch-node key">dbt medallion <small>stg → int → marts</small></div>
+                                            <div class="arch-node"><small>42 models + tests</small></div>
+                                        </div>
+                                    </div>
+                                    <div class="arch-arrow"><svg class="icon" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+                                    <div class="arch-stage">
+                                        <span class="arch-stage-label">Serve</span>
+                                        <div class="arch-nodes">
+                                            <div class="arch-node">Visa detection</div>
+                                            <div class="arch-node">Trend analytics</div>
+                                            <div class="arch-node ai">"Ask the Data" <small>text-to-SQL agent</small></div>
+                                        </div>
                                     </div>
                                 </div>
-                                
-                                <div class="approach-item">
-                                    <div class="approach-icon">⚖️</div>
-                                    <h5>Fairness Auditing</h5>
-                                    <p>Identified performance gaps across sensitive subgroups (age, gender, ethnicity) and tested mitigation strategies including re-weighting and SMOTE. Documented which approaches reduced disparities by up to 40% without sacrificing overall AUC.</p>
-                                    <ul class="tech-list">
-                                        <li>Demographic parity analysis</li>
-                                        <li>Equal opportunity metrics across subgroups</li>
-                                        <li>SMOTE-based balancing techniques</li>
-                                    </ul>
-                                </div>
-                                
-                                <div class="approach-item">
-                                    <div class="approach-icon">🔍</div>
-                                    <h5>Explainability</h5>
-                                    <p>Produced SHAP-based explanation reports showing key drivers of predictions. Translated complex ML outputs into clinician-friendly insights to support model review and build trust in AI-assisted decisions.</p>
-                                </div>
+                                <p class="arch-note">Streamlit front-end · pluggable LLM provider (Ollama / Gemini / Claude) · CI with GitHub Actions</p>
                             </div>
                         </div>
 
-                        <div class="case-study-section">
-                            <h4>📊 Results & Impact</h4>
+                        <div class="case-block">
+                            <div class="block-label"><span class="num">03</span> Key decisions &amp; why</div>
+                            <ul class="decision-list">
+                                <li><strong>DuckDB + MotherDuck instead of a cloud warehouse</strong> — the dataset is medium-sized and the priority was €0 running cost. DuckDB gives warehouse-grade SQL locally; MotherDuck's free tier hosts the shared copy. Same dbt project runs against both, so dev and prod stay identical.</li>
+                                <li><strong>A pluggable LLM provider</strong> — the enrichment flow abstracts the model behind one interface so it can run on local Ollama (free), Gemini, or Claude. That keeps the pipeline free by default and swappable when quality matters more than cost.</li>
+                                <li><strong>dbt medallion (staging → integration → marts)</strong> — raw API payloads are messy and overlap across sources. Isolating cleaning (stg), cross-source dedup (int), and business marts (facts/dims) makes each layer testable and the lineage obvious.</li>
+                                <li><strong>Text-to-SQL over the gold layer, not the raw data</strong> — the "Ask the Data" agent queries curated marts, so natural-language questions hit clean, well-named columns and return trustworthy answers instead of guessing over raw tables.</li>
+                            </ul>
+                        </div>
+
+                        <div class="case-block">
+                            <div class="block-label"><span class="num">04</span> Results</div>
                             <div class="results-grid">
-                                <div class="result-card">
-                                    <span class="result-number">40%</span>
-                                    <span class="result-label">Reduction in demographic bias</span>
-                                </div>
-                                <div class="result-card">
-                                    <span class="result-number">10/10</span>
-                                    <span class="result-label">Academic grade achieved</span>
-                                </div>
-                                <div class="result-card">
-                                    <span class="result-number">4</span>
-                                    <span class="result-label">Trustworthy AI pillars</span>
-                                </div>
-                                <div class="result-card">
-                                    <span class="result-number">100+</span>
-                                    <span class="result-label">Bootstrap iterations</span>
-                                </div>
+                                <div class="result"><div class="result-num">42</div><span class="result-label">dbt models with data tests</span></div>
+                                <div class="result"><div class="result-num">3</div><span class="result-label">Sources deduplicated into one</span></div>
+                                <div class="result"><div class="result-num">59</div><span class="result-label">Unit tests passing</span></div>
+                                <div class="result"><div class="result-num">€0</div><span class="result-label">Monthly infra cost</span></div>
                             </div>
-                            <p class="result-description">The framework earned the highest academic distinction (ARA UPV - Top 25%) and demonstrates a practical, modular approach for organizations to evaluate AI systems beyond standard metrics. The pipeline provides comprehensive assessment of robustness, fairness, interpretability, and privacy considerations essential for healthcare AI deployment.</p>
+                            <p>A reproducible pipeline: <code>uv</code> for envs, <code>ruff</code>/<code>mypy</code>/<code>pytest</code> in CI, and dbt tests as data contracts — so a broken source fails loudly instead of silently corrupting the app.</p>
                         </div>
 
-                        <div class="case-study-section">
-                            <h4>🔧 Technical Stack</h4>
-                            <div class="tech-stack-detailed">
-                                <span class="tech-tag">Python</span>
-                                <span class="tech-tag">Scikit-learn</span>
-                                <span class="tech-tag">SHAP</span>
-                                <span class="tech-tag">Pandas</span>
-                                <span class="tech-tag">NumPy</span>
-                                <span class="tech-tag">Matplotlib</span>
-                                <span class="tech-tag">Seaborn</span>
-                                <span class="tech-tag">Microsoft Fabric</span>
+                        <div class="case-block">
+                            <div class="block-label"><span class="num">05</span> What I'd do differently now</div>
+                            <div class="callout">
+                                I'd formalize <strong>evals for the visa classifier</strong> (a labelled golden set + accuracy tracking) instead of trusting the LLM output as-is; replace ad-hoc dedup with an explicit <strong>surrogate-key strategy</strong> in the integration layer; add <strong>dbt exposures</strong> to map which marts feed which Streamlit page; and move scheduling off my machine onto a managed runner so ingestion doesn't depend on my laptop being on.
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-                <!-- Case Study 2 - Hidden by default -->
-                <div id="case-study-2" class="case-study-expandable" style="display: none;">
-                    <div class="case-study-card" data-aos="fade-up">
-                        <button class="close-case-study" onclick="toggleCaseStudy('case-study-2')">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <line x1="18" y1="6" x2="6" y2="18"></line>
-                                <line x1="6" y1="6" x2="18" y2="18"></line>
-                            </svg>
-                            Close
+                <!-- Case: Spanish Housing Radar -->
+                <div id="case-housing" class="case-study">
+                    <div class="case-card">
+                        <button class="case-close" onclick="toggleCase('case-housing')">
+                            <svg class="icon" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Close
                         </button>
-                        <div class="case-study-header">
-                            <h3>Replacing Manual Excel with Automated KPI System Across Global Operations</h3>
-                            <span class="case-study-tag">Production System</span>
-                        </div>
-                    
-                    <div class="case-study-content">
-                        <div class="case-study-section">
-                            <h4>🎯 The Challenge</h4>
-                            <p>A global automotive manufacturer with 20+ plants across NA/APAC and EMEA was tracking operations KPIs manually in Excel. Each region calculated metrics differently, leading to inconsistent reporting in executive summaries. Finance teams in one continent reported different numbers than Operations in another. Monthly reviews were delayed as stakeholders debated whose calculations were correct.</p>
-                            <div class="challenge-stats">
-                                <div class="stat-box">
-                                    <span class="stat-title">Business Impact</span>
-                                    <ul>
-                                        <li>80+ KPIs with no standardized definitions</li>
-                                        <li>Manual Excel updates across multiple time zones</li>
-                                        <li>Inconsistent metrics across 20+ manufacturing plants</li>
-                                        <li>Executive summaries delayed by data reconciliation</li>
-                                    </ul>
-                                </div>
-                            </div>
+                        <div class="case-head">
+                            <h3>Spanish Housing Radar</h3>
+                            <p>Finding under-priced property listings with a benchmark-driven Opportunity Score.</p>
                         </div>
 
-                        <div class="case-study-section">
-                            <h4>💡 My Solution</h4>
-                            <p>I designed and built a comprehensive KPI governance and reporting system with three core components:</p>
-                            
-                            <div class="approach-grid">
-                                <div class="approach-item">
-                                    <div class="approach-icon">📋</div>
-                                    <h5>KPI Governance App</h5>
-                                    <p>Built Streamlit application deployed on AWS as the central intake for KPI definitions, ownership, targets, and manual submissions. Established clear governance: who owns each KPI, how it's calculated, and where it comes from.</p>
-                                </div>
-                                
-                                <div class="approach-item">
-                                    <div class="approach-icon">⚙️</div>
-                                    <h5>Data Integration & Automation</h5>
-                                    <p>Created Snowflake views and scheduled ingestions to unify ODS/ERP data with third-party systems (Enablon for EHS, Dayforce for HR). This enabled automated KPI calculations and created a single source for reporting across all regions.</p>
-                                    <div class="code-snippet">
-                                        <code>
-# Snowflake data pipeline integration
-CREATE VIEW kpi_warehouse.operations_metrics AS
-SELECT 
-    plant_id,
-    metric_date,
-    metric_value,
-    data_source
-FROM prod_ods.manufacturing
-UNION ALL
-SELECT * FROM ext_enablon.safety_metrics
-UNION ALL  
-SELECT * FROM ext_dayforce.hr_metrics;
-                                        </code>
+                        <div class="case-block">
+                            <div class="block-label"><span class="num">01</span> The problem</div>
+                            <p>Spotting a genuinely under-priced flat means comparing it against the <strong>right</strong> peers — same neighborhood, similar size — not a city-wide average. Doing that by hand across portals is impractical. I wanted a pipeline that ingests listings continuously and scores each one against local benchmarks, so a good deal is <strong>quantified, not a gut feeling</strong>.</p>
+                        </div>
+
+                        <div class="case-block">
+                            <div class="block-label"><span class="num">02</span> Architecture</div>
+                            <div class="arch">
+                                <div class="arch-flow">
+                                    <div class="arch-stage">
+                                        <span class="arch-stage-label">Extract</span>
+                                        <div class="arch-nodes">
+                                            <div class="arch-node">Idealista <small>Fotocasa ready</small></div>
+                                            <div class="arch-node key">Scrapfly <small>anti-bot proxy</small></div>
+                                            <div class="arch-node">Pydantic <small>validation</small></div>
+                                        </div>
+                                    </div>
+                                    <div class="arch-arrow"><svg class="icon" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+                                    <div class="arch-stage">
+                                        <span class="arch-stage-label">Orchestrate</span>
+                                        <div class="arch-nodes">
+                                            <div class="arch-node key">Prefect <small>daily flow</small></div>
+                                            <div class="arch-node">GitHub Actions <small>schedule + CI</small></div>
+                                        </div>
+                                    </div>
+                                    <div class="arch-arrow"><svg class="icon" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+                                    <div class="arch-stage">
+                                        <span class="arch-stage-label">Store</span>
+                                        <div class="arch-nodes">
+                                            <div class="arch-node">MotherDuck <small>idempotent upserts</small></div>
+                                        </div>
+                                    </div>
+                                    <div class="arch-arrow"><svg class="icon" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+                                    <div class="arch-stage">
+                                        <span class="arch-stage-label">Transform</span>
+                                        <div class="arch-nodes">
+                                            <div class="arch-node key">dbt medallion <small>bronze → silver → gold</small></div>
+                                            <div class="arch-node ai">Opportunity Score <small>z-score vs benchmark</small></div>
+                                        </div>
+                                    </div>
+                                    <div class="arch-arrow"><svg class="icon" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+                                    <div class="arch-stage">
+                                        <span class="arch-stage-label">Serve</span>
+                                        <div class="arch-nodes">
+                                            <div class="arch-node">Underpriced listings</div>
+                                            <div class="arch-node">Market trends</div>
+                                            <div class="arch-node">Mortgage + affordability</div>
+                                        </div>
                                     </div>
                                 </div>
-                                
-                                <div class="approach-item">
-                                    <div class="approach-icon">🚀</div>
-                                    <h5>Performance Optimization</h5>
-                                    <p>Optimized the end-to-end refresh pipeline (Streamlit → Snowflake → Power BI), achieving dramatic improvements: ~98% reduction in refresh runtime, ~90% lower compute costs, and ~80% smaller model/measure footprint.</p>
-                                </div>
+                                <p class="arch-note">Streamlit · Plotly · pydeck maps · dbt Core 1.9</p>
                             </div>
                         </div>
 
-                        <div class="case-study-section">
-                            <h4>📊 Business Impact</h4>
+                        <div class="case-block">
+                            <div class="block-label"><span class="num">03</span> Key decisions &amp; why</div>
+                            <ul class="decision-list">
+                                <li><strong>Scrapfly instead of raw scraping</strong> — property portals have aggressive anti-bot protection. Outsourcing proxy rotation and rendering to Scrapfly kept the extractor simple and reliable, so I could spend effort on modeling rather than fighting blocks.</li>
+                                <li><strong>Idempotent upserts on ingest</strong> — listings reappear across daily runs. Upserting on a natural key means re-running a flow never creates duplicates, which keeps benchmarks honest.</li>
+                                <li><strong>A hierarchical Opportunity Score</strong> — the score is a z-score of €/m² against a benchmark, but a single flat needs enough comparables to be meaningful. So it falls back <strong>neighborhood → district → city</strong> until it has ≥8 comparables, and flags low-confidence scores instead of hiding them.</li>
+                                <li><strong>Medallion bronze/silver/gold in dbt</strong> — raw listings (bronze), deduplicated + typed (silver), benchmarks + scores (gold). Every business rule lives in version-controlled SQL with tests, not in the app.</li>
+                            </ul>
+                            <div class="code">
+                                <div class="code-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span>&nbsp;gold/opportunity_score.sql</div>
+                                <pre><code><span class="c">-- z-score of price/m² against the local benchmark</span>
+<span class="k">select</span>
+    listing_id,
+    price_per_sqm,
+    (price_per_sqm - benchmark_median_ppsqm)
+        / <span class="f">nullif</span>(benchmark_stddev_ppsqm, 0) <span class="k">as</span> opportunity_z,
+    benchmark_grain   <span class="c">-- neighborhood | district | city</span>
+<span class="k">from</span> {{ ref(<span class="f">'int_listings_benchmarked'</span>) }}</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="case-block">
+                            <div class="block-label"><span class="num">04</span> Results</div>
                             <div class="results-grid">
-                                <div class="result-card">
-                                    <span class="result-number">98%</span>
-                                    <span class="result-label">Faster refresh time</span>
-                                </div>
-                                <div class="result-card">
-                                    <span class="result-number">90%</span>
-                                    <span class="result-label">Compute cost reduction</span>
-                                </div>
-                                <div class="result-card">
-                                    <span class="result-number">100+</span>
-                                    <span class="result-label">Active users</span>
-                                </div>
-                                <div class="result-card">
-                                    <span class="result-number">80+</span>
-                                    <span class="result-label">Standardized KPIs</span>
-                                </div>
+                                <div class="result"><div class="result-num">3-layer</div><span class="result-label">dbt medallion, fully tested</span></div>
+                                <div class="result"><div class="result-num">4</div><span class="result-label">Streamlit analysis pages</span></div>
+                                <div class="result"><div class="result-num">Daily</div><span class="result-label">Automated Prefect runs</span></div>
                             </div>
-                            <p class="result-description">The system transformed operations reporting across the organization. All regions now use standardized KPI definitions with clear ownership and governance. The automated pipeline serves 100+ users across 20+ plants, with monthly executive summaries generated from a single, trusted data source. Manual Excel reconciliation is eliminated.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="about">
-            <div class="container">
-                <h2 class="section-title">About Me</h2>
-                
-                <!-- Profile Image at Top -->
-                <div class="about-profile-header" data-aos="fade-down">
-                    <div class="profile-circle">
-                        <img src="images/profile.jpg" alt="Carlos De Manuel" class="profile-image-circle">
-                    </div>
-                </div>
-
-                <!-- About Content -->
-                <div class="about-text-center" data-aos="fade-up">
-                    <p class="about-intro">
-                        I'm a <strong>Data Analyst</strong> based in Valencia, Spain, specializing in <strong>Business Intelligence and Analytics Engineering</strong>. I discovered my passion for data during my biomedical engineering studies when I realized the most interesting challenge wasn't just building models—it was making complex data accessible for decision-makers.
-                    </p>
-                    <p class="about-current">
-                        Currently, I'm <strong>leading analytics initiatives at RESRG Automotive</strong>, where I've built systems serving 100+ users across 20+ manufacturing plants in NA/APAC and EMEA. My approach combines technical depth with business understanding.
-                    </p>
-                    <p class="about-passion">
-                        What excites me most: <strong>transforming messy data into clear insights that solve real business problems.</strong>
-                    </p>
-                </div>
-                <!-- Stats -->
-                <div class="about-stats" data-aos="fade-up" data-aos-delay="200">
-                    <div class="stat-card">
-                        <span class="stat-number">2+</span>
-                        <span class="stat-label">Years Experience</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-number">100+</span>
-                        <span class="stat-label">Users Impacted</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-number">20+</span>
-                        <span class="stat-label">Plants</span>
-                    </div>
-                </div>
-            </div>
-
-                <!-- Tech Stack Visual -->
-                <div  class="tech-stack-showcase" data-aos="fade-up" data-aos-delay="100">
-                    <h3 id="tech-stack" class="tech-stack-title">Technologies I Work With</h3>
-                    <div class="tech-grid-visual">
-                        <!-- Analytics & BI -->
-                        <div class="tech-visual-card">
-                            <div class="tech-card-header">Analytics & BI</div>
-                            <div class="tech-icons-grid">
-                                <div class="tech-icon-item">
-                                    <img src="images/python.svg" alt="Python">
-                                    <span>Python</span>
-                                </div>
-                                <div class="tech-icon-item">
-                                    <img src="images/powerbi.svg" alt="Microsoft Fabric">
-                                    <span>Power BI</span>
-                                </div>
-                                <div class="tech-icon-item">
-                                    <img src="images/microsoft-fabric.svg" alt="Microsoft Fabric">
-                                    <span>Microsoft Fabric</span>
-                                </div>
-                                <div class="tech-icon-item">
-                                    <img src="images/streamlit.svg" alt="Streamlit">
-                                    <span>Streamlit</span>
-                                </div>
-                            </div>
+                            <p>Every PR is validated against an isolated CI schema (ruff, pytest, dbt build), so changes to scoring logic can't silently break production data.</p>
                         </div>
 
-                        <!-- Data & Databases -->
-                        <div class="tech-visual-card">
-                            <div class="tech-card-header">Data & Databases</div>
-                            <div class="tech-icons-grid">
-                                <div class="tech-icon-item">
-                                    <img src="images/snowflake.svg" alt="Snowflake">
-                                    <span>Snowflake</span>
-                                </div>
-                                <div class="tech-icon-item">
-                                    <img src="images/sql.svg" alt="SQL">
-                                    <span>SQL</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- DevOps & Cloud -->
-                        <div class="tech-visual-card">
-                            <div class="tech-card-header">DevOps & Cloud</div>
-                            <div class="tech-icons-grid">
-                                <div class="tech-icon-item">
-                                    <img src="images/docker.svg" alt="Docker">
-                                    <span>Docker</span>
-                                </div>
-                                <div class="tech-icon-item">
-                                    <img src="images/git.svg" alt="Git">
-                                    <span>Git</span>
-                                </div>
-                                <div class="tech-icon-item">
-                                    <img src="images/azure.svg" alt="Azure">
-                                    <span>Azure</span>
-                                </div>
-                                <div class="tech-icon-item">
-                                    <img src="images/aws.svg" alt="AWS">
-                                    <span>AWS</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Frontend & Web -->
-                        <div class="tech-visual-card">
-                            <div class="tech-card-header">Frontend & Web</div>
-                            <p class="tech-card-sub">Core markup & styling used to build fast, accessible UIs and dashboards</p>
-                            <div class="tech-icons-grid">
-                                <div class="tech-icon-item">
-                                    <img src="images/html.svg" alt="HTML">
-                                    <span>HTML</span>
-                                </div>
-                                <div class="tech-icon-item">
-                                    <img src="images/css.svg" alt="CSS">
-                                    <span>CSS</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Machine Learning -->
-                        <div class="tech-visual-card">
-                            <div class="tech-card-header">Machine Learning</div>
-                            <div class="tech-icons-grid">
-                                <div class="tech-icon-item">
-                                    <img src="images/scikitlearn.svg" alt="Scikit-learn">
-                                    <span>Scikit-learn</span>
-                                </div>
-                                <div class="tech-icon-item">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow">
-                                    <span>TensorFlow</span>
-                                </div>
-                                <div class="tech-icon-item">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="PyTorch">
-                                    <span>PyTorch</span>
-                                </div>
-                                <div class="tech-icon-item">
-                                    <svg viewBox="0 0 24 24" fill="#00C4CC">
-                                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/>
-                                        <path d="M12 6v6l4 2"/>
-                                    </svg>
-                                    <span>SHAP</span>
-                                </div>
+                        <div class="case-block">
+                            <div class="block-label"><span class="num">05</span> What I'd do differently now</div>
+                            <div class="callout">
+                                Coverage is still growing, so most listings currently benchmark at <strong>city grain</strong>. I'd prioritize <strong>backfilling history</strong> so neighborhood-level scores become the default, switch the gold models to <strong>incremental</strong> materializations instead of full refresh as volume grows, and add explicit <strong>freshness tests + scraping SLAs</strong> so stale data is caught automatically.
                             </div>
                         </div>
                     </div>
                 </div>
 
-
-        </section>
-
-        <!-- My Process Section -->
-        <section id="process" class="process">
-            <div class="container">
-                <h2 class="section-title">How I Work</h2>
-                
-                <div class="process-grid-compact">
-                    <div class="process-card-small" data-aos="fade-up">
-                        <div class="process-icon-small">🎯</div>
-                        <h3>Business First</h3>
-                        <p>Start with the problem, not the tech</p>
-                    </div>
-                    
-                    <div class="process-card-small" data-aos="fade-up" data-aos-delay="50">
-                        <div class="process-icon-small">🔍</div>
-                        <h3>Data Quality</h3>
-                        <p>Trust starts with clean data</p>
-                    </div>
-                    
-                    <div class="process-card-small" data-aos="fade-up" data-aos-delay="100">
-                        <div class="process-icon-small">🗃️</div>
-                        <h3>Build to Scale</h3>
-                        <p>Maintainable, documented code</p>
-                    </div>
-                    
-                    <div class="process-card-small" data-aos="fade-up" data-aos-delay="150">
-                        <div class="process-icon-small">✅</div>
-                        <h3>Validate</h3>
-                        <p>Test rigorously before deploy</p>
-                    </div>
-                    
-                    <div class="process-card-small" data-aos="fade-up" data-aos-delay="200">
-                        <div class="process-icon-small">🔄</div>
-                        <h3>Iterate</h3>
-                        <p>Improve based on feedback</p>
-                    </div>
-                    
-                    <div class="process-card-small philosophy-small" data-aos="fade-up" data-aos-delay="250">
-                        <em>"The best solution is the one people actually use"</em>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Education Section -->
-        <section id="education" class="education">
-            <div class="container">
-                <h2 class="section-title">Education</h2>
-                <div class="education-timeline">
-                    <div class="education-item" data-aos="fade-up">
-                        <div class="education-year">Sep 2024 - Sep 2025</div>
-                        <div class="education-content">
-                            <h3>MSc in Data Analysis, Process Improvement and Decision Support Engineering</h3>
-                            <h4>Universitat Politècnica de València (UPV)</h4>
-                            <p>Advanced analytics program combining ML, optimization, and statistical process control for industrial applications.</p>
+                <!-- Case: Enterprise KPI Platform -->
+                <div id="case-kpi" class="case-study">
+                    <div class="case-card">
+                        <button class="case-close" onclick="toggleCase('case-kpi')">
+                            <svg class="icon" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Close
+                        </button>
+                        <div class="case-head">
+                            <h3>Enterprise KPI Platform</h3>
+                            <p>From manual Excel trackers to a governed, automated reporting platform across 20+ plants.</p>
                         </div>
-                    </div>
 
-                    <div class="education-item" data-aos="fade-up" data-aos-delay="100">
-                        <div class="education-year">Sep 2020 - Jul 2024</div>
-                        <div class="education-content">
-                            <h3>BSc in Biomedical Engineering (ICT Specialization)</h3>
-                            <h4>Universitat Politècnica de València (UPV) - Industrial Engineering School</h4>
-                            <div class="education-achievement">
-                                <p><strong>Thesis:</strong> "Trustworthy AI Framework for Healthcare" - Grade 10/10</p>
-                                <p><strong>Distinction:</strong> ARA UPV (High Academic Performance - Top 25%)</p>
+                        <div class="case-block">
+                            <div class="block-label"><span class="num">01</span> The problem</div>
+                            <p>A global manufacturer tracked operations KPIs manually in Excel. Each region calculated metrics differently, so executive summaries didn't reconcile — Finance in one continent reported different numbers than Operations in another, and monthly reviews stalled while people argued about whose figures were right. There was <strong>no shared definition, no ownership, and no single source of truth</strong>.</p>
+                        </div>
+
+                        <div class="case-block">
+                            <div class="block-label"><span class="num">02</span> Key decisions &amp; why</div>
+                            <ul class="decision-list">
+                                <li><strong>Governance before automation.</strong> Before building pipelines, I established a KPI contract — definition, owner, calculation rule and source — for 130+ metrics. Automating an ambiguous KPI just produces wrong numbers faster.</li>
+                                <li><strong>A Streamlit intake app, not more spreadsheets.</strong> Some inputs and targets are genuinely manual. Rather than fight that, I built a governed intake app (Streamlit on AWS) so manual data enters through one validated door instead of scattered files.</li>
+                                <li><strong>Unify third-party sources in the warehouse.</strong> Operational, safety/EHS, HR and ERP data lived in separate third-party systems. I landed them in Snowflake and modeled governed views (with dbt for modular SQL) so every region computes KPIs from the same tables.</li>
+                                <li><strong>Optimize the whole refresh path, not one tool.</strong> The bottleneck spanned Streamlit → Snowflake → Power BI. Tuning the models, incremental logic and the semantic layer together is what delivered the step-change, not any single fix.</li>
+                            </ul>
+                            <div class="code">
+                                <div class="code-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span>&nbsp;pattern — unify third-party sources into a governed model</div>
+                                <pre><code><span class="c">-- Illustrative pattern (generic placeholders, not production schemas)</span>
+<span class="k">create or replace view</span> analytics.kpi_operations <span class="k">as</span>
+<span class="k">select</span> plant_id, metric_date, metric_name, metric_value, source_system
+<span class="k">from</span> staging.erp_operations
+<span class="k">union all select</span> ... <span class="k">from</span> staging.ehs_platform   <span class="c">-- safety / environment</span>
+<span class="k">union all select</span> ... <span class="k">from</span> staging.hr_platform;   <span class="c">-- workforce</span></code></pre>
+                            </div>
+                        </div>
+
+                        <div class="case-block">
+                            <div class="block-label"><span class="num">03</span> Results</div>
+                            <div class="results-grid">
+                                <div class="result"><div class="result-num">~98%</div><span class="result-label">Faster refresh runtime</span></div>
+                                <div class="result"><div class="result-num">~90%</div><span class="result-label">Lower compute cost</span></div>
+                                <div class="result"><div class="result-num">200+</div><span class="result-label">Users, one source of truth</span></div>
+                                <div class="result"><div class="result-num">130+</div><span class="result-label">Standardized KPIs</span></div>
+                            </div>
+                            <p>All regions now report from the same definitions with clear ownership. Monthly executive summaries generate from a single trusted source, and manual reconciliation is gone.</p>
+                        </div>
+
+                        <div class="case-block">
+                            <div class="block-label"><span class="num">04</span> What I'd do differently now</div>
+                            <div class="callout">
+                                I'd promote the bespoke Snowflake views into a <strong>full dbt project</strong> where tests and documentation are the contract, add <strong>data-freshness SLAs with alerting</strong> so stakeholders learn about a late source from the system rather than a meeting, and expose <strong>lineage</strong> so KPI owners can self-audit how each number is built.
                             </div>
                         </div>
                     </div>
@@ -749,182 +613,303 @@ SELECT * FROM ext_dayforce.hr_metrics;
             </div>
         </section>
 
-        <!-- Certifications Section -->
-        <section id="certifications" class="certifications">
+        <!-- About -->
+        <section id="about">
             <div class="container">
-                <h2 class="section-title">Certifications</h2>
-                <div class="certifications-grid">
-                    <div class="cert-card" data-aos="zoom-in">
-                        <div class="cert-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="8" r="7"></circle>
-                                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
-                            </svg>
-                        </div>
-                        <div class="cert-date">Oct 2024</div>
-                        <h3>C1 Level (CEFR) English</h3>
-                        <p class="cert-issuer">Cambridge University Press & Assessment</p>
-                        <p class="cert-details">Score 194, Grade B</p>
-                        <div class="cert-tags">
-                            <span class="cert-tag">English</span>
+                <div class="section-head">
+                    <span class="eyebrow">03 — About</span>
+                    <h2 class="section-title">A bit about me</h2>
+                </div>
+                <div class="about-wrap">
+                    <div class="about-photo" data-reveal>
+                        <img src="images/profile.jpg" alt="Carlos De Manuel" width="260" height="260" loading="lazy">
+                    </div>
+                    <div class="about-body" data-reveal>
+                        <p>I'm an <strong>Analytics Engineer</strong> based in Valencia, Spain. I found my way into data through biomedical engineering, where the most interesting problem wasn't training the model — it was making messy data <strong>trustworthy and usable</strong> for the people making decisions.</p>
+                        <p>Today I sit between data engineering and analytics: I <strong>model data, write tested transformations, orchestrate pipelines, and ship self-serve products</strong>. At RESRG Automotive I've built platforms serving 200+ users across 20+ plants in three regions — and on my own time I build ELT pipelines with dbt, DuckDB and Prefect to keep sharpening the craft.</p>
+                        <p>I care about the boring things that make data reliable: clear definitions, tests as contracts, documented lineage, and pipelines that fail loudly instead of quietly lying. I'm now looking for an <strong>Analytics Engineer role in a European scale-up</strong>, ideally in the Netherlands.</p>
+                        <div class="about-facts">
+                            <span class="about-fact"><svg class="icon" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Valencia, Spain · open to relocation</span>
+                            <span class="about-fact"><svg class="icon" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>2+ years in data</span>
+                            <span class="about-fact"><svg class="icon" viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/></svg>MSc Data Analysis · UPV</span>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
 
-                    <div class="cert-card" data-aos="zoom-in" data-aos-delay="50">
-                        <div class="cert-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="8" r="7"></circle>
-                                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
-                            </svg>
+        <!-- Tech stack -->
+        <section id="stack">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">04 — Toolbox</span>
+                    <h2 class="section-title">Tech stack</h2>
+                </div>
+                <div class="stack-grid">
+                    <div class="stack-card card" data-reveal>
+                        <div class="card-label"><svg class="icon" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg>Warehousing &amp; Modeling</div>
+                        <div class="stack-list">
+                            <div class="stack-row"><img src="images/snowflake.svg" alt="Snowflake"><span>Snowflake</span><span class="lvl">Advanced</span></div>
+                            <div class="stack-row"><img src="images/duckdb.svg" alt="DuckDB"><span>DuckDB / MotherDuck</span></div>
+                            <div class="stack-row"><img src="images/dbt.svg" alt="dbt"><span>dbt</span><span class="lvl">Core</span></div>
+                            <div class="stack-row"><span class="dot-mark"></span><span>Kimball / Star Schema</span></div>
                         </div>
-                        <div class="cert-date">Aug 2024</div>
+                    </div>
+                    <div class="stack-card card" data-reveal>
+                        <div class="card-label"><svg class="icon" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>Languages &amp; Transformation</div>
+                        <div class="stack-list">
+                            <div class="stack-row"><img src="images/python.svg" alt="Python"><span>Python</span><span class="lvl">Advanced</span></div>
+                            <div class="stack-row"><img src="images/sql.svg" alt="SQL"><span>SQL</span><span class="lvl">Advanced</span></div>
+                            <div class="stack-row"><span class="dot-mark"></span><span>Jinja</span></div>
+                            <div class="stack-row"><span class="dot-mark"></span><span>DAX</span></div>
+                        </div>
+                    </div>
+                    <div class="stack-card card" data-reveal>
+                        <div class="card-label"><svg class="icon" viewBox="0 0 24 24"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/></svg>Orchestration &amp; DevOps</div>
+                        <div class="stack-list">
+                            <div class="stack-row"><img src="images/prefect.svg" alt="Prefect"><span>Prefect</span></div>
+                            <div class="stack-row"><img src="images/git.svg" alt="Git"><span>Git &amp; GitHub Actions</span></div>
+                            <div class="stack-row"><img src="images/docker.svg" alt="Docker"><span>Docker</span></div>
+                            <div class="stack-row"><img src="images/aws.svg" alt="AWS"><span>AWS</span></div>
+                        </div>
+                    </div>
+                    <div class="stack-card card" data-reveal>
+                        <div class="card-label"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="12" width="4" height="9"/><rect x="10" y="7" width="4" height="14"/><rect x="17" y="3" width="4" height="18"/></svg>BI &amp; Data Apps</div>
+                        <div class="stack-list">
+                            <div class="stack-row"><img src="images/powerbi.svg" alt="Power BI"><span>Power BI</span></div>
+                            <div class="stack-row"><img src="images/streamlit.svg" alt="Streamlit"><span>Streamlit</span></div>
+                            <div class="stack-row"><img src="images/microsoft-fabric.svg" alt="Microsoft Fabric"><span>Microsoft Fabric</span></div>
+                        </div>
+                    </div>
+                    <div class="stack-card card" data-reveal>
+                        <div class="card-label"><svg class="icon" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></svg>Machine Learning</div>
+                        <div class="stack-list">
+                            <div class="stack-row"><img src="images/scikitlearn.svg" alt="scikit-learn"><span>scikit-learn</span></div>
+                            <div class="stack-row"><span class="dot-mark"></span><span>SHAP · XAI</span></div>
+                            <div class="stack-row"><span class="dot-mark"></span><span>pandas / NumPy</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How I work -->
+        <section id="process">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">05 — Principles</span>
+                    <h2 class="section-title">How I work</h2>
+                </div>
+                <div class="process-grid">
+                    <div class="process-card card" data-reveal>
+                        <div class="process-num">01</div>
+                        <svg class="icon icon-lg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>
+                        <h3>Problem first</h3>
+                        <p>Start from the decision to be made, not the tool. The stack serves the question.</p>
+                    </div>
+                    <div class="process-card card" data-reveal>
+                        <div class="process-num">02</div>
+                        <svg class="icon icon-lg" viewBox="0 0 24 24"><path d="m9 11 3 3 8-8"/><path d="M21 12a9 9 0 1 1-6.2-8.5"/></svg>
+                        <h3>Tests as contracts</h3>
+                        <p>Data quality isn't a phase. Pipelines should fail loudly, never lie quietly.</p>
+                    </div>
+                    <div class="process-card card" data-reveal>
+                        <div class="process-num">03</div>
+                        <svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></svg>
+                        <h3>Build to scale</h3>
+                        <p>Modular, documented, version-controlled models. Lineage anyone can follow.</p>
+                    </div>
+                    <div class="process-card card" data-reveal>
+                        <div class="process-num">04</div>
+                        <svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg>
+                        <h3>Ship &amp; iterate</h3>
+                        <p>The best model is the one people actually use. Deliver, measure, refine.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section id="education">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">06 — Education</span>
+                    <h2 class="section-title">Education</h2>
+                </div>
+                <div class="timeline-edu">
+                    <div class="edu-item" data-reveal>
+                        <div class="edu-date">2024 — 2025</div>
+                        <div class="edu-body">
+                            <h3>MSc, Data Analysis, Process Improvement &amp; Decision Support Engineering</h3>
+                            <div class="edu-school">Universitat Politècnica de València (UPV)</div>
+                            <p>Predictive analytics, multivariate statistics, optimization and statistical process control for industrial applications.</p>
+                        </div>
+                    </div>
+                    <div class="edu-item" data-reveal>
+                        <div class="edu-date">2020 — 2024</div>
+                        <div class="edu-body">
+                            <h3>BSc, Biomedical Engineering (ICT Specialization)</h3>
+                            <div class="edu-school">Universitat Politècnica de València (UPV) — Industrial Engineering School</div>
+                            <div class="edu-achievement">
+                                <p><strong>Thesis:</strong> "Trustworthy AI Framework for Healthcare" — Grade 10/10</p>
+                                <p><strong>Distinction:</strong> ARA UPV — High Academic Performance (Top 25%)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications -->
+        <section id="certifications">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">07 — Credentials</span>
+                    <h2 class="section-title">Certifications</h2>
+                </div>
+                <div class="cert-grid">
+                    <div class="cert-card card" data-reveal>
+                        <div class="cert-head">
+                            <div class="cert-mark"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 23l5-3 5 3-1.21-9.12"/></svg></div>
+                            <span class="cert-status">In progress · 2026</span>
+                        </div>
+                        <h3>AWS Certified Data Engineer — Associate</h3>
+                        <div class="cert-issuer">Amazon Web Services</div>
+                        <div class="tags"><span class="tag">AWS</span><span class="tag">Data Engineering</span></div>
+                    </div>
+                    <div class="cert-card card" data-reveal>
+                        <div class="cert-head">
+                            <div class="cert-mark"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 23l5-3 5 3-1.21-9.12"/></svg></div>
+                            <span class="cert-status">In progress · 2026</span>
+                        </div>
+                        <h3>dbt Core Certification</h3>
+                        <div class="cert-issuer">dbt Labs</div>
+                        <div class="tags"><span class="tag">dbt</span><span class="tag">Data Modeling</span></div>
+                    </div>
+                    <div class="cert-card card" data-reveal>
+                        <div class="cert-head">
+                            <div class="cert-mark"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 23l5-3 5 3-1.21-9.12"/></svg></div>
+                            <span class="cert-date">2024</span>
+                        </div>
+                        <h3>C1 Advanced (CEFR) — English</h3>
+                        <div class="cert-issuer">Cambridge University Press &amp; Assessment</div>
+                        <div class="tags"><span class="tag">Score 194 · Grade B</span></div>
+                    </div>
+                    <div class="cert-card card" data-reveal>
+                        <div class="cert-head">
+                            <div class="cert-mark"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 23l5-3 5 3-1.21-9.12"/></svg></div>
+                            <span class="cert-date">2024</span>
+                        </div>
+                        <h3>Data Analysis &amp; Visualization with Power BI</h3>
+                        <div class="cert-issuer">Microsoft</div>
+                        <div class="tags"><span class="tag">Power BI</span><span class="tag">Dashboards</span></div>
+                    </div>
+                    <div class="cert-card card" data-reveal>
+                        <div class="cert-head">
+                            <div class="cert-mark"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 23l5-3 5 3-1.21-9.12"/></svg></div>
+                            <span class="cert-date">2024</span>
+                        </div>
                         <h3>Machine Learning Specialization</h3>
-                        <p class="cert-issuer">DeepLearning.AI</p>
-                        <div class="cert-tags">
-                            <span class="cert-tag">TensorFlow</span>
-                            <span class="cert-tag">Scikit-Learn</span>
-                            <span class="cert-tag">Deep Learning</span>
-                        </div>
+                        <div class="cert-issuer">DeepLearning.AI</div>
+                        <div class="tags"><span class="tag">ML</span><span class="tag">scikit-learn</span></div>
                     </div>
-
-                    <div class="cert-card" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="cert-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="8" r="7"></circle>
-                                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
-                            </svg>
+                    <div class="cert-card card" data-reveal>
+                        <div class="cert-head">
+                            <div class="cert-mark"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 23l5-3 5 3-1.21-9.12"/></svg></div>
+                            <span class="cert-date">2024</span>
                         </div>
-                        <div class="cert-date">Jun 2024</div>
-                        <h3>Data Analysis and Visualization with Power BI</h3>
-                        <p class="cert-issuer">Microsoft</p>
-                        <div class="cert-tags">
-                            <span class="cert-tag">Power BI</span>
-                            <span class="cert-tag">Data Visualization</span>
-                            <span class="cert-tag">Dashboards</span>
-                        </div>
-                    </div>
-
-                    <div class="cert-card" data-aos="zoom-in" data-aos-delay="150">
-                        <div class="cert-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="8" r="7"></circle>
-                                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
-                            </svg>
-                        </div>
-                        <div class="cert-date">Jun 2024</div>
-                        <h3>IBM AI Engineering Specialization</h3>
-                        <p class="cert-issuer">IBM</p>
-                        <div class="cert-tags">
-                            <span class="cert-tag">Computer Vision</span>
-                            <span class="cert-tag">PyTorch</span>
-                            <span class="cert-tag">Keras</span>
-                        </div>
-                    </div>
-
-                    <div class="cert-card" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="cert-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="8" r="7"></circle>
-                                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
-                            </svg>
-                        </div>
-                        <div class="cert-date">Jun 2024</div>
                         <h3>IBM Data Science Specialization</h3>
-                        <p class="cert-issuer">IBM</p>
-                        <div class="cert-tags">
-                            <span class="cert-tag">Python</span>
-                            <span class="cert-tag">SQL</span>
-                            <span class="cert-tag">Machine Learning</span>
-                        </div>
+                        <div class="cert-issuer">IBM</div>
+                        <div class="tags"><span class="tag">Python</span><span class="tag">SQL</span></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Contact Section -->
+        <!-- Contact -->
         <section id="contact" class="contact">
             <div class="container">
-                <div class="contact-content">
-                    <h2 class="contact-title">Let's work together</h2>
-                    <p class="contact-description">
-                        I'm always interested in hearing about new projects and opportunities. 
-                        Whether you need help building analytics solutions, optimizing data pipelines, or just want to discuss data strategy. Let's talk!
-                    </p>
-                    <a href="mailto:carlosdmv7@gmail.com" class="contact-email">
+                <span class="eyebrow" style="justify-content:center;">08 — Contact</span>
+                <h2>Let's build something reliable.</h2>
+                <p>I'm looking for an Analytics Engineer role in a European scale-up. If you're hiring — or just want to talk data modeling, dbt or orchestration — I'd love to hear from you.</p>
+                <div class="contact-actions">
+                    <a href="mailto:carlosdmv7@gmail.com" class="btn btn-primary">
+                        <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></svg>
                         carlosdmv7@gmail.com
+                    </a>
+                    <a href="https://www.linkedin.com/in/carlos-de-manuel/" target="_blank" rel="noopener" class="btn btn-ghost">
+                        <svg class="icon" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+                        LinkedIn
                     </a>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <p>&copy; 2025 <a href="#" class="footer-link">Carlos De Manuel</a>. Based on midudev portfolio</p>
-                <div class="footer-links">
-                    <a href="#about">About</a>
-                    <a href="mailto:carlosdmv7@gmail.com">Contact</a>
-                    <a href="https://www.linkedin.com/in/carlos-de-manuel/" target="_blank">LinkedIn</a>
-                    <a href="https://github.com/carlosdmv7" target="_blank">GitHub</a>
-                </div>
+            <p>© 2026 Carlos De Manuel Vicente</p>
+            <div class="footer-links">
+                <a href="#work">Work</a>
+                <a href="#projects">Projects</a>
+                <a href="https://github.com/carlosdmv7" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://www.linkedin.com/in/carlos-de-manuel/" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="mailto:carlosdmv7@gmail.com">Email</a>
             </div>
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
-        AOS.init({
-            duration: 800,
-            easing: 'ease-out',
-            once: true,
-            offset: 100
-        });
+        // Experience accordion
+        function toggleExp(btn) {
+            const item = btn.closest('.exp-item');
+            const open = item.classList.toggle('open');
+            btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        }
 
-        // Toggle case study visibility
-        function toggleCaseStudy(id) {
-            const caseStudy = document.getElementById(id);
-            if (caseStudy.style.display === 'none' || caseStudy.style.display === '') {
-                caseStudy.style.display = 'block';
-                caseStudy.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // Case study expand / collapse
+        function toggleCase(id) {
+            const el = document.getElementById(id);
+            const isOpen = el.classList.contains('open');
+            document.querySelectorAll('.case-study.open').forEach(c => c.classList.remove('open'));
+            if (!isOpen) {
+                el.classList.add('open');
+                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
             } else {
-                caseStudy.style.display = 'none';
-                // Scroll back to projects section
-                document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
+                document.getElementById('projects').scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         }
 
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+        // Smooth scroll for in-page anchors
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href.length > 1) {
+                    const target = document.querySelector(href);
+                    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
                 }
             });
         });
 
-        // Navbar scroll effect
-        let lastScroll = 0;
+        // Navbar background on scroll
         const navbar = document.querySelector('.navbar');
-        
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-            
-            if (currentScroll > 100) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-            
-            lastScroll = currentScroll;
-        });
+        const onScroll = () => navbar.classList.toggle('scrolled', window.scrollY > 60);
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+
+        // Reveal on scroll (self-contained, respects reduced-motion)
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const revealEls = document.querySelectorAll('[data-reveal]');
+        if (reduceMotion || !('IntersectionObserver' in window)) {
+            revealEls.forEach(el => el.classList.add('is-visible'));
+        } else {
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) { entry.target.classList.add('is-visible'); io.unobserve(entry.target); }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+            revealEls.forEach(el => io.observe(el));
+        }
     </script>
 </body>
 </html>
