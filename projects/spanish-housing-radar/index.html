@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spanish Housing Radar — an Opportunity Score with a hierarchical benchmark · Carlos De Manuel</title>
+    <meta name="description" content="Case study: an analytics pipeline that scores Spanish property listings against the finest local €/m² benchmark that still has enough comparables — neighbourhood, district, then city. dbt medallion on MotherDuck, Prefect, Streamlit, with published dbt docs.">
+    <meta name="author" content="Carlos De Manuel Vicente">
+    <link rel="canonical" href="https://carlosdmv7.github.io/personal-portfolio/projects/spanish-housing-radar/">
+
+    <!-- Open Graph / social preview -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Under-priced, quantified — Spanish Housing Radar">
+    <meta property="og:description" content="An Opportunity Score built from the z-score of €/m² against the finest local benchmark that still has enough comparables — neighbourhood, district, then city.">
+    <meta property="og:url" content="https://carlosdmv7.github.io/personal-portfolio/projects/spanish-housing-radar/">
+    <meta property="og:image" content="https://carlosdmv7.github.io/personal-portfolio/images/og-spanish-housing-radar.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Case study card: “Under-priced, quantified.” — 13 dbt models, 90 data tests, 3 sources, 4 app pages.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Under-priced, quantified — Spanish Housing Radar">
+    <meta name="twitter:description" content="A hierarchical benchmark that falls back neighbourhood → district → city until it has enough comparables, and flags low-confidence scores instead of hiding them.">
+    <meta name="twitter:image" content="https://carlosdmv7.github.io/personal-portfolio/images/og-spanish-housing-radar.png">
+
+    <link rel="icon" type="image/svg+xml" href="../../images/favicon.svg">
+    <link rel="icon" type="image/png" href="../../images/LOGODMV.png">
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="bg-grid" aria-hidden="true"></div>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="../../" class="logo">
+                <span class="logo-dot"></span>carlos<span class="muted">.de.manuel</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="../../#work">Work</a></li>
+                <li><a href="../../#projects">Projects</a></li>
+                <li><a href="../../#about">About</a></li>
+                <li><a href="../../#stack">Stack</a></li>
+                <li><a href="../../#contact" class="nav-cta">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <article class="case-page">
+            <div class="container">
+                <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <a href="../../">Portfolio</a>
+                    <span aria-hidden="true">/</span>
+                    <a href="../../#projects">Projects</a>
+                    <span aria-hidden="true">/</span>
+                    <span aria-current="page">Spanish Housing Radar</span>
+                </nav>
+
+                <header class="case-hero">
+                    <span class="eyebrow">Case study</span>
+                    <h1>Spanish Housing Radar</h1>
+                    <p class="case-lede">Finding under-priced property listings with a benchmark-driven Opportunity Score — and being honest about which benchmark actually scored each listing.</p>
+                    <div class="tags">
+                        <span class="tag accent">dbt</span>
+                        <span class="tag">Scrapfly</span>
+                        <span class="tag">MotherDuck</span>
+                        <span class="tag">Prefect</span>
+                        <span class="tag">Streamlit</span>
+                    </div>
+                    <div class="project-links">
+                        <a class="plink solid" href="https://spanish-housing-radar-carlosdmv7.streamlit.app/" target="_blank" rel="noopener">
+                            <svg class="icon" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            Live app
+                            <span class="visually-hidden">(opens in a new tab)</span>
+                        </a>
+                        <a class="plink" href="https://github.com/carlosdmv7/spanish-housing-radar" target="_blank" rel="noopener">
+                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.79-.26.79-.58v-2.23c-3.34.73-4.03-1.42-4.03-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.19.69.8.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                            Repo
+                            <span class="visually-hidden">(opens in a new tab)</span>
+                        </a>
+                        <a class="plink" href="https://carlosdmv7.github.io/spanish-housing-radar/" target="_blank" rel="noopener">
+                            <svg class="icon" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            dbt docs — lineage &amp; tests
+                            <span class="visually-hidden">(opens in a new tab)</span>
+                        </a>
+                    </div>
+                </header>
+
+                <div class="case-body">
+                    <div class="case-block">
+                        <h2 class="block-label">The problem</h2>
+                        <p>Spotting a genuinely under-priced flat means comparing it against the <strong>right</strong> peers — same neighbourhood, similar size — not a city-wide average. Doing that by hand across portals is impractical. I wanted a pipeline that ingests listings continuously and scores each one against local benchmarks, so a good deal is <strong>quantified, not a gut feeling</strong>.</p>
+                        <p>The hard part isn't the z-score, it's the honesty. Spanish listings are sparse at neighbourhood level, and a flat compared only against its own barrio is often compared against <em>itself</em> — which yields a z-score of 0 and a meaningless "fair" verdict. The interesting engineering is deciding which benchmark a listing has earned, and telling the user which one it got.</p>
+                    </div>
+
+                    <div class="case-block">
+                        <h2 class="block-label">Architecture</h2>
+                        <div class="arch">
+                            <div class="arch-flow">
+                                <div class="arch-stage">
+                                    <span class="arch-stage-label">Extract</span>
+                                    <div class="arch-nodes">
+                                        <div class="arch-node">Idealista <small>Fotocasa ready</small></div>
+                                        <div class="arch-node key">INE Tempus3 <small>official price index</small></div>
+                                        <div class="arch-node">Scrapfly <small>anti-bot proxy</small></div>
+                                        <div class="arch-node">Pydantic <small>validation</small></div>
+                                    </div>
+                                </div>
+                                <div class="arch-arrow"><svg class="icon" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+                                <div class="arch-stage">
+                                    <span class="arch-stage-label">Orchestrate</span>
+                                    <div class="arch-nodes">
+                                        <div class="arch-node key">Prefect <small>daily flow</small></div>
+                                        <div class="arch-node">GitHub Actions <small>schedule + CI</small></div>
+                                    </div>
+                                </div>
+                                <div class="arch-arrow"><svg class="icon" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+                                <div class="arch-stage">
+                                    <span class="arch-stage-label">Store</span>
+                                    <div class="arch-nodes">
+                                        <div class="arch-node">MotherDuck <small>idempotent upserts</small></div>
+                                    </div>
+                                </div>
+                                <div class="arch-arrow"><svg class="icon" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+                                <div class="arch-stage">
+                                    <span class="arch-stage-label">Transform</span>
+                                    <div class="arch-nodes">
+                                        <div class="arch-node key">dbt medallion <small>bronze → silver → gold</small></div>
+                                        <div class="arch-node ai">Opportunity Score <small>z-score vs benchmark</small></div>
+                                    </div>
+                                </div>
+                                <div class="arch-arrow"><svg class="icon" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+                                <div class="arch-stage">
+                                    <span class="arch-stage-label">Serve</span>
+                                    <div class="arch-nodes">
+                                        <div class="arch-node">Opportunities</div>
+                                        <div class="arch-node">Market trends</div>
+                                        <div class="arch-node">Mortgage + affordability</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="arch-note">Streamlit · Plotly · pydeck maps · dbt Core 1.9 · 13 models, 90 data tests, 3 sources</p>
+                        </div>
+                    </div>
+
+                    <div class="case-block">
+                        <h2 class="block-label">Key decisions &amp; why</h2>
+                        <ul class="decision-list">
+                            <li><strong>A hierarchical benchmark, and the grain is a column.</strong> The score is a z-score of €/m², but a listing needs enough comparables for that to mean anything. So the model builds three benchmark grains and picks the <strong>finest one with at least 8 comparables</strong> — neighbourhood → district → city — always within the same operation and property type. <code>benchmark_level</code> records which grain actually scored each listing, and the app shows it ("scored vs city"). Rows that fall back to a thin city grain are flagged <code>low_confidence</code> rather than hidden.</li>
+                            <li><strong>Neutral, not extreme, when dispersion is zero.</strong> A benchmark built from a single comparable has a standard deviation of 0 or NULL, which would divide to infinity and snap the score to ±3. Coalescing that case to 0 keeps a thin benchmark from manufacturing a fake bargain — a bug that would have looked exactly like a great find.</li>
+                            <li><strong>Idempotent upserts on ingest.</strong> Listings reappear across daily runs. Upserting on the natural key <code>(source_name, source_id)</code> means re-running a flow never creates duplicates, which keeps the benchmarks honest and makes the pipeline safe to retry.</li>
+                            <li><strong>Search-card scraping over detail-page scraping.</strong> ~1 Scrapfly credit per request versus 25–29 with JS rendering. The trade-off is no per-listing coordinates. For a benchmark engine, breadth of comparables matters more than per-listing depth.</li>
+                            <li><strong>A free feed so the app is never dead.</strong> The INE Tempus3 house-price index is keyless and free, and grounds asking prices against transaction-based official reality. It keeps refreshing even when listing scraping is parked.</li>
+                        </ul>
+                        <div class="code">
+                            <div class="code-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span>&nbsp;3_gold/fct_listings_scored.sql</div>
+                            <pre><code><span class="c">-- pick the FINEST benchmark grain with enough comparables</span>
+<span class="k">case</span>
+    <span class="k">when</span> nb.n &gt;= {{ min_comps }} <span class="k">then</span> <span class="f">'neighbourhood'</span>
+    <span class="k">when</span> di.n &gt;= {{ min_comps }} <span class="k">then</span> <span class="f">'district'</span>
+    <span class="k">else</span> <span class="f">'city'</span>
+<span class="k">end</span> <span class="k">as</span> benchmark_level,
+<span class="c">-- ...then a clamped z-score, neutral when dispersion is zero</span>
+<span class="f">round</span>(<span class="f">greatest</span>(-3.0, <span class="f">least</span>(3.0,
+    <span class="f">coalesce</span>((price_per_sqm - benchmark_median_ppsqm)
+             / <span class="f">nullif</span>(benchmark_stddev_ppsqm, 0), 0)
+)), 3) <span class="k">as</span> ppsqm_z_score
+<span class="c">-- score = 50 centred, clamped 0-100</span>
+<span class="f">round</span>(<span class="f">greatest</span>(0, <span class="f">least</span>(100, 50 - ppsqm_z_score * (50.0 / 3.0))), 1)
+    <span class="k">as</span> opportunity_score</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="case-block">
+                        <h2 class="block-label">Results</h2>
+                        <div class="results-grid">
+                            <div class="result"><div class="result-num">13</div><span class="result-label">dbt models across bronze / silver / gold</span></div>
+                            <div class="result"><div class="result-num">90</div><span class="result-label">dbt data tests</span></div>
+                            <div class="result"><div class="result-num">3</div><span class="result-label">Sources (Idealista, Fotocasa, INE)</span></div>
+                            <div class="result"><div class="result-num">4</div><span class="result-label">Streamlit analysis pages</span></div>
+                        </div>
+                        <p>Every PR is validated against an isolated CI schema (ruff, pytest, dbt build), so changes to scoring logic can't silently break production data. Model and test counts come from the project's <code>manifest.json</code>; the same DAG is published as <a href="https://carlosdmv7.github.io/spanish-housing-radar/" target="_blank" rel="noopener">live dbt docs<span class="visually-hidden"> (opens in a new tab)</span></a>, so the lineage and every test are inspectable.</p>
+                    </div>
+
+                    <div class="case-block">
+                        <h2 class="block-label">Honest status</h2>
+                        <p class="honest-note"><strong>As of July 2026:</strong> listing scraping is paused — Scrapfly credits are exhausted — so listing counts are not growing right now. The pipeline is not frozen: the keyless <strong>INE house-price-index</strong> feed refreshes the warehouse on a weekly cron, so the app keeps showing current official market context. Because coverage is thin, most listings currently benchmark at <strong>city grain</strong>, and the app says so per listing rather than implying neighbourhood precision it doesn't have.</p>
+                    </div>
+
+                    <div class="case-block">
+                        <h2 class="block-label">What I'd do differently now</h2>
+                        <div class="callout">
+                            I'd prioritize <strong>backfilling history</strong> so neighbourhood-level scores become the default rather than the exception, switch the gold models to <strong>incremental</strong> materializations instead of full refresh as volume grows, and add explicit <strong>freshness tests + scraping SLAs</strong> so stale data is caught by the pipeline instead of noticed by a user.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="case-foot">
+                    <a class="btn btn-primary" href="../../cv/carlos-de-manuel-analytics-engineer.pdf" download>
+                        <svg class="icon" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Download CV
+                        <span class="visually-hidden">(PDF)</span>
+                    </a>
+                    <a class="btn btn-secondary" href="mailto:carlosdmv7@gmail.com">
+                        <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></svg>
+                        Get in touch
+                    </a>
+                    <a class="btn btn-ghost" href="../job-market-intelligence/">
+                        Next case study: Job Market Intelligence
+                        <svg class="icon" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </a>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 Carlos De Manuel Vicente</p>
+            <div class="footer-links">
+                <a href="../../#work">Work</a>
+                <a href="../../#projects">Projects</a>
+                <a href="https://github.com/carlosdmv7" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://www.linkedin.com/in/carlos-de-manuel/" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="mailto:carlosdmv7@gmail.com">Email</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../site.js" defer></script>
+</body>
+</html>

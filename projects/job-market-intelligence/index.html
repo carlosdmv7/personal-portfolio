@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Market Intelligence Engine — auditable visa-sponsorship detection · Carlos De Manuel</title>
+    <meta name="description" content="Case study: an ELT pipeline that cross-references every job posting's company against the official IND register of ~12,800 recognised Dutch visa sponsors. Deterministic, KvK-auditable, with the LLM as the secondary signal. dbt, DuckDB/MotherDuck, Prefect, Streamlit.">
+    <meta name="author" content="Carlos De Manuel Vicente">
+    <link rel="canonical" href="https://carlosdmv7.github.io/personal-portfolio/projects/job-market-intelligence/">
+
+    <!-- Open Graph / social preview -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Visa sponsorship you can audit — Job Market Intelligence Engine">
+    <meta property="og:description" content="Every posting's company is joined against the official IND register of recognised sponsors. Each match carries a KvK number, so any flag is checkable against a public register.">
+    <meta property="og:url" content="https://carlosdmv7.github.io/personal-portfolio/projects/job-market-intelligence/">
+    <meta property="og:image" content="https://carlosdmv7.github.io/personal-portfolio/images/og-job-market-intelligence.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Case study card: “Visa sponsorship you can audit.” — 12,797 IND sponsors, 9 dbt models, 45 data tests, €0 per month.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Visa sponsorship you can audit — Job Market Intelligence Engine">
+    <meta name="twitter:description" content="A deterministic join against the official IND register of recognised sponsors, not an LLM guess.">
+    <meta name="twitter:image" content="https://carlosdmv7.github.io/personal-portfolio/images/og-job-market-intelligence.png">
+
+    <link rel="icon" type="image/svg+xml" href="../../images/favicon.svg">
+    <link rel="icon" type="image/png" href="../../images/LOGODMV.png">
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="bg-grid" aria-hidden="true"></div>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="../../" class="logo">
+                <span class="logo-dot"></span>carlos<span class="muted">.de.manuel</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="../../#work">Work</a></li>
+                <li><a href="../../#projects">Projects</a></li>
+                <li><a href="../../#about">About</a></li>
+                <li><a href="../../#stack">Stack</a></li>
+                <li><a href="../../#contact" class="nav-cta">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <article class="case-page">
+            <div class="container">
+                <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <a href="../../">Portfolio</a>
+                    <span aria-hidden="true">/</span>
+                    <a href="../../#projects">Projects</a>
+                    <span aria-hidden="true">/</span>
+                    <span aria-current="page">Job Market Intelligence Engine</span>
+                </nav>
+
+                <header class="case-hero">
+                    <span class="eyebrow">Case study</span>
+                    <h1>Job Market Intelligence Engine</h1>
+                    <p class="case-lede">Auditable visa-sponsorship detection: a deterministic join against the official IND register, not an LLM guess.</p>
+                    <div class="tags">
+                        <span class="tag accent">dbt</span>
+                        <span class="tag accent">Prefect</span>
+                        <span class="tag">DuckDB / MotherDuck</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">Streamlit</span>
+                    </div>
+                    <div class="project-links">
+                        <a class="plink solid" href="https://job-market-intelligence-carlosdmv7.streamlit.app/" target="_blank" rel="noopener">
+                            <svg class="icon" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            Live app
+                            <span class="visually-hidden">(opens in a new tab)</span>
+                        </a>
+                        <a class="plink" href="https://github.com/carlosdmv7/job-market-intelligence" target="_blank" rel="noopener">
+                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.79-.26.79-.58v-2.23c-3.34.73-4.03-1.42-4.03-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.19.69.8.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                            Repo
+                            <span class="visually-hidden">(opens in a new tab)</span>
+                        </a>
+                    </div>
+                </header>
+
+                <div class="case-body">
+                    <div class="case-block">
+                        <h2 class="block-label">The problem</h2>
+                        <p>If you need a visa to take a job, one question decides whether a posting is worth reading: <strong>is this employer legally allowed to sponsor me?</strong> Job boards almost never say. The usual answer in side projects is to ask an LLM to read the posting and guess — which produces a confident, unverifiable label, and quietly hallucinates.</p>
+                        <p>So I built the signal the other way round. Every posting's company is cross-referenced against the <strong>IND register of recognised sponsors</strong> — the ~12,800 Dutch employers legally permitted to sponsor a highly-skilled-migrant visa. The register is scraped into a dbt seed, and both sides of the join are put through the <em>same</em> company-name normalisation macro. Every match carries that company's <strong>KvK (Chamber of Commerce) number</strong>, so any flag on the site can be checked against a public register by hand. Hallucination isn't mitigated here — it's structurally impossible.</p>
+                        <p>The reason this matters is visible in the data. On remote-first boards, only <strong>~1%</strong> of companies appear in the register. On the Netherlands-local corpus (Adzuna NL) it is <strong>~34%</strong>. A relocation search filtered on the deterministic flag surfaces a completely different — and actually actionable — set of jobs, and it works for postings whose text never mentions visas at all.</p>
+                    </div>
+
+                    <div class="case-block">
+                        <h2 class="block-label">Architecture</h2>
+                        <div class="arch">
+                            <div class="arch-flow">
+                                <div class="arch-stage">
+                                    <span class="arch-stage-label">Extract</span>
+                                    <div class="arch-nodes">
+                                        <div class="arch-node key">IND register <small>recognised sponsors</small></div>
+                                        <div class="arch-node">Adzuna <small>NL / DE / ES</small></div>
+                                        <div class="arch-node">Remotive · Arbeitnow <small>keyless APIs</small></div>
+                                        <div class="arch-node">RemoteOK · JobTech <small>keyless APIs</small></div>
+                                    </div>
+                                </div>
+                                <div class="arch-arrow"><svg class="icon" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+                                <div class="arch-stage">
+                                    <span class="arch-stage-label">Orchestrate</span>
+                                    <div class="arch-nodes">
+                                        <div class="arch-node key">Prefect <small>ingest flow</small></div>
+                                        <div class="arch-node ai">Prefect + LLM <small>enrichment flow</small></div>
+                                    </div>
+                                </div>
+                                <div class="arch-arrow"><svg class="icon" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+                                <div class="arch-stage">
+                                    <span class="arch-stage-label">Store</span>
+                                    <div class="arch-nodes">
+                                        <div class="arch-node">MotherDuck <small>DuckDB warehouse</small></div>
+                                        <div class="arch-node"><small>local DuckDB (dev)</small></div>
+                                    </div>
+                                </div>
+                                <div class="arch-arrow"><svg class="icon" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+                                <div class="arch-stage">
+                                    <span class="arch-stage-label">Transform</span>
+                                    <div class="arch-nodes">
+                                        <div class="arch-node key">dbt medallion <small>stg → int → marts</small></div>
+                                        <div class="arch-node"><small>9 models · 1 seed · 45 data tests</small></div>
+                                    </div>
+                                </div>
+                                <div class="arch-arrow"><svg class="icon" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+                                <div class="arch-stage">
+                                    <span class="arch-stage-label">Serve</span>
+                                    <div class="arch-nodes">
+                                        <div class="arch-node key">NL Visa Audit <small>KvK-auditable flags</small></div>
+                                        <div class="arch-node">Explorer · Trends</div>
+                                        <div class="arch-node ai">"Ask the Data" <small>text-to-SQL agent</small></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="arch-note">Streamlit front-end · pluggable LLM provider (Ollama / Gemini / Claude) · GitHub Actions cron as the 0€ scheduler, Prefect-instrumented</p>
+                        </div>
+                    </div>
+
+                    <div class="case-block">
+                        <h2 class="block-label">Key decisions &amp; why</h2>
+                        <ul class="decision-list">
+                            <li><strong>A public register as the primary signal; the LLM as the secondary one.</strong> The deterministic IND join is the load-bearing feature: it is reproducible, testable, and auditable by KvK number. The LLM reads the posting <em>text</em> into a visa enum with a confidence score and verbatim supporting evidence — useful where the company isn't in the register, but it never overrides a register match. Ranking the weaker signal below the stronger one is the whole design.</li>
+                            <li><strong>One normalisation macro, applied to both sides of the join.</strong> <code>ASML Netherlands B.V.</code> and <code>Adyen N.V.</code> have to collapse to <code>asml</code> and <code>adyen</code> — strip accents, drop legal forms and noise tokens, collapse whitespace — and the register and the postings must be normalised <em>identically</em> or the join silently under-matches. One dbt macro (mirrored by the scraper in Python) means there is exactly one definition of "same company", version-controlled and covered by grain tests rather than trusted.</li>
+                            <li><strong>Evidence travels with the flag.</strong> Every sponsorship flag carries its KvK number and, for the LLM path, the verbatim sentence it was derived from. A claim a recruiter can't verify is worth nothing on a portfolio, so the schema forces the provenance to survive all the way to the app.</li>
+                            <li><strong>Text-to-SQL over the gold layer, not the raw data.</strong> The "Ask the Data" agent queries curated marts, so natural-language questions hit clean, well-named columns. It's guard-railed to SELECT-only, single-statement, forced-LIMIT, read-only — not hardened against a hostile user, and this case study says so.</li>
+                        </ul>
+                        <div class="code">
+                            <div class="code-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span>&nbsp;marts/FT_JOB_POSTING.sql — the deterministic signal</div>
+                            <pre><code><span class="c">-- deterministic IND recognised-sponsor cross-reference:</span>
+<span class="c">-- the company is legally authorised to sponsor a NL work visa</span>
+    (s.company_norm <span class="k">is not null</span>)  <span class="k">as</span> is_recognised_sponsor,
+    s.kvk_number                  <span class="k">as</span> sponsor_kvk
+<span class="k">from</span> postings p
+<span class="k">left join</span> sponsors s
+    <span class="k">on</span> {{ jmi_normalize_company(<span class="f">'p.company_name'</span>) }} = s.company_norm</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="case-block">
+                        <h2 class="block-label">Supporting detail: the warehouse</h2>
+                        <ul class="decision-list">
+                            <li><strong>DuckDB + MotherDuck instead of a cloud warehouse</strong> — the dataset is medium-sized and the priority was €0 running cost. The same dbt project runs against local DuckDB and MotherDuck's free tier, so dev and prod stay identical. A pragmatic call for this scale, not a claim about production architecture.</li>
+                            <li><strong>dbt medallion (staging → intermediate → marts)</strong> — raw API payloads are messy and overlap across sources. Isolating cleaning (stg), cross-source dedup (int) and business marts (facts/dims) makes each layer testable and the lineage obvious.</li>
+                            <li><strong>A pluggable LLM provider</strong> — the enrichment flow abstracts the model behind one interface (Ollama / Gemini / Claude), which keeps the pipeline free by default and swappable when quality matters more than cost.</li>
+                        </ul>
+                    </div>
+
+                    <div class="case-block">
+                        <h2 class="block-label">Results</h2>
+                        <div class="results-grid">
+                            <div class="result"><div class="result-num">12,797</div><span class="result-label">IND recognised sponsors in the seed (12,793 with a KvK number)</span></div>
+                            <div class="result"><div class="result-num">~1% → ~34%</div><span class="result-label">Sponsor hit rate: remote boards vs Adzuna NL</span></div>
+                            <div class="result"><div class="result-num">9</div><span class="result-label">dbt models (+ 1 seed)</span></div>
+                            <div class="result"><div class="result-num">45</div><span class="result-label">dbt data tests</span></div>
+                            <div class="result"><div class="result-num">5</div><span class="result-label">Job-board APIs ingested</span></div>
+                            <div class="result"><div class="result-num">€0</div><span class="result-label">Monthly infra cost</span></div>
+                        </div>
+                        <p>A reproducible pipeline: <code>uv</code> for envs, <code>ruff</code>/<code>mypy</code>/<code>pytest</code> in CI, and dbt tests as data contracts — so a broken source fails loudly instead of silently corrupting the app. Model and test counts are read from the project's own <code>manifest.json</code>; the sponsor-register size is the row count of the scraped seed.</p>
+                    </div>
+
+                    <div class="case-block">
+                        <h2 class="block-label">Honest status</h2>
+                        <p class="honest-note"><strong>As of July 2026:</strong> the IND cross-reference, the Pydantic contracts and the dbt medallion are production-grade. Ingestion breadth is a demo — 4 keyless boards plus Adzuna and JobTech, a fraction of the real market, since LinkedIn and Indeed sit behind paid anti-bot. LLM enrichment is quota-bound on Gemini's free tier, so coverage accumulates over daily runs rather than landing all at once. Prefect flows are instrumented and reporting, but the worker-based deployment is documented rather than running, because that would not be €0.</p>
+                    </div>
+
+                    <div class="case-block">
+                        <h2 class="block-label">What I'd do differently now</h2>
+                        <div class="callout">
+                            I'd formalize <strong>evals for the visa classifier</strong> (a labelled golden set + accuracy tracking) instead of trusting the LLM output as-is; replace ad-hoc dedup with an explicit <strong>surrogate-key strategy</strong> in the integration layer; add <strong>dbt exposures</strong> to map which marts feed which Streamlit page; and move scheduling off my machine onto a managed runner so ingestion doesn't depend on my laptop being on.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="case-foot">
+                    <a class="btn btn-primary" href="../../cv/carlos-de-manuel-analytics-engineer.pdf" download>
+                        <svg class="icon" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Download CV
+                        <span class="visually-hidden">(PDF)</span>
+                    </a>
+                    <a class="btn btn-secondary" href="mailto:carlosdmv7@gmail.com">
+                        <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></svg>
+                        Get in touch
+                    </a>
+                    <a class="btn btn-ghost" href="../spanish-housing-radar/">
+                        Next case study: Spanish Housing Radar
+                        <svg class="icon" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </a>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 Carlos De Manuel Vicente</p>
+            <div class="footer-links">
+                <a href="../../#work">Work</a>
+                <a href="../../#projects">Projects</a>
+                <a href="https://github.com/carlosdmv7" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://www.linkedin.com/in/carlos-de-manuel/" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="mailto:carlosdmv7@gmail.com">Email</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../site.js" defer></script>
+</body>
+</html>

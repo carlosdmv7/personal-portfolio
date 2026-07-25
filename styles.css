@@ -834,6 +834,62 @@ section + section { border-top: 1px solid var(--border); }
 .footer-links a { color: var(--text-muted); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
 .footer-links a:hover { color: var(--accent); }
 
+/* ---------- Case study pages (own URL, own <title>) ---------- */
+.case-page { padding: 9rem 0 5rem; }
+.case-page .container { max-width: 900px; }
+
+.breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    color: var(--text-dim);
+}
+.breadcrumb a { color: var(--text-muted); text-decoration: none; }
+.breadcrumb a:hover { color: var(--accent); text-decoration: underline; }
+.breadcrumb [aria-current='page'] { color: var(--text); }
+
+.case-hero { padding-bottom: 2.5rem; border-bottom: 1px solid var(--border); margin-bottom: 3rem; }
+.case-hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1.08;
+    margin-bottom: 1rem;
+}
+.case-lede { color: var(--text-muted); font-size: clamp(1.05rem, 2vw, 1.2rem); line-height: 1.65; max-width: 68ch; }
+.case-hero .tags { margin: 1.5rem 0 1.5rem; }
+
+.case-body .case-block p,
+.case-body .decision-list li { max-width: 72ch; }
+.case-block h2.block-label {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.case-foot {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+    margin-top: 3.5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--border);
+}
+
+/* ---------- No-JS fallbacks ---------- */
+/* The experience accordion collapses via JS. Without JS every panel is open
+   and the toggle is hidden, so no content is unreachable. */
+.no-js .exp-body { display: block; }
+.no-js .exp-more { display: none; }
+.no-js [data-reveal] { opacity: 1; transform: none; }
+
 /* ---------- Reveal on scroll ---------- */
 [data-reveal] {
     opacity: 0;
