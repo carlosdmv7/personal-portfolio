@@ -84,6 +84,42 @@
                     </div>
                 </header>
 
+                <!-- Freshness strip: live pipeline state, static fallback, never a
+                     spinner. Contract: ../../docs/freshness-contract.md -->
+                <section class="freshness freshness-inline" aria-labelledby="freshness-title">
+                    <div class="freshness-head">
+                        <h2 id="freshness-title">Live pipeline state</h2>
+                        <p data-freshness-source>Static snapshot verified 25 Jul 2026 — dbt test counts read from each project’s <code>manifest.json</code>. Runtime figures fill in once each project’s CI publishes its <code>status.json</code>.</p>
+                    </div>
+                    <div class="freshness-rows">
+                    <div class="fresh-row" data-state="unknown"
+                         data-freshness-project="job-market-intelligence"
+                         data-freshness-url="https://carlosdmv7.github.io/job-market-intelligence/status.json">
+                        <a class="fresh-name" href="../../projects/job-market-intelligence/">
+                            <span class="fresh-dot" aria-hidden="true"></span>Job Market Intelligence
+                        </a>
+                        <dl class="fresh-cells">
+                            <div class="fresh-cell">
+                                <dt>last ingest</dt>
+                                <dd data-fresh="last_ingest">—</dd>
+                            </div>
+                            <div class="fresh-cell">
+                                <dt>rows in warehouse</dt>
+                                <dd data-fresh="rows">—</dd>
+                            </div>
+                            <div class="fresh-cell">
+                                <dt>dbt tests passing</dt>
+                                <dd data-fresh="dbt_tests">45 / 45</dd>
+                            </div>
+                            <div class="fresh-cell">
+                                <dt>last CI run</dt>
+                                <dd data-fresh="last_ci">—</dd>
+                            </div>
+                        </dl>
+                    </div>
+                    </div>
+                </section>
+
                 <div class="case-body">
                     <div class="case-block">
                         <h2 class="block-label">The problem</h2>
@@ -231,5 +267,6 @@
     </footer>
 
     <script src="../../site.js" defer></script>
+    <script src="../../freshness.js" defer></script>
 </body>
 </html>

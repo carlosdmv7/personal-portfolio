@@ -44,6 +44,7 @@
     --ink-muted-2: #4E636D;  /* secondary text on --surface-2 / tints / sand */
     --teal-200:    #7FB3A4;  /* graphical, on --petrol-900 only (3.9:1) */
     --rust-300:    #DF844E;  /* graphical, on --petrol-900 only (3.4:1) */
+    --sand-400:    #C4BE9D;  /* muted label text on --petrol-900 (5.0:1) */
     --white:       #FFFFFF;  /* button labels on --rust-700 / --teal-700 */
 
     /* Fonts — two families plus the mono, all with font-display: swap */
@@ -385,6 +386,117 @@ section + section { border-top: 1px solid var(--border); }
     letter-spacing: 0.05em;
     text-transform: uppercase;
     color: var(--ink-muted);
+}
+
+/* ---------- Freshness strip ----------
+   The signature element, and deliberately the only loud thing on the page:
+   a petrol band showing real pipeline state per project. Same dark token as
+   the header and footer, so the site still has exactly one dark colour.
+   Renders its static fallback immediately — never a spinner, never an error.
+   Contract: docs/freshness-contract.md */
+.freshness {
+    background: var(--petrol-900);
+    color: var(--sand-100);
+    padding: 1.5rem 0;
+    border-top: 3px solid var(--rust-500);   /* graphical rust, the one accent */
+    position: relative;
+    z-index: 1;
+}
+section + .freshness,
+.freshness + section { border-top-width: 3px; }
+
+/* Nested variant for the case study pages, which are already inside .container */
+.freshness-inline {
+    border-radius: var(--radius);
+    padding: 1.35rem 1.4rem;
+    margin-bottom: 3rem;
+}
+
+.freshness-head { margin-bottom: 1.1rem; }
+.freshness-head h2 {
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--sand-100);
+}
+.freshness-head p {
+    margin-top: 0.4rem;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: var(--sand-400);
+    max-width: 78ch;
+}
+/* Reset the light-surface `code` chip styling — this one sits on petrol */
+.freshness-head code {
+    font-family: var(--font-mono);
+    font-size: 0.94em;
+    color: var(--sand-100);
+    background: none;
+    border: 0;
+    padding: 0;
+}
+
+.freshness-rows { display: flex; flex-direction: column; gap: 0.7rem; }
+
+.fresh-row {
+    display: grid;
+    grid-template-columns: minmax(180px, 230px) 1fr;
+    align-items: center;
+    gap: 0.85rem 1.5rem;
+    padding-top: 0.7rem;
+    border-top: 1px solid var(--teal-700);
+}
+
+.fresh-name {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-display);
+    font-size: 0.97rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--sand-100);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+}
+.fresh-name:hover { border-bottom-color: var(--amber-500); }
+.freshness :focus-visible { outline-color: var(--sand-100); }
+
+/* State dot. Colour is never the only signal — every cell carries its text. */
+.fresh-dot {
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    background: var(--sand-400);
+}
+[data-state='fresh']   .fresh-dot { background: var(--teal-200); }
+[data-state='stale']   .fresh-dot,
+[data-state='cold']    .fresh-dot { background: var(--amber-500); }
+[data-state='failing'] .fresh-dot { background: var(--rust-300); }
+
+.fresh-cells {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.8rem 1.25rem;
+}
+.fresh-cell { min-width: 0; }
+.fresh-cell dt {
+    font-family: var(--font-mono);
+    font-size: 0.63rem;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--sand-400);
+    margin-bottom: 0.22rem;
+}
+.fresh-cell dd {
+    font-family: var(--font-mono);
+    font-size: 0.94rem;
+    font-weight: 500;
+    color: var(--sand-100);
+    line-height: 1.2;
+    overflow-wrap: anywhere;
 }
 
 /* ---------- Cards (shared) ---------- */
@@ -939,6 +1051,8 @@ section + section { border-top: 1px solid var(--border); }
     .arch-stage-label { text-align: left; }
     .arch-arrow { padding-top: 0; align-self: center; transform: rotate(90deg); }
     .case-foot .btn { flex: 1 1 auto; justify-content: center; }
+    .fresh-row { grid-template-columns: 1fr; gap: 0.7rem; }
+    .fresh-cells { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 480px) {
     .container { padding: 0 1.15rem; }
@@ -967,6 +1081,8 @@ section + section { border-top: 1px solid var(--border); }
     .code code { font-size: 0.72rem; }
     .arch { padding: 1rem; }
     .breadcrumb { font-size: 0.7rem; }
+    .freshness-inline { padding: 1.1rem; }
+    .fresh-cell dd { font-size: 0.85rem; }
 }
 
 /* ---------- Reduced motion ---------- */

@@ -30,6 +30,7 @@ T = {
     "teal-200": "#7FB3A4",    # from the diverging scale — graphical use on petrol
     "rust-300": "#DF844E",    # lightened rust — graphical use on petrol only
     "ink-muted-2": "#4E636D",  # secondary text on surface-2 / tints / sand
+    "sand-400": "#C4BE9D",    # muted label text on petrol (freshness strip)
 }
 
 PAIRS = [
@@ -56,6 +57,7 @@ PAIRS = [
     ("white", "teal-700", 4.5, "secondary button label"),
     ("sand-100", "petrol-900", 4.5, "band text"),
     ("white", "petrol-900", 4.5, "band value text"),
+    ("sand-400", "petrol-900", 4.5, "freshness strip cell labels"),
     # --- graphical (icons, dots, borders, rules), needs 3:1 ---
     ("rust-500", "surface", 3.0, "GRAPHIC icons / rules on page bg"),
     ("teal-500", "surface", 3.0, "GRAPHIC icons / fills on page bg"),
@@ -63,11 +65,13 @@ PAIRS = [
     ("teal-200", "petrol-900", 3.0, "GRAPHIC pass-state dot on band"),
     ("amber-500", "petrol-900", 3.0, "GRAPHIC stale-state dot on band"),
     ("rust-300", "petrol-900", 3.0, "GRAPHIC fail-state dot on band"),
+    ("teal-700", "petrol-900", 1.0, "GRAPHIC hairline between strip rows"),
     ("sand-100", "rust-700", 3.0, "GRAPHIC underline on primary button"),
     # --- pairs the rules forbid; asserted never to be used as text ---
     ("teal-500", "petrol-900", 3.0, "FORBIDDEN — never paired"),
     ("rust-500", "petrol-900", 3.0, "FORBIDDEN — too dark on petrol, use rust-300"),
     ("rust-300", "surface", 3.0, "FORBIDDEN on light — petrol band only"),
+    ("sand-400", "surface", 3.0, "FORBIDDEN on light — petrol band only"),
     ("amber-500", "surface", 3.0, "FORBIDDEN as text — fills/charts only"),
     ("sand-100", "surface", 3.0, "FORBIDDEN as text — fills/charts only"),
 ]
