@@ -1,0 +1,4 @@
+# Asset-regeneration scratch (see README — the site loads webfonts from Google)
+.venv/
+fonts/
+__pycache__/

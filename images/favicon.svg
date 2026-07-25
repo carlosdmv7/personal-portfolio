@@ -1,9 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="100%" height="100%" fill="none"/>
-  <g fill="none" stroke="#0f172a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-    <polyline points="20 18 8 32 20 46" />
-    <polyline points="44 18 56 32 44 46" />
-    <line x1="26" y1="16" x2="38" y2="48" stroke="#0f172a" stroke-width="4" />
-  </g>
-  <rect x="0" y="0" width="64" height="64" fill="transparent"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Carlos De Manuel">
+  <title>Carlos De Manuel — Analytics Engineer</title>
+  <!-- Palette tokens: --petrol-900 field, --sand-100 mark, --rust-500 accent,
+       --teal-500 baseline. Matches the apple-touch-icon and the og:image cards. -->
+  <rect width="64" height="64" rx="14" fill="#274C56"/>
+  <!-- Rising series — the analytics mark, sand on petrol (7.3:1) -->
+  <path d="M13 44 L26 31 L36 38 L50 19" fill="none" stroke="#F6E2B3"
+        stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- The single accent: the leading point -->
+  <circle cx="50" cy="19" r="5.5" fill="#D96C2C"/>
+  <!-- Baseline -->
+  <path d="M13 52 H50" stroke="#3E8E7E" stroke-width="3.5" stroke-linecap="round"/>
 </svg>
