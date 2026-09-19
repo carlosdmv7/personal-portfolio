@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Job Market Intelligence Engine — auditable visa-sponsorship detection · Carlos De Manuel</title>
-    <meta name="description" content="Case study: an ELT pipeline that cross-references every job posting's company against the official IND register of ~12,800 recognised Dutch visa sponsors. Deterministic, KvK-auditable, with the LLM as the secondary signal. dbt, DuckDB/MotherDuck, Prefect, Streamlit.">
+    <title>Job Market Intelligence Engine — which EU data roles ask for my stack · Carlos De Manuel</title>
+    <meta name="description" content="Case study: a 0€ EU data-jobs platform. Five free job APIs, an LLM reading each posting for its stack, a dbt medallion on MotherDuck, and a seven-page Streamlit app that ranks live roles against a CV — and never reports a posting it hasn't read as a miss.">
     <meta name="author" content="Carlos De Manuel Vicente">
     <link rel="canonical" href="https://carlosdmv7.github.io/personal-portfolio/projects/job-market-intelligence/">
 
     <!-- Open Graph / social preview -->
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Visa sponsorship you can audit — Job Market Intelligence Engine">
-    <meta property="og:description" content="Every posting's company is joined against the official IND register of recognised sponsors. Each match carries a KvK number, so any flag is checkable against a public register.">
+    <meta property="og:title" content="Which EU data roles ask for my stack? — Job Market Intelligence Engine">
+    <meta property="og:description" content="Five free job APIs, an LLM reading each posting, a dbt medallion on MotherDuck and a seven-page Streamlit app that ranks live roles against a CV. Rebuilds itself daily at 0€.">
     <meta property="og:url" content="https://carlosdmv7.github.io/personal-portfolio/projects/job-market-intelligence/">
     <meta property="og:image" content="https://carlosdmv7.github.io/personal-portfolio/images/og-job-market-intelligence.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Case study card: “Visa sponsorship you can audit.” — 12,797 IND sponsors, 9 dbt models, 45 data tests, €0 per month.">
+    <meta property="og:image:alt" content="Case study card: “Which EU data roles ask for my stack?” — 5 markets, 9 dbt models, 53 data tests, €0 per month.">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Visa sponsorship you can audit — Job Market Intelligence Engine">
-    <meta name="twitter:description" content="A deterministic join against the official IND register of recognised sponsors, not an LLM guess.">
+    <meta name="twitter:title" content="Which EU data roles ask for my stack? — Job Market Intelligence Engine">
+    <meta name="twitter:description" content="A 0€ EU data-jobs pipeline that ranks live postings against your stack — and never presents a posting it hasn't read as a negative result.">
     <meta name="twitter:image" content="https://carlosdmv7.github.io/personal-portfolio/images/og-job-market-intelligence.png">
 
     <link rel="icon" type="image/svg+xml" href="../../images/favicon.svg">
@@ -65,13 +65,14 @@
                 <header class="case-hero">
                     <span class="eyebrow">Case study</span>
                     <h1>Job Market Intelligence Engine</h1>
-                    <p class="case-lede">Auditable visa-sponsorship detection: a deterministic join against the official IND register, not an LLM guess.</p>
+                    <p class="case-lede">One question, every morning: which open data roles in the EU are asking for my stack? Five free APIs, an LLM that reads each posting, a dbt medallion on MotherDuck — and a rule that a posting nobody has read yet is never reported as a miss.</p>
                     <div class="tags">
                         <span class="tag accent">dbt</span>
-                        <span class="tag accent">Prefect</span>
+                        <span class="tag accent">LLM enrichment</span>
                         <span class="tag">DuckDB / MotherDuck</span>
                         <span class="tag">Python</span>
                         <span class="tag">Streamlit</span>
+                        <span class="tag">GitHub Actions</span>
                     </div>
                     <div class="project-links">
                         <a class="plink solid" href="https://job-market-intelligence-carlosdmv7.streamlit.app/" target="_blank" rel="noopener">
@@ -82,6 +83,11 @@
                         <a class="plink" href="https://github.com/carlosdmv7/job-market-intelligence" target="_blank" rel="noopener">
                             <svg aria-hidden="true" focusable="false" class="icon" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.79-.26.79-.58v-2.23c-3.34.73-4.03-1.42-4.03-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.19.69.8.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
                             Repo
+                            <span class="visually-hidden">(opens in a new tab)</span>
+                        </a>
+                        <a class="plink" href="https://carlosdmv7.github.io/job-market-intelligence/" target="_blank" rel="noopener">
+                            <svg aria-hidden="true" focusable="false" class="icon" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            dbt docs — lineage &amp; tests
                             <span class="visually-hidden">(opens in a new tab)</span>
                         </a>
                     </div>
@@ -123,12 +129,22 @@
                     </div>
                 </section>
 
+                <figure class="shot shot-lead">
+                    <img src="../../images/jmi/home.webp" alt="The app's Overview page: 767 open data roles across five markets, a bar chart of the most-asked-for technologies led by python and sql, and a table of open roles per country with Spain first." width="1440" height="1000" fetchpriority="high" decoding="async">
+                    <figcaption><strong>Overview</strong> — what is open, where, and for which stacks. Every figure on the page is queried at load time from the marts; nothing is hardcoded. All screens here are from the run of 19 Sep 2026; the counts move every morning.</figcaption>
+                </figure>
+
                 <div class="case-body">
                     <div class="case-block">
                         <h2 class="block-label">The problem</h2>
-                        <p>If you need a visa to take a job, one question decides whether a posting is worth reading: <strong>is this employer legally allowed to sponsor me?</strong> Job boards almost never say. The usual answer in side projects is to ask an LLM to read the posting and guess — which produces a confident, unverifiable label, and quietly hallucinates.</p>
-                        <p>So I built the signal the other way round. Every posting's company is cross-referenced against the <strong>IND register of recognised sponsors</strong> — the ~12,800 Dutch employers legally permitted to sponsor a highly-skilled-migrant visa. The register is scraped into a dbt seed, and both sides of the join are put through the <em>same</em> company-name normalisation macro. Every match carries that company's <strong>KvK (Chamber of Commerce) number</strong>, so any flag on the site can be checked against a public register by hand. Hallucination isn't mitigated here — it's structurally impossible.</p>
-                        <p>The reason this matters is visible in the data. On remote-first boards, only <strong>~1%</strong> of companies appear in the register. On the Netherlands-local corpus (Adzuna NL) it is <strong>~34%</strong>. A relocation search filtered on the deterministic flag surfaces a completely different — and actually actionable — set of jobs, and it works for postings whose text never mentions visas at all.</p>
+                        <p>Looking for a data role in the EU means reading the same posting three times on three boards and still not knowing the thing that decides whether it's worth applying: <strong>which technologies does it actually ask for, and do I have them?</strong> Boards index on title and location, which are the two fields that tell you least.</p>
+                        <p>So the pipeline reads for the stack instead. Five free APIs are collected into an append-only log every morning, an LLM reads each posting for the technologies it names, the seniority and the language you'd need to work in it, and a dbt medallion turns that into one canonical row per posting. On <strong>19 Sep 2026</strong> that was <strong>767 open data roles</strong> across five markets from 596 companies — Spain the largest at 229, then Germany 190, the Netherlands 178, Sweden 132 and 38 remote.</p>
+                        <p>The constraint that shaped everything was a free tier of <strong>20 LLM requests a day</strong>, which made partial coverage the permanent state rather than a bug to hide. One rule carried the whole app through it: <strong>a posting the model hasn't read says "not yet classified" on every surface, never "no match."</strong> Conflating the two would invert the meaning of every screen.</p>
+                        <p>That backlog is now cleared — <strong>every open role has been read</strong> — and the rule matters more, not less. Only <strong>47% of them yield a tech stack</strong>, and the reason is no longer the quota. It's how much text the boards publish, which is a different problem with a different answer, so the app names which of the two you are looking at instead of reporting one number.</p>
+                        <figure class="shot">
+                            <img src="../../images/jmi/my-fit.webp" alt="The My Fit page: skills detected from a pasted CV shown as removable chips, then every open role ranked by the share of its stack the CV already covers, with the matched technologies listed per row." width="1440" height="854" loading="lazy" decoding="async">
+                            <figcaption><strong>My Fit</strong> — the answer the whole pipeline exists to produce: the 363 open roles with a parsed stack, ranked by how much of it you already cover. Pure set arithmetic, no API call. The CV never leaves the browser session.</figcaption>
+                        </figure>
                     </div>
 
                     <div class="case-block">
@@ -138,18 +154,18 @@
                                 <div class="arch-stage">
                                     <span class="arch-stage-label">Extract</span>
                                     <div class="arch-nodes">
-                                        <div class="arch-node key">IND register <small>recognised sponsors</small></div>
-                                        <div class="arch-node">Adzuna <small>NL / DE / ES</small></div>
+                                        <div class="arch-node">Adzuna <small>NL · DE · ES</small></div>
                                         <div class="arch-node">Remotive · Arbeitnow <small>keyless APIs</small></div>
                                         <div class="arch-node">RemoteOK · JobTech <small>keyless APIs</small></div>
+                                        <div class="arch-node">IND register <small>scraped → dbt seed</small></div>
                                     </div>
                                 </div>
                                 <div class="arch-arrow"><svg aria-hidden="true" focusable="false" class="icon" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
                                 <div class="arch-stage">
-                                    <span class="arch-stage-label">Orchestrate</span>
+                                    <span class="arch-stage-label">Enrich</span>
                                     <div class="arch-nodes">
-                                        <div class="arch-node key">Prefect <small>ingest flow</small></div>
-                                        <div class="arch-node ai">Prefect + LLM <small>enrichment flow</small></div>
+                                        <div class="arch-node ai">Gemini free tier <small>10 postings / request</small></div>
+                                        <div class="arch-node"><small>pluggable: Ollama · Claude</small></div>
                                     </div>
                                 </div>
                                 <div class="arch-arrow"><svg aria-hidden="true" focusable="false" class="icon" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
@@ -157,7 +173,7 @@
                                     <span class="arch-stage-label">Store</span>
                                     <div class="arch-nodes">
                                         <div class="arch-node">MotherDuck <small>DuckDB warehouse</small></div>
-                                        <div class="arch-node"><small>local DuckDB (dev)</small></div>
+                                        <div class="arch-node"><small>append-only raw log</small></div>
                                     </div>
                                 </div>
                                 <div class="arch-arrow"><svg aria-hidden="true" focusable="false" class="icon" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
@@ -165,74 +181,99 @@
                                     <span class="arch-stage-label">Transform</span>
                                     <div class="arch-nodes">
                                         <div class="arch-node key">dbt medallion <small>stg → int → marts</small></div>
-                                        <div class="arch-node"><small>9 models · 1 seed · 45 data tests</small></div>
+                                        <div class="arch-node"><small>9 models · 1 seed · 53 data tests</small></div>
                                     </div>
                                 </div>
                                 <div class="arch-arrow"><svg aria-hidden="true" focusable="false" class="icon" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
                                 <div class="arch-stage">
                                     <span class="arch-stage-label">Serve</span>
                                     <div class="arch-nodes">
-                                        <div class="arch-node key">NL Visa Audit <small>KvK-auditable flags</small></div>
-                                        <div class="arch-node">Explorer · Trends</div>
+                                        <div class="arch-node key">My Fit <small>CV ↔ stack overlap</small></div>
+                                        <div class="arch-node">Find Jobs · Market Trends</div>
                                         <div class="arch-node ai">"Ask the Data" <small>text-to-SQL agent</small></div>
+                                        <div class="arch-node">Market Detail <small>one market, incl. IND / KvK</small></div>
                                     </div>
                                 </div>
                             </div>
-                            <p class="arch-note">Streamlit front-end · pluggable LLM provider (Ollama / Gemini / Claude) · GitHub Actions cron as the 0€ scheduler, Prefect-instrumented</p>
+                            <p class="arch-note">Streamlit front-end, 7 pages · <strong>GitHub Actions cron as the 0€ scheduler</strong> (daily, 05:15 UTC) · Prefect-instrumented flows, no hosted worker · uv workspace monorepo, Pydantic v2 contracts, 176 Python tests</p>
                         </div>
+                        <figure class="shot">
+                            <img src="../../images/jmi/how-it-works.webp" alt="The How It Works page inside the app: the daily pipeline drawn as a diagram from the free APIs through the LLM read into the dbt models, above a section explaining which signals are looked up and which are read out of prose." width="1440" height="1000" loading="lazy" decoding="async">
+                            <figcaption><strong>How It Works</strong> — the app documents its own pipeline, publishes the real system prompt, and shows live coverage rather than describing it.</figcaption>
+                        </figure>
                     </div>
 
                     <div class="case-block">
                         <h2 class="block-label">Key decisions &amp; why</h2>
                         <ul class="decision-list">
-                            <li><strong>A public register as the primary signal; the LLM as the secondary one.</strong> The deterministic IND join is the load-bearing feature: it is reproducible, testable, and auditable by KvK number. The LLM reads the posting <em>text</em> into a visa enum with a confidence score and verbatim supporting evidence — useful where the company isn't in the register, but it never overrides a register match. Ranking the weaker signal below the stronger one is the whole design.</li>
-                            <li><strong>One normalisation macro, applied to both sides of the join.</strong> <code>ASML Netherlands B.V.</code> and <code>Adyen N.V.</code> have to collapse to <code>asml</code> and <code>adyen</code> — strip accents, drop legal forms and noise tokens, collapse whitespace — and the register and the postings must be normalised <em>identically</em> or the join silently under-matches. One dbt macro (mirrored by the scraper in Python) means there is exactly one definition of "same company", version-controlled and covered by grain tests rather than trusted.</li>
-                            <li><strong>Evidence travels with the flag.</strong> Every sponsorship flag carries its KvK number and, for the LLM path, the verbatim sentence it was derived from. A claim a recruiter can't verify is worth nothing on a portfolio, so the schema forces the provenance to survive all the way to the app.</li>
-                            <li><strong>Text-to-SQL over the gold layer, not the raw data.</strong> The "Ask the Data" agent queries curated marts, so natural-language questions hit clean, well-named columns. It's guard-railed to SELECT-only, single-statement, forced-LIMIT, read-only — not hardened against a hostile user, and this case study says so.</li>
+                            <li><strong>Batched the LLM eight-fold on the same free quota, and matched responses by an echoed index.</strong> The 429 body names the quota it enforces: <code>GenerateRequestsPerDayPerProjectPerModel</code>, value 20. Counted in <em>requests</em>, not tokens — so one posting per call was spending the whole day's budget on round trips. Ten postings now ride in each request, and <strong>23 enrichments a day became 180</strong>; coverage went from <strong>33% of open roles to all of them</strong>, a backlog of roughly six months cleared in under three weeks. The catch is that a batched response can come back short or reordered, which would attach one job's stack to another silently, so every result echoes the index of the posting it answers and is matched on that — never on position.</li>
+                            <li><strong>A chart that looked like a market fact turned out to be an artefact of the source.</strong> With the queue cleared, only 47% of open roles yielded a stack — so the leftover gap had to be something other than the quota. It was the boards. Measured per source: Adzuna, which supplies all of Spain, Germany and the Netherlands, returns a <strong>~500-character teaser</strong>; JobTech returns the full ~4,000-character ad. The same classifier reading both finds <strong>~0.7 technologies in one and ~7.9 in the other</strong>. So "Sweden asks for dbt more than Spain does" was never a finding — <strong>91% of Swedish roles are stack-matchable against 30–39% of Dutch, German and Spanish ones</strong>, and that is a property of what gets published, not of the market. "Roles we can stack-match" is now a headline KPI on every market rather than a footnote, and the stack chart carries an explicit warning against cross-market comparison. <a href="https://github.com/carlosdmv7/job-market-intelligence/blob/main/docs/adr/0011-market-detail-absorbs-the-visa-page.md" target="_blank" rel="noopener">ADR 0011</a>.</li>
+                            <li><strong>Facts with an authoritative source are looked up, never inferred.</strong> Where a question has a register behind it, the project joins against the register and shows the receipt; the LLM is reserved for what only exists as prose. Visa sponsorship is the worked example, because it's the one field where both are available for the same question: every employer is cross-referenced against the official <strong>IND register of recognised sponsors</strong> — 12,797 Dutch employers, 12,793 of them carrying a <strong>KvK number</strong> you can check by hand. That lookup surfaced a gap no text-reading model could find: <strong>34% of employers on the Dutch local corpus are recognised sponsors against 3% on the remote-first boards</strong> (108 of 322 vs 175 of 5,296) — and it holds for postings the LLM has never seen. It renders inside the Netherlands market page and nowhere else, because that is exactly what it is: a property of the one tracked market that publishes a machine-readable register.</li>
+                            <li><strong>The classifier is validated without hand labels, against a signal it is never shown.</strong> <code>english_sufficient</code> is the model's reading of the prose. <code>detected_language</code> — the language the ad is <em>written</em> in — is derived deterministically on ingest and kept out of the prompt. One <code>GROUP BY</code> over both, across every posting the model has read: of 643 English ads it says English suffices for 85%, of 255 Dutch ads for <strong>0.4%</strong> — one posting. Full coverage for the price of one query, against the ~30 a hand-labelled set would have reached in the same time — and the separation is the evidence: a model pattern-matching on job titles would answer the same way whatever language the ad was in. It is reported as agreement between two independent signals, never as an accuracy score, because neither column is ground truth. The hand labels were spent on the visa target instead, where they were the only instrument available — and where they retired the feature.</li>
+                            <li><strong>The flagship feature was retired on its own evidence.</strong> Visa sponsorship was the original pitch. Across 730 enriched postings the classifier's output was <code>unclear</code> 583 times and <code>explicit_yes</code> <strong>once</strong>; the first 14 hand labels scored 0.000 precision on that class. Not a failing model — a class with no support in the corpus, and no amount of further labelling changes it. So the product axis moved to stack fit and the feature was demoted to a showcase rather than deleted — and then, six days later, demoted again: it had been left in the top navigation behind a passport icon, which made a five-market app look like a Dutch relocation tool. <a href="https://github.com/carlosdmv7/job-market-intelligence/blob/main/docs/adr/0007-fit-first-and-batched-enrichment.md" target="_blank" rel="noopener">ADR 0007</a> records the measurement and the reversal; <a href="https://github.com/carlosdmv7/job-market-intelligence/blob/main/docs/adr/0011-market-detail-absorbs-the-visa-page.md" target="_blank" rel="noopener">ADR 0011</a> records the second one, including the sentence from the author that triggered it — <em>"es que no entiendo muy bien el objetivo."</em> When the person who built a page can't say what it's for, no visitor will work it out. Eleven ADRs in the repo are written this way.</li>
                         </ul>
                         <div class="code">
-                            <div class="code-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span>&nbsp;marts/FT_JOB_POSTING.sql — the deterministic signal</div>
-                            <pre><code><span class="c">-- deterministic IND recognised-sponsor cross-reference:</span>
-<span class="c">-- the company is legally authorised to sponsor a NL work visa</span>
-    (s.company_norm <span class="k">is not null</span>)  <span class="k">as</span> is_recognised_sponsor,
-    s.kvk_number                  <span class="k">as</span> sponsor_kvk
-<span class="k">from</span> postings p
-<span class="k">left join</span> sponsors s
-    <span class="k">on</span> {{ jmi_normalize_company(<span class="f">'p.company_name'</span>) }} = s.company_norm</code></pre>
+                            <div class="code-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span>&nbsp;enrichment/classifier.py — why the index is echoed</div>
+                            <pre><code><span class="c"># A batched reply can come back short or reordered. Matching by position</span>
+<span class="c"># would then write one job's stack onto another — silently, and with no</span>
+<span class="c"># way to detect it later. So each result echoes the index it answers.</span>
+<span class="k">for</span> item <span class="k">in</span> batch.results:
+    <span class="k">if</span> item.index &gt; <span class="f">len</span>(postings) <span class="k">or</span> item.index <span class="k">in</span> seen:
+        log.warning(<span class="f">"enrich.batch.bad_index"</span>, index=item.index)
+        <span class="k">continue</span>
+    seen.add(item.index)
+    enrichments.append(self._to_enrichment(postings[item.index - <span class="f">1</span>], ...))
+
+<span class="c"># Unanswered postings are not retried one by one: the quota this exists</span>
+<span class="c"># to stretch is counted in requests. They stay pending, and stay visible</span>
+<span class="c"># as "not yet classified" until tomorrow's run picks them up.</span></code></pre>
                         </div>
+                        <figure class="shot">
+                            <img src="../../images/jmi/market-detail.webp" alt="The Market Detail page on the Netherlands: four KPIs — 178 open roles, 133 companies, 51% of ads written in English, 30% of roles stack-matchable — above a table showing that its single source returns 500-character descriptions yielding 0.60 technologies each." width="1440" height="1000" loading="lazy" decoding="async">
+                            <figcaption><strong>Market Detail</strong> — one market at a time, with <em>how much of it we can actually read</em> promoted to a headline number. Selecting the Netherlands adds the IND cross-reference and its KvK receipts, which is the only place in the app they now appear.</figcaption>
+                        </figure>
                     </div>
 
                     <div class="case-block">
-                        <h2 class="block-label">Supporting detail: the warehouse</h2>
+                        <h2 class="block-label">Supporting detail</h2>
                         <ul class="decision-list">
+                            <li><strong>A filled role is not an open one.</strong> Boards delete filled roles rather than closing them, so "days since we last saw it" is the only liveness signal that exists. It becomes an <code>is_active</code> flag measured against the corpus's <em>newest observation</em>, never <code>current_date</code> — otherwise a stalled pipeline would mark the whole market closed on a calendar technicality. Before the flag existed, <strong>1,331 of 2,755</strong> data roles hadn't been seen in three weeks and were still being offered as current.</li>
+                            <li><strong>Stack scoring is two-tier, and the expensive tier is opt-in.</strong> Tier one intersects your CV with the technology vocabulary the LLM already extracted from real postings and ranks every open role by pure set arithmetic — no API call, whole corpus, instant. Tier two spends one LLM call on the single posting you pick. The CV lives in <code>st.session_state</code> only: never written to the warehouse, a file or the logs, and gone when the tab closes. The scoring functions are pure and unit-tested, with no Streamlit import.</li>
                             <li><strong>DuckDB + MotherDuck instead of a cloud warehouse</strong> — the dataset is medium-sized and the priority was €0 running cost. The same dbt project runs against local DuckDB and MotherDuck's free tier, so dev and prod stay identical. A pragmatic call for this scale, not a claim about production architecture.</li>
-                            <li><strong>dbt medallion (staging → intermediate → marts)</strong> — raw API payloads are messy and overlap across sources. Isolating cleaning (stg), cross-source dedup (int) and business marts (facts/dims) makes each layer testable and the lineage obvious.</li>
-                            <li><strong>A pluggable LLM provider</strong> — the enrichment flow abstracts the model behind one interface (Ollama / Gemini / Claude), which keeps the pipeline free by default and swappable when quality matters more than cost.</li>
+                            <li><strong>Text-to-SQL over the gold layer, with the guarantee on the connection.</strong> The "Ask the Data" agent sees only the marts schema — raw and staging are never exposed to the prompt — and is limited to a single SELECT with a forced <code>LIMIT 500</code>. Three of those four guardrails are checks in this repo's own code; the fourth is a <strong>read-only connection MotherDuck enforces server-side</strong>, which is where it belongs, since the free plan issues read/write tokens only. The generated SQL is always displayed before it runs. It is guard-railed, not hardened against a hostile user, and the app says so.</li>
                         </ul>
+                        <figure class="shot">
+                            <img src="../../images/jmi/ask-the-data.webp" alt="The Ask the Data page: a plain-English question box with four suggested questions, and a note that the generated SQL is always shown and is rejected unless it is a single read-only query against the published tables." width="1440" height="922" loading="lazy" decoding="async">
+                            <figcaption><strong>Ask the Data</strong> — natural language in, read-only SQL out, shown before it runs so you can check it rather than trust it.</figcaption>
+                        </figure>
                     </div>
 
                     <div class="case-block">
                         <h2 class="block-label">Results</h2>
                         <div class="results-grid">
-                            <div class="result"><div class="result-num">12,797</div><span class="result-label">IND recognised sponsors in the seed (12,793 with a KvK number)</span></div>
-                            <div class="result"><div class="result-num">~1% → ~34%</div><span class="result-label">Sponsor hit rate: remote boards vs Adzuna NL</span></div>
-                            <div class="result"><div class="result-num">9</div><span class="result-label">dbt models (+ 1 seed)</span></div>
-                            <div class="result"><div class="result-num">45</div><span class="result-label">dbt data tests</span></div>
-                            <div class="result"><div class="result-num">5</div><span class="result-label">Job-board APIs ingested</span></div>
+                            <div class="result"><div class="result-num">23 → 180</div><span class="result-label">Postings read per day, same free quota</span></div>
+                            <div class="result"><div class="result-num">33% → 100%</div><span class="result-label">Open roles read by the LLM, backlog now cleared</span></div>
+                            <div class="result"><div class="result-num">0.7 vs 7.9</div><span class="result-label">Technologies found per ad: teaser source vs full-text source</span></div>
+                            <div class="result"><div class="result-num">34% vs 3%</div><span class="result-label">Recognised-sponsor rate: Dutch corpus vs remote boards</span></div>
+                            <div class="result"><div class="result-num">53</div><span class="result-label">dbt data tests (9 models + 1 seed)</span></div>
                             <div class="result"><div class="result-num">€0</div><span class="result-label">Monthly infra cost</span></div>
                         </div>
-                        <p>A reproducible pipeline: <code>uv</code> for envs, <code>ruff</code>/<code>mypy</code>/<code>pytest</code> in CI, and dbt tests as data contracts — so a broken source fails loudly instead of silently corrupting the app. Model and test counts are read from the project's own <code>manifest.json</code>; the sponsor-register size is the row count of the scraped seed.</p>
+                        <p>A reproducible pipeline: <code>uv</code> for envs, <code>ruff</code>/<code>mypy</code>/<code>pytest</code> in CI, and dbt tests as data contracts — so a broken source fails loudly instead of silently corrupting the app. Model and test counts are read from the project's own <code>manifest.json</code>; the sponsor-register size is the row count of the scraped seed; the coverage and market figures are the warehouse's own, measured 19 Sep 2026.</p>
+                        <figure class="shot">
+                            <img src="../../images/jmi/market-trends.webp" alt="The Market Trends page: open roles per country with Spain first, each row showing the share of its ads written in English, and below it the leading technologies plotted over time." width="1440" height="1000" loading="lazy" decoding="async">
+                            <figcaption><strong>Market Trends</strong> — volume and language are different questions, so the country table carries both. Spain leads on open roles, which is why describing this as a Netherlands project would be wrong.</figcaption>
+                        </figure>
                     </div>
 
                     <div class="case-block">
                         <h2 class="block-label">Honest status</h2>
-                        <p class="honest-note"><strong>As of July 2026:</strong> the IND cross-reference, the Pydantic contracts and the dbt medallion are production-grade. Ingestion breadth is a demo — 4 keyless boards plus Adzuna and JobTech, a fraction of the real market, since LinkedIn and Indeed sit behind paid anti-bot. LLM enrichment is quota-bound on Gemini's free tier, so coverage accumulates over daily runs rather than landing all at once. Prefect flows are instrumented and reporting, but the worker-based deployment is documented rather than running, because that would not be €0.</p>
+                        <p class="honest-note"><strong>As of September 2026:</strong> the dbt medallion, the Pydantic contracts and the IND cross-reference are production-grade. <strong>Coverage is stated everywhere rather than rounded up</strong> — every open role has now been read, but only 47% yield a parsed stack, and the app names which of those two numbers you are looking at. Ingestion breadth is a demo: five free sources are a fraction of the real market, since LinkedIn and Indeed sit behind paid anti-bot services. Ingestion <em>depth</em> is uneven and now measured per market, because three of the five run on a source that returns a teaser instead of the ad. <strong>Prefect is instrumentation, not a deployment</strong> — the flows carry <code>@flow</code> decorators and would report to Prefect Cloud if the env vars were set, but a hosted worker isn't free, so the scheduler is a GitHub Actions cron. <strong>There is no Docker</strong>: the Compose scaffolding couldn't be built or tested on the dev machine, so it was deleted rather than left standing as an untested claim. And <strong>no accuracy percentage is claimed for the classifier</strong> — it is cross-checked against an independent deterministic signal at full coverage, plus a golden set whose one completed measurement retired a feature.</p>
                     </div>
 
                     <div class="case-block">
                         <h2 class="block-label">What I'd do differently now</h2>
                         <div class="callout">
-                            I'd formalize <strong>evals for the visa classifier</strong> (a labelled golden set + accuracy tracking) instead of trusting the LLM output as-is; replace ad-hoc dedup with an explicit <strong>surrogate-key strategy</strong> in the integration layer; add <strong>dbt exposures</strong> to map which marts feed which Streamlit page; and move scheduling off my machine onto a managed runner so ingestion doesn't depend on my laptop being on.
+            I'd have <strong>profiled the sources before trusting a single cross-market chart</strong>. One query — average description length per board — was sitting there the whole time, and it would have shown that comparing Spain's stacks to Sweden's was comparing a teaser to a full ad. Same lesson as the flagship: a day of counting first would have saved both reversals, and ADR 0007 and 0011 are good documents about costs that measuring earlier would have avoided. Beyond that: widen ingestion, because five free sources bound every conclusion the project can draw; add <strong>dbt exposures</strong> so the lineage says which marts feed which Streamlit page; harden the canonical clustering, which still leans on normalised company and title rather than an explicit surrogate-key strategy; and move the scheduler onto a worker the day this stops needing to be free.
                         </div>
                     </div>
                 </div>

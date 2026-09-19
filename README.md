@@ -17,9 +17,11 @@ cv/carlos-de-manuel-analytics-engineer.pdf   linked from the hero and Contact
 docs/freshness-contract.md                   status.json schema + CI snippet
 lychee.toml                                  link-checker config (what's excluded, and why)
 .github/workflows/link-check.yml             fails the build on any 4xx link
+images/jmi/                                  app screenshots for the JMI case study
 tools/contrast-check.py                      WCAG checker for the palette
 tools/make-og-images.py                      regenerates the 1200x630 og cards
 tools/make-icons.py                          regenerates favicon/apple-touch PNGs
+tools/make-shots.py                          downscales the JMI app screenshots
 ```
 
 ## Ground rules
@@ -107,12 +109,29 @@ cd ..
 `fonts/` and `.venv/` are gitignored — the site loads its webfonts from Google
 Fonts with `display=swap`.
 
+The Job Market Intelligence screenshots are mirrored from that project's repo,
+where they are captured against the live warehouse. They ship at 1440px in WebP
+(~375 KB for the set, against 1.7 MB for the source PNGs) and every one is
+lazy-loaded except the hero:
+
+```bash
+.venv/bin/python tools/make-shots.py --src ~/projects/job-market-intelligence/docs/img
+```
+
+Six of the repo's seven screens are used; `--only` overrides the selection.
+Find Jobs is the one left out — My Fit already shows a ranked table of the same
+postings. The selection is not cosmetic: when ADR 0011 folded the standalone
+Netherlands visa page into Market Detail, `visa-sponsorship.png` stopped
+existing and the case study had to move with it. If a screen disappears
+upstream, this list is where it shows up.
+
 ## Local preview
 
 ```bash
 python3 -m http.server 8000
 ```
 
-Then open <http://localhost:8000/>. A plain `file://` open also works, except
-the freshness strip's fetch is cross-origin from `file://` and falls back to
-the static snapshot — which is the intended behaviour, just not the live one.
+Then open <http://localhost:8000/>. A plain `file://` open also works; the
+freshness strip may or may not reach its feeds from a `file://` origin
+depending on the browser, and falls back to the static snapshot when it can't —
+which is the intended behaviour, just not the live one.

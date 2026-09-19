@@ -41,11 +41,11 @@ CARDS = {
     },
     "og-job-market-intelligence": {
         "eyebrow": "CASE STUDY  ·  JOB MARKET INTELLIGENCE ENGINE",
-        "headline": "Visa sponsorship\nyou can audit.",
-        "sub": "Every posting's company is joined against the official IND register of "
-               "recognised sponsors. Each match carries a KvK number — so any flag is "
-               "checkable against a public register.",
-        "chips": ["12,797 IND SPONSORS", "9 DBT MODELS", "45 DATA TESTS", "€0 / MONTH"],
+        "headline": "Which EU data roles\nask for my stack?",
+        "sub": "Five free job APIs, an LLM reading each posting, a dbt medallion on "
+               "MotherDuck and a seven-page Streamlit app that ranks live roles against "
+               "a CV. It rebuilds itself every morning, and says what it hasn't read.",
+        "chips": ["5 MARKETS", "9 DBT MODELS", "53 DATA TESTS", "€0 / MONTH"],
     },
     "og-spanish-housing-radar": {
         "eyebrow": "CASE STUDY  ·  SPANISH HOUSING RADAR",

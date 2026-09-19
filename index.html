@@ -278,21 +278,25 @@
                         <h3>Job Market Intelligence Engine</h3>
                         <div class="tags">
                             <span class="tag accent">dbt</span>
-                            <span class="tag accent">Prefect</span>
+                            <span class="tag accent">LLM enrichment</span>
                             <span class="tag">DuckDB / MotherDuck</span>
                             <span class="tag">Python</span>
                             <span class="tag">Streamlit</span>
                         </div>
                         <p class="project-desc">
-                            Aggregates EU tech jobs from 5 job-board APIs and answers the one question relocation candidates
-                            actually need: <strong>will this company sponsor a visa?</strong> Every posting's company is matched
-                            against the official <strong>IND register of recognised sponsors</strong>, so each flag carries a
-                            KvK number and is auditable — the LLM classifier is only the secondary signal. Runs at €0.
+                            A 0€ EU data-jobs platform answering one question every morning: <strong>which open data roles are
+                            asking for my stack?</strong> Five free APIs, an LLM reading each posting for the technologies it
+                            names, a dbt medallion on MotherDuck, and a seven-page Streamlit app that ranks <strong>767 live
+                            postings</strong> across five markets against your CV. It rebuilds itself daily on a cron.
+                        </p>
+                        <p class="project-note">
+                            Every open role has now been read, but only 47% name a stack — and the app measured <em>why</em>:
+                            the board covering Spain, Germany and the Netherlands publishes a teaser, not the ad.
                         </p>
                         <div class="project-impact">
-                            <div class="impact-stat"><div class="impact-num">~12,800</div><span class="impact-label">IND sponsors cross-referenced</span></div>
+                            <div class="impact-stat"><div class="impact-num">23 → 180</div><span class="impact-label">Postings read per day, same free quota</span></div>
                             <div class="impact-stat"><div class="impact-num">9</div><span class="impact-label">dbt models</span></div>
-                            <div class="impact-stat"><div class="impact-num">45</div><span class="impact-label">dbt data tests</span></div>
+                            <div class="impact-stat"><div class="impact-num">53</div><span class="impact-label">dbt data tests</span></div>
                         </div>
                         <div class="project-links">
                             <a class="plink solid" href="projects/job-market-intelligence/">Read the case study
@@ -305,6 +309,11 @@
                             <a class="plink" href="https://job-market-intelligence-carlosdmv7.streamlit.app/" target="_blank" rel="noopener">
                                 <svg aria-hidden="true" focusable="false" class="icon" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                                 Live app
+                                <span class="visually-hidden">(opens in a new tab)</span>
+                            </a>
+                            <a class="plink" href="https://carlosdmv7.github.io/job-market-intelligence/" target="_blank" rel="noopener">
+                                <svg aria-hidden="true" focusable="false" class="icon" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                dbt docs — lineage &amp; tests
                                 <span class="visually-hidden">(opens in a new tab)</span>
                             </a>
                         </div>

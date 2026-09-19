@@ -813,6 +813,32 @@ section + .freshness,
 .code .c { color: var(--ink-muted-2); font-style: italic; } /* comment */
 .code .f { color: var(--teal-700); }                     /* function / literal */
 
+/* ---------- App screenshots ----------
+   The captured app shares this palette, so the frame is a hairline and a soft
+   shadow rather than a chrome bar — the screenshot should read as part of the
+   page, not as a pasted-in window. Every shot carries a caption saying which
+   screen it is and when it was taken, because the counts inside it move daily. */
+.shot {
+    margin-top: 1.2rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--surface-2);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+.shot img { width: 100%; height: auto; }
+.shot figcaption {
+    padding: 0.7rem 1rem;
+    border-top: 1px solid var(--border);
+    background: var(--surface);
+    font-family: var(--font-mono);
+    font-size: 0.71rem;
+    line-height: 1.6;
+    color: var(--ink-muted);
+}
+.shot figcaption strong { color: var(--ink); font-weight: 500; }
+.shot-lead { margin: 2rem 0 3rem; }
+
 /* ---------- Architecture diagram (HTML/CSS flow) ---------- */
 .arch {
     margin-top: 1.2rem;
