@@ -53,7 +53,7 @@ CARDS = {
         "sub": "An Opportunity Score built from the z-score of €/m² against the finest "
                "local benchmark that still has enough comparables — neighbourhood, "
                "district, then city.",
-        "chips": ["13 DBT MODELS", "90 DATA TESTS", "3 SOURCES", "4 APP PAGES"],
+        "chips": ["16 DBT MODELS", "104 DATA TESTS", "3 SOURCES", "6 APP PAGES"],
     },
 }
 

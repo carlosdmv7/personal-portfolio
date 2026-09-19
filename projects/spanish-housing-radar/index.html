@@ -16,7 +16,7 @@
     <meta property="og:image" content="https://carlosdmv7.github.io/personal-portfolio/images/og-spanish-housing-radar.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Case study card: “Under-priced, quantified.” — 13 dbt models, 90 data tests, 3 sources, 4 app pages.">
+    <meta property="og:image:alt" content="Case study card: “Under-priced, quantified.” — 16 dbt models, 104 data tests, 3 sources, 6 app pages.">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Under-priced, quantified — Spanish Housing Radar">
     <meta name="twitter:description" content="A hierarchical benchmark that falls back neighbourhood → district → city until it has enough comparables, and flags low-confidence scores instead of hiding them.">
@@ -117,7 +117,7 @@
                             </div>
                             <div class="fresh-cell">
                                 <dt>dbt tests passing</dt>
-                                <dd data-fresh="dbt_tests">90 / 90</dd>
+                                <dd data-fresh="dbt_tests">104 / 104</dd>
                             </div>
                             <div class="fresh-cell">
                                 <dt>last CI run</dt>
@@ -181,7 +181,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <p class="arch-note">Streamlit · Plotly · pydeck maps · dbt Core 1.9 · 13 models, 90 data tests, 3 sources</p>
+                            <p class="arch-note">Streamlit · Plotly · pydeck maps · dbt Core 1.9 · 16 models, 104 data tests, 3 sources</p>
                         </div>
                     </div>
 
@@ -216,10 +216,10 @@
                     <div class="case-block">
                         <h2 class="block-label">Results</h2>
                         <div class="results-grid">
-                            <div class="result"><div class="result-num">13</div><span class="result-label">dbt models across bronze / silver / gold</span></div>
-                            <div class="result"><div class="result-num">90</div><span class="result-label">dbt data tests</span></div>
+                            <div class="result"><div class="result-num">16</div><span class="result-label">dbt models across bronze / silver / gold</span></div>
+                            <div class="result"><div class="result-num">104</div><span class="result-label">dbt data tests</span></div>
                             <div class="result"><div class="result-num">3</div><span class="result-label">Sources (Idealista, Fotocasa, INE)</span></div>
-                            <div class="result"><div class="result-num">4</div><span class="result-label">Streamlit analysis pages</span></div>
+                            <div class="result"><div class="result-num">6</div><span class="result-label">Streamlit analysis pages</span></div>
                         </div>
                         <p>Every PR is validated against an isolated CI schema (ruff, pytest, dbt build), so changes to scoring logic can't silently break production data. Model and test counts come from the project's <code>manifest.json</code>; the same DAG is published as <a href="https://carlosdmv7.github.io/spanish-housing-radar/" target="_blank" rel="noopener">live dbt docs<span class="visually-hidden"> (opens in a new tab)</span></a>, so the lineage and every test are inspectable.</p>
                     </div>

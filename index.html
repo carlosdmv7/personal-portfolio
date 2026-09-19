@@ -57,7 +57,10 @@
         <section class="hero">
             <div class="container">
                 <div class="hero-inner">
-                    <span class="status-badge"><span class="status-dot"></span>Open to Analytics Engineer roles · EU / Netherlands · <time datetime="2026-07">as of Jul 2026</time></span>
+                    <div class="status-badges">
+                        <span class="status-badge"><span class="status-dot"></span>Open to Analytics Engineer roles · EU · <time datetime="2026-09">as of Sep 2026</time></span>
+                        <span class="status-badge badge-eu">EU citizen — no visa needed</span>
+                    </div>
 
                     <h1 class="hero-title">
                         Hi, I'm <span class="accent">Carlos</span>.
@@ -65,9 +68,10 @@
                     </h1>
 
                     <p class="hero-desc">
-                        I build the layer between raw data and decisions: <strong>reliable, tested, well-documented data models</strong>
-                        on top of warehouses like Snowflake and DuckDB, orchestrated with Prefect and served as self-serve analytics.
-                        Since <strong>January 2025</strong> I've been building analytics infrastructure at <strong>RESRG Automotive</strong> for 200+ users across 20+ plants.
+                        I'm an Analytics Engineer at <strong>RESRG Automotive</strong>, a global automotive manufacturer.
+                        Twenty-odd plants across three regions used to report production and inventory on Excel trackers;
+                        now they open apps built on models I maintain in Snowflake. There are <strong>800M+ rows</strong>
+                        underneath, so those models refresh incrementally as ERP data lands instead of rebuilding from scratch.
                     </p>
 
                     <div class="hero-buttons">
@@ -90,24 +94,6 @@
                         </a>
                     </div>
 
-                    <div class="metrics">
-                        <div class="metric-item">
-                            <div class="metric-num">200<span class="unit">+</span></div>
-                            <span class="metric-label">Users served</span>
-                        </div>
-                        <div class="metric-item">
-                            <div class="metric-num">130<span class="unit">+</span></div>
-                            <span class="metric-label">KPIs governed</span>
-                        </div>
-                        <div class="metric-item">
-                            <div class="metric-num">~98<span class="unit">%</span></div>
-                            <span class="metric-label">Faster refresh</span>
-                        </div>
-                        <div class="metric-item">
-                            <div class="metric-num">20<span class="unit">+</span></div>
-                            <span class="metric-label">Plants · 3 regions</span>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
@@ -138,7 +124,7 @@
                             </div>
                             <div class="fresh-cell">
                                 <dt>dbt tests passing</dt>
-                                <dd data-fresh="dbt_tests">45 / 45</dd>
+                                <dd data-fresh="dbt_tests">53 / 53</dd>
                             </div>
                             <div class="fresh-cell">
                                 <dt>last CI run</dt>
@@ -163,7 +149,7 @@
                             </div>
                             <div class="fresh-cell">
                                 <dt>dbt tests passing</dt>
-                                <dd data-fresh="dbt_tests">90 / 90</dd>
+                                <dd data-fresh="dbt_tests">104 / 104</dd>
                             </div>
                             <div class="fresh-cell">
                                 <dt>last CI run</dt>
@@ -275,7 +261,7 @@
         <section id="projects">
             <div class="container">
                 <div class="section-head">
-                    <span class="eyebrow">2 case studies · 22 dbt models · 135 data tests</span>
+                    <span class="eyebrow">2 case studies · 25 dbt models · 157 data tests</span>
                     <h2 class="section-title">Projects &amp; case studies</h2>
                     <p class="section-sub">End-to-end data products I've built. Each has its own page — the business problem, the technical decisions and <em>why</em>, figures read straight from the project's dbt manifest, an honest status section, and what I'd do differently now.</p>
                 </div>
@@ -346,9 +332,9 @@
                             (€/m² vs. neighborhood benchmarks), and a Streamlit app surfaces the deals.
                         </p>
                         <div class="project-impact">
-                            <div class="impact-stat"><div class="impact-num">13</div><span class="impact-label">dbt models</span></div>
-                            <div class="impact-stat"><div class="impact-num">90</div><span class="impact-label">dbt data tests</span></div>
-                            <div class="impact-stat"><div class="impact-num">4</div><span class="impact-label">Streamlit pages</span></div>
+                            <div class="impact-stat"><div class="impact-num">16</div><span class="impact-label">dbt models</span></div>
+                            <div class="impact-stat"><div class="impact-num">104</div><span class="impact-label">dbt data tests</span></div>
+                            <div class="impact-stat"><div class="impact-num">6</div><span class="impact-label">Streamlit pages</span></div>
                         </div>
                         <div class="project-links">
                             <a class="plink solid" href="projects/spanish-housing-radar/">Read the case study
@@ -387,9 +373,9 @@
                         <img src="images/profile.jpg" alt="Carlos De Manuel" width="260" height="260" loading="lazy">
                     </div>
                     <div class="about-body" data-reveal>
-                        <p>I'm an <strong>Analytics Engineer</strong> based in Valencia, Spain. I found my way into data through biomedical engineering, where the most interesting problem wasn't training the model — it was making messy data <strong>trustworthy and usable</strong> for the people making decisions.</p>
-                        <p>Today I sit between data engineering and analytics: I <strong>model data, write tested transformations, orchestrate pipelines, and ship self-serve products</strong>. At RESRG Automotive I've built platforms serving 200+ users across 20+ plants in three regions — and on my own time I build ELT pipelines with dbt, DuckDB and Prefect to keep sharpening the craft.</p>
-                        <p>I care about the boring things that make data reliable: clear definitions, tests as contracts, documented lineage, and pipelines that fail loudly instead of quietly lying. I'm now looking for an <strong>Analytics Engineer role in a European scale-up</strong>, ideally in the Netherlands.</p>
+                        <p>I'm an <strong>Analytics Engineer</strong> in Valencia. I came to data through biomedical engineering — an internship at UPV's Biomedical Data Science Lab and a thesis on making clinical ML models auditable. Most of that year went on the data underneath: imputing missing clinical records, checking whether the model behaved differently for different patient groups, and writing up what the results actually supported.</p>
+                        <p>At <strong>RESRG Automotive</strong> I own the analytics layer of a global operations platform. Twenty-odd plants across NA, APAC and EMEA used to run on manual Excel trackers; they now open Streamlit and Power BI apps built on Snowflake models that refresh incrementally as ERP data lands. The modelling was the easy part. Getting twenty plants to agree on what a KPI means, when each of them already had an answer, took longer than the pipeline did — that work became a governance app and 130 KPI definitions everyone builds against.</p>
+                        <p>On my own time I build the same kind of thing at a scale I can pay for: dbt, DuckDB and Prefect, running at €0. Both projects on this page are real pipelines with tests, not demos. I'm looking for an <strong>Analytics Engineer role in a European scale-up</strong> — the Netherlands, Ireland and Sweden are where I've been looking hardest, but I'll relocate anywhere in the EU for the right team.</p>
                         <div class="about-facts">
                             <span class="about-fact"><svg aria-hidden="true" focusable="false" class="icon" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Valencia, Spain · open to relocation</span>
                             <span class="about-fact"><svg aria-hidden="true" focusable="false" class="icon" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>In data since Nov 2023</span>
@@ -465,22 +451,22 @@
                     <div class="process-card card" data-reveal>
                         <svg aria-hidden="true" focusable="false" class="icon icon-lg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>
                         <h3>Problem first</h3>
-                        <p>Start from the decision to be made, not the tool. The stack serves the question.</p>
+                        <p>Both projects on this page started from a decision someone has to make — which open roles ask for the stack I have, which flat is under-priced. The stack came after.</p>
+                    </div>
+                    <div class="process-card card" data-reveal>
+                        <svg aria-hidden="true" focusable="false" class="icon icon-lg" viewBox="0 0 24 24"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/></svg>
+                        <h3>One definition per KPI</h3>
+                        <p>A KPI that means two things is worse than no KPI. Twenty plants, 130 definitions, one governance app they all build against — so nobody redefines it locally.</p>
                     </div>
                     <div class="process-card card" data-reveal>
                         <svg aria-hidden="true" focusable="false" class="icon icon-lg" viewBox="0 0 24 24"><path d="m9 11 3 3 8-8"/><path d="M21 12a9 9 0 1 1-6.2-8.5"/></svg>
                         <h3>Tests as contracts</h3>
-                        <p>Data quality isn't a phase. Pipelines should fail loudly, never lie quietly.</p>
+                        <p>157 data tests across the two case studies above. A source that breaks should fail the build, not quietly change a number in someone's report.</p>
                     </div>
                     <div class="process-card card" data-reveal>
                         <svg aria-hidden="true" focusable="false" class="icon icon-lg" viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></svg>
-                        <h3>Build to scale</h3>
-                        <p>Modular, documented, version-controlled models. Lineage anyone can follow.</p>
-                    </div>
-                    <div class="process-card card" data-reveal>
-                        <svg aria-hidden="true" focusable="false" class="icon icon-lg" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg>
-                        <h3>Ship &amp; iterate</h3>
-                        <p>The best model is the one people actually use. Deliver, measure, refine.</p>
+                        <h3>Incremental by default</h3>
+                        <p>At 800M+ rows a full rebuild isn't a refresh strategy, it's an outage. Load what changed, test the grain, keep the lineage readable.</p>
                     </div>
                 </div>
             </div>
@@ -586,8 +572,8 @@
         <!-- Contact -->
         <section id="contact" class="contact">
             <div class="container">
-                <h2>Let's build something reliable.</h2>
-                <p>I'm looking for an Analytics Engineer role in a European scale-up. If you're hiring — or just want to talk data modeling, dbt or orchestration — I'd love to hear from you.</p>
+                <h2>Open to Analytics Engineer roles</h2>
+                <p>Anywhere in the EU, and I'll relocate — the Netherlands, Ireland and Sweden are the ones I keep coming back to. As an EU citizen there's no visa step to work through. Email reaches me fastest.</p>
                 <div class="contact-actions">
                     <a href="cv/carlos-de-manuel-analytics-engineer.pdf" class="btn btn-primary" download>
                         <svg aria-hidden="true" focusable="false" class="icon" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>

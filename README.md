@@ -29,14 +29,22 @@ dbt model and test counts come from each project's `target/manifest.json`; the
 IND sponsor count is the row count of that project's seed CSV. If a number
 changes, re-read the manifest — don't estimate.
 
-Current values (verified 25 Jul 2026):
+Current values (verified 19 Sep 2026):
 
 | | Job Market Intelligence | Spanish Housing Radar |
 |---|---|---|
-| dbt models | 9 (+1 seed) | 13 (+2 seeds) |
-| dbt data tests | 45 | 90 |
+| dbt models | 9 (+1 seed) | 16 (+3 seeds) |
+| dbt data tests | 53 | 104 |
 | sources | 5 job-board APIs | 3 (Idealista, Fotocasa, INE) |
-| other | 12,797 IND recognised sponsors | 4 Streamlit pages |
+| app pages | 7 Streamlit pages | 6 Streamlit pages |
+| other | 12,797 IND recognised sponsors | — |
+
+The Job Market Intelligence case study also quotes warehouse figures — open
+roles per market, how much of the corpus the LLM has read — which move with
+every daily run. Those carry the date they were measured, in the copy and in
+the screenshot captions, rather than being presented as standing facts. Keep
+the copy and the screenshots on the *same* run: the app prints its own counts
+in every header, so a reader compares them without being asked to.
 
 **Colour.** All 22 tokens live in `:root` in `styles.css`; there are no hex or
 `rgba()` literals anywhere else in the file. `--petrol-900` is the only dark
