@@ -1,9 +1,11 @@
 /* ============================================================
    Freshness strip — live pipeline state per project.
 
-   Contract: each project's CI publishes a small status.json to its GitHub
-   Pages branch. See docs/freshness-contract.md for the schema and a
-   paste-ready workflow step.
+   Contract: each project's CI commits a small status.json to docs/ on its
+   default branch, read here straight from raw.githubusercontent.com (which
+   serves `Access-Control-Allow-Origin: *`, so the cross-origin fetch is fine).
+   See docs/freshness-contract.md for the schema and a paste-ready workflow
+   step.
 
    Design rule: the page must NEVER show a spinner or an error. The strip is
    rendered server-side (well, statically) in the HTML with a verified
@@ -81,41 +83,45 @@
        must not light a healthy dot — that would be the strip lying about
        itself, which is the one thing it exists not to do. */
     function apply(row, d) {
+        // A feed that names a different project is a mis-wired URL, not data
+        // about this row. Ignore it rather than show one project's numbers
+        // under another project's name.
+        const expected = row.dataset.freshnessProject;
+        if (expected && typeof d.project === 'string' && d.project !== expected) return false;
+
         let worst = null;
         let updated = 0;
         const bump = (s) => { if (s && (worst === null || rank(s) > rank(worst))) worst = s; };
 
-        if (typeof d.last_ingest === 'string') {
-            const rel = ago(d.last_ingest);
-            if (rel && setCell(row, 'last_ingest', rel, absolute(d.last_ingest))) {
+        if (typeof d.last_ingest_at === 'string') {
+            const rel = ago(d.last_ingest_at);
+            if (rel && setCell(row, 'last_ingest', rel, absolute(d.last_ingest_at))) {
                 updated++;
-                bump(ageState(d.last_ingest));
+                bump(ageState(d.last_ingest_at));
             }
         }
 
-        if (Number.isFinite(d.rows) && setCell(row, 'rows', nf.format(d.rows))) {
+        if (Number.isFinite(d.rows_in_warehouse) && setCell(row, 'rows', nf.format(d.rows_in_warehouse))) {
             updated++;
         }
 
-        const t = d.dbt_tests;
-        if (t && Number.isFinite(t.passed) && Number.isFinite(t.total)) {
-            if (setCell(row, 'dbt_tests', `${nf.format(t.passed)} / ${nf.format(t.total)}`)) updated++;
-            if (t.passed < t.total) bump('failing');
+        const passed = d.dbt_tests_passed;
+        const total = d.dbt_tests_total;
+        if (Number.isFinite(passed) && Number.isFinite(total)) {
+            if (setCell(row, 'dbt_tests', `${nf.format(passed)} / ${nf.format(total)}`)) updated++;
+            if (passed < total) bump('failing');
         }
 
-        const ci = d.last_ci;
-        if (ci && typeof ci.at === 'string') {
-            const rel = ago(ci.at);
-            const ok = ci.status === 'success';
-            if (rel && setCell(row, 'last_ci', `${ok ? 'passed' : (ci.status || 'failed')} · ${rel}`, absolute(ci.at))) {
+        // status.json is written by the run itself, so generated_at is when
+        // that run finished — there is no separate CI timestamp to read.
+        if (typeof d.last_run_conclusion === 'string' && d.last_run_conclusion) {
+            const ok = d.last_run_conclusion === 'success';
+            const when = ago(d.generated_at);
+            const text = ok ? 'passed' : d.last_run_conclusion;
+            if (setCell(row, 'last_ci', when ? `${text} · ${when}` : text, absolute(d.generated_at))) {
                 updated++;
             }
             if (!ok) bump('failing');
-            const link = row.querySelector('[data-fresh-ci-link]');
-            if (link && typeof ci.url === 'string' && /^https:\/\//.test(ci.url)) {
-                link.href = ci.url;
-                link.hidden = false;
-            }
         }
 
         if (!updated) return false;              // nothing usable — stay on the fallback

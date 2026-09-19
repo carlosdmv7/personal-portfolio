@@ -1,0 +1,68 @@
+# A broken link is the most expensive failure this site can have and the
+# easiest one to never notice: a recruiter clicks "Live app", gets a 404, and
+# there is no second click. This job checks every link the published site
+# contains and fails if any of them returns 4xx.
+#
+# It runs on push and on PRs to catch links this repo breaks itself, and on a
+# weekly schedule to catch the ones the outside world breaks — a repo that gets
+# renamed or a Streamlit app that gets deleted does not push a commit here.
+#
+# The site is plain static HTML served straight from the repo root by GitHub
+# Pages, so "the built site" is the checkout: there is no build step whose
+# output could differ from these files.
+name: Link check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    # Mondays 06:00 UTC — a dead link gets found by me, not by a recruiter.
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: link-check-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lychee:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Persist lychee's result cache between runs so the scheduled job is
+      # polite to the hosts it checks. Only successes are cached; failures are
+      # always re-checked, so a link that recovers is not reported as broken.
+      - name: Restore link-check cache
+        uses: actions/cache@v4
+        with:
+          path: .lycheecache
+          key: lychee-${{ github.sha }}
+          restore-keys: lychee-
+
+      - name: Check links
+        uses: lycheeverse/lychee-action@v2
+        with:
+          # Pinned to the version this config was verified against, so a new
+          # lychee release can't change what passes without a commit here.
+          lycheeVersion: v0.24.2
+          # Accepted status codes, exclusions and the reason for each live in
+          # lychee.toml, next to the site they describe.
+          args: >-
+            --config lychee.toml
+            --cache
+            --max-cache-age 2d
+            --no-progress
+            './**/*.html'
+            './README.md'
+            './docs/**/*.md'
+          # Fail the job on any error lychee reports (this is the default, but
+          # the whole point of the workflow is that it must never be silenced).
+          fail: true
+          # The action passes ${{ github.token }} to lychee by default, which
+          # gets github.com links the authenticated API rate limit instead of
+          # the anonymous one.

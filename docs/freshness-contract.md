@@ -12,57 +12,77 @@ each project rather than restating a number typed into HTML.
 
 ## How it works
 
-1. Each project's CI writes a `status.json` and publishes it to that project's
-   GitHub Pages branch.
-2. The portfolio fetches those URLs client-side ([freshness.js](../freshness.js)).
-   Both projects are served from `carlosdmv7.github.io`, the same origin as the
-   portfolio, so there is no CORS involved.
+1. Each project's CI writes a `status.json` and commits it to `docs/status.json`
+   on that project's default branch.
+2. The portfolio fetches it client-side ([freshness.js](../freshness.js)) from
+   `raw.githubusercontent.com`:
+
+   ```
+   https://raw.githubusercontent.com/carlosdmv7/job-market-intelligence/main/docs/status.json
+   https://raw.githubusercontent.com/carlosdmv7/spanish-housing-radar/main/docs/status.json
+   ```
+
+   That host serves `Access-Control-Allow-Origin: *`, so the cross-origin fetch
+   works from GitHub Pages without any proxy. Reading the branch directly also
+   means the strip does not depend on either project having Pages enabled.
 3. **The page never shows a spinner and never shows an error.** The strip ships
    in the HTML with a verified static fallback already rendered. JS only
    replaces values on success. A failed fetch, a 404, a timeout, malformed JSON
    or JS being disabled entirely all leave the static snapshot visible, and the
    label under the heading says which state you are looking at.
 
+### Why the feed is not live yet
+
+Neither project publishes `status.json` today, and for Job Market Intelligence
+that is now a decision rather than a to-do. Its pipeline appends each run to
+`meta.pipeline_run` **in the warehouse**; the earlier design distilled that into
+a committed JSON file, which meant two bot commits to `main` every day — 58 in
+the first month, burying the human history under machine noise.
+
+That kills the committed-file version, not the feed. The project already
+publishes its dbt docs to `gh-pages` on every merge, so the same job could drop
+a `status.json` next to them: live values for the strip, zero commits to `main`.
+If that lands, point `data-freshness-url` at the Pages origin instead of
+`raw.githubusercontent.com` and the strip upgrades itself with no other change.
+
+Until then the strip shows its verified snapshot, which is the designed
+fallback and the reason the fallback is populated in the HTML rather than
+fetched.
+
 Static fallback values live in [`data/freshness.json`](../data/freshness.json).
-`rows` and `last_ingest` are deliberately `null` there — they are runtime facts
-only the live feed can supply, and hardcoding a plausible number would defeat
-the purpose of the strip. They render as an em dash until the feed is live.
+`rows_in_warehouse` and `last_ingest_at` are deliberately `null` there — they
+are runtime facts only the live feed can supply, and hardcoding a plausible
+number would defeat the purpose of the strip. They render as an em dash until
+the feed is live.
 
 ## Schema
 
-`status.json`, published at the Pages root of each project:
+`status.json`, committed to `docs/status.json` in each project:
 
 ```json
 {
-  "schema": 1,
   "project": "job-market-intelligence",
-  "generated_at": "2026-07-25T05:14:03Z",
-  "last_ingest": "2026-07-25T05:12:41Z",
-  "rows": 18432,
-  "dbt_tests": { "passed": 45, "total": 45 },
-  "last_ci": {
-    "status": "success",
-    "at": "2026-07-25T05:14:03Z",
-    "url": "https://github.com/carlosdmv7/job-market-intelligence/actions/runs/123456789"
-  }
+  "generated_at": "2026-09-16T05:14:03Z",
+  "last_ingest_at": "2026-09-16T05:12:41Z",
+  "rows_in_warehouse": 65964,
+  "dbt_tests_passed": 53,
+  "dbt_tests_total": 53,
+  "last_run_conclusion": "success"
 }
 ```
 
 | Field | Type | Meaning |
 |---|---|---|
-| `schema` | int | Contract version. Currently `1`. |
-| `project` | string | Repo slug. Must match the strip's `data-freshness-project`. |
-| `generated_at` | ISO 8601 UTC | When this file was written. |
-| `last_ingest` | ISO 8601 UTC | Completion of the most recent successful extract. |
-| `rows` | int | Row count of the primary fact table in the warehouse. |
-| `dbt_tests.passed` / `.total` | int | From `dbt build`'s run results. |
-| `last_ci.status` | `success` \| anything else | Anything other than `success` renders as a failure. |
-| `last_ci.at` | ISO 8601 UTC | When the run finished. |
-| `last_ci.url` | https URL | Optional. Links the cell to the run. |
+| `project` | string | Repo slug. Must match the strip's `data-freshness-project`, or the whole feed is ignored. |
+| `generated_at` | ISO 8601 UTC | When this file was written — i.e. when the CI run finished. Renders as the "last CI run" time. |
+| `last_ingest_at` | ISO 8601 UTC | Completion of the most recent successful extract. Rendered relative ("6h ago"), with the absolute UTC timestamp on hover. |
+| `rows_in_warehouse` | int | Row count of the primary fact table. |
+| `dbt_tests_passed` / `dbt_tests_total` | int | From `dbt build`'s run results. |
+| `last_run_conclusion` | `success` \| anything else | The GitHub Actions conclusion. Anything other than `success` renders as a failure. |
 
-Every field is optional in practice: the strip upgrades the cells it can parse
-and leaves the rest on their fallback value. A partial or half-broken feed
-degrades one cell, not the band.
+Apart from `project`, every field is optional in practice: the strip upgrades
+the cells it can parse and leaves the rest on their fallback value. A partial
+or half-broken feed degrades one cell, not the band.
 
 ### State derivation
 
@@ -71,23 +91,24 @@ it can't look healthy while something underneath is broken:
 
 | State | Condition | Colour |
 |---|---|---|
-| fresh | `last_ingest` within 48h, tests all passing, CI green | `--teal-200` |
-| stale | `last_ingest` between 48h and 14 days | `--amber-500` |
-| cold | `last_ingest` older than 14 days | `--amber-500`, "cold" label |
-| failing | any dbt test failing, or `last_ci.status != "success"` | `--rust-300` |
+| fresh | `last_ingest_at` within 48h, tests all passing, CI green | `--teal-200` |
+| stale | `last_ingest_at` between 48h and 14 days | `--amber-500` |
+| cold | `last_ingest_at` older than 14 days | `--amber-500`, "cold" label |
+| failing | any dbt test failing, or `last_run_conclusion != "success"` | `--rust-300` |
 
 State is never conveyed by colour alone — each cell carries its own text.
 
 ## Publishing it from a project's CI
 
-Not yet wired up in the project repos. Paste this step at the end of the
-pipeline workflow, after `dbt build`:
+Not yet wired up in the project repos — until it is, the strip shows the
+verified static snapshot, which is the designed behaviour and not a bug. Paste
+this at the end of the pipeline workflow, after `dbt build`. The job needs
+`permissions: contents: write` to push the commit.
 
 ```yaml
-      - name: Publish status.json
+      - name: Write docs/status.json
         if: always()
         run: |
-          mkdir -p _pages
           python - <<'PY'
           import json, os, pathlib, datetime
 
@@ -102,18 +123,16 @@ pipeline workflow, after `dbt build`:
           rows = con.sql("select count(*) from marts.FT_JOB_POSTING").fetchone()[0]
 
           now = datetime.datetime.now(datetime.UTC).isoformat(timespec="seconds").replace("+00:00", "Z")
-          pathlib.Path("_pages/status.json").write_text(json.dumps({
-              "schema": 1,
+          out = pathlib.Path("docs/status.json")
+          out.parent.mkdir(parents=True, exist_ok=True)
+          out.write_text(json.dumps({
               "project": os.environ["GITHUB_REPOSITORY"].split("/")[-1],
               "generated_at": now,
-              "last_ingest": os.environ.get("INGEST_COMPLETED_AT") or now,
-              "rows": rows,
-              "dbt_tests": {"passed": passed, "total": len(tests)},
-              "last_ci": {
-                  "status": os.environ["JOB_STATUS"],
-                  "at": now,
-                  "url": f"{os.environ['GITHUB_SERVER_URL']}/{os.environ['GITHUB_REPOSITORY']}/actions/runs/{os.environ['GITHUB_RUN_ID']}",
-              },
+              "last_ingest_at": os.environ.get("INGEST_COMPLETED_AT") or now,
+              "rows_in_warehouse": rows,
+              "dbt_tests_passed": passed,
+              "dbt_tests_total": len(tests),
+              "last_run_conclusion": os.environ["JOB_STATUS"],
           }, indent=2) + "\n")
           PY
         env:
@@ -121,20 +140,19 @@ pipeline workflow, after `dbt build`:
           MOTHERDUCK_TOKEN: ${{ secrets.MOTHERDUCK_TOKEN }}
           MOTHERDUCK_DB: ${{ vars.MOTHERDUCK_DB }}
 
-      - name: Deploy to Pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: _pages
-          keep_files: true          # don't wipe the dbt docs already published there
+      - name: Commit docs/status.json
+        if: always()
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/status.json
+          # Nothing to do when the run produced identical numbers.
+          git diff --quiet --cached || git commit -m "chore: refresh docs/status.json [skip ci]"
+          git push
 ```
 
-`keep_files: true` matters for `spanish-housing-radar`, whose Pages branch
-already serves the dbt docs site — `status.json` needs to land beside it, not
-replace it.
-
-Adjust the manifest path (`dbt/jmi/target` vs `transform/target`) and the fact
-table per project.
+Adjust the run-results path (`dbt/jmi/target` vs `transform/target`) and the
+fact table per project.
 
 ## Rendering it inside the Streamlit apps
 

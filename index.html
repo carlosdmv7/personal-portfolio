@@ -118,12 +118,12 @@
         <div class="container">
             <div class="freshness-head">
                 <h2 id="freshness-title">Live pipeline state</h2>
-                <p data-freshness-source>Static snapshot verified 25 Jul 2026 — dbt test counts read from each project’s <code>manifest.json</code>. Runtime figures fill in once each project’s CI publishes its <code>status.json</code>.</p>
+                <p data-freshness-source>Static snapshot verified 19 Sep 2026 — dbt test counts read from each project’s <code>manifest.json</code>. The runtime cells stay on this snapshot until a project publishes a <code>status.json</code> feed; neither does yet, and Job Market Intelligence deliberately keeps its run history in the warehouse instead of committing a file daily.</p>
             </div>
             <div class="freshness-rows">
                     <div class="fresh-row" data-state="unknown"
                          data-freshness-project="job-market-intelligence"
-                         data-freshness-url="https://carlosdmv7.github.io/job-market-intelligence/status.json">
+                         data-freshness-url="https://raw.githubusercontent.com/carlosdmv7/job-market-intelligence/main/docs/status.json">
                         <a class="fresh-name" href="projects/job-market-intelligence/">
                             <span class="fresh-dot" aria-hidden="true"></span>Job Market Intelligence
                         </a>
@@ -148,7 +148,7 @@
                     </div>
                     <div class="fresh-row" data-state="unknown"
                          data-freshness-project="spanish-housing-radar"
-                         data-freshness-url="https://carlosdmv7.github.io/spanish-housing-radar/status.json">
+                         data-freshness-url="https://raw.githubusercontent.com/carlosdmv7/spanish-housing-radar/main/docs/status.json">
                         <a class="fresh-name" href="projects/spanish-housing-radar/">
                             <span class="fresh-dot" aria-hidden="true"></span>Spanish Housing Radar
                         </a>

@@ -1,38 +1,46 @@
 {
   "_comment": [
     "Static fallback for the freshness strip. This file documents the shape of",
-    "the status.json each project's CI publishes, and holds the last values",
+    "the status.json a project's CI would publish, and holds the last values",
     "that were verified by hand. The strip's inline HTML is generated from",
     "these values, so a visitor with no JS, a failed fetch or a 404 still sees",
     "real numbers instead of a spinner.",
     "",
+    "No project publishes the feed today, and job-market-intelligence has",
+    "decided against the committed-file version of it: writing status.json to",
+    "main produced two bot commits a day, 58 in the first month, burying the",
+    "human history. A gh-pages publish alongside its dbt docs would give the",
+    "strip live values without touching main. Until then this snapshot is the",
+    "designed state, not a failure.",
+    "",
     "Only figures that can be verified from a project's own artefacts appear",
-    "here. rows and last_ingest are null on purpose: they are runtime facts",
-    "that only the live feed can supply, and inventing them would defeat the",
-    "point of the strip. They render as an em dash.",
+    "here. rows_in_warehouse and last_ingest_at are null on purpose: they are",
+    "runtime facts that only the live feed can supply, and inventing them would",
+    "defeat the point of the strip. They render as an em dash.",
     "",
     "See docs/freshness-contract.md."
   ],
-  "schema": 1,
-  "verified_at": "2026-07-25",
+  "verified_at": "2026-09-19",
   "projects": {
     "job-market-intelligence": {
-      "url": "https://carlosdmv7.github.io/job-market-intelligence/status.json",
-      "source": "dbt/jmi/target/manifest.json (generated 2026-07-19T11:37:45Z)",
-      "last_ingest": null,
-      "rows": null,
-      "dbt_tests": { "passed": 45, "total": 45 },
+      "url": "https://raw.githubusercontent.com/carlosdmv7/job-market-intelligence/main/docs/status.json",
+      "source": "dbt/jmi/target/manifest.json (parsed 2026-09-19T16:20:14Z)",
+      "last_ingest_at": null,
+      "rows_in_warehouse": null,
+      "dbt_tests_passed": 53,
+      "dbt_tests_total": 53,
       "dbt_models": 9,
-      "last_ci": null
+      "last_run_conclusion": null
     },
     "spanish-housing-radar": {
-      "url": "https://carlosdmv7.github.io/spanish-housing-radar/status.json",
-      "source": "transform/target/manifest.json (generated 2026-07-24T16:45:05Z)",
-      "last_ingest": null,
-      "rows": null,
-      "dbt_tests": { "passed": 90, "total": 90 },
-      "dbt_models": 13,
-      "last_ci": null
+      "url": "https://raw.githubusercontent.com/carlosdmv7/spanish-housing-radar/main/docs/status.json",
+      "source": "transform/target/manifest.json (generated 2026-08-11T20:18:04Z)",
+      "last_ingest_at": null,
+      "rows_in_warehouse": null,
+      "dbt_tests_passed": 104,
+      "dbt_tests_total": 104,
+      "dbt_models": 16,
+      "last_run_conclusion": null
     }
   }
 }

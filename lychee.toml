@@ -1,0 +1,52 @@
+# Link checking for the built site. Run by .github/workflows/link-check.yml.
+#
+# Broken links are the most expensive failure a portfolio can have and the
+# easiest one not to notice: a recruiter clicks "Live app", gets a 404, and
+# there is no second click. So a 4xx on any link fails the build.
+#
+# Locally: lychee --config lychee.toml './**/*.html'
+
+# Default accepted range is 100..=103,200..=299 — i.e. any 4xx already fails,
+# which is the point. 429 is added back because it means "you asked too fast",
+# not "this link is dead", and CI runners share IPs with everyone else.
+accept = ["100..=103", "200..=299", "429"]
+
+# Some hosts only serve the real page once a session cookie is set. Streamlit
+# Community Cloud, in particular, bounces / -> share.streamlit.io/-/auth/app ->
+# back, which without cookies is an infinite 303 loop and looks like a dead
+# link. With a jar it resolves to 200.
+cookie_jar = ".lychee-cookies.jar"
+max_redirects = 10
+
+# GitHub's raw/API hosts are unforgiving about default agents.
+user_agent = "Mozilla/5.0 (compatible; lychee link-check; +https://carlosdmv7.github.io/personal-portfolio/)"
+
+timeout = 20
+max_retries = 3
+retry_wait_time = 5
+max_concurrency = 8
+
+exclude = [
+    # LinkedIn answers every automated request with HTTP 999 whether or not the
+    # profile exists, so checking it can only produce false failures — it can
+    # never prove the link is good. Verify this one by hand when it changes.
+    '^https://www\.linkedin\.com/',
+
+    # The freshness strip's status.json feeds. A 404 here is a designed state,
+    # not a broken link: the strip falls back to its verified static snapshot
+    # until each project's CI starts publishing. See docs/freshness-contract.md.
+    '^https://raw\.githubusercontent\.com/carlosdmv7/[^/]+/main/docs/status\.json$',
+
+    # <link rel="preconnect"> targets. These are connection hints for the font
+    # stylesheet below them, not documents — both origins answer their bare
+    # root with 404 whether or not the font service is up, so checking them
+    # only ever produces a false failure. The stylesheet URL itself is checked.
+    '^https://fonts\.(googleapis|gstatic)\.com/?$',
+]
+
+# The README documents a local dev server (http://localhost:8000). It is a
+# instruction to the reader, not a link to anywhere CI could reach.
+exclude_loopback = true
+
+# Vendored assets and anything not part of the published site.
+exclude_path = ["node_modules", "tools", ".git"]
