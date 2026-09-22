@@ -301,16 +301,8 @@ section + section { border-top: 1px solid var(--border); }
 }
 .hero-inner { max-width: 820px; }
 
-/* Two badges, side by side: what I'm looking for, and the fact a recruiter
-   would otherwise have to guess. The second one carries the rust accent so it
-   reads as a separate claim rather than a continuation of the first. */
-.status-badges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-    margin-bottom: 1.8rem;
-}
 .status-badge {
+    margin-bottom: 1.8rem;
     display: inline-flex;
     align-items: center;
     gap: 0.55rem;
@@ -323,11 +315,6 @@ section + section { border-top: 1px solid var(--border); }
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--teal-700);
-}
-.badge-eu {
-    border-color: var(--rust-700);      /* 4.5:1 pair, see tools/contrast-check.py */
-    background: var(--rust-050);
-    color: var(--rust-700);
 }
 .status-dot {
     width: 7px; height: 7px; border-radius: 50%;
