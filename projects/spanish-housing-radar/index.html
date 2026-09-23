@@ -63,7 +63,7 @@
                 </nav>
 
                 <header class="case-hero">
-                    <span class="eyebrow">Case study</span>
+                    <span class="eyebrow">Case study · figures verified 19 Sep 2026</span>
                     <h1>Spanish Housing Radar</h1>
                     <p class="case-lede">Finding under-priced property listings with a benchmark-driven Opportunity Score — and being honest about which benchmark actually scored each listing.</p>
                     <div class="tags">
@@ -226,16 +226,10 @@
 
                     <div class="case-block">
                         <h2 class="block-label">Honest status</h2>
-                        <p class="honest-note"><strong>As of July 2026:</strong> listing scraping is paused — Scrapfly credits are exhausted — so listing counts are not growing right now. The pipeline is not frozen: the keyless <strong>INE house-price-index</strong> feed refreshes the warehouse on a weekly cron, so the app keeps showing current official market context. Because coverage is thin, most listings currently benchmark at <strong>city grain</strong>, and the app says so per listing rather than implying neighbourhood precision it doesn't have.</p>
+                        <p class="honest-note">listing scraping is paused — Scrapfly credits are exhausted — so listing counts are not growing right now. The pipeline is not frozen: the keyless <strong>INE house-price-index</strong> feed refreshes the warehouse on a weekly cron, so the app keeps showing current official market context. Because coverage is thin, most listings currently benchmark at <strong>city grain</strong>, and the app says so per listing rather than implying neighbourhood precision it doesn't have. <strong>What I'd do differently:</strong> I'd prioritize <strong>backfilling history</strong> so neighbourhood-level scores become the default rather than the exception, switch the gold models to <strong>incremental</strong> materializations instead of full refresh as volume grows, and add explicit <strong>freshness tests + scraping SLAs</strong> so stale data is caught by the pipeline instead of noticed by a user.</p>
                     </div>
 
-                    <div class="case-block">
-                        <h2 class="block-label">What I'd do differently now</h2>
-                        <div class="callout">
-                            I'd prioritize <strong>backfilling history</strong> so neighbourhood-level scores become the default rather than the exception, switch the gold models to <strong>incremental</strong> materializations instead of full refresh as volume grows, and add explicit <strong>freshness tests + scraping SLAs</strong> so stale data is caught by the pipeline instead of noticed by a user.
-                        </div>
                     </div>
-                </div>
 
                 <div class="case-foot">
                     <a class="btn btn-primary" href="../../cv/carlos-de-manuel-analytics-engineer.pdf" download>

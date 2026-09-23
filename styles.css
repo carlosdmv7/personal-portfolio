@@ -656,7 +656,33 @@ section + .freshness,
 @keyframes slideDown { from { opacity: 0; transform: translateY(-12px); } to { opacity: 1; transform: none; } }
 
 .case-page { padding: 8.5rem 0 5rem; }
-.case-page .container { max-width: 900px; }
+/* The case pages used to sit in a 900px column, which on a laptop left half
+   the screen empty and made a long page feel longer. The container now matches
+   the rest of the site; prose still caps at 72ch because that is a reading
+   limit, not a layout one, so the width buys a label rail and full-bleed
+   figures instead of longer lines. */
+.case-page .container { max-width: var(--maxw); }
+
+@media (min-width: 1000px) {
+    .case-block {
+        display: grid;
+        grid-template-columns: 190px minmax(0, 1fr);
+        column-gap: 3rem;
+        align-items: start;
+    }
+    /* The label tracks the section while you read past it. */
+    .case-block .block-label {
+        position: sticky;
+        top: 6.5rem;
+        margin-bottom: 0;
+    }
+    /* Figures, diagrams and stat grids take the whole measure — they are the
+       part that was actually cramped at 900px. */
+    .case-block > .shot,
+    .case-block > .arch,
+    .case-block > .results-grid,
+    .case-block > .code { grid-column: 1 / -1; }
+}
 
 .breadcrumb {
     display: flex;
