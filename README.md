@@ -1,4 +1,4 @@
-# Carlos De Manuel — Analytics Engineer
+# Carlos De Manuel — Data & Analytics Engineer
 
 Personal portfolio. Static HTML/CSS/JS, no build step, served from GitHub Pages
 at **<https://carlosdmv7.github.io/personal-portfolio/>**.
@@ -7,6 +7,7 @@ at **<https://carlosdmv7.github.io/personal-portfolio/>**.
 
 ```
 index.html                                  home
+AGENTS.md                                   repo conventions + the claims that would be false
 projects/job-market-intelligence/           case study (own URL, title, og:image)
 projects/spanish-housing-radar/             case study
 styles.css                                  design system — all colour lives in :root
@@ -83,7 +84,7 @@ is the one that matters, since a repo someone renames doesn't push a commit
 here. Any 4xx fails the build.
 
 ```bash
-lychee --config lychee.toml './**/*.html' './README.md' './docs/**/*.md'
+lychee --config lychee.toml './**/*.html' './*.md' './docs/**/*.md'
 ```
 
 Two things are excluded on purpose, both documented in `lychee.toml`: LinkedIn

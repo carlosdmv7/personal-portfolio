@@ -33,9 +33,9 @@ PAD = 82
 
 CARDS = {
     "og-home": {
-        "eyebrow": "CARLOS DE MANUEL  ·  ANALYTICS ENGINEER",
+        "eyebrow": "CARLOS DE MANUEL  ·  DATA & ANALYTICS ENGINEER",
         "headline": "Data you can trust:\nmodelled, tested,\ndocumented.",
-        "sub": "dbt · Snowflake · DuckDB · Prefect · Python. I build the layer "
+        "sub": "Snowflake · dbt · Python · Prefect · AWS. I build the layer "
                "between raw data and decisions.",
         "chips": ["800M+ ROWS IN SNOWFLAKE", "130+ GOVERNED KPIS", "200+ USERS"],
     },
