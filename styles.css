@@ -670,11 +670,17 @@ section + .freshness,
         column-gap: 3rem;
         align-items: start;
     }
-    /* The label tracks the section while you read past it. */
+    /* In the rail the label gets ~190px, and "KEY DECISIONS & WHY" in spaced
+       uppercase does not fit beside a 24px rule on one line. Stack the rule
+       above it and let the text wrap; it tracks the section while you read. */
     .case-block .block-label {
         position: sticky;
         top: 6.5rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
         margin-bottom: 0;
+        line-height: 1.5;
     }
     /* Figures, diagrams and stat grids take the whole measure — they are the
        part that was actually cramped at 900px. */
