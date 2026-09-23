@@ -69,11 +69,11 @@ used as text. Add a row when you add a pair.
 show a spinner or an error. Its fallback ships in the HTML already populated;
 `freshness.js` only upgrades values on a successful fetch, reading each
 project's `docs/status.json` from `raw.githubusercontent.com`. See
-[docs/freshness-contract.md](docs/freshness-contract.md) — no project publishes
-the feed yet, so the strip shows its static snapshot. That is the designed
-state, not a bug. Job Market Intelligence has ruled out the committed-file
-version of it (a daily bot commit to `main` buried the human history) and the
-contract records the `gh-pages` route that would work instead.
+[docs/freshness-contract.md](docs/freshness-contract.md) — Job Market
+Intelligence publishes its feed from the warehouse into its GitHub Pages
+artifact, beside its dbt docs, so no commit ever lands on `main` for it.
+Spanish Housing Radar has no feed yet and keeps showing the snapshot, which is
+the designed fallback rather than a bug.
 
 **Links.** A dead link is the most expensive failure this site can have: a
 recruiter clicks "Live app", gets a 404, and there is no second click.

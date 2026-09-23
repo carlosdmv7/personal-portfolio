@@ -23,7 +23,7 @@
   "verified_at": "2026-09-19",
   "projects": {
     "job-market-intelligence": {
-      "url": "https://raw.githubusercontent.com/carlosdmv7/job-market-intelligence/main/docs/status.json",
+      "url": "https://carlosdmv7.github.io/job-market-intelligence/status.json",
       "source": "dbt/jmi/target/manifest.json (parsed 2026-09-19T16:20:14Z)",
       "last_ingest_at": null,
       "rows_in_warehouse": null,

@@ -18,7 +18,7 @@ each project rather than restating a number typed into HTML.
    `raw.githubusercontent.com`:
 
    ```
-   https://raw.githubusercontent.com/carlosdmv7/job-market-intelligence/main/docs/status.json
+   https://carlosdmv7.github.io/job-market-intelligence/status.json
    https://raw.githubusercontent.com/carlosdmv7/spanish-housing-radar/main/docs/status.json
    ```
 
@@ -31,23 +31,23 @@ each project rather than restating a number typed into HTML.
    or JS being disabled entirely all leave the static snapshot visible, and the
    label under the heading says which state you are looking at.
 
-### Why the feed is not live yet
+### Where the feed comes from
 
-Neither project publishes `status.json` today, and for Job Market Intelligence
-that is now a decision rather than a to-do. Its pipeline appends each run to
-`meta.pipeline_run` **in the warehouse**; the earlier design distilled that into
-a committed JSON file, which meant two bot commits to `main` every day — 58 in
-the first month, burying the human history under machine noise.
+Job Market Intelligence publishes it. Its pipeline already appends every run to
+`meta.pipeline_run` **in the warehouse** — the committed-file version was tried
+and abandoned, because writing `status.json` to `main` meant two bot commits a
+day and 58 in the first month, burying the human history.
 
-That kills the committed-file version, not the feed. The project already
-publishes its dbt docs to `gh-pages` on every merge, so the same job could drop
-a `status.json` next to them: live values for the strip, zero commits to `main`.
-If that lands, point `data-freshness-url` at the Pages origin instead of
-`raw.githubusercontent.com` and the strip upgrades itself with no other change.
+So the file is generated instead of committed. `jmi_flows.status_json` reads the
+newest run and writes `status.json` into the GitHub Pages artifact that already
+carries that project's dbt docs, which is why the URL is the Pages origin and
+not `raw.githubusercontent.com`. It runs daily at 06:30 UTC, after the 05:15
+pipeline, and the step is `continue-on-error`: a missing token or an unreachable
+warehouse leaves the file absent rather than failing the docs deploy.
 
-Until then the strip shows its verified snapshot, which is the designed
-fallback and the reason the fallback is populated in the HTML rather than
-fetched.
+Spanish Housing Radar does not publish one yet, so its row keeps showing the
+verified snapshot — which is the designed fallback, and the reason the fallback
+ships populated in the HTML rather than being fetched.
 
 Static fallback values live in [`data/freshness.json`](../data/freshness.json).
 `rows_in_warehouse` and `last_ingest_at` are deliberately `null` there — they

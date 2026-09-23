@@ -35,6 +35,7 @@ exclude = [
     # The freshness strip's status.json feeds. A 404 here is a designed state,
     # not a broken link: the strip falls back to its verified static snapshot
     # until each project's CI starts publishing. See docs/freshness-contract.md.
+    '^https://carlosdmv7\.github\.io/job-market-intelligence/status\.json$',
     '^https://raw\.githubusercontent\.com/carlosdmv7/[^/]+/main/docs/status\.json$',
 
     # <link rel="preconnect"> targets. These are connection hints for the font
