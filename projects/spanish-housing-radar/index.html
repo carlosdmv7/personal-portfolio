@@ -16,7 +16,7 @@
     <meta property="og:image" content="https://carlosdmv7.github.io/personal-portfolio/images/og-spanish-housing-radar.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Case study card: “Under-priced, quantified.” — 16 dbt models, 104 data tests, 3 sources, 6 app pages.">
+    <meta property="og:image:alt" content="Case study card: “Under-priced, quantified.” — 17 dbt models, 153 data tests, 3 sources, 6 app pages.">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Under-priced, quantified — Spanish Housing Radar">
     <meta name="twitter:description" content="A hierarchical benchmark that falls back neighbourhood → district → city until it has enough comparables, and flags low-confidence scores instead of hiding them.">
@@ -117,7 +117,7 @@
                             </div>
                             <div class="fresh-cell">
                                 <dt>dbt tests passing</dt>
-                                <dd data-fresh="dbt_tests">104 / 104</dd>
+                                <dd data-fresh="dbt_tests">153 / 153</dd>
                             </div>
                             <div class="fresh-cell">
                                 <dt>last CI run</dt>
@@ -142,8 +142,8 @@
                                 <div class="arch-stage">
                                     <span class="arch-stage-label">Extract</span>
                                     <div class="arch-nodes">
-                                        <div class="arch-node">Idealista <small>Fotocasa ready</small></div>
-                                        <div class="arch-node key">INE Tempus3 <small>official price index</small></div>
+                                        <div class="arch-node">Idealista <small>weekly, València</small></div>
+                                        <div class="arch-node key">INE Tempus3 <small>price index + household income</small></div>
                                         <div class="arch-node">Scrapfly <small>anti-bot proxy</small></div>
                                         <div class="arch-node">Pydantic <small>validation</small></div>
                                     </div>
@@ -152,7 +152,7 @@
                                 <div class="arch-stage">
                                     <span class="arch-stage-label">Orchestrate</span>
                                     <div class="arch-nodes">
-                                        <div class="arch-node key">Prefect <small>daily flow</small></div>
+                                        <div class="arch-node key">Prefect <small>weekly flow</small></div>
                                         <div class="arch-node">GitHub Actions <small>schedule + CI</small></div>
                                     </div>
                                 </div>
@@ -175,13 +175,13 @@
                                 <div class="arch-stage">
                                     <span class="arch-stage-label">Serve</span>
                                     <div class="arch-nodes">
-                                        <div class="arch-node">Opportunities</div>
-                                        <div class="arch-node">Market trends</div>
-                                        <div class="arch-node">Mortgage + affordability</div>
+                                        <div class="arch-node">Deals</div>
+                                        <div class="arch-node">Neighbourhoods</div>
+                                        <div class="arch-node">Value check + budget</div>
                                     </div>
                                 </div>
                             </div>
-                            <p class="arch-note">Streamlit · Plotly · pydeck maps · dbt Core 1.9 · 16 models, 104 data tests, 3 sources</p>
+                            <p class="arch-note">Streamlit · Altair · pydeck maps · dbt Core 1.9 · 17 models, 153 data tests, 3 sources</p>
                         </div>
                     </div>
 
@@ -190,8 +190,8 @@
                         <ul class="decision-list">
                             <li><strong>A hierarchical benchmark, and the grain is a column.</strong> The score is a z-score of €/m², but a listing needs enough comparables for that to mean anything. So the model builds three benchmark grains and picks the <strong>finest one with at least 8 comparables</strong> — neighbourhood → district → city — always within the same operation and property type. <code>benchmark_level</code> records which grain actually scored each listing, and the app shows it ("scored vs city"). Rows that fall back to a thin city grain are flagged <code>low_confidence</code> rather than hidden.</li>
                             <li><strong>Neutral, not extreme, when dispersion is zero.</strong> A benchmark built from a single comparable has a standard deviation of 0 or NULL, which would divide to infinity and snap the score to ±3. Coalescing that case to 0 keeps a thin benchmark from manufacturing a fake bargain — a bug that would have looked exactly like a great find.</li>
-                            <li><strong>Idempotent upserts on ingest.</strong> Listings reappear across daily runs. Upserting on the natural key <code>(source_name, source_id)</code> means re-running a flow never creates duplicates, which keeps the benchmarks honest and makes the pipeline safe to retry.</li>
-                            <li><strong>Search-card scraping over detail-page scraping.</strong> ~1 Scrapfly credit per request versus 25–29 with JS rendering. The trade-off is no per-listing coordinates. For a benchmark engine, breadth of comparables matters more than per-listing depth.</li>
+                            <li><strong>Idempotent upserts on ingest.</strong> Listings reappear across runs. Upserting on the natural key <code>(source_name, source_id)</code> means re-running a flow never creates duplicates, which keeps the benchmarks honest and makes the pipeline safe to retry.</li>
+                            <li><strong>Search-card scraping over detail-page scraping.</strong> A search page costs a flat 25 Scrapfly credits and returns ~30 listings; a detail page costs 25–29 and returns one — ~30× cheaper per listing. The trade-off is no per-listing coordinates. For a benchmark engine, breadth of comparables matters more than per-listing depth.</li>
                             <li><strong>A free feed so the app is never dead.</strong> The INE Tempus3 house-price index is keyless and free, and grounds asking prices against transaction-based official reality. It keeps refreshing even when listing scraping is parked.</li>
                         </ul>
                         <div class="code">
@@ -216,9 +216,9 @@
                     <div class="case-block">
                         <h2 class="block-label">Results</h2>
                         <div class="results-grid">
-                            <div class="result"><div class="result-num">16</div><span class="result-label">dbt models across bronze / silver / gold</span></div>
-                            <div class="result"><div class="result-num">104</div><span class="result-label">dbt data tests</span></div>
-                            <div class="result"><div class="result-num">3</div><span class="result-label">Sources (Idealista, Fotocasa, INE)</span></div>
+                            <div class="result"><div class="result-num">17</div><span class="result-label">dbt models across bronze / silver / gold</span></div>
+                            <div class="result"><div class="result-num">153</div><span class="result-label">dbt data tests</span></div>
+                            <div class="result"><div class="result-num">3</div><span class="result-label">Sources (Idealista, INE price index, INE household income)</span></div>
                             <div class="result"><div class="result-num">6</div><span class="result-label">Streamlit analysis pages</span></div>
                         </div>
                         <p>Every PR is validated against an isolated CI schema (ruff, pytest, dbt build), so changes to scoring logic can't silently break production data. Model and test counts come from the project's <code>manifest.json</code>; the same DAG is published as <a href="https://carlosdmv7.github.io/spanish-housing-radar/" target="_blank" rel="noopener">live dbt docs<span class="visually-hidden"> (opens in a new tab)</span></a>, so the lineage and every test are inspectable.</p>
@@ -226,7 +226,7 @@
 
                     <div class="case-block">
                         <h2 class="block-label">Honest status</h2>
-                        <p class="honest-note">listing scraping is paused — Scrapfly credits are exhausted — so listing counts are not growing right now. The pipeline is not frozen: the keyless <strong>INE house-price-index</strong> feed refreshes the warehouse on a weekly cron, so the app keeps showing current official market context. Because coverage is thin, most listings currently benchmark at <strong>city grain</strong>, and the app says so per listing rather than implying neighbourhood precision it doesn't have. <strong>What I'd do differently:</strong> I'd prioritize <strong>backfilling history</strong> so neighbourhood-level scores become the default rather than the exception, switch the gold models to <strong>incremental</strong> materializations instead of full refresh as volume grows, and add explicit <strong>freshness tests + scraping SLAs</strong> so stale data is caught by the pipeline instead of noticed by a user.</p>
+                        <p class="honest-note">listing scraping runs every Monday for <strong>València</strong>, sale and rent, inside Scrapfly's free monthly credits — depth in one city rather than breadth across eight. There, <strong>61%</strong> of listings are scored against their own barrio; the seven other cities hold one older snapshot and mostly fall back to city grain, which the app says per listing. Two real bugs were found by the pipeline's own checks rather than by a user: a data-currency test caught the <strong>INE price index</strong> frozen on a table INE had rebased (and every quarter stored one early), and a regression test caught the buy-vs-rent comparison charging closing costs twice. <strong>What I'd do differently:</strong> start the weekly scrape on day one so neighbourhood-level scores are the default from the start, and switch the gold models to <strong>incremental</strong> materializations as volume grows.</p>
                     </div>
 
                     </div>

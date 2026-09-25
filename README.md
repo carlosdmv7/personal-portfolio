@@ -31,13 +31,13 @@ dbt model and test counts come from each project's `target/manifest.json`; the
 IND sponsor count is the row count of that project's seed CSV. If a number
 changes, re-read the manifest — don't estimate.
 
-Current values (verified 19 Sep 2026):
+Current values (verified 19 Sep 2026; Spanish Housing Radar re-verified 25 Sep 2026):
 
 | | Job Market Intelligence | Spanish Housing Radar |
 |---|---|---|
-| dbt models | 9 (+1 seed) | 16 (+3 seeds) |
-| dbt data tests | 53 | 104 |
-| sources | 5 job-board APIs | 3 (Idealista, Fotocasa, INE) |
+| dbt models | 9 (+1 seed) | 17 (+3 seeds) |
+| dbt data tests | 53 | 153 |
+| sources | 5 job-board APIs | 3 (Idealista, INE price index, INE income) |
 | app pages | 7 Streamlit pages | 6 Streamlit pages |
 | other | 12,797 IND recognised sponsors | — |
 
