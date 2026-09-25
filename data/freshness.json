@@ -34,12 +34,12 @@
     },
     "spanish-housing-radar": {
       "url": "https://raw.githubusercontent.com/carlosdmv7/spanish-housing-radar/main/docs/status.json",
-      "source": "transform/target/manifest.json (parsed 2026-09-25); all 153 passed in main's CI dbt build, PASS=173 WARN=0",
+      "source": "transform/target/manifest.json (parsed 2026-09-25); all 162 passed in main's CI dbt build, PASS=184 WARN=0",
       "last_ingest_at": null,
       "rows_in_warehouse": null,
-      "dbt_tests_passed": 153,
-      "dbt_tests_total": 153,
-      "dbt_models": 17,
+      "dbt_tests_passed": 162,
+      "dbt_tests_total": 162,
+      "dbt_models": 19,
       "last_run_conclusion": null
     }
   }
