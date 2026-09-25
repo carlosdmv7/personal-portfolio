@@ -50,10 +50,10 @@ CARDS = {
     "og-spanish-housing-radar": {
         "eyebrow": "CASE STUDY  ·  SPANISH HOUSING RADAR",
         "headline": "Under-priced,\nquantified.",
-        "sub": "An Opportunity Score built from the z-score of €/m² against the finest "
-               "local benchmark that still has enough comparables — neighbourhood, "
-               "district, then city.",
-        "chips": ["17 DBT MODELS", "153 DATA TESTS", "3 SOURCES", "6 APP PAGES"],
+        "sub": "An Opportunity Score built from the z-score of €/m² against a local "
+               "benchmark that trusts each barrio only as far as its data earns — an "
+               "empirical-Bayes blend of barrio and district.",
+        "chips": ["19 DBT MODELS", "162 DATA TESTS", "3 SOURCES", "6 APP PAGES"],
     },
 }
 

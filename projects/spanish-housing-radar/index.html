@@ -4,22 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spanish Housing Radar — an Opportunity Score with a hierarchical benchmark · Carlos De Manuel</title>
-    <meta name="description" content="Case study: an analytics pipeline that scores Spanish property listings against the finest local €/m² benchmark that still has enough comparables — neighbourhood, district, then city. dbt medallion on MotherDuck, Prefect, Streamlit, with published dbt docs.">
+    <meta name="description" content="Case study: an analytics pipeline that scores Spanish property listings against a local €/m² benchmark that trusts each barrio only as far as its data earns — an empirical-Bayes blend of barrio and district. dbt medallion on MotherDuck, Prefect, Streamlit, with published dbt docs.">
     <meta name="author" content="Carlos De Manuel Vicente">
     <link rel="canonical" href="https://carlosdmv7.github.io/personal-portfolio/projects/spanish-housing-radar/">
 
     <!-- Open Graph / social preview -->
     <meta property="og:type" content="article">
     <meta property="og:title" content="Under-priced, quantified — Spanish Housing Radar">
-    <meta property="og:description" content="An Opportunity Score built from the z-score of €/m² against the finest local benchmark that still has enough comparables — neighbourhood, district, then city.">
+    <meta property="og:description" content="An Opportunity Score built from the z-score of €/m² against a local benchmark that trusts each barrio only as far as its data earns.">
     <meta property="og:url" content="https://carlosdmv7.github.io/personal-portfolio/projects/spanish-housing-radar/">
     <meta property="og:image" content="https://carlosdmv7.github.io/personal-portfolio/images/og-spanish-housing-radar.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Case study card: “Under-priced, quantified.” — 17 dbt models, 153 data tests, 3 sources, 6 app pages.">
+    <meta property="og:image:alt" content="Case study card: “Under-priced, quantified.” — 19 dbt models, 162 data tests, 3 sources, 6 app pages.">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Under-priced, quantified — Spanish Housing Radar">
-    <meta name="twitter:description" content="A hierarchical benchmark that falls back neighbourhood → district → city until it has enough comparables, and flags low-confidence scores instead of hiding them.">
+    <meta name="twitter:description" content="A benchmark that blends barrio and district by an empirical-Bayes weight estimated on every build, and sets implausible listings aside in the open.">
     <meta name="twitter:image" content="https://carlosdmv7.github.io/personal-portfolio/images/og-spanish-housing-radar.png">
 
     <link rel="icon" type="image/svg+xml" href="../../images/favicon.svg">
@@ -117,7 +117,7 @@
                             </div>
                             <div class="fresh-cell">
                                 <dt>dbt tests passing</dt>
-                                <dd data-fresh="dbt_tests">153 / 153</dd>
+                                <dd data-fresh="dbt_tests">162 / 162</dd>
                             </div>
                             <div class="fresh-cell">
                                 <dt>last CI run</dt>
@@ -181,14 +181,15 @@
                                     </div>
                                 </div>
                             </div>
-                            <p class="arch-note">Streamlit · Altair · pydeck maps · dbt Core 1.9 · 17 models, 153 data tests, 3 sources</p>
+                            <p class="arch-note">Streamlit · Altair · pydeck maps · dbt Core 1.9 · 19 models, 162 data tests, 3 sources</p>
                         </div>
                     </div>
 
                     <div class="case-block">
                         <h2 class="block-label">Key decisions &amp; why</h2>
                         <ul class="decision-list">
-                            <li><strong>A hierarchical benchmark, and the grain is a column.</strong> The score is a z-score of €/m², but a listing needs enough comparables for that to mean anything. So the model builds three benchmark grains and picks the <strong>finest one with at least 8 comparables</strong> — neighbourhood → district → city — always within the same operation and property type. <code>benchmark_level</code> records which grain actually scored each listing, and the app shows it ("scored vs city"). Rows that fall back to a thin city grain are flagged <code>low_confidence</code> rather than hidden.</li>
+                            <li><strong>A barrio is trusted as far as its data earns.</strong> The score is a z-score of €/m² against a local benchmark, always within the same operation and property type. It used to switch at a fixed cut-off — 8 listings and the barrio median counted in full, 7 and not at all. Measured, that was wrong: listings vary inside a barrio far more than barrios differ inside a district, so a barrio of 8 deserves about 57% weight. The benchmark now starts from the district and the barrio pulls it by an <strong>empirical-Bayes weight</strong>, n / (n + k), with k estimated in SQL on every build. For rents the data showed no barrio effect at all, so rents are scored against their district — and the app says so. <code>benchmark_level</code> and <code>barrio_weight</code> record what each score was measured against.</li>
+                            <li><strong>Implausible and stale listings set aside, in the open.</strong> A one-bedroom rent listed at 707 m² — €1.84/m², a typo for 70 — was once the top "great deal", and it widened its barrio's spread for every other rent there. Listings under a quarter of, or over four times, their city's median €/m² are now kept out of every benchmark, as are listings unseen for two months; the app lists what was removed and why.</li>
                             <li><strong>Neutral, not extreme, when dispersion is zero.</strong> A benchmark built from a single comparable has a standard deviation of 0 or NULL, which would divide to infinity and snap the score to ±3. Coalescing that case to 0 keeps a thin benchmark from manufacturing a fake bargain — a bug that would have looked exactly like a great find.</li>
                             <li><strong>Idempotent upserts on ingest.</strong> Listings reappear across runs. Upserting on the natural key <code>(source_name, source_id)</code> means re-running a flow never creates duplicates, which keeps the benchmarks honest and makes the pipeline safe to retry.</li>
                             <li><strong>Search-card scraping over detail-page scraping.</strong> A search page costs a flat 25 Scrapfly credits and returns ~30 listings; a detail page costs 25–29 and returns one — ~30× cheaper per listing. The trade-off is no per-listing coordinates. For a benchmark engine, breadth of comparables matters more than per-listing depth.</li>
@@ -196,28 +197,25 @@
                         </ul>
                         <div class="code">
                             <div class="code-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span>&nbsp;3_gold/fct_listings_scored.sql</div>
-                            <pre><code><span class="c">-- pick the FINEST benchmark grain with enough comparables</span>
-<span class="k">case</span>
-    <span class="k">when</span> nb.n &gt;= {{ min_comps }} <span class="k">then</span> <span class="f">'neighbourhood'</span>
-    <span class="k">when</span> di.n &gt;= {{ min_comps }} <span class="k">then</span> <span class="f">'district'</span>
-    <span class="k">else</span> <span class="f">'city'</span>
-<span class="k">end</span> <span class="k">as</span> benchmark_level,
+                            <pre><code><span class="c">-- how far to trust a barrio: within- over between-barrio variance</span>
+<span class="k">case when</span> n_barrios &gt;= {{ min_barrios }} <span class="k">and</span> between_var &gt; 0
+     <span class="k">then</span> within_var / between_var <span class="k">end as</span> shrinkage_k,
+<span class="c">-- the barrio pulls its district's median by n / (n + k)</span>
+barrio_weight * barrio_median_ppsqm
+    + (1 - barrio_weight) * parent_median_ppsqm <span class="k">as</span> benchmark_median_ppsqm,
 <span class="c">-- ...then a clamped z-score, neutral when dispersion is zero</span>
 <span class="f">round</span>(<span class="f">greatest</span>(-3.0, <span class="f">least</span>(3.0,
     <span class="f">coalesce</span>((price_per_sqm - benchmark_median_ppsqm)
              / <span class="f">nullif</span>(benchmark_stddev_ppsqm, 0), 0)
-)), 3) <span class="k">as</span> ppsqm_z_score
-<span class="c">-- score = 50 centred, clamped 0-100</span>
-<span class="f">round</span>(<span class="f">greatest</span>(0, <span class="f">least</span>(100, 50 - ppsqm_z_score * (50.0 / 3.0))), 1)
-    <span class="k">as</span> opportunity_score</code></pre>
+)), 3) <span class="k">as</span> ppsqm_z_score</code></pre>
                         </div>
                     </div>
 
                     <div class="case-block">
                         <h2 class="block-label">Results</h2>
                         <div class="results-grid">
-                            <div class="result"><div class="result-num">17</div><span class="result-label">dbt models across bronze / silver / gold</span></div>
-                            <div class="result"><div class="result-num">153</div><span class="result-label">dbt data tests</span></div>
+                            <div class="result"><div class="result-num">19</div><span class="result-label">dbt models across bronze / silver / gold</span></div>
+                            <div class="result"><div class="result-num">162</div><span class="result-label">dbt data tests</span></div>
                             <div class="result"><div class="result-num">3</div><span class="result-label">Sources (Idealista, INE price index, INE household income)</span></div>
                             <div class="result"><div class="result-num">6</div><span class="result-label">Streamlit analysis pages</span></div>
                         </div>
@@ -226,7 +224,7 @@
 
                     <div class="case-block">
                         <h2 class="block-label">Honest status</h2>
-                        <p class="honest-note">listing scraping runs every Monday for <strong>València</strong>, sale and rent, inside Scrapfly's free monthly credits — depth in one city rather than breadth across eight. There, <strong>61%</strong> of listings are scored against their own barrio; the seven other cities hold one older snapshot and mostly fall back to city grain, which the app says per listing. Two real bugs were found by the pipeline's own checks rather than by a user: a data-currency test caught the <strong>INE price index</strong> frozen on a table INE had rebased (and every quarter stored one early), and a regression test caught the buy-vs-rent comparison charging closing costs twice. <strong>What I'd do differently:</strong> start the weekly scrape on day one so neighbourhood-level scores are the default from the start, and switch the gold models to <strong>incremental</strong> materializations as volume grows.</p>
+                        <p class="honest-note">listing scraping runs every Monday for <strong>València</strong>, sale and rent, newest listings first, inside Scrapfly's free monthly credits — depth in one city rather than breadth. A one-off snapshot of seven other cities stays in the warehouse history but has aged out of scoring. About <strong>73%</strong> of sale listings are scored mostly on their own barrio. Real bugs were found by the pipeline's own checks rather than by a user: a data-currency test caught the <strong>INE price index</strong> frozen on a table INE had rebased (and every quarter stored one early), a regression test caught the buy-vs-rent comparison charging closing costs twice, and a rebuild into the CI schema showed that a full refresh would have wiped the snapshot history — now guarded. <strong>What I'd do differently:</strong> measure the benchmark's trust in a barrio from day one instead of picking a cut-off, and start the weekly scrape on day one.</p>
                     </div>
 
                     </div>

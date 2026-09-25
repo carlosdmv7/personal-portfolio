@@ -36,8 +36,8 @@ Current values (verified 19 Sep 2026; Spanish Housing Radar re-verified 25 Sep 2
 
 | | Job Market Intelligence | Spanish Housing Radar |
 |---|---|---|
-| dbt models | 9 (+1 seed) | 17 (+3 seeds) |
-| dbt data tests | 53 | 153 |
+| dbt models | 9 (+1 seed) | 19 (+3 seeds) |
+| dbt data tests | 53 | 162 |
 | sources | 5 job-board APIs | 3 (Idealista, INE price index, INE income) |
 | app pages | 7 Streamlit pages | 6 Streamlit pages |
 | other | 12,797 IND recognised sponsors | — |
