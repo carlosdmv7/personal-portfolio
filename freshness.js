@@ -107,9 +107,16 @@
 
         const passed = d.dbt_tests_passed;
         const total = d.dbt_tests_total;
+        // Optional. A dbt test at severity 'warn' that fires is counted in the
+        // total but not in passed, so without this every warning read as a
+        // failure: Spanish Housing Radar showed a red dot for a data-currency
+        // warning that failed nothing. Warned tests are named, never hidden.
+        const warned = Number.isFinite(d.dbt_tests_warned) ? d.dbt_tests_warned : 0;
         if (Number.isFinite(passed) && Number.isFinite(total)) {
-            if (setCell(row, 'dbt_tests', `${nf.format(passed)} / ${nf.format(total)}`)) updated++;
-            if (passed < total) bump('failing');
+            const text = `${nf.format(passed)} / ${nf.format(total)}`
+                + (warned ? ` · ${nf.format(warned)} warning${warned > 1 ? 's' : ''}` : '');
+            if (setCell(row, 'dbt_tests', text)) updated++;
+            if (passed + warned < total) bump('failing');
         }
 
         // status.json is written by the run itself, so generated_at is when
