@@ -58,7 +58,7 @@ jobs:
             --max-cache-age 2d
             --no-progress
             './**/*.html'
-            './README.md'
+            './*.md'
             './docs/**/*.md'
           # Fail the job on any error lychee reports (this is the default, but
           # the whole point of the workflow is that it must never be silenced).
