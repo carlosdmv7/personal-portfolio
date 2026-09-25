@@ -130,8 +130,8 @@
                 </section>
 
                 <figure class="shot shot-lead">
-                    <img src="../../images/jmi/home.webp" alt="The app's Overview page: 767 open data roles across five markets, a bar chart of the most-asked-for technologies led by python and sql, and a table of open roles per country with Spain first." width="1440" height="1000" fetchpriority="high" decoding="async">
-                    <figcaption><strong>Overview</strong> — what is open, where, and for which stacks. Every figure on the page is queried at load time from the marts; nothing is hardcoded. All screens here are from the run of 19 Sep 2026; the counts move every morning.</figcaption>
+                    <img src="../../images/jmi/home.webp" alt="The app's Overview page: 689 open data roles and 357 new in the last week, a heatmap of what each market's stack mix asks for with Spain, the Netherlands, Germany and Sweden as columns, the four newest postings as cards, and new roles day by day." width="1440" height="1000" fetchpriority="high" decoding="async">
+                    <figcaption><strong>Overview</strong> — what is open, what each market asks for, what just landed. The heatmap compares each market's <em>mix</em>, because the boards are read at different depths and raw counts ranked Sweden. Every figure is queried at load time from the marts. All screens here are from the run of 25 Sep 2026; the counts move every morning.</figcaption>
                 </figure>
 
                 <div class="case-body">
@@ -142,7 +142,7 @@
                         <p>The free tier allows 20 requests a day, so for most of the project's life the model had read only part of the corpus. One rule carried it: <strong>a posting nobody has read says “not yet classified”, never “no match.”</strong> The backlog is clear now, and the rule matters more — only 47% of roles yield a stack, and the reason is no longer the quota.</p>
                         <figure class="shot">
                             <img src="../../images/jmi/my-fit.webp" alt="The My Fit page: skills detected from a pasted CV shown as removable chips, then every open role ranked by the share of its stack the CV already covers, with the matched technologies listed per row." width="1440" height="854" loading="lazy" decoding="async">
-                            <figcaption><strong>My Fit</strong> — the answer the whole pipeline exists to produce: the 363 open roles with a parsed stack, ranked by how much of it you already cover. Pure set arithmetic, no API call. The CV never leaves the browser session.</figcaption>
+                            <figcaption><strong>My Fit</strong> — the answer the whole pipeline exists to produce: the 302 open roles with a parsed stack, ranked by how much of it you already cover. Pure set arithmetic, no API call. The CV never leaves the browser session.</figcaption>
                         </figure>
                     </div>
 
@@ -227,7 +227,7 @@
 <span class="c"># as "not yet classified" until tomorrow's run picks them up.</span></code></pre>
                         </div>
                         <figure class="shot">
-                            <img src="../../images/jmi/market-detail.webp" alt="The Market Detail page on the Netherlands: four KPIs — 178 open roles, 133 companies, 51% of ads written in English, 30% of roles stack-matchable — above a table showing that its single source returns 500-character descriptions yielding 0.60 technologies each." width="1440" height="1000" loading="lazy" decoding="async">
+                            <img src="../../images/jmi/market-detail.webp" alt="The Market Detail page on the Netherlands: four KPIs — 171 open roles, 135 companies, 49% of ads written in English, 30% of roles stack-matchable — above a table showing that its single source returns 500-character descriptions yielding 0.58 technologies each." width="1440" height="1000" loading="lazy" decoding="async">
                             <figcaption><strong>Market Detail</strong> — one market at a time, with <em>how much of it we can actually read</em> promoted to a headline number. Selecting the Netherlands adds the IND cross-reference and its KvK receipts, which is the only place in the app they now appear.</figcaption>
                         </figure>
                     </div>
@@ -255,8 +255,8 @@
                         </div>
                         <p>Model and test counts come from the project's own <code>manifest.json</code>, the sponsor-register size is the row count of the scraped seed, and the market figures are the warehouse's own — nothing here is typed from memory.</p>
                         <figure class="shot">
-                            <img src="../../images/jmi/market-trends.webp" alt="The Market Trends page: open roles per country with Spain first, each row showing the share of its ads written in English, and below it the leading technologies plotted over time." width="1440" height="1000" loading="lazy" decoding="async">
-                            <figcaption><strong>Market Trends</strong> — volume and language are different questions, so the country table carries both. Spain leads on open roles, which is why describing this as a Netherlands project would be wrong.</figcaption>
+                            <img src="../../images/jmi/market-trends.webp" alt="The Market Trends page: open roles per country, each row showing the share of its ads written in English, a note that the volumes are sampled, and below it the stack ranking with every market weighted equally." width="1440" height="1000" loading="lazy" decoding="async">
+                            <figcaption><strong>Market Trends</strong> — volume and language are different questions, so the country table carries both. The volumes are sampled — each Adzuna market is read up to 200 postings a day — so the page says so and points at the English share, the comparison that holds at any sample size.</figcaption>
                         </figure>
                     </div>
 
