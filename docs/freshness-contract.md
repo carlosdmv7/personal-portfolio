@@ -78,6 +78,7 @@ the feed is live.
 | `last_ingest_at` | ISO 8601 UTC | Completion of the most recent successful extract. Rendered relative ("6h ago"), with the absolute UTC timestamp on hover. |
 | `rows_in_warehouse` | int | Row count of the primary fact table. |
 | `dbt_tests_passed` / `dbt_tests_total` | int | From `dbt build`'s run results. |
+| `dbt_tests_warned` | int, optional | Tests at severity `warn` that fired. Counted in the total but not in passed; the strip shows them beside the count and does **not** treat them as failures. Omit it and every warning reads as a failure. |
 | `last_run_conclusion` | `success` \| anything else | The GitHub Actions conclusion. Anything other than `success` renders as a failure. |
 
 Apart from `project`, every field is optional in practice: the strip upgrades
@@ -94,7 +95,7 @@ it can't look healthy while something underneath is broken:
 | fresh | `last_ingest_at` within 48h, tests all passing, CI green | `--teal-200` |
 | stale | `last_ingest_at` between 48h and 14 days | `--amber-500` |
 | cold | `last_ingest_at` older than 14 days | `--amber-500`, "cold" label |
-| failing | any dbt test failing, or `last_run_conclusion != "success"` | `--rust-300` |
+| failing | any dbt test failing (`passed + warned < total`), or `last_run_conclusion != "success"` | `--rust-300` |
 
 State is never conveyed by colour alone — each cell carries its own text.
 
