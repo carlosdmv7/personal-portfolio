@@ -73,8 +73,9 @@ project's `docs/status.json` from `raw.githubusercontent.com`. See
 [docs/freshness-contract.md](docs/freshness-contract.md) — Job Market
 Intelligence publishes its feed from the warehouse into its GitHub Pages
 artifact, beside its dbt docs, so no commit ever lands on `main` for it.
-Spanish Housing Radar has no feed yet and keeps showing the snapshot, which is
-the designed fallback rather than a bug.
+Spanish Housing Radar commits its `docs/status.json` after each run. When a
+fetch fails, the strip keeps the snapshot, which is the designed fallback
+rather than a bug.
 
 **Links.** A dead link is the most expensive failure this site can have: a
 recruiter clicks "Live app", gets a 404, and there is no second click.
