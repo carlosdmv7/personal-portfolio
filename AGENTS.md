@@ -26,7 +26,7 @@ costs more than the claim ever earned:
 
 | Do not write | Because |
 |---|---|
-| "Orchestrated with Prefect" | The flows are Prefect-*instrumented*; the scheduler is a GitHub Actions cron. |
+| A hosted Prefect worker or work pool | Both pipelines are Prefect Cloud deployments that own their schedule and run history, but the compute is an hourly GitHub Actions runner that asks Cloud whether a run is due — the free tier has no hybrid pools. Say that, not "runs on Prefect infrastructure". |
 | Docker, Kubernetes, containers | None are used. |
 | Any classifier accuracy figure | There is no labelled evaluation set. "Labelling in progress" is not a way around this. |
 | "Netherlands-focused" | Spain is the largest market in the corpus. |

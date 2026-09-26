@@ -37,13 +37,13 @@ CARDS = {
         "headline": "Data you can trust:\nmodelled, tested,\ndocumented.",
         "sub": "Snowflake · dbt · Python · Prefect · AWS. I build the layer "
                "between raw data and decisions.",
-        "chips": ["800M+ ROWS IN SNOWFLAKE", "130+ GOVERNED KPIS", "200+ USERS"],
+        "chips": ["800M+ ROWS IN SNOWFLAKE", "130+ GOVERNED KPIS", "20+ PLANTS · 3 REGIONS"],
     },
     "og-job-market-intelligence": {
         "eyebrow": "CASE STUDY  ·  JOB MARKET INTELLIGENCE ENGINE",
         "headline": "Which EU data roles\nask for my stack?",
         "sub": "Six free job sources, an LLM reading each posting, a dbt medallion on "
-               "MotherDuck and a seven-page Streamlit app that ranks live roles against "
+               "MotherDuck and a Streamlit app that ranks live roles against "
                "a CV. It rebuilds itself every morning, and says what it hasn't read.",
         "chips": ["5 COUNTRIES", "9 DBT MODELS", "53 DATA TESTS", "€0 / MONTH"],
     },

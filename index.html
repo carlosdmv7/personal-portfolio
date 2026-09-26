@@ -66,9 +66,9 @@
 
                     <p class="hero-desc">
                         I build the layer between raw data and the decisions people make on it, on a modern stack —
-                        Snowflake, dbt, Python, Prefect, AWS, Power BI. At <strong>RESRG Automotive</strong> that's
-                        <strong>800M+ rows</strong> feeding the apps 200+ people across 20+ plants open every morning,
-                        in three regions.
+                        Snowflake, dbt, Python, Prefect, AWS, Power BI. At <strong>RESRG Automotive</strong> it runs from
+                        <strong>top-management decisions down to the shop floor</strong>, across purchasing, finance,
+                        supply chain and production, in <strong>20+ plants across North America, APAC and EMEA</strong>.
                     </p>
 
                     <div class="hero-buttons">
@@ -101,7 +101,7 @@
         <div class="container">
             <div class="freshness-head">
                 <h2 id="freshness-title">Live pipeline state</h2>
-                <p data-freshness-source>Static snapshot verified 25 Sep 2026 — dbt test counts read from each project’s <code>manifest.json</code>. Job Market Intelligence publishes its run summary beside its dbt docs, so its runtime cells are live; Spanish Housing Radar still shows the snapshot.</p>
+                <p data-freshness-source>Static snapshot verified 25 Sep 2026 — dbt test counts read from each project’s <code>manifest.json</code>. Both projects publish a run summary after every pipeline run, and it replaces these figures when it loads.</p>
             </div>
             <div class="freshness-rows">
                     <div class="fresh-row" data-state="unknown"
@@ -196,7 +196,7 @@
                                 </div>
                                 <div class="exp-point">
                                     <svg aria-hidden="true" focusable="false" class="icon" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg>
-                                    <span><strong>Pipelines that keep up.</strong> Near-real-time models refreshed by event-driven Prefect flows firing on the landing signal from an upstream CDC replication. Strict incremental loading cut stock load times <strong>~95%</strong>; re-engineering the end-to-end refresh cut runtime <strong>~98%</strong> and compute cost <strong>~90%</strong>.</span>
+                                    <span><strong>Pipelines that keep up.</strong> Near-real-time models over <strong>800M+ rows</strong> in Snowflake, refreshed by event-driven Prefect flows firing on the landing signal from an upstream CDC replication. Strict incremental loading cut stock load times <strong>~95%</strong>; re-engineering the end-to-end refresh cut runtime <strong>~98%</strong> and compute cost <strong>~90%</strong>.</span>
                                 </div>
                             </div>
                             <div class="tags">
@@ -383,11 +383,10 @@
                         <img src="images/profile.jpg" alt="Carlos De Manuel" width="260" height="260" loading="lazy">
                     </div>
                     <div class="about-body" data-reveal>
-                        <p>At <strong>RESRG Automotive</strong> I own the analytics layer of a global operations platform — <strong>20+ plants across North America, APAC and EMEA</strong>. The stack is a modern one: <strong>Snowflake</strong> and <strong>dbt</strong> for the models, <strong>Python</strong>, <strong>SQL</strong> and <strong>Prefect</strong> for the pipelines, <strong>AWS</strong> underneath, and <strong>Power BI</strong> and <strong>Streamlit</strong> where people actually read the numbers.</p>
-                        <p>The part I care most about is the end closest to the business. Twenty plants ran on manual Excel trackers, each with its own answer for the same question. The modelling was the easy half — getting those plants to agree on what a KPI <em>means</em> took longer than the pipeline did, and that work became a governance app and <strong>130+ KPI definitions</strong> everyone now builds against. I also forecast plant energy consumption from production variables for the purchasing team, which meant joining utility invoices with production and financial data until the number was something you could buy on.</p>
-                        <p>I came to data through biomedical engineering — an internship at UPV's Biomedical Data Science Lab and a thesis on making clinical ML models auditable. On my own time I build the same kind of pipeline at a scale I can pay for: both projects on this page are real, tested and running at €0. I'm looking for a role <strong>where the modelling decides something</strong> — a team that treats data as a product with contracts and tests, not as a reporting chore.</p>
+                        <p>I trained as a biomedical engineer and came to data through a thesis on making clinical ML models auditable. The medicine didn't stay with me; the standard did — if someone is going to act on a number, they should be able to see where it came from.</p>
+                        <p>The work I like best starts with the people who run a process, not with the warehouse: sit with them, strip the process back to what it needs to be, and only then build the pipeline and the app they'll open every morning. I'd rather put something small into real use this week than something complete into a slide deck — and I build the same way on my own time.</p>
                         <div class="about-facts">
-                            <span class="about-fact"><svg aria-hidden="true" focusable="false" class="icon" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Valencia, Spain</span>
+                            <span class="about-fact"><svg aria-hidden="true" focusable="false" class="icon" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Valencia · open to relocation</span>
                             <span class="about-fact"><svg aria-hidden="true" focusable="false" class="icon" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>In data since Nov 2023</span>
                             <span class="about-fact"><svg aria-hidden="true" focusable="false" class="icon" viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/></svg>MSc Data Analysis · UPV</span>
                         </div>
@@ -400,65 +399,66 @@
         <section id="stack">
             <div class="container">
                 <div class="section-head">
-                    <span class="eyebrow">27 tools · 6 groups</span>
+                    <span class="eyebrow">28 tools · 6 groups</span>
                     <h2 class="section-title">Tech stack</h2>
                 </div>
                 <div class="stack-grid">
                     <div class="stack-card card" data-reveal>
-                        <div class="card-label"><svg aria-hidden="true" focusable="false" class="icon" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg>Warehousing &amp; Modeling</div>
+                        <div class="card-label"><svg aria-hidden="true" focusable="false" class="icon" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg>Warehouse</div>
                         <div class="stack-list">
                             <div class="stack-row"><img src="images/snowflake.svg" alt=""><span>Snowflake</span></div>
-                            <div class="stack-row"><img src="images/duckdb.svg" alt=""><span>DuckDB / MotherDuck</span></div>
                             <div class="stack-row"><img src="images/dbt.svg" alt=""><span>dbt</span></div>
-                            <div class="stack-row"><span class="dot-mark"></span><span>Kimball / Star Schema</span></div>
+                            <div class="stack-row"><img src="images/duckdb.svg" alt=""><span>DuckDB</span></div>
+                            <div class="stack-row"><svg aria-hidden="true" focusable="false" class="stack-glyph" viewBox="0 0 24 24"><rect x="9" y="9" width="6" height="6" rx="1"/><path d="M12 9V5M12 19v-4M9 12H5M19 12h-4"/><rect x="10" y="2" width="4" height="3" rx=".5"/><rect x="10" y="19" width="4" height="3" rx=".5"/><rect x="2" y="10" width="3" height="4" rx=".5"/><rect x="19" y="10" width="3" height="4" rx=".5"/></svg><span>Kimball</span></div>
                         </div>
                     </div>
                     <div class="stack-card card" data-reveal>
-                        <div class="card-label"><svg aria-hidden="true" focusable="false" class="icon" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>Languages &amp; Transformation</div>
+                        <div class="card-label"><svg aria-hidden="true" focusable="false" class="icon" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>Languages</div>
                         <div class="stack-list">
                             <div class="stack-row"><img src="images/python.svg" alt=""><span>Python</span></div>
                             <div class="stack-row"><img src="images/sql.svg" alt=""><span>SQL</span></div>
                             <div class="stack-row"><img src="images/jinja.svg" alt=""><span>Jinja</span></div>
-                            <div class="stack-row"><span class="dot-mark"></span><span>DAX</span></div>
+                            <div class="stack-row"><svg aria-hidden="true" focusable="false" class="stack-glyph" viewBox="0 0 24 24"><path d="M18 7V5a1 1 0 0 0-1-1H6.5a.5.5 0 0 0-.4.8l4.5 6a2 2 0 0 1 0 2.4l-4.5 6a.5.5 0 0 0 .4.8H17a1 1 0 0 0 1-1v-2"/></svg><span>DAX</span></div>
                         </div>
                     </div>
                     <div class="stack-card card" data-reveal>
-                        <div class="card-label"><svg aria-hidden="true" focusable="false" class="icon" viewBox="0 0 24 24"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/></svg>Cloud, Orchestration &amp; DevOps</div>
+                        <div class="card-label"><svg aria-hidden="true" focusable="false" class="icon" viewBox="0 0 24 24"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/></svg>Platform</div>
                         <div class="stack-list">
                             <div class="stack-row"><img src="images/aws.svg" alt=""><span>AWS</span></div>
-                            <div class="stack-row"><img src="images/azure.svg" alt=""><span>Azure DevOps</span></div>
                             <div class="stack-row"><img src="images/prefect.svg" alt=""><span>Prefect</span></div>
                             <div class="stack-row"><img src="images/airflow.svg" alt=""><span>Airflow</span></div>
-                            <div class="stack-row"><img src="images/git.svg" alt=""><span>Git &amp; GitHub Actions</span></div>
+                            <div class="stack-row"><img src="images/githubactions.svg" alt=""><span>GitHub Actions</span></div>
+                            <div class="stack-row"><img src="images/git.svg" alt=""><span>Git</span></div>
+                            <div class="stack-row"><img src="images/azure.svg" alt=""><span>Azure DevOps</span></div>
                             <div class="stack-row"><img src="images/docker.svg" alt=""><span>Docker</span></div>
-                            <div class="stack-row"><span class="dot-mark"></span><span>Make</span></div>
+                            <div class="stack-row"><svg aria-hidden="true" focusable="false" class="stack-glyph" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="m7 10 3 2-3 2"/><path d="M12 15h5"/></svg><span>Make</span></div>
                         </div>
                     </div>
                     <div class="stack-card card" data-reveal>
-                        <div class="card-label"><svg aria-hidden="true" focusable="false" class="icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>Reliability &amp; Observability</div>
+                        <div class="card-label"><svg aria-hidden="true" focusable="false" class="icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>Quality</div>
                         <div class="stack-list">
-                            <div class="stack-row"><img src="images/pydantic.svg" alt=""><span>Pydantic data contracts</span></div>
                             <div class="stack-row"><img src="images/dbt.svg" alt=""><span>dbt tests</span></div>
                             <div class="stack-row"><img src="images/pytest.svg" alt=""><span>pytest</span></div>
-                            <div class="stack-row"><img src="images/ruff.svg" alt=""><span>ruff / mypy</span></div>
-                            <div class="stack-row"><img src="images/prometheus.svg" alt=""><span>Prometheus</span></div>
+                            <div class="stack-row"><img src="images/pydantic.svg" alt=""><span>Pydantic</span></div>
+                            <div class="stack-row"><img src="images/ruff.svg" alt=""><span>ruff · mypy</span></div>
                         </div>
                     </div>
                     <div class="stack-card card" data-reveal>
-                        <div class="card-label"><svg aria-hidden="true" focusable="false" class="icon" viewBox="0 0 24 24"><rect x="3" y="12" width="4" height="9"/><rect x="10" y="7" width="4" height="14"/><rect x="17" y="3" width="4" height="18"/></svg>BI &amp; Data Apps</div>
+                        <div class="card-label"><svg aria-hidden="true" focusable="false" class="icon" viewBox="0 0 24 24"><rect x="3" y="12" width="4" height="9"/><rect x="10" y="7" width="4" height="14"/><rect x="17" y="3" width="4" height="18"/></svg>BI &amp; apps</div>
                         <div class="stack-list">
                             <div class="stack-row"><img src="images/powerbi.svg" alt=""><span>Power BI</span></div>
                             <div class="stack-row"><img src="images/streamlit.svg" alt=""><span>Streamlit</span></div>
-                            <div class="stack-row"><img src="images/microsoft-fabric.svg" alt=""><span>Microsoft Fabric</span></div>
+                            <div class="stack-row"><img src="images/microsoft-fabric.svg" alt=""><span>Fabric</span></div>
                         </div>
                     </div>
                     <div class="stack-card card" data-reveal>
-                        <div class="card-label"><svg aria-hidden="true" focusable="false" class="icon" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></svg>AI &amp; Machine Learning</div>
+                        <div class="card-label"><svg aria-hidden="true" focusable="false" class="icon" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></svg>AI &amp; ML</div>
                         <div class="stack-list">
-                            <div class="stack-row"><img src="images/gemini.svg" alt=""><span>LLM APIs — Gemini · Ollama · Anthropic</span></div>
-                            <div class="stack-row"><span class="dot-mark"></span><span>LLM evals · golden sets</span></div>
+                            <div class="stack-row"><img src="images/gemini.svg" alt=""><span>Gemini API</span></div>
+                            <div class="stack-row"><img src="images/anthropic.svg" alt=""><span>Claude API</span></div>
+                            <div class="stack-row"><svg aria-hidden="true" focusable="false" class="stack-glyph" viewBox="0 0 24 24"><path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/><path d="M13 6h8M13 12h8M13 18h8"/></svg><span>LLM evals</span></div>
                             <div class="stack-row"><img src="images/scikitlearn.svg" alt=""><span>scikit-learn</span></div>
-                            <div class="stack-row"><span class="dot-mark"></span><span>SHAP · XAI</span></div>
+                            <div class="stack-row"><svg aria-hidden="true" focusable="false" class="stack-glyph" viewBox="0 0 24 24"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M7 6h12M7 11h8M7 16h4"/></svg><span>SHAP · XAI</span></div>
                         </div>
                     </div>
                 </div>
@@ -474,23 +474,23 @@
                 <div class="process-grid">
                     <div class="process-card card" data-reveal>
                         <svg aria-hidden="true" focusable="false" class="icon icon-lg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>
-                        <h3>Understand the business first</h3>
+                        <h3>Business first</h3>
                         <p>A model is worth what the decision behind it is worth, so I start from who acts on the number and how we will know it worked.</p>
                     </div>
                     <div class="process-card card" data-reveal>
-                        <svg aria-hidden="true" focusable="false" class="icon icon-lg" viewBox="0 0 24 24"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/></svg>
-                        <h3>Systems, not tasks</h3>
-                        <p>A request is usually a symptom: fixing the process behind it costs more once, and stops it coming back every month.</p>
+                        <svg aria-hidden="true" focusable="false" class="icon icon-lg" viewBox="0 0 24 24"><path d="M3 6h18"/><path d="M7 12h10"/><path d="M10 18h4"/></svg>
+                        <h3>Simplify, then automate</h3>
+                        <p>Automating a broken process only makes it fail faster. I strip it back with the people who run it first, and build for what is left.</p>
                     </div>
                     <div class="process-card card" data-reveal>
                         <svg aria-hidden="true" focusable="false" class="icon icon-lg" viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></svg>
-                        <h3>Built to be maintained</h3>
-                        <p>The bill for a pipeline arrives in the years after it ships, so I leave definitions, tests and lineage the next person can read without me.</p>
+                        <h3>Long-term solutions</h3>
+                        <p>Systems, not one-off tasks: clear definitions, tested models and lineage the next person can follow without me.</p>
                     </div>
                     <div class="process-card card" data-reveal>
-                        <svg aria-hidden="true" focusable="false" class="icon icon-lg" viewBox="0 0 24 24"><path d="m9 11 3 3 8-8"/><path d="M21 12a9 9 0 1 1-6.2-8.5"/></svg>
-                        <h3>Fast, without the debt</h3>
-                        <p>Shipping in a week and leaving a mess are not the same trade — tests and contracts are what make the quick version safe to keep.</p>
+                        <svg aria-hidden="true" focusable="false" class="icon icon-lg" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7"/><polyline points="21 3 21 9 15 9"/></svg>
+                        <h3>Small releases, real feedback</h3>
+                        <p>Agile where it counts: a working version in users' hands within days, then short iterations on what they actually do with it.</p>
                     </div>
                 </div>
             </div>
@@ -597,7 +597,7 @@
         <section id="contact" class="contact">
             <div class="container">
                 <h2>Open to Data &amp; Analytics Engineering roles</h2>
-                <p>If you're hiring — or just want to talk data modelling, dbt or orchestration — I'd like to hear from you. Email reaches me fastest; I'm based in Valencia.</p>
+                <p>If you're hiring — or just want to talk data modelling, dbt or orchestration — I'd like to hear from you. I'm based in Valencia and <strong>open to relocating</strong> for the right role. Email reaches me fastest.</p>
                 <div class="contact-actions">
                     <a href="cv/carlos-de-manuel-analytics-engineer.pdf" class="btn btn-primary" download>
                         <svg aria-hidden="true" focusable="false" class="icon" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>

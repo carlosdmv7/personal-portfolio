@@ -32,9 +32,10 @@ exclude = [
     # never prove the link is good. Verify this one by hand when it changes.
     '^https://www\.linkedin\.com/',
 
-    # The freshness strip's status.json feeds. A 404 here is a designed state,
-    # not a broken link: the strip falls back to its verified static snapshot
-    # until each project's CI starts publishing. See docs/freshness-contract.md.
+    # The freshness strip's status.json feeds. Both projects publish them now,
+    # but a missing feed is still a designed state rather than a broken link:
+    # the strip falls back to its verified static snapshot, so a feed's bad
+    # morning should not fail this site's build. See docs/freshness-contract.md.
     '^https://carlosdmv7\.github\.io/job-market-intelligence/status\.json$',
     '^https://raw\.githubusercontent\.com/carlosdmv7/[^/]+/main/docs/status\.json$',
 
