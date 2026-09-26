@@ -141,7 +141,7 @@
                         <p>So the pipeline reads for it. Five free APIs land in an append-only log every morning, an LLM reads each posting for its stack, seniority and working language, and a dbt medallion turns that into one canonical row per posting — <strong>689 open data roles</strong> across five markets on 25 Sep 2026, around 50 of them new each day.</p>
                         <p>The free tier allows 20 requests a day, so for most of the project's life the model had read only part of the corpus. One rule carried it: <strong>a posting nobody has read says “not yet classified”, never “no match.”</strong> The backlog is clear now, and the rule matters more — only 47% of roles yield a stack, and the reason is no longer the quota.</p>
                         <figure class="shot">
-                            <img src="../../images/jmi/my-fit.webp" alt="The My Fit page: skills detected from a pasted CV shown as removable chips, then every open role ranked by the share of its stack the CV already covers, with the matched technologies listed per row." width="1440" height="854" loading="lazy" decoding="async">
+                            <img src="../../images/jmi/my-fit.webp" alt="The My Fit page: skills detected from a pasted CV shown as removable chips, then every open role ranked by the share of its stack the CV already covers, with the matched technologies listed per row." width="1440" height="1000" loading="lazy" decoding="async">
                             <figcaption><strong>My Fit</strong> — the answer the whole pipeline exists to produce: the 302 open roles with a parsed stack, ranked by how much of it you already cover. Pure set arithmetic, no API call. The CV never leaves the browser session.</figcaption>
                         </figure>
                     </div>
@@ -240,7 +240,7 @@
                             <li><strong>The SQL agent's guarantee sits on the connection.</strong> It sees only the marts schema, one SELECT, forced <code>LIMIT 500</code>. Three of those four guardrails are checks in this repo's code; the fourth is a <strong>read-only connection MotherDuck enforces server-side</strong>, which is where it belongs, since the free plan issues read/write tokens only.</li>
                         </ul>
                         <figure class="shot">
-                            <img src="../../images/jmi/ask-the-data.webp" alt="The Ask the Data page: a plain-English question box with four suggested questions, and a note that the generated SQL is always shown and is rejected unless it is a single read-only query against the published tables." width="1440" height="922" loading="lazy" decoding="async">
+                            <img src="../../images/jmi/ask-the-data.webp" alt="The Ask the Data page: a plain-English question box with four suggested questions, and a note that the generated SQL is always shown and is rejected unless it is a single read-only query against the published tables." width="1440" height="1000" loading="lazy" decoding="async">
                             <figcaption><strong>Ask the Data</strong> — natural language in, read-only SQL out, shown before it runs so you can check it rather than trust it.</figcaption>
                         </figure>
                     </div>
