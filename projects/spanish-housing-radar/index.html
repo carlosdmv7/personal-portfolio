@@ -128,13 +128,18 @@
                     </div>
                 </section>
 
+                <figure class="shot shot-lead">
+                    <img src="../../images/shr/home.webp" alt="The app's Overview page: headline figures for flats for sale, great deals and barrios with a solid benchmark, a map of València shaded by how much a square metre costs, and the best current deals as cards." width="1440" height="900" fetchpriority="high" decoding="async">
+                    <figcaption><strong>Overview</strong> — where a square metre costs more, and the listings priced furthest below the flats around them.</figcaption>
+                </figure>
+
                 <div class="case-body">
-                    <p class="case-note">Listing counts and scores move with every weekly run — <a href="https://spanish-housing-radar-carlosdmv7.streamlit.app/" target="_blank" rel="noopener">the app has the current ones<span class="visually-hidden"> (opens in a new tab)</span></a>. What follows is why it is built the way it is.</p>
+                    <p class="case-note">Listings and scores change with every weekly run, so they live in <a href="https://spanish-housing-radar-carlosdmv7.streamlit.app/" target="_blank" rel="noopener">the app<span class="visually-hidden"> (opens in a new tab)</span></a>. This page is about why it is built the way it is.</p>
 
                     <div class="case-block">
                         <h2 class="block-label">The problem</h2>
-                        <p>Spotting a genuinely under-priced flat means comparing it against the <strong>right</strong> peers — same neighbourhood, similar size — not a city-wide average. I wanted a pipeline that ingests listings continuously and scores each one against local benchmarks, so a good deal is <strong>quantified, not a gut feeling</strong>.</p>
-                        <p>The hard part isn't the z-score, it's the honesty. Spanish listings are sparse at neighbourhood level, and a flat compared only against its own barrio is often compared against <em>itself</em> — a z-score of 0 and a meaningless “fair” verdict. The engineering is deciding which benchmark a listing has earned, and telling the user which one it got.</p>
+                        <p>A flat is only cheap <strong>compared with the right peers</strong> — same neighbourhood, same type — not a city-wide average. The pipeline scrapes listings every week and scores each one against its local benchmark, so a good deal is <strong>quantified, not a gut feeling</strong>.</p>
+                        <p>The hard part is honesty. Spanish listings are sparse at barrio level, and a flat compared only with its own barrio is often compared with <em>itself</em>. So the real work is deciding <strong>which benchmark a listing has earned</strong> — and telling the user which one it got.</p>
                     </div>
 
                     <div class="case-block">
@@ -188,12 +193,11 @@
                     </div>
 
                     <div class="case-block">
-                        <h2 class="block-label">Key decisions &amp; why</h2>
+                        <h2 class="block-label">Key decisions</h2>
                         <ul class="decision-list">
-                            <li><strong>A barrio is trusted as far as its data earns.</strong> The score used to switch at a fixed cut-off — 8 listings and the barrio median counted in full, 7 and not at all. Measured, that was wrong: listings vary inside a barrio far more than barrios differ inside a district, so a barrio of 8 deserves about 57% weight. The benchmark now starts from the district and the barrio pulls it by an <strong>empirical-Bayes weight</strong>, n / (n + k), with k estimated in SQL on every build. For rents the data showed no barrio effect at all, so rents are scored against their district — and the app says so.</li>
-                            <li><strong>Implausible and stale listings set aside, in the open.</strong> A one-bedroom rent listed at 707 m² — a typo for 70 — was once the top “great deal”, and it widened its barrio's spread for every other rent there. Listings under a quarter of, or over four times, their city's median €/m² are now kept out of every benchmark, as are listings unseen for two months; the app lists what was removed and why.</li>
-                            <li><strong>Neutral, not extreme, when dispersion is zero.</strong> A benchmark built from a single comparable has a standard deviation of 0 or NULL, which would divide to infinity and snap the score to ±3. Coalescing that case to 0 keeps a thin benchmark from manufacturing a fake bargain — a bug that would have looked exactly like a great find.</li>
-                            <li><strong>Search cards over detail pages.</strong> A search page costs a flat 25 Scrapfly credits and returns ~30 listings; a detail page costs 25–29 and returns one. For a benchmark engine, breadth of comparables beats per-listing depth — the trade-off is no per-listing coordinates.</li>
+                            <li><strong>A barrio is trusted as far as its data earns.</strong> The score used to switch at a fixed cut-off: 8 listings and the barrio counted in full, 7 and not at all. Measured, a barrio of 8 deserves about 57% weight. The benchmark now starts from the district and the barrio pulls it by an <strong>empirical-Bayes weight</strong>, estimated in SQL on every build.</li>
+                            <li><strong>Outliers set aside, in the open.</strong> A one-bedroom rent listed at 707 m² — a typo for 70 — was once the top “great deal”. Listings far outside their city's €/m² range, or unseen for two months, now stay out of every benchmark, and the app lists what it removed.</li>
+                            <li><strong>Neutral, not extreme, on a thin benchmark.</strong> One comparable means zero spread, which would divide to infinity and snap the score to its maximum. That case scores 0, so a thin benchmark can't manufacture a fake bargain.</li>
                         </ul>
                         <div class="code">
                             <div class="code-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span>&nbsp;3_gold/fct_listings_scored.sql</div>
@@ -209,11 +213,19 @@ barrio_weight * barrio_median_ppsqm
              / <span class="f">nullif</span>(benchmark_stddev_ppsqm, 0), 0)
 )), 3) <span class="k">as</span> ppsqm_z_score</code></pre>
                         </div>
+                        <figure class="shot">
+                            <img src="../../images/shr/opportunities.webp" alt="The Deals page: buy or rent toggle and filters, headline figures, a bar splitting listings from great deal to very overpriced, and a ranked table whose last column says whether each listing was scored against its barrio, its district or the city." width="1440" height="900" loading="lazy" decoding="async">
+                            <figcaption><strong>Deals</strong> — every listing ranked by its score, and the last column says what it was scored against: its barrio, its district, or the city.</figcaption>
+                        </figure>
                     </div>
 
                     <div class="case-block">
-                        <h2 class="block-label">Honest status</h2>
-                        <p class="honest-note">Scraping runs every Monday for <strong>València</strong> only, sale and rent, inside Scrapfly's free monthly credits — depth in one city rather than breadth. A one-off snapshot of seven other cities is still in the warehouse history but has aged out of scoring. The bugs worth knowing about were caught by the pipeline's own checks, not by a user: a data-currency test found the INE price index frozen on a table INE had rebased, a regression test found the buy-vs-rent comparison charging closing costs twice, and a rebuild into the CI schema showed a full refresh would have wiped the snapshot history — now guarded. <strong>What I'd do differently:</strong> measure the benchmark's trust in a barrio from day one instead of picking a cut-off.</p>
+                        <h2 class="block-label">Limits</h2>
+                        <ul class="decision-list">
+                            <li><strong>One city.</strong> València only, sale and rent, weekly, inside Scrapfly's free credits — depth in one market rather than breadth.</li>
+                            <li><strong>Caught by its own checks.</strong> A data-currency test found the INE price index frozen after INE rebased it; a regression test found closing costs charged twice; a CI rebuild showed a full refresh would have wiped the history. Each is now guarded.</li>
+                            <li><strong>Next time.</strong> Measure how far to trust a barrio from day one, instead of picking a cut-off.</li>
+                        </ul>
                     </div>
                 </div>
 
