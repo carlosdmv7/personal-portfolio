@@ -4,19 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Market Intelligence Engine — which EU data roles ask for my stack · Carlos De Manuel</title>
-    <meta name="description" content="Case study: a 0€ EU data-jobs platform. Five free job APIs, an LLM reading each posting for its stack, a dbt medallion on MotherDuck, and a seven-page Streamlit app that ranks live roles against a CV — and never reports a posting it hasn't read as a miss.">
+    <meta name="description" content="Case study: a 0€ EU data-jobs platform. Six free job sources, an LLM reading each posting for its stack, a dbt medallion on MotherDuck, and a seven-page Streamlit app that ranks live roles against a CV — and never reports a posting it hasn't read as a miss.">
     <meta name="author" content="Carlos De Manuel Vicente">
     <link rel="canonical" href="https://carlosdmv7.github.io/personal-portfolio/projects/job-market-intelligence/">
 
     <!-- Open Graph / social preview -->
     <meta property="og:type" content="article">
     <meta property="og:title" content="Which EU data roles ask for my stack? — Job Market Intelligence Engine">
-    <meta property="og:description" content="Five free job APIs, an LLM reading each posting, a dbt medallion on MotherDuck and a seven-page Streamlit app that ranks live roles against a CV. Rebuilds itself daily at 0€.">
+    <meta property="og:description" content="Six free job sources, an LLM reading each posting, a dbt medallion on MotherDuck and a seven-page Streamlit app that ranks live roles against a CV. Rebuilds itself daily at 0€.">
     <meta property="og:url" content="https://carlosdmv7.github.io/personal-portfolio/projects/job-market-intelligence/">
     <meta property="og:image" content="https://carlosdmv7.github.io/personal-portfolio/images/og-job-market-intelligence.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Case study card: “Which EU data roles ask for my stack?” — 5 markets, 9 dbt models, 53 data tests, €0 per month.">
+    <meta property="og:image:alt" content="Case study card: “Which EU data roles ask for my stack?” — 5 countries, 9 dbt models, 53 data tests, €0 per month.">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Which EU data roles ask for my stack? — Job Market Intelligence Engine">
     <meta name="twitter:description" content="A 0€ EU data-jobs pipeline that ranks live postings against your stack — and never presents a posting it hasn't read as a negative result.">
@@ -65,7 +65,7 @@
                 <header class="case-hero">
                     <span class="eyebrow">Case study · figures verified 19 Sep 2026</span>
                     <h1>Job Market Intelligence Engine</h1>
-                    <p class="case-lede">One question, every morning: which open data roles in the EU are asking for my stack? Five free APIs, an LLM that reads each posting, a dbt medallion on MotherDuck — and a rule that a posting nobody has read yet is never reported as a miss.</p>
+                    <p class="case-lede">One question, every morning: which open data roles in the EU are asking for my stack? Six free sources, an LLM that reads each posting, a dbt medallion on MotherDuck — and a rule that a posting nobody has read yet is never reported as a miss.</p>
                     <div class="tags">
                         <span class="tag accent">dbt</span>
                         <span class="tag accent">LLM enrichment</span>
@@ -138,7 +138,7 @@
                     <div class="case-block">
                         <h2 class="block-label">The problem</h2>
                         <p>Job boards index on title and location — the two fields that tell you least. The one that decides whether a posting is worth opening is <strong>which technologies it actually asks for</strong>, and that only exists as prose.</p>
-                        <p>So the pipeline reads for it. Five free APIs land in an append-only log every morning, an LLM reads each posting for its stack, seniority and working language, and a dbt medallion turns that into one canonical row per posting — <strong>689 open data roles</strong> across five markets on 25 Sep 2026, around 50 of them new each day.</p>
+                        <p>So the pipeline reads for it. Six free sources land in an append-only log every morning, an LLM reads each posting for its stack, seniority and working language, and a dbt medallion turns that into one canonical row per posting — <strong>703 open data roles</strong> on 26 Sep 2026, around 50 of them new each day. Spain, Germany, the Netherlands and Sweden are read from their job boards; Ireland, which no open board covers, from 33 employers' own career sites — so the app lists Irish roles but keeps them out of every chart that compares markets.</p>
                         <p>The free tier allows 20 requests a day, so for most of the project's life the model had read only part of the corpus. One rule carried it: <strong>a posting nobody has read says “not yet classified”, never “no match.”</strong> The backlog is clear now, and the rule matters more — only 47% of roles yield a stack, and the reason is no longer the quota.</p>
                         <figure class="shot">
                             <img src="../../images/jmi/my-fit.webp" alt="The My Fit page: skills detected from a pasted CV shown as removable chips, then every open role ranked by the share of its stack the CV already covers, with the matched technologies listed per row." width="1440" height="1000" loading="lazy" decoding="async">
@@ -156,6 +156,7 @@
                                         <div class="arch-node">Adzuna <small>NL · DE · ES</small></div>
                                         <div class="arch-node">Remotive · Arbeitnow <small>keyless APIs</small></div>
                                         <div class="arch-node">RemoteOK · JobTech <small>keyless APIs</small></div>
+                                        <div class="arch-node">Greenhouse · Ashby <small>IE employers' own boards</small></div>
                                         <div class="arch-node">IND register <small>scraped → dbt seed</small></div>
                                     </div>
                                 </div>
@@ -194,7 +195,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <p class="arch-note">Streamlit front-end, 7 pages · <strong>GitHub Actions cron as the 0€ scheduler</strong> (daily, 05:15 UTC) · Prefect-instrumented flows, no hosted worker · uv workspace monorepo, Pydantic v2 contracts, 176 Python tests</p>
+                            <p class="arch-note">Streamlit front-end, 7 pages · <strong>GitHub Actions cron as the 0€ scheduler</strong> (daily, 05:15 UTC) · Prefect-instrumented flows, no hosted worker · uv workspace monorepo, Pydantic v2 contracts, 220 Python tests</p>
                         </div>
                         <figure class="shot">
                             <img src="../../images/jmi/how-it-works.webp" alt="The How It Works page inside the app: the daily pipeline drawn as a diagram from the free APIs through the LLM read into the dbt models, above a section explaining which signals are looked up and which are read out of prose." width="1440" height="1000" loading="lazy" decoding="async">
