@@ -799,6 +799,19 @@ section + .freshness,
 }
 .honest-note strong { color: var(--ink); }
 
+/* Says once, at the top of a case study, that the live numbers live in the app.
+   The page then carries only figures that settled a decision, which do not go
+   stale — so a project can move without this page needing a rewrite. */
+.case-note {
+    color: var(--ink-muted-2);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    max-width: 72ch;
+    margin-bottom: 2.4rem;
+    padding-left: 1rem;
+    border-left: 2px solid var(--sand-100);
+}
+
 .case-foot {
     display: flex;
     flex-wrap: wrap;

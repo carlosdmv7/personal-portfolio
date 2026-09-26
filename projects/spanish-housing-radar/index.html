@@ -63,7 +63,7 @@
                 </nav>
 
                 <header class="case-hero">
-                    <span class="eyebrow">Case study · figures verified 19 Sep 2026</span>
+                    <span class="eyebrow">Case study</span>
                     <h1>Spanish Housing Radar</h1>
                     <p class="case-lede">Finding under-priced property listings with a benchmark-driven Opportunity Score — and being honest about which benchmark actually scored each listing.</p>
                     <div class="tags">
@@ -97,7 +97,7 @@
                 <section class="freshness freshness-inline" aria-labelledby="freshness-title">
                     <div class="freshness-head">
                         <h2 id="freshness-title">Live pipeline state</h2>
-                        <p data-freshness-source>Static snapshot verified 19 Sep 2026 — dbt test counts read from each project’s <code>manifest.json</code>. Job Market Intelligence publishes its run summary beside its dbt docs, so its runtime cells are live; Spanish Housing Radar still shows the snapshot.</p>
+                        <p data-freshness-source>Static snapshot verified 25 Sep 2026 — dbt test counts read from each project’s <code>manifest.json</code>. Job Market Intelligence publishes its run summary beside its dbt docs, so its runtime cells are live; Spanish Housing Radar still shows the snapshot.</p>
                     </div>
                     <div class="freshness-rows">
                     <div class="fresh-row" data-state="unknown"
@@ -129,10 +129,12 @@
                 </section>
 
                 <div class="case-body">
+                    <p class="case-note">Listing counts and scores move with every weekly run — <a href="https://spanish-housing-radar-carlosdmv7.streamlit.app/" target="_blank" rel="noopener">the app has the current ones<span class="visually-hidden"> (opens in a new tab)</span></a>. What follows is why it is built the way it is.</p>
+
                     <div class="case-block">
                         <h2 class="block-label">The problem</h2>
-                        <p>Spotting a genuinely under-priced flat means comparing it against the <strong>right</strong> peers — same neighbourhood, similar size — not a city-wide average. Doing that by hand across portals is impractical. I wanted a pipeline that ingests listings continuously and scores each one against local benchmarks, so a good deal is <strong>quantified, not a gut feeling</strong>.</p>
-                        <p>The hard part isn't the z-score, it's the honesty. Spanish listings are sparse at neighbourhood level, and a flat compared only against its own barrio is often compared against <em>itself</em> — which yields a z-score of 0 and a meaningless "fair" verdict. The interesting engineering is deciding which benchmark a listing has earned, and telling the user which one it got.</p>
+                        <p>Spotting a genuinely under-priced flat means comparing it against the <strong>right</strong> peers — same neighbourhood, similar size — not a city-wide average. I wanted a pipeline that ingests listings continuously and scores each one against local benchmarks, so a good deal is <strong>quantified, not a gut feeling</strong>.</p>
+                        <p>The hard part isn't the z-score, it's the honesty. Spanish listings are sparse at neighbourhood level, and a flat compared only against its own barrio is often compared against <em>itself</em> — a z-score of 0 and a meaningless “fair” verdict. The engineering is deciding which benchmark a listing has earned, and telling the user which one it got.</p>
                     </div>
 
                     <div class="case-block">
@@ -181,19 +183,17 @@
                                     </div>
                                 </div>
                             </div>
-                            <p class="arch-note">Streamlit · Altair · pydeck maps · dbt Core 1.9 · 19 models, 162 data tests, 3 sources</p>
+                            <p class="arch-note">Streamlit · Altair · pydeck maps · dbt Core 1.9 · 19 models, 162 data tests, 3 sources · every PR validated against an isolated CI schema, so a change to the scoring can't silently break production data</p>
                         </div>
                     </div>
 
                     <div class="case-block">
                         <h2 class="block-label">Key decisions &amp; why</h2>
                         <ul class="decision-list">
-                            <li><strong>A barrio is trusted as far as its data earns.</strong> The score is a z-score of €/m² against a local benchmark, always within the same operation and property type. It used to switch at a fixed cut-off — 8 listings and the barrio median counted in full, 7 and not at all. Measured, that was wrong: listings vary inside a barrio far more than barrios differ inside a district, so a barrio of 8 deserves about 57% weight. The benchmark now starts from the district and the barrio pulls it by an <strong>empirical-Bayes weight</strong>, n / (n + k), with k estimated in SQL on every build. For rents the data showed no barrio effect at all, so rents are scored against their district — and the app says so. <code>benchmark_level</code> and <code>barrio_weight</code> record what each score was measured against.</li>
-                            <li><strong>Implausible and stale listings set aside, in the open.</strong> A one-bedroom rent listed at 707 m² — €1.84/m², a typo for 70 — was once the top "great deal", and it widened its barrio's spread for every other rent there. Listings under a quarter of, or over four times, their city's median €/m² are now kept out of every benchmark, as are listings unseen for two months; the app lists what was removed and why.</li>
+                            <li><strong>A barrio is trusted as far as its data earns.</strong> The score used to switch at a fixed cut-off — 8 listings and the barrio median counted in full, 7 and not at all. Measured, that was wrong: listings vary inside a barrio far more than barrios differ inside a district, so a barrio of 8 deserves about 57% weight. The benchmark now starts from the district and the barrio pulls it by an <strong>empirical-Bayes weight</strong>, n / (n + k), with k estimated in SQL on every build. For rents the data showed no barrio effect at all, so rents are scored against their district — and the app says so.</li>
+                            <li><strong>Implausible and stale listings set aside, in the open.</strong> A one-bedroom rent listed at 707 m² — a typo for 70 — was once the top “great deal”, and it widened its barrio's spread for every other rent there. Listings under a quarter of, or over four times, their city's median €/m² are now kept out of every benchmark, as are listings unseen for two months; the app lists what was removed and why.</li>
                             <li><strong>Neutral, not extreme, when dispersion is zero.</strong> A benchmark built from a single comparable has a standard deviation of 0 or NULL, which would divide to infinity and snap the score to ±3. Coalescing that case to 0 keeps a thin benchmark from manufacturing a fake bargain — a bug that would have looked exactly like a great find.</li>
-                            <li><strong>Idempotent upserts on ingest.</strong> Listings reappear across runs. Upserting on the natural key <code>(source_name, source_id)</code> means re-running a flow never creates duplicates, which keeps the benchmarks honest and makes the pipeline safe to retry.</li>
-                            <li><strong>Search-card scraping over detail-page scraping.</strong> A search page costs a flat 25 Scrapfly credits and returns ~30 listings; a detail page costs 25–29 and returns one — ~30× cheaper per listing. The trade-off is no per-listing coordinates. For a benchmark engine, breadth of comparables matters more than per-listing depth.</li>
-                            <li><strong>A free feed so the app is never dead.</strong> The INE Tempus3 house-price index is keyless and free, and grounds asking prices against transaction-based official reality. It keeps refreshing even when listing scraping is parked.</li>
+                            <li><strong>Search cards over detail pages.</strong> A search page costs a flat 25 Scrapfly credits and returns ~30 listings; a detail page costs 25–29 and returns one. For a benchmark engine, breadth of comparables beats per-listing depth — the trade-off is no per-listing coordinates.</li>
                         </ul>
                         <div class="code">
                             <div class="code-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span>&nbsp;3_gold/fct_listings_scored.sql</div>
@@ -212,22 +212,10 @@ barrio_weight * barrio_median_ppsqm
                     </div>
 
                     <div class="case-block">
-                        <h2 class="block-label">Results</h2>
-                        <div class="results-grid">
-                            <div class="result"><div class="result-num">19</div><span class="result-label">dbt models across bronze / silver / gold</span></div>
-                            <div class="result"><div class="result-num">162</div><span class="result-label">dbt data tests</span></div>
-                            <div class="result"><div class="result-num">3</div><span class="result-label">Sources (Idealista, INE price index, INE household income)</span></div>
-                            <div class="result"><div class="result-num">6</div><span class="result-label">Streamlit analysis pages</span></div>
-                        </div>
-                        <p>Every PR is validated against an isolated CI schema (ruff, pytest, dbt build), so changes to scoring logic can't silently break production data. Model and test counts come from the project's <code>manifest.json</code>; the same DAG is published as <a href="https://carlosdmv7.github.io/spanish-housing-radar/" target="_blank" rel="noopener">live dbt docs<span class="visually-hidden"> (opens in a new tab)</span></a>, so the lineage and every test are inspectable.</p>
-                    </div>
-
-                    <div class="case-block">
                         <h2 class="block-label">Honest status</h2>
-                        <p class="honest-note">listing scraping runs every Monday for <strong>València</strong>, sale and rent, newest listings first, inside Scrapfly's free monthly credits — depth in one city rather than breadth. A one-off snapshot of seven other cities stays in the warehouse history but has aged out of scoring. About <strong>73%</strong> of sale listings are scored mostly on their own barrio. Real bugs were found by the pipeline's own checks rather than by a user: a data-currency test caught the <strong>INE price index</strong> frozen on a table INE had rebased (and every quarter stored one early), a regression test caught the buy-vs-rent comparison charging closing costs twice, and a rebuild into the CI schema showed that a full refresh would have wiped the snapshot history — now guarded. <strong>What I'd do differently:</strong> measure the benchmark's trust in a barrio from day one instead of picking a cut-off, and start the weekly scrape on day one.</p>
+                        <p class="honest-note">Scraping runs every Monday for <strong>València</strong> only, sale and rent, inside Scrapfly's free monthly credits — depth in one city rather than breadth. A one-off snapshot of seven other cities is still in the warehouse history but has aged out of scoring. The bugs worth knowing about were caught by the pipeline's own checks, not by a user: a data-currency test found the INE price index frozen on a table INE had rebased, a regression test found the buy-vs-rent comparison charging closing costs twice, and a rebuild into the CI schema showed a full refresh would have wiped the snapshot history — now guarded. <strong>What I'd do differently:</strong> measure the benchmark's trust in a barrio from day one instead of picking a cut-off.</p>
                     </div>
-
-                    </div>
+                </div>
 
                 <div class="case-foot">
                     <a class="btn btn-primary" href="../../cv/carlos-de-manuel-analytics-engineer.pdf" download>
