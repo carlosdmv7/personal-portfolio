@@ -72,6 +72,7 @@
                         <span class="tag">DuckDB / MotherDuck</span>
                         <span class="tag">Python</span>
                         <span class="tag">Streamlit</span>
+                        <span class="tag">Prefect</span>
                         <span class="tag">GitHub Actions</span>
                     </div>
                     <div class="project-links">
@@ -197,7 +198,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <p class="arch-note">Streamlit front-end · <strong>GitHub Actions cron as the 0€ scheduler</strong> (daily, 05:15 UTC) · Prefect-instrumented flows, no hosted worker · uv workspace monorepo, Pydantic v2 contracts</p>
+                            <p class="arch-note">Streamlit front-end · <strong>a Prefect Cloud deployment</strong> — schedule (daily, 05:15 UTC), per-source retries, run history — <strong>served by an hourly GitHub Actions runner</strong> · uv workspace monorepo, Pydantic v2 contracts</p>
                         </div>
                     </div>
 
@@ -229,7 +230,7 @@
 
                     <div class="case-block">
                         <h2 class="block-label">Honest status</h2>
-                        <p class="honest-note"><strong>Production-grade:</strong> the dbt medallion, the Pydantic contracts, the IND cross-reference. <strong>Demo:</strong> the free sources are a fraction of the market — LinkedIn and Indeed sit behind paid anti-bot — and their depth is uneven, which the app measures per market rather than hiding. <strong>Not what it looks like:</strong> Prefect is instrumentation, not a deployment; the scheduler is a GitHub Actions cron. There is no Docker. No accuracy is claimed for the classifier — only agreement with a language signal it never sees. The text-to-SQL agent is guard-railed, not secure: marts only, one SELECT, a forced limit, on a connection MotherDuck holds read-only server-side. <strong>What I'd do differently:</strong> profile the sources before trusting a single cross-market chart — one query on average description length would have caught it.</p>
+                        <p class="honest-note"><strong>Production-grade:</strong> the dbt medallion, the Pydantic contracts, the IND cross-reference. <strong>Demo:</strong> the free sources are a fraction of the market — LinkedIn and Indeed sit behind paid anti-bot — and their depth is uneven, which the app measures per market rather than hiding. <strong>Not what it looks like:</strong> Prefect Cloud owns the schedule and the run history, but the machine is borrowed — the free tier has no hybrid work pools, so an hourly GitHub Actions job serves the deployment, and a run shows as <em>Late</em> until that job arrives. There is no Docker. No accuracy is claimed for the classifier — only agreement with a language signal it never sees. The text-to-SQL agent is guard-railed, not secure: marts only, one SELECT, a forced limit, on a connection MotherDuck holds read-only server-side. <strong>What I'd do differently:</strong> profile the sources before trusting a single cross-market chart — one query on average description length would have caught it.</p>
                     </div>
                 </div>
 
