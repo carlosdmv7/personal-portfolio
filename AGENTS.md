@@ -37,13 +37,16 @@ Partial coverage is a feature of the write-up, not an embarrassment to manage.
 
 ## Before saying it is done
 
-No browser is available here, so these are the checks that stand in for looking
-at the page:
-
 ```bash
-python3 tools/contrast-check.py                  # must exit 0
-lychee --config lychee.toml './**/*.html' './README.md' './docs/**/*.md'
+python3 tools/contrast-check.py                              # must exit 0
+lychee --config lychee.toml './**/*.html' './*.md' './docs/**/*.md'
+.venv/bin/python tools/render-check.py --shots /tmp/shots    # must exit 0
 ```
+
+Then **open the screenshots**. `render-check.py` fails on overflow, broken
+images and console errors, but a layout can be wrong without any of those: a
+label rail once dropped paragraphs into a 190px column and passed every check
+above. Only looking caught it.
 
 Also parse every touched HTML file for tag balance — an unclosed `<div>` in a
 case study does not fail any of the above, and silently collapses the layout.

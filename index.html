@@ -264,7 +264,7 @@
                 <div class="section-head">
                     <span class="eyebrow">2 case studies · 28 dbt models · 215 data tests</span>
                     <h2 class="section-title">Projects &amp; case studies</h2>
-                    <p class="section-sub">End-to-end data products I've built. Each has its own page — the business problem, the technical decisions and <em>why</em>, figures read straight from the project's dbt manifest, an honest status section, and what I'd do differently now.</p>
+                    <p class="section-sub">End-to-end data products I've built. Each has its own page — the business problem, the technical decisions and <em>why</em>, figures read straight from the project's dbt manifest, and where it falls short.</p>
                 </div>
 
                 <div class="projects-grid">
@@ -337,9 +337,10 @@
                             <span class="tag">Streamlit</span>
                         </div>
                         <p class="project-desc">
-                            An analytics pipeline that finds under-priced Spanish property listings. Scraped listings flow through
-                            validation and idempotent upserts into MotherDuck, a dbt medallion computes an <em>Opportunity Score</em>
-                            (€/m² vs. neighborhood benchmarks), and a Streamlit app surfaces the deals.
+                            An analytics pipeline that finds under-priced flats in València. Listings are
+                            scraped weekly, validated and upserted into MotherDuck, and a dbt medallion scores each one's
+                            €/m² against a benchmark that <strong>trusts each barrio only as far as its data earns</strong>
+                            — then says which benchmark it used.
                         </p>
                         <div class="project-impact">
                             <div class="impact-stat"><div class="impact-num">19</div><span class="impact-label">dbt models</span></div>

@@ -22,7 +22,8 @@ images/jmi/                                  app screenshots for the JMI case st
 tools/contrast-check.py                      WCAG checker for the palette
 tools/make-og-images.py                      regenerates the 1200x630 og cards
 tools/make-icons.py                          regenerates favicon/apple-touch PNGs
-tools/make-shots.py                          downscales the JMI app screenshots
+tools/make-shots.py                          downscales the app screenshots (JMI, Housing Radar)
+tools/render-check.py                        renders every page at 5 widths; fails on overflow
 ```
 
 ## Ground rules
