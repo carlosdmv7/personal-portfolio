@@ -50,7 +50,7 @@ def trim_bottom(im: Image.Image) -> Image.Image:
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--src", required=True, type=pathlib.Path,
-                    help="the job-market-intelligence repo's docs/img directory")
+                    help="a project repo's docs/img directory")
     ap.add_argument("--out", default=pathlib.Path("images/jmi"), type=pathlib.Path)
     ap.add_argument("--only", nargs="*", default=USED,
                     help="stems to convert; defaults to the ones the case study renders")

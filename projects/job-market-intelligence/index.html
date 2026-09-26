@@ -136,13 +136,12 @@
                 </figure>
 
                 <div class="case-body">
-                    <p class="case-note">Every count here moves overnight, so this page does not repeat them — <a href="https://job-market-intelligence-carlosdmv7.streamlit.app/" target="_blank" rel="noopener">the app has today's<span class="visually-hidden"> (opens in a new tab)</span></a>. What follows is why it is built the way it is. The figures below are measurements that settled a decision, and they keep their value whatever the corpus does next.</p>
+                    <p class="case-note">The numbers move every morning, so they live in <a href="https://job-market-intelligence-carlosdmv7.streamlit.app/" target="_blank" rel="noopener">the app<span class="visually-hidden"> (opens in a new tab)</span></a>. This page is about why it is built the way it is.</p>
 
                     <div class="case-block">
                         <h2 class="block-label">The problem</h2>
-                        <p>Job boards index on title and location — the two fields that tell you least. The one that decides whether a posting is worth opening is <strong>which technologies it actually asks for</strong>, and that only exists as prose.</p>
-                        <p>So the pipeline reads for it. Six free sources land in an append-only log every morning, an LLM reads each posting for its stack, seniority and working language, and a dbt medallion turns that into one canonical row per posting. Ireland has no open board, so it comes from employers' own career sites — the app lists those roles but keeps them out of every chart that compares markets.</p>
-                        <p>The free tier is small, so for most of the project's life the model had read only part of the corpus. One rule carried it: <strong>a posting nobody has read says “not yet classified”, never “no match.”</strong></p>
+                        <p>Job boards index on title and location — the two fields that tell you least. What decides whether a posting is worth opening is <strong>which technologies it asks for</strong>, and that only exists as prose.</p>
+                        <p>So the pipeline reads it. Every morning six free sources land in an append-only log, an LLM reads each posting for stack, seniority and language, and dbt turns it into one clean row per posting. A posting nobody has read yet says <strong>“not yet classified”</strong>, never “no match”.</p>
                         <figure class="shot">
                             <img src="../../images/jmi/my-fit.webp" alt="The My Fit page: skills detected from a pasted CV shown as removable chips, a level filter, then open roles ranked by how much of each one's stack the CV covers, with the matched technologies listed per row." width="1440" height="1000" loading="lazy" decoding="async">
                             <figcaption><strong>My Fit</strong> — what the whole pipeline exists to produce: open roles ranked by how much of their stack you already cover, scored out of what the posting names plus one, so a one-technology snippet can't reach 100%. Pure set arithmetic, no API call, and the CV never leaves the browser session.</figcaption>
@@ -203,12 +202,11 @@
                     </div>
 
                     <div class="case-block">
-                        <h2 class="block-label">Key decisions &amp; why</h2>
+                        <h2 class="block-label">Key decisions</h2>
                         <ul class="decision-list">
-                            <li><strong>Batched the LLM eight-fold on the same free quota.</strong> The 429 body named the limit: 20 <em>requests</em> a day, counted in requests rather than tokens. One posting per call spent the whole budget on round trips. Ten now ride in each request — <strong>23 enrichments a day became 180</strong>, and a six-month backlog cleared in under three weeks.</li>
-                            <li><strong>A chart that looked like a market fact was an artefact of the source.</strong> Adzuna, which supplies Spain, Germany and the Netherlands, returns a <strong>~500-character teaser</strong> where JobTech returns the full ~4,000-character ad, and the same classifier finds <strong>~0.7 technologies in one against ~7.9 in the other</strong>. “Sweden asks for dbt more than Spain does” was never a finding. Legibility is now a headline number per market (<a href="https://github.com/carlosdmv7/job-market-intelligence/blob/main/docs/adr/0011-market-detail-absorbs-the-visa-page.md" target="_blank" rel="noopener">ADR 0011</a>).</li>
-                            <li><strong>Facts with an authoritative source are looked up, never inferred.</strong> Employers are cross-referenced against the official <strong>IND register of recognised sponsors</strong> — 12,797 Dutch employers, 12,793 carrying a KvK number anyone can check by hand. It found a gap no text-reading model could: <strong>34% of employers on the Dutch corpus are recognised sponsors against 3% on the remote-first boards</strong>, and it holds for postings the LLM has never seen.</li>
-                            <li><strong>The flagship feature was retired on its own evidence.</strong> Visa sponsorship was the original pitch. Across 730 postings the classifier said <code>explicit_yes</code> <strong>once</strong>, and 14 hand labels scored 0.000 precision on that class. <a href="https://github.com/carlosdmv7/job-market-intelligence/blob/main/docs/adr/0007-fit-first-and-batched-enrichment.md" target="_blank" rel="noopener">ADR 0007</a> records the measurement and the reversal; ADR 0011 records the second one, six days later, when the demoted page was still in the navigation behind a passport icon. Eleven ADRs are written this way.</li>
+                            <li><strong>Eight times the reads on the same free quota.</strong> The free tier counts requests, not tokens, so one posting per call spent the budget on round trips. Ten per request took it from <strong>23 postings a day to 180</strong>, and each answer echoes its posting's index so a reordered reply can't mislabel a job.</li>
+                            <li><strong>A market difference that was really the source.</strong> Adzuna, which covers Spain, Germany and the Netherlands, returns a <strong>~500-character teaser</strong>; Sweden's board returns the full ad. Same classifier: <strong>~0.7 technologies per ad against ~7.9</strong>. The app now shows how much of each market it can read before comparing any of them (<a href="https://github.com/carlosdmv7/job-market-intelligence/blob/main/docs/adr/0011-market-detail-absorbs-the-visa-page.md" target="_blank" rel="noopener">ADR 0011</a>).</li>
+                            <li><strong>The original feature, retired on its own evidence.</strong> Visa sponsorship was the first pitch. Across 730 postings the model found an explicit “yes, we sponsor” <strong>once</strong>. <a href="https://github.com/carlosdmv7/job-market-intelligence/blob/main/docs/adr/0007-fit-first-and-batched-enrichment.md" target="_blank" rel="noopener">ADR 0007</a> records the measurement and the U-turn — one of eleven decision records in the repo.</li>
                         </ul>
                         <div class="code">
                             <div class="code-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span>&nbsp;enrichment/classifier.py — why the index is echoed</div>
@@ -229,8 +227,13 @@
                     </div>
 
                     <div class="case-block">
-                        <h2 class="block-label">Honest status</h2>
-                        <p class="honest-note"><strong>Production-grade:</strong> the dbt medallion, the Pydantic contracts, the IND cross-reference. <strong>Demo:</strong> the free sources are a fraction of the market — LinkedIn and Indeed sit behind paid anti-bot — and their depth is uneven, which the app measures per market rather than hiding. <strong>Not what it looks like:</strong> Prefect Cloud owns the schedule and the run history, but the machine is borrowed — the free tier has no hybrid work pools, so an hourly GitHub Actions job serves the deployment, and a run shows as <em>Late</em> until that job arrives. There is no Docker. No accuracy is claimed for the classifier — only agreement with a language signal it never sees. The text-to-SQL agent is guard-railed, not secure: marts only, one SELECT, a forced limit, on a connection MotherDuck holds read-only server-side. <strong>What I'd do differently:</strong> profile the sources before trusting a single cross-market chart — one query on average description length would have caught it.</p>
+                        <h2 class="block-label">Limits</h2>
+                        <ul class="decision-list">
+                            <li><strong>Partial coverage.</strong> Free sources only — LinkedIn and Indeed sit behind paid anti-bot — and how much each one reveals varies by market. Fewer than half of postings name a stack at all; the app measures that per market rather than hiding it.</li>
+                            <li><strong>Borrowed compute.</strong> Prefect Cloud owns the schedule and run history; the free tier has no hybrid pools, so an hourly GitHub Actions job runs whatever is due.</li>
+                            <li><strong>No accuracy claim.</strong> The classifier is checked against a language signal it never sees, not a labelled set. Ask the Data is guard-railed — read-only, one SELECT, a forced limit — not “secure”.</li>
+                            <li><strong>Next time.</strong> Profile the sources before trusting any chart that compares them. One query on description length would have caught it.</li>
+                        </ul>
                     </div>
                 </div>
 
