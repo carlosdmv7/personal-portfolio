@@ -6,12 +6,12 @@
     "these values, so a visitor with no JS, a failed fetch or a 404 still sees",
     "real numbers instead of a spinner.",
     "",
-    "No project publishes the feed today, and job-market-intelligence has",
-    "decided against the committed-file version of it: writing status.json to",
-    "main produced two bot commits a day, 58 in the first month, burying the",
-    "human history. A gh-pages publish alongside its dbt docs would give the",
-    "strip live values without touching main. Until then this snapshot is the",
-    "designed state, not a failure.",
+    "job-market-intelligence publishes the feed into its GitHub Pages artifact,",
+    "beside its dbt docs, so its runtime cells are live. It got there by ruling",
+    "out the committed-file version: writing status.json to main produced two",
+    "bot commits a day, 58 in the first month, burying the human history.",
+    "spanish-housing-radar has no feed yet and shows this snapshot, which is",
+    "the designed state, not a failure.",
     "",
     "Only figures that can be verified from a project's own artefacts appear",
     "here. rows_in_warehouse and last_ingest_at are null on purpose: they are",
@@ -20,7 +20,7 @@
     "",
     "See docs/freshness-contract.md."
   ],
-  "verified_at": "2026-09-19",
+  "verified_at": "2026-09-25",
   "projects": {
     "job-market-intelligence": {
       "url": "https://carlosdmv7.github.io/job-market-intelligence/status.json",

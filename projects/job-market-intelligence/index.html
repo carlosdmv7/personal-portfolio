@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Market Intelligence Engine — which EU data roles ask for my stack · Carlos De Manuel</title>
-    <meta name="description" content="Case study: a 0€ EU data-jobs platform. Six free job sources, an LLM reading each posting for its stack, a dbt medallion on MotherDuck, and a seven-page Streamlit app that ranks live roles against a CV — and never reports a posting it hasn't read as a miss.">
+    <meta name="description" content="Case study: a 0€ EU data-jobs platform. Six free job sources, an LLM reading each posting for its stack, a dbt medallion on MotherDuck, and a Streamlit app that ranks live roles against a CV — and never reports a posting it hasn't read as a miss.">
     <meta name="author" content="Carlos De Manuel Vicente">
     <link rel="canonical" href="https://carlosdmv7.github.io/personal-portfolio/projects/job-market-intelligence/">
 
     <!-- Open Graph / social preview -->
     <meta property="og:type" content="article">
     <meta property="og:title" content="Which EU data roles ask for my stack? — Job Market Intelligence Engine">
-    <meta property="og:description" content="Six free job sources, an LLM reading each posting, a dbt medallion on MotherDuck and a seven-page Streamlit app that ranks live roles against a CV. Rebuilds itself daily at 0€.">
+    <meta property="og:description" content="Six free job sources, an LLM reading each posting, a dbt medallion on MotherDuck and a Streamlit app that ranks live roles against a CV. Rebuilds itself daily at 0€.">
     <meta property="og:url" content="https://carlosdmv7.github.io/personal-portfolio/projects/job-market-intelligence/">
     <meta property="og:image" content="https://carlosdmv7.github.io/personal-portfolio/images/og-job-market-intelligence.png">
     <meta property="og:image:width" content="1200">
@@ -63,7 +63,7 @@
                 </nav>
 
                 <header class="case-hero">
-                    <span class="eyebrow">Case study · figures verified 19 Sep 2026</span>
+                    <span class="eyebrow">Case study</span>
                     <h1>Job Market Intelligence Engine</h1>
                     <p class="case-lede">One question, every morning: which open data roles in the EU are asking for my stack? Six free sources, an LLM that reads each posting, a dbt medallion on MotherDuck — and a rule that a posting nobody has read yet is never reported as a miss.</p>
                     <div class="tags">
@@ -98,7 +98,7 @@
                 <section class="freshness freshness-inline" aria-labelledby="freshness-title">
                     <div class="freshness-head">
                         <h2 id="freshness-title">Live pipeline state</h2>
-                        <p data-freshness-source>Static snapshot verified 19 Sep 2026 — dbt test counts read from each project’s <code>manifest.json</code>. Job Market Intelligence publishes its run summary beside its dbt docs, so its runtime cells are live; Spanish Housing Radar still shows the snapshot.</p>
+                        <p data-freshness-source>Static snapshot verified 25 Sep 2026 — dbt test counts read from each project’s <code>manifest.json</code>. Job Market Intelligence publishes its run summary beside its dbt docs, so its runtime cells are live; Spanish Housing Radar still shows the snapshot.</p>
                     </div>
                     <div class="freshness-rows">
                     <div class="fresh-row" data-state="unknown"
@@ -130,19 +130,21 @@
                 </section>
 
                 <figure class="shot shot-lead">
-                    <img src="../../images/jmi/home.webp" alt="The app's Overview page: 689 open data roles and 357 new in the last week, a heatmap of what each market's stack mix asks for with Spain, the Netherlands, Germany and Sweden as columns, the four newest postings as cards, and new roles day by day." width="1440" height="1000" fetchpriority="high" decoding="async">
-                    <figcaption><strong>Overview</strong> — what is open, what each market asks for, what just landed. The heatmap compares each market's <em>mix</em>, because the boards are read at different depths and raw counts ranked Sweden. Every figure is queried at load time from the marts. All screens here are from the run of 25 Sep 2026; the counts move every morning.</figcaption>
+                    <img src="../../images/jmi/home.webp" alt="The app's Overview page: headline counts of open roles and new arrivals, a heatmap of the stack mix each market asks for, the newest postings as cards, and a chart of new roles day by day." width="1440" height="1000" fetchpriority="high" decoding="async">
+                    <figcaption><strong>Overview</strong> — what is open, what each market asks for, what just landed. The heatmap compares each market's <em>mix</em>, not raw counts, because the boards are read at different depths.</figcaption>
                 </figure>
 
                 <div class="case-body">
+                    <p class="case-note">Every count here moves overnight, so this page does not repeat them — <a href="https://job-market-intelligence-carlosdmv7.streamlit.app/" target="_blank" rel="noopener">the app has today's<span class="visually-hidden"> (opens in a new tab)</span></a>. What follows is why it is built the way it is. The figures below are measurements that settled a decision, and they keep their value whatever the corpus does next.</p>
+
                     <div class="case-block">
                         <h2 class="block-label">The problem</h2>
                         <p>Job boards index on title and location — the two fields that tell you least. The one that decides whether a posting is worth opening is <strong>which technologies it actually asks for</strong>, and that only exists as prose.</p>
-                        <p>So the pipeline reads for it. Six free sources land in an append-only log every morning, an LLM reads each posting for its stack, seniority and working language, and a dbt medallion turns that into one canonical row per posting — <strong>703 open data roles</strong> on 26 Sep 2026, around 50 of them new each day. Spain, Germany, the Netherlands and Sweden are read from their job boards; Ireland, which no open board covers, from 33 employers' own career sites — so the app lists Irish roles but keeps them out of every chart that compares markets.</p>
-                        <p>The free tier allows 20 requests a day, so for most of the project's life the model had read only part of the corpus. One rule carried it: <strong>a posting nobody has read says “not yet classified”, never “no match.”</strong> The backlog is clear now, and the rule matters more — only 47% of roles yield a stack, and the reason is no longer the quota.</p>
+                        <p>So the pipeline reads for it. Six free sources land in an append-only log every morning, an LLM reads each posting for its stack, seniority and working language, and a dbt medallion turns that into one canonical row per posting. Ireland has no open board, so it comes from employers' own career sites — the app lists those roles but keeps them out of every chart that compares markets.</p>
+                        <p>The free tier is small, so for most of the project's life the model had read only part of the corpus. One rule carried it: <strong>a posting nobody has read says “not yet classified”, never “no match.”</strong></p>
                         <figure class="shot">
-                            <img src="../../images/jmi/my-fit.webp" alt="The My Fit page: skills detected from a pasted CV shown as removable chips, a Level filter, then every open role ranked by how much of its stack the CV covers — discounted when a posting names little — with the matched technologies listed per row." width="1440" height="1000" loading="lazy" decoding="async">
-                            <figcaption><strong>My Fit</strong> — the answer the whole pipeline exists to produce: every open role with a parsed stack, ranked by how much of it you already cover — out of what the posting names plus one, so a one-technology snippet can't score 100%. Pure set arithmetic, no API call. The CV never leaves the browser session.</figcaption>
+                            <img src="../../images/jmi/my-fit.webp" alt="The My Fit page: skills detected from a pasted CV shown as removable chips, a level filter, then open roles ranked by how much of each one's stack the CV covers, with the matched technologies listed per row." width="1440" height="1000" loading="lazy" decoding="async">
+                            <figcaption><strong>My Fit</strong> — what the whole pipeline exists to produce: open roles ranked by how much of their stack you already cover, scored out of what the posting names plus one, so a one-technology snippet can't reach 100%. Pure set arithmetic, no API call, and the CV never leaves the browser session.</figcaption>
                         </figure>
                     </div>
 
@@ -195,21 +197,17 @@
                                     </div>
                                 </div>
                             </div>
-                            <p class="arch-note">Streamlit front-end, 7 pages · <strong>GitHub Actions cron as the 0€ scheduler</strong> (daily, 05:15 UTC) · Prefect-instrumented flows, no hosted worker · uv workspace monorepo, Pydantic v2 contracts, 220 Python tests</p>
+                            <p class="arch-note">Streamlit front-end · <strong>GitHub Actions cron as the 0€ scheduler</strong> (daily, 05:15 UTC) · Prefect-instrumented flows, no hosted worker · uv workspace monorepo, Pydantic v2 contracts</p>
                         </div>
-                        <figure class="shot">
-                            <img src="../../images/jmi/how-it-works.webp" alt="The How It Works page inside the app: the daily pipeline drawn as a diagram from the free APIs through the LLM read into the dbt models, above a section explaining which signals are looked up and which are read out of prose." width="1440" height="1000" loading="lazy" decoding="async">
-                            <figcaption><strong>How It Works</strong> — the app documents its own pipeline, publishes the real system prompt, and shows live coverage rather than describing it.</figcaption>
-                        </figure>
                     </div>
 
                     <div class="case-block">
                         <h2 class="block-label">Key decisions &amp; why</h2>
                         <ul class="decision-list">
-                            <li><strong>Batched the LLM eight-fold on the same free quota.</strong> The 429 body named the limit: 20 <em>requests</em> a day, counted in requests rather than tokens. One posting per call spent the whole budget on round trips. Ten now ride in each request — <strong>23 enrichments a day became 180</strong>, and a six-month backlog cleared in under three weeks. Each result echoes the index of the posting it answers, because a short or reordered reply would otherwise attach one job's stack to another, silently.</li>
-                            <li><strong>A chart that looked like a market fact was an artefact of the source.</strong> With the queue clear, only 47% of roles still yielded a stack — so the gap was not the quota. It was the boards: Adzuna, which supplies Spain, Germany and the Netherlands, returns a <strong>~500-character teaser</strong> where JobTech returns the full ~4,000-character ad, and the same classifier finds <strong>~0.7 technologies in one against ~7.9 in the other</strong>. “Sweden asks for dbt more than Spain does” was never a finding. Legibility is now a headline number per market (<a href="https://github.com/carlosdmv7/job-market-intelligence/blob/main/docs/adr/0011-market-detail-absorbs-the-visa-page.md" target="_blank" rel="noopener">ADR 0011</a>).</li>
-                            <li><strong>Facts with an authoritative source are looked up, never inferred.</strong> Every employer is cross-referenced against the official <strong>IND register of recognised sponsors</strong> — 12,797 Dutch employers, 12,793 carrying a <strong>KvK number</strong> anyone can check by hand. It surfaced a gap no text-reading model could find: <strong>34% of employers on the Dutch corpus are recognised sponsors against 3% on the remote-first boards</strong>, and it holds for postings the LLM has never seen.</li>
-                            <li><strong>The flagship feature was retired on its own evidence.</strong> Visa sponsorship was the original pitch. Across 730 postings the classifier said <code>explicit_yes</code> <strong>once</strong>, and 14 hand labels scored 0.000 precision on that class — a class with no support in the corpus. <a href="https://github.com/carlosdmv7/job-market-intelligence/blob/main/docs/adr/0007-fit-first-and-batched-enrichment.md" target="_blank" rel="noopener">ADR 0007</a> records the measurement and the reversal; ADR 0011 records the second one, six days later, when the demoted page was still sitting in the navigation behind a passport icon. Eleven ADRs are written this way.</li>
+                            <li><strong>Batched the LLM eight-fold on the same free quota.</strong> The 429 body named the limit: 20 <em>requests</em> a day, counted in requests rather than tokens. One posting per call spent the whole budget on round trips. Ten now ride in each request — <strong>23 enrichments a day became 180</strong>, and a six-month backlog cleared in under three weeks.</li>
+                            <li><strong>A chart that looked like a market fact was an artefact of the source.</strong> Adzuna, which supplies Spain, Germany and the Netherlands, returns a <strong>~500-character teaser</strong> where JobTech returns the full ~4,000-character ad, and the same classifier finds <strong>~0.7 technologies in one against ~7.9 in the other</strong>. “Sweden asks for dbt more than Spain does” was never a finding. Legibility is now a headline number per market (<a href="https://github.com/carlosdmv7/job-market-intelligence/blob/main/docs/adr/0011-market-detail-absorbs-the-visa-page.md" target="_blank" rel="noopener">ADR 0011</a>).</li>
+                            <li><strong>Facts with an authoritative source are looked up, never inferred.</strong> Employers are cross-referenced against the official <strong>IND register of recognised sponsors</strong> — 12,797 Dutch employers, 12,793 carrying a KvK number anyone can check by hand. It found a gap no text-reading model could: <strong>34% of employers on the Dutch corpus are recognised sponsors against 3% on the remote-first boards</strong>, and it holds for postings the LLM has never seen.</li>
+                            <li><strong>The flagship feature was retired on its own evidence.</strong> Visa sponsorship was the original pitch. Across 730 postings the classifier said <code>explicit_yes</code> <strong>once</strong>, and 14 hand labels scored 0.000 precision on that class. <a href="https://github.com/carlosdmv7/job-market-intelligence/blob/main/docs/adr/0007-fit-first-and-batched-enrichment.md" target="_blank" rel="noopener">ADR 0007</a> records the measurement and the reversal; ADR 0011 records the second one, six days later, when the demoted page was still in the navigation behind a passport icon. Eleven ADRs are written this way.</li>
                         </ul>
                         <div class="code">
                             <div class="code-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span>&nbsp;enrichment/classifier.py — why the index is echoed</div>
@@ -221,49 +219,17 @@
         log.warning(<span class="f">"enrich.batch.bad_index"</span>, index=item.index)
         <span class="k">continue</span>
     seen.add(item.index)
-    enrichments.append(self._to_enrichment(postings[item.index - <span class="f">1</span>], ...))
-
-<span class="c"># Unanswered postings are not retried one by one: the quota this exists</span>
-<span class="c"># to stretch is counted in requests. They stay pending, and stay visible</span>
-<span class="c"># as "not yet classified" until tomorrow's run picks them up.</span></code></pre>
+    enrichments.append(self._to_enrichment(postings[item.index - <span class="f">1</span>], ...))</code></pre>
                         </div>
                         <figure class="shot">
-                            <img src="../../images/jmi/market-detail.webp" alt="The Market Detail page on the Netherlands: four KPIs — 171 open roles, 135 companies, 49% of ads written in English, 30% of roles stack-matchable — above a table showing that its single source returns 500-character descriptions yielding 0.58 technologies each." width="1440" height="1000" loading="lazy" decoding="async">
-                            <figcaption><strong>Market Detail</strong> — one market at a time, with <em>how much of it we can actually read</em> promoted to a headline number. Selecting the Netherlands adds the IND cross-reference and its KvK receipts, which is the only place in the app they now appear.</figcaption>
-                        </figure>
-                    </div>
-
-                    <div class="case-block">
-                        <h2 class="block-label">Supporting detail</h2>
-                        <ul class="decision-list">
-                            <li><strong>The classifier is checked against a signal it never sees.</strong> <code>english_sufficient</code> is the model's read of the prose; <code>detected_language</code> is derived deterministically on ingest and kept out of the prompt. One <code>GROUP BY</code> over both: of 643 English ads the model says English suffices for 85%, of 255 Dutch ads for <strong>0.4%</strong>. Full coverage for the price of one query, reported as agreement between two signals — never as accuracy, because neither is ground truth.</li>
-                            <li><strong>A filled role is not an open one.</strong> Boards delete filled roles rather than closing them, so days-since-last-seen is the only liveness signal. It becomes an <code>is_active</code> flag measured against the corpus's newest observation, never <code>current_date</code> — otherwise a stalled pipeline marks the whole market closed on a technicality.</li>
-                            <li><strong>The SQL agent's guarantee sits on the connection.</strong> It sees only the marts schema, one SELECT, forced <code>LIMIT 500</code>. Three of those four guardrails are checks in this repo's code; the fourth is a <strong>read-only connection MotherDuck enforces server-side</strong>, which is where it belongs, since the free plan issues read/write tokens only.</li>
-                        </ul>
-                        <figure class="shot">
-                            <img src="../../images/jmi/ask-the-data.webp" alt="The Ask the Data page: a plain-English question box with four suggested questions, and a note that the generated SQL is always shown and is rejected unless it is a single read-only query against the published tables." width="1440" height="1000" loading="lazy" decoding="async">
-                            <figcaption><strong>Ask the Data</strong> — natural language in, read-only SQL out, shown before it runs so you can check it rather than trust it.</figcaption>
-                        </figure>
-                    </div>
-
-                    <div class="case-block">
-                        <h2 class="block-label">Results</h2>
-                        <div class="results-grid">
-                            <div class="result"><div class="result-num">23 → 180</div><span class="result-label">Postings read per day, same free quota</span></div>
-                            <div class="result"><div class="result-num">0.7 vs 7.9</div><span class="result-label">Technologies found per ad: teaser source vs full-text source</span></div>
-                            <div class="result"><div class="result-num">34% vs 3%</div><span class="result-label">Recognised-sponsor rate: Dutch corpus vs remote boards</span></div>
-                            <div class="result"><div class="result-num">€0</div><span class="result-label">Monthly infra cost, 53 dbt tests green daily</span></div>
-                        </div>
-                        <p>Model and test counts come from the project's own <code>manifest.json</code>, the sponsor-register size is the row count of the scraped seed, and the market figures are the warehouse's own — nothing here is typed from memory.</p>
-                        <figure class="shot">
-                            <img src="../../images/jmi/market-trends.webp" alt="The Market Trends page: open roles per country, each row showing the share of its ads written in English, a note that the volumes are sampled, and below it the stack ranking with every market weighted equally." width="1440" height="1000" loading="lazy" decoding="async">
-                            <figcaption><strong>Market Trends</strong> — volume and language are different questions, so the country table carries both. The volumes are sampled — each Adzuna market is read up to 200 postings a day — so the page says so and points at the English share, the comparison that holds at any sample size.</figcaption>
+                            <img src="../../images/jmi/market-detail.webp" alt="The Market Detail page on the Netherlands: four KPI tiles for open roles, companies, share of ads in English and share of roles with a parsed stack, above a table breaking down each source's description length and the technologies found per ad." width="1440" height="1000" loading="lazy" decoding="async">
+                            <figcaption><strong>Market Detail</strong> — one market at a time, with <em>how much of it we can actually read</em> promoted to a headline number. Picking the Netherlands adds the IND cross-reference and its KvK receipts.</figcaption>
                         </figure>
                     </div>
 
                     <div class="case-block">
                         <h2 class="block-label">Honest status</h2>
-                        <p class="honest-note"><strong>Production-grade:</strong> the dbt medallion, the Pydantic contracts, the IND cross-reference. <strong>Demo:</strong> five free sources are a fraction of the market — LinkedIn and Indeed sit behind paid anti-bot — and their depth is uneven, which the app now measures per market rather than hiding. <strong>Not what it looks like:</strong> Prefect is instrumentation, not a deployment — the scheduler is a GitHub Actions cron; there is no Docker, because the Compose scaffolding could not be built here and was deleted rather than left as an untested claim; and no accuracy percentage is claimed for the classifier, only agreement with an independent signal. <strong>What I'd do differently:</strong> profile the sources before trusting a single cross-market chart — one query on average description length would have caught it, and would have saved both reversals.</p>
+                        <p class="honest-note"><strong>Production-grade:</strong> the dbt medallion, the Pydantic contracts, the IND cross-reference. <strong>Demo:</strong> the free sources are a fraction of the market — LinkedIn and Indeed sit behind paid anti-bot — and their depth is uneven, which the app measures per market rather than hiding. <strong>Not what it looks like:</strong> Prefect is instrumentation, not a deployment; the scheduler is a GitHub Actions cron. There is no Docker. No accuracy is claimed for the classifier — only agreement with a language signal it never sees. The text-to-SQL agent is guard-railed, not secure: marts only, one SELECT, a forced limit, on a connection MotherDuck holds read-only server-side. <strong>What I'd do differently:</strong> profile the sources before trusting a single cross-market chart — one query on average description length would have caught it.</p>
                     </div>
                 </div>
 

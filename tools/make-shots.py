@@ -24,15 +24,14 @@ WIDTH = 1440
 QUALITY = 82
 BOTTOM_MARGIN = 28  # px of background kept below the last content row
 
-# The source repo ships seven screens; the case study shows six. find-jobs is
-# left out because My Fit already shows a ranked table of the same postings and
-# two of them in a row reads as a gallery. Pass --only to override.
-#
-# market-detail replaced visa-sponsorship in Sep 2026: ADR 0011 folded the
-# standalone Netherlands visa page into a per-market page, so the screen the
-# case study needs is the one that contains it.
-USED = ["home", "my-fit", "how-it-works", "market-detail",
-        "ask-the-data", "market-trends"]
+# The source repo ships seven screens; the case study shows three. Every extra
+# screenshot is a re-capture and a caption rewrite each time the app changes,
+# and the case study is written to survive that — the live app is one click
+# away and carries the current numbers. What is kept is the one that shows the
+# shape of the data (home), the one the pipeline exists to produce (my-fit),
+# and the one that makes the source-legibility argument (market-detail).
+# Pass --only to override.
+USED = ["home", "my-fit", "market-detail"]
 
 
 def trim_bottom(im: Image.Image) -> Image.Image:
