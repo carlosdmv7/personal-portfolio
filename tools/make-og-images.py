@@ -42,10 +42,10 @@ CARDS = {
     "og-job-market-intelligence": {
         "eyebrow": "CASE STUDY  ·  JOB MARKET INTELLIGENCE ENGINE",
         "headline": "Which EU data roles\nask for my stack?",
-        "sub": "Five free job APIs, an LLM reading each posting, a dbt medallion on "
+        "sub": "Six free job sources, an LLM reading each posting, a dbt medallion on "
                "MotherDuck and a seven-page Streamlit app that ranks live roles against "
                "a CV. It rebuilds itself every morning, and says what it hasn't read.",
-        "chips": ["5 MARKETS", "9 DBT MODELS", "53 DATA TESTS", "€0 / MONTH"],
+        "chips": ["5 COUNTRIES", "9 DBT MODELS", "53 DATA TESTS", "€0 / MONTH"],
     },
     "og-spanish-housing-radar": {
         "eyebrow": "CASE STUDY  ·  SPANISH HOUSING RADAR",
