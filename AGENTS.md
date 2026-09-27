@@ -15,10 +15,12 @@ count, a warehouse query — and never carry one over from memory or from an
 earlier draft in the same session. A number that was right last month is the
 most convincing way to be wrong.
 
-The same applies to job titles. The RESRG entry leads with the functional title
-(what the work was) and keeps the official one beside it, because an
-employment check confirms the official one — never drop it. The internship had
-no official title, so it is described by its function.
+Job titles: Carlos chose (27 Sep 2026) to show the RESRG role by its function,
+"Data & Analytics Engineer", on the site and the CV; the official title (Digital
+Transformation Specialist) is one he raises himself in interviews, and the
+site's summary line ("a digital-transformation remit that became a data one")
+keeps it honest. Don't swap in any other title. The internship had no official
+title and is described by its function.
 
 ## Claims that would be false
 

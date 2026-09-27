@@ -27,7 +27,10 @@ CV = ROOT / "cv"
 
 def md(text: str) -> str:
     """The one bit of markup cv.toml uses: **bold**."""
-    return re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", html.escape(" ".join(text.split())))
+    # collapse layout whitespace only: a non-breaking space in cv.toml ("23\u00a0to\u00a0180")
+    # is there to keep a figure on one line, and str.split() would eat it
+    flat = re.sub(r"[ \t\r\n]+", " ", text).strip()
+    return re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", html.escape(flat))
 
 
 def main() -> int:
