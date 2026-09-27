@@ -49,9 +49,10 @@ used from top management down to plant teams."""
 apps = """Developed Streamlit apps for the shop floor and management, including inventory \
 tools and a KPI app where plants manage **130+\u00A0KPIs** and their targets, with dbt \
 testing the data written back to Snowflake."""
-etl = """Automated indicators from several source systems with Python ETL into \
-Snowflake, orchestrated with Prefect, including near-real-time inventory data; strict incremental loading \
-cut stock load times **~95%**."""
+etl = """Automated indicators with Python ETL from REST APIs, email and other \
+sources into Snowflake, orchestrated with Prefect, including near-real-time \
+inventory data. Made stock loading **~90%\u00A0faster** at **~30%\u00A0lower cost**, \
+mostly by cutting idle time."""
 modelling = """Designed Snowflake data models for apps and reports, and tuned queries \
 and views for performance."""
 platform = """Deployed the apps on AWS (EC2, S3, EFS) with Docker, CI/CD through \
@@ -95,7 +96,7 @@ and Streamlit."""
 
 [skills]
 warehouse = ["Warehouse & modelling", "Snowflake, dbt, DuckDB, Kimball dimensional modelling"]
-languages = ["Languages", "Python, SQL, Bash, Jinja, DAX"]
+languages = ["Languages & integration", "Python, SQL, Bash, Jinja, DAX, REST APIs"]
 platform = ["Platform & orchestration", "AWS (EC2, S3, EFS), Prefect, Airflow, Docker, Make, GitHub Actions, Git, Azure DevOps"]
 quality = ["Quality & observability", "pytest, Pydantic, ruff, mypy, Prometheus"]
 bi = ["BI & data apps", "Power BI, Streamlit, Microsoft Fabric"]

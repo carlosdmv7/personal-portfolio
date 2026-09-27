@@ -42,7 +42,9 @@ Partial coverage is a feature of the write-up, not an embarrassment to manage.
 The same goes for the RESRG figures on the site and the CV. Carlos withdrew
 two on 27 Sep 2026 as not defensible in an interview: **~98% refresh runtime
 and ~90% compute cost**. "800M+ rows" is out until he confirms what it counts.
-Do not bring any of them back from an old commit or the old CV.
+Do not bring any of them back from an old commit or the old CV. The stock-load
+figure is **~90% faster at ~30% lower cost** (mostly idle time removed), which
+replaces the older ~95%; that is the one he stands behind.
 
 ## Before saying it is done
 

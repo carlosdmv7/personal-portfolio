@@ -147,8 +147,8 @@ groups to show, in what order. There is one variant today; old CVs belong on
 your own machine, not here — everything in this repo is published. Edit the TOML, then:
 
 ```bash
-.venv/bin/pip install jinja2 playwright
-.venv/bin/python tools/make-cv.py --preview   # fails if a variant spills onto page 2
+.venv/bin/pip install jinja2 playwright pypdf
+.venv/bin/python tools/make-cv.py --preview   # fails on a 2nd page or on text an ATS would misread
 ```
 
 The same rules as the site apply to it: figures from artefacts, and the official
