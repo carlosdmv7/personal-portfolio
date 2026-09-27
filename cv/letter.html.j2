@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{{ p.name }} — Cover letter, {{ l.company }}</title>
+<style>
+/* Same header, fonts and colours as the CV, so the two read as one set. */
+@font-face { font-family: "Archivo"; src: url("{{ fonts }}/Archivo[wdth,wght].ttf"); font-weight: 100 900; }
+@font-face { font-family: "Public Sans"; src: url("{{ fonts }}/PublicSans[wght].ttf"); font-weight: 100 900; }
+@font-face { font-family: "Amp"; src: url("{{ fonts }}/PublicSans[wght].ttf"); font-weight: 100 900; unicode-range: U+0026; }
+@page { size: A4; margin: 16mm 20mm 16mm; }
+:root { --ink: #1F3B44; --muted: #4E6770; --accent: #2E6B5E; --rule: #D9CFBF; --warm: #D96C2C; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-variant-ligatures: none; font-feature-settings: "liga" 0, "clig" 0, "dlig" 0;
+       font-family: "Public Sans", sans-serif; font-size: 10.5pt; line-height: 1.55; color: var(--ink); }
+strong { font-weight: 600; }
+a { color: inherit; text-decoration: none; }
+header { padding-bottom: 10pt; border-bottom: 0.8pt solid var(--rule); }
+h1 { font-family: "Amp", "Archivo", sans-serif; font-size: 20pt; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; }
+.headline { font-family: "Amp", "Archivo", sans-serif; font-size: 11.5pt; font-weight: 600; color: var(--accent); margin-top: 1pt; }
+.contact { color: var(--muted); font-size: 8.5pt; margin-top: 4pt; line-height: 1.42; }
+.contact .sep { color: var(--rule); }
+/* one short warm stroke: the site's accent, and the only ornament on the page */
+.mark { width: 28pt; height: 2.2pt; background: var(--warm); border-radius: 1pt; margin: 22pt 0 14pt; }
+.to { display: flex; justify-content: space-between; align-items: baseline; gap: 12pt; color: var(--muted); font-size: 9.5pt; }
+.to strong { color: var(--ink); }
+.greeting { margin: 20pt 0 12pt; }
+.body p { margin-bottom: 10pt; }
+.close { margin-top: 18pt; }
+.sig { margin-top: 3pt; font-family: "Amp", "Archivo", sans-serif; font-weight: 700; font-size: 11.5pt; }
+</style>
+</head>
+<body>
+<header>
+  <h1>{{ p.name }}</h1>
+  <div class="headline">{{ headline }}</div>
+  <div class="contact">
+    <span>{{ p.location }}</span><span class="sep"> · </span><span><a href="mailto:{{ p.email }}">{{ p.email }}</a></span><span class="sep"> · </span><span>{{ p.phone }}</span>
+  </div>
+  <div class="contact">
+    <span><a href="https://{{ p.portfolio }}">{{ p.portfolio }}</a></span><span class="sep"> · </span><span><a href="https://{{ p.linkedin }}">{{ p.linkedin }}</a></span><span class="sep"> · </span><span><a href="https://{{ p.github }}">{{ p.github }}</a></span>
+  </div>
+</header>
+
+<div class="mark"></div>
+<div class="to">
+  <div><strong>{{ l.company }}</strong>{% if l.role %}<span> · </span>{{ l.role }}{% endif %}</div>
+  <div>{{ date }}</div>
+</div>
+
+<p class="greeting">{{ l.greeting }}</p>
+<div class="body">
+{% for para in paragraphs %}  <p>{{ para | md }}</p>
+{% endfor %}</div>
+
+<p class="close">{{ l.sign_off or "Best regards," }}</p>
+<p class="sig">{{ p.name }}</p>
+</body>
+</html>

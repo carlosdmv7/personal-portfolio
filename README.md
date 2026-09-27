@@ -153,8 +153,17 @@ make cv          # or: .venv/bin/python tools/make-cv.py --preview
                  # fails on a 2nd page or on text an ATS would misread
 ```
 
-The same rules as the site apply to it: figures from artefacts, and the official
-job title beside the functional one.
+The same rules as the site apply to it: figures from artefacts, and the job
+title rule in AGENTS.md.
+
+### Cover letters
+
+`make letter L=~/cover-letters/acme.toml` renders a letter in the CV's design:
+same header, fonts and colours, with name, contact line and headline read from
+`cv/cv.toml`. The letter itself (company, greeting, body) lives in a TOML
+**outside this repo**, because it names a company you are applying to and this
+repo is public; the script refuses a letter inside it. The TOML format is in the
+docstring of `tools/make-letter.py`. `--preview` needs `pymupdf`.
 
 ## Local preview
 

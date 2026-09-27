@@ -4,6 +4,7 @@
 #   make cv      regenerate the CV from cv/cv.toml (fails on 2 pages or ATS issues)
 #   make check   everything to run before opening a PR
 #   make og      regenerate the 1200x630 social cards
+#   make letter L=~/cover-letters/acme.toml   a cover letter in the CV's design
 #
 # One-time setup:
 #   python3 -m venv .venv && .venv/bin/pip install pillow jinja2 playwright pypdf
@@ -11,7 +12,7 @@
 
 PY := .venv/bin/python
 
-.PHONY: cv check og
+.PHONY: cv check og letter
 
 cv:
 	$(PY) tools/make-cv.py
@@ -22,3 +23,6 @@ check:
 
 og:
 	$(PY) tools/make-og-images.py --out images
+
+letter:
+	$(PY) tools/make-letter.py $(L) --preview
