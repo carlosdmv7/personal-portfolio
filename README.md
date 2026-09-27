@@ -7,6 +7,7 @@ at **<https://carlosdmv7.github.io/personal-portfolio/>**.
 
 ```
 index.html                                  home
+Makefile                                    make cv · make check · make og
 404.html                                    served by Pages for any missing path; links absolute
 AGENTS.md                                   repo conventions + the claims that would be false
 projects/job-market-intelligence/           case study (own URL, title, og:image)
@@ -148,7 +149,8 @@ your own machine, not here — everything in this repo is published. Edit the TO
 
 ```bash
 .venv/bin/pip install jinja2 playwright pypdf
-.venv/bin/python tools/make-cv.py --preview   # fails on a 2nd page or on text an ATS would misread
+make cv          # or: .venv/bin/python tools/make-cv.py --preview
+                 # fails on a 2nd page or on text an ATS would misread
 ```
 
 The same rules as the site apply to it: figures from artefacts, and the official

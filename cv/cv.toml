@@ -23,14 +23,14 @@ portfolio = "carlosdmv7.github.io/personal-portfolio"
 [variants.data-analytics-engineer]
 file = "carlos-de-manuel-cv.pdf"
 headline = "Data & Analytics Engineer"
-summary = """Data & Analytics Engineer at a global automotive manufacturer. I build \
-the models, pipelines and apps that 20+ plants in North America, APAC and EMEA \
-use every day, from the reports top management reads to the tools people use on \
-the shop floor. Stack: Snowflake, dbt, Python, SQL, Prefect, AWS, Power BI and \
-Streamlit."""
-experience = ["dashboards", "apps", "etl", "platform", "modelling", "energy"]
+summary = """Data & Analytics Engineer at a global automotive manufacturer. I own \
+the path from raw operational data to the products people use: Python pipelines \
+orchestrated with Prefect, tested Snowflake and dbt models, Power BI and Streamlit \
+on top, running on AWS. Used across 20+\u00A0plants in North America, APAC and \
+EMEA, from top management to the shop floor."""
+experience = ["layer", "kpi", "pipelines", "products", "platform", "energy"]
 projects = ["jmi", "shr"]
-skills = ["warehouse", "languages", "platform", "quality", "bi", "ai"]
+skills = ["warehouse", "languages", "platform", "cicd", "bi", "ai"]
 
 # -------------------------------------------------------------- experience ---
 
@@ -42,24 +42,22 @@ where = "Liria, Spain (hybrid)"
 dates = "Jan 2025 – Present"
 
 [jobs.bullets]
-dashboards = """Built Power BI dashboards for production, quality, supply chain, \
-purchasing, finance, HR and EHS across **20+\u00A0plants** in NA, APAC and EMEA, from \
-part quality and incidents to material-consumption variances and energy prices, \
-used from top management down to plant teams."""
-apps = """Developed Streamlit apps for the shop floor and management, including inventory \
-tools and a KPI app where plants manage **130+\u00A0KPIs** and their targets, with dbt \
-testing the data written back to Snowflake."""
-etl = """Automated indicators with Python ETL from REST APIs, email and other \
-sources into Snowflake, orchestrated with Prefect, including near-real-time \
-inventory data. Made stock loading **~90%\u00A0faster** at **~30%\u00A0lower cost**, \
-mostly by cutting idle time."""
-modelling = """Designed Snowflake data models for apps and reports, and tuned queries \
+layer = """Replaced plant-level Excel trackers with a governed analytics layer on \
+Snowflake and dbt, now the shared source for **20+\u00A0plants** across three \
+regions, from executive reporting to the shop floor."""
+kpi = """Standardised **130+\u00A0KPIs** and their targets through a Streamlit \
+governance app, with dbt tests on every write-back to Snowflake, so every plant \
+reports the same metric the same way."""
+pipelines = """Built and orchestrated Python ETL with Prefect from REST APIs, email \
+and operational systems, including near-real-time inventory data; made stock \
+loading **~90%\u00A0faster** at **~30%\u00A0lower cost**, mostly by cutting idle time."""
+products = """Delivered Power BI dashboards and Streamlit apps for operations, \
+finance and HR, designing the Snowflake models behind them and tuning queries \
 and views for performance."""
-platform = """Deployed the apps on AWS (EC2, S3, EFS) with Docker, CI/CD through \
-Makefiles, and Prometheus for metrics and observability."""
-energy = """Forecast plant electricity consumption from production variables for \
-the purchasing team, joining utility invoices with production and financial data \
-so usage normalises against sales."""
+platform = """Deployed the apps to production on AWS (EC2, S3, EFS) with Docker, \
+CI/CD and Prometheus monitoring."""
+energy = """Forecast plant energy consumption from production variables for \
+purchasing, normalised against sales."""
 
 [[jobs]]
 id = "bds"
@@ -69,8 +67,9 @@ where = "Valencia, Spain"
 dates = "Nov 2023 – Jul 2024"
 
 [jobs.bullets]
-framework = """Built an end-to-end Python framework and preprocessing pipelines to \
-evaluate healthcare ML models for fairness, robustness and explainability (XAI)."""
+framework = """Built a Python framework to audit healthcare ML models against \
+**Trustworthy AI** principles: fairness, robustness and explainability (SHAP), \
+the basis of my BSc thesis."""
 
 # ---------------------------------------------------------------- projects ---
 # Figures: dbt counts from each project's target/manifest.json (26 Sep 2026);
@@ -82,25 +81,25 @@ url = "carlosdmv7.github.io/personal-portfolio/projects/job-market-intelligence"
 repo = "github.com/carlosdmv7/job-market-intelligence"
 text = """Reads EU data-job ads every day and ranks them against a CV: six free APIs, \
 LLM enrichment that went from **23\u00A0to\u00A0180** ads a day on the same free quota, dbt on \
-MotherDuck, Prefect Cloud and Streamlit."""
+MotherDuck, Prefect Cloud, GitHub Actions CI and Streamlit."""
 
 [projects.shr]
 name = "Spanish Housing Radar"
 url = "carlosdmv7.github.io/personal-portfolio/projects/spanish-housing-radar"
 repo = "github.com/carlosdmv7/spanish-housing-radar"
 text = """Finds under-priced flats in València by scoring every listing against its \
-neighbourhood: weekly scraping, dbt with **162 data tests**, Prefect Cloud, Docker \
-and Streamlit."""
+neighbourhood: weekly scraping, dbt with **162 data tests**, Prefect Cloud, Docker, \
+GitHub Actions CI and Streamlit."""
 
 # ------------------------------------------------------------------ skills ---
 
 [skills]
-warehouse = ["Warehouse & modelling", "Snowflake, dbt, DuckDB, Kimball dimensional modelling"]
+warehouse = ["Data modelling & warehousing", "Snowflake, dbt, DuckDB, dimensional modelling (Kimball)"]
 languages = ["Languages & integration", "Python, SQL, Bash, Jinja, DAX, REST APIs"]
-platform = ["Platform & orchestration", "AWS (EC2, S3, EFS), Prefect, Airflow, Docker, Make, GitHub Actions, Git, Azure DevOps"]
-quality = ["Quality & observability", "pytest, Pydantic, ruff, mypy, Prometheus"]
-bi = ["BI & data apps", "Power BI, Streamlit, Microsoft Fabric"]
-ai = ["AI & ML", "Gemini and OpenAI APIs (incl. Azure OpenAI), LLM evals, scikit-learn, SHAP"]
+platform = ["Orchestration & cloud", "Prefect, Airflow, AWS (EC2, S3, EFS), Docker"]
+cicd = ["CI/CD & quality", "GitHub Actions, Azure DevOps, Git, Make, pytest, Pydantic, ruff, mypy"]
+bi = ["BI, apps & observability", "Power BI, Streamlit, Microsoft Fabric, Prometheus"]
+ai = ["AI & ML", "LLM APIs (Azure OpenAI, Gemini), LLM evaluation, scikit-learn, SHAP"]
 
 # --------------------------------------------------------------- education ---
 
@@ -111,7 +110,7 @@ school = "UPV, Valencia"
 [[education]]
 degree = "BSc, Biomedical Engineering (ICT specialisation)"
 school = "UPV, Valencia"
-note = "Thesis graded 10/10 · distinction for academic performance (top 25%)"
+note = "Thesis: a Trustworthy AI framework for healthcare, graded 10/10 · top 25% of the year"
 
 [extras]
 languages = "Spanish (native) · English (C1, Cambridge, 194)"
