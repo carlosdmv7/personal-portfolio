@@ -90,6 +90,13 @@ def main() -> int:
             out = CV / v["file"]
             out.parent.mkdir(parents=True, exist_ok=True)
             page.pdf(path=str(out), format="A4", print_background=True, prefer_css_page_size=True)
+            # Chromium stamps the render time into /CreationDate and /ModDate, the
+            # only bytes that differ between two renders of the same content. Pin
+            # them (same length, so the xref offsets stay valid) and an unchanged
+            # CV regenerates byte-identical: `git status` then shows a change only
+            # when there is one.
+            out.write_bytes(re.sub(rb"(/(?:CreationDate|ModDate) \(D:)\d{14}",
+                                   rb"\g<1>20260101000000", out.read_bytes()))
             pages = len(re.findall(rb"/Type\s*/Page[^s]", out.read_bytes()))
             ats = ats_problems(out)
             ok = pages == 1 and not ats
