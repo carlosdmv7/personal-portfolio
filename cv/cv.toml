@@ -104,12 +104,12 @@ ai = ["AI & ML", "LLM APIs (Gemini, Azure OpenAI), LLM evaluation, scikit-learn,
 [[education]]
 degree = "MSc, Data Analysis, Process Improvement & Decision Support Engineering"
 school = "UPV, Valencia"
-dates = "2024 – 2025"
+dates = "2025"
 
 [[education]]
 degree = "BSc, Biomedical Engineering (ICT specialisation)"
 school = "UPV, Valencia"
-dates = "2020 – 2024"
+dates = "2024"
 note = "Thesis: a Trustworthy AI framework for healthcare, graded 10/10 · top 25% of the year"
 
 [extras]
