@@ -14,6 +14,7 @@ location = "Valencia, Spain · open to relocation"
 linkedin = "linkedin.com/in/carlos-de-manuel"
 github = "github.com/carlosdmv7"
 portfolio = "carlosdmv7.github.io/personal-portfolio"
+file_prefix = "CarlosDeManuel"   # cover letters: CarlosDeManuel-CoverLetter-<Company>.pdf
 
 # ---------------------------------------------------------------- variants ---
 # One CV today. A variant is the same facts with a different emphasis (its own

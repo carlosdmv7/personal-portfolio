@@ -12,7 +12,7 @@ company  = "Acme"                                   # shown top left
 role     = "Analytics Engineer"                     # optional, beside the company
 # date   = "2026-09-29"                             # optional, defaults to today
 greeting = "Dear Acme Data Team,"
-file     = "Carlos-De-Manuel-Cover-Letter-Acme.pdf" # the name the recruiter sees
+# file   = "Other-Name.pdf"                         # optional; default CarlosDeManuel-CoverLetter-Acme.pdf
 # sign_off = "Best regards,"                        # optional
 
 # Paragraphs are separated by a blank line; **bold** works. Keep it to one page:
