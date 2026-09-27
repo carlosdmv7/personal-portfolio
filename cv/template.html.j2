@@ -32,7 +32,7 @@ ul { margin: 2pt 0 0 11pt; }
 li { margin-bottom: 1.6pt; padding-left: 1pt; }
 li::marker { color: var(--accent); }
 .proj-name { font-weight: 700; }
-.proj-url { color: var(--muted); font-size: 8.3pt; }
+.proj-url { color: var(--accent); font-size: 8.3pt; text-decoration: underline; text-decoration-color: var(--rule); text-underline-offset: 1.5pt; }
 .skills { display: grid; grid-template-columns: max-content 1fr; column-gap: 10pt; row-gap: 2pt; }
 .skills dt { font-weight: 600; }
 .edu .row + .row { margin-top: 3pt; }
@@ -67,7 +67,7 @@ li::marker { color: var(--accent); }
 <h2>Projects</h2>
 {% for pr in projects %}
 <div class="item">
-  <div><span class="proj-name">{{ pr.name }}</span> · <a class="proj-url" href="https://{{ pr.url }}">{{ pr.url }}</a></div>
+  <div><span class="proj-name">{{ pr.name }}</span> · <a class="proj-url" href="https://{{ pr.url }}">case study</a> · <a class="proj-url" href="https://{{ pr.repo }}">{{ pr.repo }}</a></div>
   <div>{{ pr.text | md }}</div>
 </div>
 {% endfor %}
@@ -85,8 +85,9 @@ li::marker { color: var(--accent); }
 {% endfor %}
 </div>
 
-<h2>Certifications &amp; languages</h2>
-<div>{{ x.certifications }}</div>
+{% if x.certifications %}<h2>Certifications</h2>
+<div>{{ x.certifications }}</div>{% endif %}
+<h2>Languages</h2>
 <div>{{ x.languages }}</div>
 </body>
 </html>

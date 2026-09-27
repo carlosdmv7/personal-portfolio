@@ -100,6 +100,7 @@ evaluate healthcare ML models for fairness, robustness and explainability (XAI).
 [projects.jmi]
 name = "Job Market Intelligence"
 url = "carlosdmv7.github.io/personal-portfolio/projects/job-market-intelligence"
+repo = "github.com/carlosdmv7/job-market-intelligence"
 text = """Daily pipeline reading EU data-job postings from six free APIs; LLM \
 enrichment batched to read **23 → 180** postings a day on the same free quota; dbt \
 medallion on MotherDuck (9 models, 53 tests); Streamlit app ranking roles against \
@@ -108,6 +109,7 @@ a CV. Prefect Cloud deployment, €0 a month."""
 [projects.shr]
 name = "Spanish Housing Radar"
 url = "carlosdmv7.github.io/personal-portfolio/projects/spanish-housing-radar"
+repo = "github.com/carlosdmv7/spanish-housing-radar"
 text = """Weekly scrape of València listings, each scored against an \
 empirical-Bayes blend of its barrio and district benchmark; dbt medallion (19 \
 models, 162 tests), Prefect Cloud, Docker, Streamlit."""
@@ -136,5 +138,4 @@ dates = "2020 – 2024"
 note = "Thesis graded 10/10 · distinction for academic performance (top 25%)"
 
 [extras]
-certifications = "AWS Certified Data Engineer – Associate and dbt Certification (both in progress, 2026)"
 languages = "Spanish (native) · English (C1, Cambridge, 194)"
