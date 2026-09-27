@@ -38,7 +38,9 @@ def main() -> int:
     data = tomllib.loads((CV / "cv.toml").read_text(encoding="utf-8"))
     env = Environment(loader=FileSystemLoader(CV), autoescape=True)
     env.filters["md"] = lambda s: __import__("markupsafe").Markup(md(s))
-    tpl = env.get_template("template.html")
+    # .j2, not .html: Pages would publish a .html as a page, and the link
+    # checker would try to resolve its {{ placeholders }} as URLs.
+    tpl = env.get_template("template.html.j2")
 
     failures = 0
     with sync_playwright() as p:
