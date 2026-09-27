@@ -43,8 +43,18 @@ The same goes for the RESRG figures on the site and the CV. Carlos withdrew
 two on 27 Sep 2026 as not defensible in an interview: **~98% refresh runtime
 and ~90% compute cost**. "800M+ rows" is out until he confirms what it counts.
 Do not bring any of them back from an old commit or the old CV. The stock-load
-figure is **~90% faster at ~30% lower cost** (mostly idle time removed), which
-replaces the older ~95%; that is the one he stands behind.
+figure is **~90% faster at ~30% lower cost**, his own work (Snowflake query
+tuning, idle time removed), which replaces the older ~95%; that is the one he
+stands behind.
+
+What he does at RESRG, as he scoped it on 27 Sep 2026, so the CV, the site and
+his LinkedIn claim the same: dbt at work is only the tests on what the KPI app
+writes back (the heavy dbt is in the personal projects); email is for pipeline
+notifications, never a data source; near-real-time inventory was shared with
+the data engineering team, so it is not his claim; his dashboards are supply
+chain, finance and quality, not production; he deploys the Streamlit apps on AWS
+himself, and Power BI does not run there. REST APIs are light at work: fine on
+the CV, kept off LinkedIn.
 
 ## Before saying it is done
 
