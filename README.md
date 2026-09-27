@@ -7,6 +7,7 @@ at **<https://carlosdmv7.github.io/personal-portfolio/>**.
 
 ```
 index.html                                  home
+404.html                                    served by Pages for any missing path; links absolute
 AGENTS.md                                   repo conventions + the claims that would be false
 projects/job-market-intelligence/           case study (own URL, title, og:image)
 projects/spanish-housing-radar/             case study

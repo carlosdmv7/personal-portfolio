@@ -26,7 +26,7 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parent.parent
-PAGES = ["", "projects/job-market-intelligence/", "projects/spanish-housing-radar/"]
+PAGES = ["", "projects/job-market-intelligence/", "projects/spanish-housing-radar/", "404.html"]
 WIDTHS = [1440, 1024, 768, 390, 360]
 
 

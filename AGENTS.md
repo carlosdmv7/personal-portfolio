@@ -15,8 +15,10 @@ count, a warehouse query — and never carry one over from memory or from an
 earlier draft in the same session. A number that was right last month is the
 most convincing way to be wrong.
 
-The same applies to the job title in the experience section. It is verifiable in
-a reference call. Do not smooth it into something that sells better.
+The same applies to job titles. The RESRG entry leads with the functional title
+(what the work was) and keeps the official one beside it, because an
+employment check confirms the official one — never drop it. The internship had
+no official title, so it is described by its function.
 
 ## Claims that would be false
 
