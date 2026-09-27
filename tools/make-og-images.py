@@ -37,7 +37,7 @@ CARDS = {
         "headline": "Data you can trust:\nmodelled, tested,\ndocumented.",
         "sub": "Snowflake · dbt · Python · Prefect · AWS. I build the layer "
                "between raw data and decisions.",
-        "chips": ["800M+ ROWS IN SNOWFLAKE", "130+ GOVERNED KPIS", "20+ PLANTS · 3 REGIONS"],
+        "chips": ["20+ PLANTS", "NA · APAC · EMEA", "130+ GOVERNED KPIS"],
     },
     "og-job-market-intelligence": {
         "eyebrow": "CASE STUDY  ·  JOB MARKET INTELLIGENCE ENGINE",

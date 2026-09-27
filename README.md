@@ -17,7 +17,6 @@ freshness.js                                the freshness strip's live upgrade
 data/freshness.json                          static fallback + schema reference
 cv/cv.toml                                   the CV's single source: content + variants
 cv/carlos-de-manuel-cv.pdf                   generated; linked from the hero and Contact
-cv/variants/                                 generated; Data Engineering and Analytics & BI emphases
 docs/freshness-contract.md                   status.json schema + CI snippet
 lychee.toml                                  link-checker config (what's excluded, and why)
 .github/workflows/link-check.yml             fails the build on any 4xx link
@@ -144,7 +143,8 @@ same way:
 
 The CV is generated, not edited. `cv/cv.toml` holds every fact once; each
 variant in it picks a headline, a summary, and which bullets, projects and skill
-groups to show, in what order. Edit the TOML, then:
+groups to show, in what order. There is one variant today; old CVs belong on
+your own machine, not here — everything in this repo is published. Edit the TOML, then:
 
 ```bash
 .venv/bin/pip install jinja2 playwright
