@@ -158,12 +158,13 @@ title rule in AGENTS.md.
 
 ### Cover letters
 
-`make letter L=~/cover-letters/acme.toml` renders a letter in the CV's design:
-same header, fonts and colours, with name, contact line and headline read from
-`cv/cv.toml`. The letter itself (company, greeting, body) lives in a TOML
-**outside this repo**, because it names a company you are applying to and this
-repo is public; the script refuses a letter inside it. The TOML format is in the
-docstring of `tools/make-letter.py`. `--preview` needs `pymupdf`.
+`make letter` renders a cover letter in the CV's design: same header, fonts and
+colours, with name, contact line and headline read from `cv/cv.toml`. The first
+run copies `cv/letter.example.toml` to `letters/letter.toml`; edit that copy for
+each application, run `make letter` again, and keep the PDF it writes next to
+it. `letters/` is gitignored because a letter names the company you are applying
+to and this repo is public; the script refuses a letter or PDF that git would
+commit. The preview PNG needs `pymupdf`.
 
 ## Local preview
 

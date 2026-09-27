@@ -8,3 +8,6 @@ __pycache__/
 .lycheecache
 cv/.*.html
 cv/**/*.png
+
+# Cover letters name the company applied to; this repo is public (see tools/make-letter.py)
+letters/

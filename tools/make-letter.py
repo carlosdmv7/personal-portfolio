@@ -1,23 +1,15 @@
 """Render a cover letter to PDF in the CV's design.
 
-    .venv/bin/python tools/make-letter.py ~/cover-letters/acme.toml [--preview]
+    make letter                  # letters/letter.toml -> letters/<file>.pdf
+    .venv/bin/python tools/make-letter.py [path/to/letter.toml] [--preview]
 
-The letter's own words live in a TOML *outside this repo*: everything here is
-published, and a letter names the company you are applying to. The script
-refuses a letter inside the repo for that reason. Your name, contact line and
-headline come from cv/cv.toml, so the letter and the CV always agree.
-
-    company  = "Acme"                      # required
-    role     = "Analytics Engineer"        # optional, shown beside the company
-    date     = "29 September 2026"         # optional, defaults to today
-    greeting = "Dear Acme Data Team,"      # required
-    body     = \"\"\"First paragraph.
-
-    Second paragraph, with **bold** if you need it.\"\"\"
-    sign_off = "Best regards,"             # optional
-    file     = "Carlos-De-Manuel-Cover-Letter-Acme.pdf"   # optional
-
-The PDF is written next to the TOML. It fails on a second page.
+The first run copies cv/letter.example.toml to letters/letter.toml. Edit that
+copy for each application, run it again, and keep the PDF. letters/ is
+gitignored on purpose: a letter names the company you are applying to, and
+everything committed here is published. The script refuses a letter or a PDF
+that git would pick up. Your name, contact line and headline come from
+cv/cv.toml, so the letter and the CV always agree. The fields are documented
+in cv/letter.example.toml. It fails on a second page.
 """
 
 from __future__ import annotations
@@ -26,6 +18,8 @@ import argparse
 import datetime as dt
 import importlib
 import re
+import shutil
+import subprocess
 import sys
 import tomllib
 from pathlib import Path
@@ -36,20 +30,30 @@ from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parent.parent
 CV = ROOT / "cv"
-cv = importlib.import_module("make-cv")   # same folder; reuse its markdown and font rules
+DEFAULT = ROOT / "letters" / "letter.toml"
+cv = importlib.import_module("make-cv")   # same folder; reuse its markdown rule
+
+
+def publishable(path: Path) -> bool:
+    """True when the path is in this repo and git would not ignore it."""
+    if not path.is_relative_to(ROOT):
+        return False
+    return subprocess.run(["git", "-C", str(ROOT), "check-ignore", "-q", str(path)]).returncode != 0
 
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("letter", type=Path, help="the letter's TOML, kept outside this repo")
+    ap.add_argument("letter", type=Path, nargs="?", default=DEFAULT,
+                    help="the letter's TOML (default: letters/letter.toml, gitignored)")
     ap.add_argument("--preview", action="store_true", help="also write a PNG next to the PDF (needs pymupdf)")
     args = ap.parse_args()
 
     src = args.letter.expanduser().resolve()
-    if src.is_relative_to(ROOT):
-        print(f"{src} is inside the repo, and everything here is published. "
-              "Keep letters in a folder of your own, e.g. ~/cover-letters/.", file=sys.stderr)
-        return 1
+    if src == DEFAULT and not src.exists():
+        src.parent.mkdir(exist_ok=True)
+        shutil.copy(CV / "letter.example.toml", src)
+        print(f"created {src.relative_to(ROOT)} from the example: edit it, then run this again")
+        return 0
     missing = [f for f in ("Archivo[wdth,wght].ttf", "PublicSans[wght].ttf")
                if not (ROOT / "fonts" / f).is_file()]
     if missing:
@@ -57,6 +61,16 @@ def main() -> int:
         return 1
 
     letter = tomllib.loads(src.read_text(encoding="utf-8"))
+    out = src.with_name(letter.get("file") or f"{src.stem}.pdf")
+    if leaks := [p for p in (src, out) if publishable(p)]:
+        print(f"{', '.join(str(p) for p in leaks)} would be committed, and this repo is public. "
+              "Keep letters in letters/ (gitignored) or outside the repo.", file=sys.stderr)
+        return 1
+
+    if gaps := re.findall(r"\[[^\]]+\]", letter["body"]):
+        print(f"fill in the example's gaps first: {'; '.join(' '.join(g.split()) for g in gaps)}", file=sys.stderr)
+        return 1
+
     data = tomllib.loads((CV / "cv.toml").read_text(encoding="utf-8"))
     headline = next(iter(data["variants"].values()))["headline"]
     paragraphs = [p for p in re.split(r"\n\s*\n", letter["body"].strip()) if p.strip()]
@@ -68,7 +82,6 @@ def main() -> int:
         p=data["person"], l=letter, headline=headline, date=date,
         paragraphs=paragraphs, fonts=(ROOT / "fonts").as_uri())
 
-    out = src.with_name(letter.get("file") or f"{src.stem}.pdf")
     tmp = src.with_name(f".{src.stem}.html")
     tmp.write_text(page_html, encoding="utf-8")
     try:

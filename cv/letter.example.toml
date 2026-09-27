@@ -1,0 +1,40 @@
+# A cover letter, rendered by `make letter` in the CV's design.
+#
+# Don't edit this file for an application: `make letter` copies it to
+# letters/letter.toml (gitignored, never published) the first time. Edit that
+# copy, run `make letter` again, and keep the PDF it writes next to it.
+#
+# Name, contact line and headline come from cv/cv.toml. Same rule as the CV:
+# every claim here must match it (see AGENTS.md for what Carlos stands behind).
+
+company  = "Acme"                                   # shown top left
+role     = "Analytics Engineer"                     # optional, beside the company
+# date   = "29 September 2026"                      # optional, defaults to today
+greeting = "Dear Acme Data Team,"
+file     = "Carlos-De-Manuel-Cover-Letter-Acme.pdf" # the name the recruiter sees
+# sign_off = "Best regards,"                        # optional
+
+# Paragraphs are separated by a blank line; **bold** works. Keep it to one page:
+# around 200 words reads in a minute. Rewrite the first and the fourth paragraph
+# for each company; the middle two are the reusable part.
+body = """
+You're looking for someone to [what the ad asks for, in their words]. That is the
+work I do today.
+
+At a global automotive manufacturer, I led the move from plant-level Excel trackers
+to one governed KPI layer in Snowflake, now the shared source for 20+ plants across
+three regions. I aligned business owners and developers on 130+ KPI definitions and
+built the Streamlit app that manages them. I also build the Python pipelines and
+Power BI dashboards on top, and made our stock loading ~90% faster at ~30% lower cost
+by tuning its Snowflake queries.
+
+Version control, testing and CI/CD are the default in how I work, not something I
+add at the end. My side projects are built the same way: two public data products
+with dbt, Prefect and automated tests, linked above.
+
+What makes me want to do this at Acme in particular is [the product, the team or the
+problem, and why it matters to you]. That's the environment I want for the next step
+in my career.
+
+I'd be glad to talk about how I could help.
+"""
