@@ -61,6 +61,15 @@ def main() -> int:
     ap.add_argument("--preview", action="store_true", help="also write a PNG per variant")
     args = ap.parse_args()
 
+    # fonts/ is gitignored. Without it Chromium falls back to a system font and
+    # still writes a one-page PDF that passes every check below.
+    missing = [f for f in ("Archivo[wdth,wght].ttf", "PublicSans[wght].ttf")
+               if not (ROOT / "fonts" / f).is_file()]
+    if missing:
+        print(f"fonts/ is missing {', '.join(missing)}: see README, Regenerating assets",
+              file=sys.stderr)
+        return 1
+
     data = tomllib.loads((CV / "cv.toml").read_text(encoding="utf-8"))
     env = Environment(loader=FileSystemLoader(CV), autoescape=True)
     env.filters["md"] = lambda s: __import__("markupsafe").Markup(md(s))

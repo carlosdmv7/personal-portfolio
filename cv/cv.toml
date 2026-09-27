@@ -94,7 +94,7 @@ GitHub Actions CI and Streamlit."""
 # Same six groups, order and tools as the site's Tech stack section.
 warehouse = ["Data modelling & warehousing", "Snowflake, dbt, DuckDB, dimensional modelling (Kimball)"]
 languages = ["Languages & APIs", "Python, SQL, Bash, Jinja, DAX, REST APIs"]
-platform = ["Cloud, orchestration & CI/CD", "AWS (EC2, S3, EFS), Prefect, Airflow, GitHub Actions, Git, Azure DevOps, Docker, Make"]
+platform = ["Platform & CI/CD", "AWS, Prefect, Airflow, GitHub Actions, Git, Azure DevOps, Docker, Make"]
 quality = ["Quality & monitoring", "pytest, Pydantic, ruff, mypy, Prometheus"]
 bi = ["BI & apps", "Power BI, Streamlit, Microsoft Fabric"]
 ai = ["AI & ML", "LLM APIs (Gemini, Azure OpenAI), LLM evaluation, scikit-learn, SHAP"]
