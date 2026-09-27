@@ -179,24 +179,20 @@
                         <div class="exp-body">
                             <div class="exp-points">
                                 <div class="exp-point">
-                                    <svg aria-hidden="true" focusable="false" class="icon" viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 18"/><polyline points="16 7 22 7 22 13"/></svg>
-                                    <span><strong>From the boardroom to the line.</strong> Power BI dashboards for production, quality, supply chain, purchasing, finance, HR and EHS, tracking part quality, incidents, material-consumption variances and energy prices for teams in every region. Inventory apps in Streamlit for the shop floor, on the same models, so a plant and its leadership see the same number.</span>
-                                </div>
-                                <div class="exp-point">
                                     <svg aria-hidden="true" focusable="false" class="icon" viewBox="0 0 24 24"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/></svg>
-                                    <span><strong>One definition per KPI.</strong> A Streamlit app where plants manage <strong>130+ KPIs</strong> and their targets, with dbt testing the data it writes back to Snowflake.</span>
+                                    <span><strong>One definition per KPI.</strong> A governed Snowflake and dbt layer is the shared source for <strong>20+ plants</strong> in three regions. <strong>130+ KPIs</strong> and their targets are defined once, in a Streamlit app with dbt tests on every write-back.</span>
                                 </div>
                                 <div class="exp-point">
                                     <svg aria-hidden="true" focusable="false" class="icon" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg>
                                     <span><strong>Pipelines that keep up.</strong> Python ETL from REST APIs, email and other sources into Snowflake, orchestrated with Prefect, including near-real-time inventory data. Stock loading runs <strong>~90% faster at ~30% lower cost</strong>, mostly by cutting idle time.</span>
                                 </div>
                                 <div class="exp-point">
-                                    <svg aria-hidden="true" focusable="false" class="icon" viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></svg>
-                                    <span><strong>Built to run.</strong> Snowflake data models designed around the apps that use them, with queries and views tuned for speed. The apps run on AWS (EC2, S3, EFS) in Docker, with CI/CD and Prometheus for metrics and observability.</span>
+                                    <svg aria-hidden="true" focusable="false" class="icon" viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 18"/><polyline points="16 7 22 7 22 13"/></svg>
+                                    <span><strong>From the boardroom to the line.</strong> Power BI dashboards and Streamlit apps that plants and leadership run on: direct labour efficiency, scrap, inventory days on hand, material consumption, and an energy forecast for purchasing that normalises usage against units sold. Built on Snowflake models designed around them, with queries and views tuned for speed.</span>
                                 </div>
                                 <div class="exp-point">
-                                    <svg aria-hidden="true" focusable="false" class="icon" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-                                    <span><strong>Energy forecasting for purchasing.</strong> Plant electricity consumption modelled from production variables, joining utility invoices with production and financial data so usage normalises against units sold rather than reading as raw kWh.</span>
+                                    <svg aria-hidden="true" focusable="false" class="icon" viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></svg>
+                                    <span><strong>Built to run.</strong> The apps run on AWS (EC2, S3, EFS) in Docker, with CI/CD and Prometheus for monitoring.</span>
                                 </div>
                             </div>
                             <div class="tags">
@@ -401,7 +397,7 @@
         <section id="stack">
             <div class="container">
                 <div class="section-head">
-                    <span class="eyebrow">29 tools · 6 groups</span>
+                    <span class="eyebrow">30 tools · 6 groups</span>
                     <h2 class="section-title">Tech stack</h2>
                 </div>
                 <div class="stack-grid">
@@ -422,6 +418,7 @@
                             <div class="stack-row"><img src="images/bash.svg" alt=""><span>Bash</span></div>
                             <div class="stack-row"><img src="images/jinja.svg" alt=""><span>Jinja</span></div>
                             <div class="stack-row"><svg aria-hidden="true" focusable="false" class="stack-glyph" viewBox="0 0 24 24"><path d="M18 7V5a1 1 0 0 0-1-1H6.5a.5.5 0 0 0-.4.8l4.5 6a2 2 0 0 1 0 2.4l-4.5 6a.5.5 0 0 0 .4.8H17a1 1 0 0 0 1-1v-2"/></svg><span>DAX</span></div>
+                            <div class="stack-row"><svg aria-hidden="true" focusable="false" class="stack-glyph" viewBox="0 0 24 24"><path d="M4 8h14l-3-3"/><path d="M20 16H6l3 3"/></svg><span>REST APIs</span></div>
                         </div>
                     </div>
                     <div class="stack-card card" data-reveal>

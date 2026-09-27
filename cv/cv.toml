@@ -30,7 +30,7 @@ on top, running on AWS. Used across 20+\u00A0plants in North America, APAC and \
 EMEA, from top management to the shop floor."""
 experience = ["layer", "pipelines", "products", "platform"]
 projects = ["jmi", "shr"]
-skills = ["warehouse", "languages", "platform", "cicd", "bi", "ai"]
+skills = ["warehouse", "languages", "platform", "quality", "bi", "ai"]
 
 # -------------------------------------------------------------- experience ---
 
@@ -49,9 +49,10 @@ tests on every write-back."""
 pipelines = """Built and orchestrated Python ETL with Prefect from REST APIs, email \
 and operational systems, including near-real-time inventory data; made stock \
 loading **~90%\u00A0faster** at **~30%\u00A0lower cost**, mostly by cutting idle time."""
-products = """Delivered the Power BI dashboards and Streamlit apps on that layer, \
-from material-consumption monitoring for finance to energy forecasting for \
-purchasing, designing the Snowflake models behind them and tuning queries and views."""
+products = """Delivered the Power BI dashboards and Streamlit apps that plants and \
+leadership run on: direct labour efficiency, scrap, inventory days on hand, material \
+consumption and an energy forecast for purchasing, on Snowflake models I designed \
+and tuned."""
 platform = """Deployed the apps to production on AWS (EC2, S3, EFS) with Docker, \
 CI/CD and Prometheus monitoring."""
 
@@ -90,12 +91,13 @@ GitHub Actions CI and Streamlit."""
 # ------------------------------------------------------------------ skills ---
 
 [skills]
+# Same six groups, order and tools as the site's Tech stack section.
 warehouse = ["Data modelling & warehousing", "Snowflake, dbt, DuckDB, dimensional modelling (Kimball)"]
-languages = ["Languages & integration", "Python, SQL, Bash, Jinja, DAX, REST APIs"]
-platform = ["Orchestration & infrastructure", "Prefect, Airflow, AWS (EC2, S3, EFS), Docker, Prometheus"]
-cicd = ["CI/CD & quality", "GitHub Actions, Azure DevOps, Git, Make, pytest, Pydantic, ruff, mypy"]
+languages = ["Languages & APIs", "Python, SQL, Bash, Jinja, DAX, REST APIs"]
+platform = ["Cloud, orchestration & CI/CD", "AWS (EC2, S3, EFS), Prefect, Airflow, GitHub Actions, Git, Azure DevOps, Docker, Make"]
+quality = ["Quality & monitoring", "pytest, Pydantic, ruff, mypy, Prometheus"]
 bi = ["BI & apps", "Power BI, Streamlit, Microsoft Fabric"]
-ai = ["AI & ML", "LLM APIs (Azure OpenAI, Gemini), LLM evaluation, scikit-learn, SHAP"]
+ai = ["AI & ML", "LLM APIs (Gemini, Azure OpenAI), LLM evaluation, scikit-learn, SHAP"]
 
 # --------------------------------------------------------------- education ---
 
