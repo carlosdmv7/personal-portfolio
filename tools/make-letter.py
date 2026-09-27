@@ -71,7 +71,9 @@ def main() -> int:
     when = dt.date.fromisoformat(letter["date"]) if letter.get("date") else dt.date.today()
     slug = re.sub(r"[^a-z0-9]+", "-", letter["company"].lower()).strip("-")
     folder = args.archive.expanduser().resolve() / f"{when.isoformat()}-{slug}"
-    out = folder / (letter.get("file") or f"{slug}.pdf")
+    person = tomllib.loads((CV / "cv.toml").read_text(encoding="utf-8"))["person"]
+    company = re.sub(r"[^A-Za-z0-9]+", "", letter["company"])
+    out = folder / (letter.get("file") or f"{person['file_prefix']}-CoverLetter-{company}.pdf")
     if leaks := [p for p in (src, out) if publishable(p)]:
         print(f"{', '.join(str(p) for p in leaks)} would be committed, and this repo is public. "
               "Keep letters in letters/ (gitignored) or outside the repo.", file=sys.stderr)
