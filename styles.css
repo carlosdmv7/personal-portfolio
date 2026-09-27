@@ -660,8 +660,8 @@ section + .freshness,
    the screen empty and made a long page feel longer. The container now matches
    the rest of the site; prose still caps at 72ch because that is a reading
    limit, not a layout one, so the width goes to full-bleed figures instead of
-   longer lines. Blocks stack — heading, prose, figure — rather than sitting
-   beside a label rail, which put a block's second paragraph in the rail. */
+   longer lines. There is no label rail (it put a block's second paragraph in
+   the rail); a block pairs its prose with its figure instead, see .case-split. */
 .case-page .container { max-width: var(--maxw); }
 
 .breadcrumb {
@@ -844,6 +844,31 @@ section + .freshness,
 }
 .shot figcaption strong { color: var(--ink); font-weight: 500; }
 .shot-lead { margin: 2rem 0 3rem; }
+.shot-zoom { display: block; cursor: zoom-in; }
+
+/* A block with a figure sets it beside the prose on a wide screen. Stacked,
+   a full-width screenshot under 72ch of text left the text ending halfway
+   across the image and the right of the page empty beside it. Side figures
+   are cropped to the app's content column so they stay legible at ~590px,
+   and each links to the full image. .case-wide spans both columns. */
+.case-split { display: grid; row-gap: 1.2rem; }
+.case-split > .shot, .case-split > .code { margin-top: 0; }
+@media (min-width: 1000px) {
+    .case-split {
+        grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+        column-gap: 3rem;
+        row-gap: 2rem;
+        align-items: start;
+    }
+    .case-split .case-wide { grid-column: 1 / -1; }
+    /* the figure's top edge lines up with the heading's text, not its margin */
+    .case-split > .shot, .case-split > .code { margin-top: 0.35rem; }
+
+    .decision-list.cols-2,
+    .decision-list.cols-3 { display: grid; column-gap: 3rem; row-gap: 1.4rem; }
+    .decision-list.cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .decision-list.cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
 
 /* ---------- Architecture diagram (HTML/CSS flow) ---------- */
 .arch {
