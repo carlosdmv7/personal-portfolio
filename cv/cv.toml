@@ -16,8 +16,9 @@ github = "github.com/carlosdmv7"
 portfolio = "carlosdmv7.github.io/personal-portfolio"
 
 # ---------------------------------------------------------------- variants ---
-# Each variant is the same person with a different emphasis: its own headline
-# and summary, and its own pick and order of bullets, projects and skill groups.
+# One CV today. A variant is the same facts with a different emphasis (its own
+# headline, summary, and pick and order of bullets); add a [variants.x] table to
+# make another. Variants are published with the site, so keep old CVs elsewhere.
 
 [variants.data-analytics-engineer]
 file = "carlos-de-manuel-cv.pdf"
@@ -27,31 +28,9 @@ the models, pipelines and apps that 20+ plants in North America, APAC and EMEA \
 use every day, from the reports top management reads to the tools people use on \
 the shop floor. Stack: Snowflake, dbt, Python, SQL, Prefect, AWS, Power BI and \
 Streamlit."""
-experience = ["products", "wms", "kpi", "refresh", "energy"]
+experience = ["dashboards", "apps", "etl", "platform", "modelling", "energy"]
 projects = ["jmi", "shr"]
 skills = ["warehouse", "languages", "platform", "quality", "bi", "ai"]
-
-[variants.data-engineering]
-file = "variants/carlos-de-manuel-cv-data-engineering.pdf"
-headline = "Data Engineer"
-summary = """I build and run production data pipelines at a global automotive \
-manufacturer: near-real-time models over 800M+ rows in Snowflake, event-driven \
-orchestration with Prefect, incremental loading and CI/CD, serving 20+ plants in \
-North America, APAC and EMEA."""
-experience = ["wms", "incremental", "refresh", "kpi", "products"]
-projects = ["jmi", "shr"]
-skills = ["platform", "warehouse", "languages", "quality", "bi", "ai"]
-
-[variants.analytics-bi]
-file = "variants/carlos-de-manuel-cv-analytics-bi.pdf"
-headline = "Data & Analytics Engineer, BI & data products"
-summary = """I turn spreadsheet-run processes into data products people use every \
-day. At a global automotive manufacturer with 20+ plants, that means reports for \
-top management and apps for the shop floor, across purchasing, finance, supply \
-chain and production, built on Snowflake, dbt, Power BI and Streamlit."""
-experience = ["products", "kpi", "energy", "refresh", "wms"]
-projects = ["jmi", "shr"]
-skills = ["bi", "warehouse", "languages", "platform", "quality", "ai"]
 
 # -------------------------------------------------------------- experience ---
 
@@ -63,19 +42,20 @@ where = "Liria, Spain (hybrid)"
 dates = "Jan 2025 – Present"
 
 [jobs.bullets]
-products = """Replaced manual Excel trackers across **20+ plants** (NA, APAC, EMEA) \
-with self-serve data products in Streamlit and Power BI, from the executive \
-summary **200+ people** open daily to inventory apps on the shop floor, across \
-purchasing, finance, supply chain and production."""
-wms = """Built near-real-time analytical models for a warehouse management system \
-over **800M+ rows** in Snowflake, refreshed by event-driven Prefect flows that fire \
-when upstream Fivetran HVR replication lands, with the data engineering team."""
-incremental = """Cut stock data load times **~95%** with strict incremental loading \
-in SQL, and automated supply-policy calculations and role-based inventory logic."""
-kpi = """Set one definition for **130+ operational KPIs** through a KPI-governance \
-app built on dbt, with tests on every model and pipeline observability in Prometheus."""
-refresh = """Re-engineered the end-to-end refresh with CI/CD, cutting runtime \
-**~98%** and compute cost **~90%**."""
+dashboards = """Built Power BI dashboards for production, quality, supply chain, \
+purchasing, finance, HR and EHS across **20+\u00A0plants** in NA, APAC and EMEA, from \
+part quality and incidents to material-consumption variances and energy prices, \
+used from top management down to plant teams."""
+apps = """Developed Streamlit apps for the shop floor and management, including inventory \
+tools and a KPI app where plants manage **130+\u00A0KPIs** and their targets, with dbt \
+testing the data written back to Snowflake."""
+etl = """Automated indicators from several source systems with Python ETL into \
+Snowflake, orchestrated with Prefect, including near-real-time inventory data; strict incremental loading \
+cut stock load times **~95%**."""
+modelling = """Designed Snowflake data models for apps and reports, and tuned queries \
+and views for performance."""
+platform = """Deployed the apps on AWS (EC2, S3, EFS) with Docker, CI/CD through \
+Makefiles, and Prometheus for metrics and observability."""
 energy = """Forecast plant electricity consumption from production variables for \
 the purchasing team, joining utility invoices with production and financial data \
 so usage normalises against sales."""
@@ -115,8 +95,8 @@ and Streamlit."""
 
 [skills]
 warehouse = ["Warehouse & modelling", "Snowflake, dbt, DuckDB, Kimball dimensional modelling"]
-languages = ["Languages", "Python, SQL, Jinja, DAX"]
-platform = ["Platform & orchestration", "AWS, Prefect, Airflow, GitHub Actions (CI/CD), Git, Azure DevOps, Docker"]
+languages = ["Languages", "Python, SQL, Bash, Jinja, DAX"]
+platform = ["Platform & orchestration", "AWS (EC2, S3, EFS), Prefect, Airflow, Docker, Make, GitHub Actions, Git, Azure DevOps"]
 quality = ["Quality & observability", "pytest, Pydantic, ruff, mypy, Prometheus"]
 bi = ["BI & data apps", "Power BI, Streamlit, Microsoft Fabric"]
 ai = ["AI & ML", "Gemini and OpenAI APIs (incl. Azure OpenAI), LLM evals, scikit-learn, SHAP"]
