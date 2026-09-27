@@ -42,10 +42,10 @@ where = "Liria, Spain (hybrid)"
 dates = "Jan 2025 – Present"
 
 [jobs.bullets]
-layer = """Replaced plant-level Excel trackers with a governed Snowflake and dbt \
-layer, now the single source for **20+\u00A0plants** in three regions: \
-**130+\u00A0KPIs** and their targets defined once, in a Streamlit app with dbt \
-tests on every write-back."""
+layer = """Led the move from plant Excel trackers to one governed Snowflake and dbt \
+layer for **20+\u00A0plants** in three regions: aligned business owners and \
+developers on **130+\u00A0KPIs** and their targets, and built the Streamlit app that \
+manages them, with dbt-tested write-back."""
 pipelines = """Built and orchestrated Python ETL with Prefect from REST APIs, email \
 and operational systems, including near-real-time inventory data; made stock \
 loading **~90%\u00A0faster** at **~30%\u00A0lower cost**, mostly by cutting idle time."""
@@ -104,10 +104,12 @@ ai = ["AI & ML", "LLM APIs (Gemini, Azure OpenAI), LLM evaluation, scikit-learn,
 [[education]]
 degree = "MSc, Data Analysis, Process Improvement & Decision Support Engineering"
 school = "UPV, Valencia"
+dates = "2024 – 2025"
 
 [[education]]
 degree = "BSc, Biomedical Engineering (ICT specialisation)"
 school = "UPV, Valencia"
+dates = "2020 – 2024"
 note = "Thesis: a Trustworthy AI framework for healthcare, graded 10/10 · top 25% of the year"
 
 [extras]
