@@ -11,16 +11,19 @@
 @page { size: A4; margin: 12mm 14mm 11mm; }
 :root { --ink: #1F3B44; --muted: #4E6770; --accent: #2E6B5E; --rule: #D9CFBF; }
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: "Public Sans", sans-serif; font-size: 9.5pt; line-height: 1.42; color: var(--ink); }
+/* No ligatures: "fl" as one glyph extracts as "Snowﬂake", and a recruiter
+   searching for Snowflake never finds it. */
+body { font-variant-ligatures: none; font-feature-settings: "liga" 0, "clig" 0, "dlig" 0;
+       font-family: "Public Sans", sans-serif; font-size: 9.5pt; line-height: 1.42; color: var(--ink); }
 strong { font-weight: 600; }
 a { color: inherit; text-decoration: none; }
 header { margin-bottom: 7pt; }
 h1 { font-family: "Archivo", sans-serif; font-size: 20pt; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; }
 .headline { font-family: "Archivo", sans-serif; font-size: 11.5pt; font-weight: 600; color: var(--accent); margin-top: 1pt; }
 .contact { color: var(--muted); font-size: 8.5pt; margin-top: 4pt; }
-.contact span + span::before { content: "·"; margin: 0 5pt; color: var(--rule); }
+.contact .sep { color: var(--rule); }
 .summary { margin: 6pt 0 2pt; color: var(--ink); }
-h2 { font-family: "Archivo", sans-serif; font-size: 9pt; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+h2 { font-family: "Archivo", sans-serif; font-size: 9.5pt; font-weight: 700; letter-spacing: 0; text-transform: uppercase;
      color: var(--accent); border-bottom: 0.8pt solid var(--rule); padding-bottom: 2pt; margin: 9pt 0 5pt; }
 .item { margin-bottom: 5pt; break-inside: avoid; }
 .row { display: flex; justify-content: space-between; align-items: baseline; gap: 10pt; }
@@ -44,10 +47,10 @@ li::marker { color: var(--accent); }
   <h1>{{ p.name }}</h1>
   <div class="headline">{{ v.headline }}</div>
   <div class="contact">
-    <span>{{ p.location }}</span><span><a href="mailto:{{ p.email }}">{{ p.email }}</a></span><span>{{ p.phone }}</span>
+    <span>{{ p.location }}</span><span class="sep"> · </span><span><a href="mailto:{{ p.email }}">{{ p.email }}</a></span><span class="sep"> · </span><span>{{ p.phone }}</span>
   </div>
   <div class="contact">
-    <span><a href="https://{{ p.portfolio }}">{{ p.portfolio }}</a></span><span><a href="https://{{ p.linkedin }}">{{ p.linkedin }}</a></span><span><a href="https://{{ p.github }}">{{ p.github }}</a></span>
+    <span><a href="https://{{ p.portfolio }}">{{ p.portfolio }}</a></span><span class="sep"> · </span><span><a href="https://{{ p.linkedin }}">{{ p.linkedin }}</a></span><span class="sep"> · </span><span><a href="https://{{ p.github }}">{{ p.github }}</a></span>
   </div>
   <p class="summary">{{ v.summary | md }}</p>
 </header>
