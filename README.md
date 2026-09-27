@@ -161,9 +161,11 @@ title rule in AGENTS.md.
 `make letter` renders a cover letter in the CV's design: same header, fonts and
 colours, with name, contact line and headline read from `cv/cv.toml`. The first
 run copies `cv/letter.example.toml` to `letters/letter.toml`; edit that copy for
-each application, run `make letter` again, and keep the PDF it writes next to
-it. `letters/` is gitignored because a letter names the company you are applying
-to and this repo is public; the script refuses a letter or PDF that git would
+each application and run `make letter` again. Each run files the PDF, a preview
+and a copy of the TOML as sent in `~/cover-letters/<date>-<company>/`, a record
+of what went where and when. None of it is committed: `letters/` is gitignored
+and the archive is outside the repo, because a letter names the company you are
+applying to and this repo is public; the script refuses a letter that git would
 commit. The preview PNG needs `pymupdf`.
 
 ## Local preview

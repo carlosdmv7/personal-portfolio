@@ -2,14 +2,15 @@
 #
 # Don't edit this file for an application: `make letter` copies it to
 # letters/letter.toml (gitignored, never published) the first time. Edit that
-# copy, run `make letter` again, and keep the PDF it writes next to it.
+# copy and run `make letter` again. Each run files the PDF and a copy of this
+# TOML in ~/cover-letters/<date>-<company>/, outside the repo.
 #
 # Name, contact line and headline come from cv/cv.toml. Same rule as the CV:
 # every claim here must match it (see AGENTS.md for what Carlos stands behind).
 
 company  = "Acme"                                   # shown top left
 role     = "Analytics Engineer"                     # optional, beside the company
-# date   = "29 September 2026"                      # optional, defaults to today
+# date   = "2026-09-29"                             # optional, defaults to today
 greeting = "Dear Acme Data Team,"
 file     = "Carlos-De-Manuel-Cover-Letter-Acme.pdf" # the name the recruiter sees
 # sign_off = "Best regards,"                        # optional

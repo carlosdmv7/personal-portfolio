@@ -5,7 +5,7 @@
 #   make check   everything to run before opening a PR
 #   make og      regenerate the 1200x630 social cards
 #   make letter  a cover letter in the CV's design, from letters/letter.toml
-#                (gitignored; L=path/to/other.toml for another one)
+#                (gitignored), filed in ~/cover-letters/<date>-<company>/
 #
 # One-time setup:
 #   python3 -m venv .venv && .venv/bin/pip install pillow jinja2 playwright pypdf

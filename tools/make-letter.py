@@ -1,15 +1,19 @@
 """Render a cover letter to PDF in the CV's design.
 
-    make letter                  # letters/letter.toml -> letters/<file>.pdf
-    .venv/bin/python tools/make-letter.py [path/to/letter.toml] [--preview]
+    make letter        # letters/letter.toml -> ~/cover-letters/<date>-<company>/
+    .venv/bin/python tools/make-letter.py [letter.toml] [--archive DIR] [--preview]
 
-The first run copies cv/letter.example.toml to letters/letter.toml. Edit that
-copy for each application, run it again, and keep the PDF. letters/ is
-gitignored on purpose: a letter names the company you are applying to, and
-everything committed here is published. The script refuses a letter or a PDF
-that git would pick up. Your name, contact line and headline come from
-cv/cv.toml, so the letter and the CV always agree. The fields are documented
-in cv/letter.example.toml. It fails on a second page.
+The first run copies cv/letter.example.toml to letters/letter.toml: the one
+working copy, edited for each application. Every run files the result in its
+own folder, ~/cover-letters/2026-09-27-acme/, holding the PDF and a copy of the
+TOML exactly as sent, so there is a record of what went to whom and when.
+
+Nothing about a letter is committed: letters/ is gitignored and the archive is
+outside the repo, because a letter names the company you are applying to and
+everything committed here is published. The script refuses a letter that git
+would pick up. Name, contact line and headline come from cv/cv.toml, so the
+letter and the CV always agree. Fields are documented in cv/letter.example.toml.
+It fails on a second page, or while the example's [gaps] are still there.
 """
 
 from __future__ import annotations
@@ -31,6 +35,7 @@ from playwright.sync_api import sync_playwright
 ROOT = Path(__file__).resolve().parent.parent
 CV = ROOT / "cv"
 DEFAULT = ROOT / "letters" / "letter.toml"
+ARCHIVE = Path.home() / "cover-letters"
 cv = importlib.import_module("make-cv")   # same folder; reuse its markdown rule
 
 
@@ -45,6 +50,8 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("letter", type=Path, nargs="?", default=DEFAULT,
                     help="the letter's TOML (default: letters/letter.toml, gitignored)")
+    ap.add_argument("--archive", type=Path, default=ARCHIVE,
+                    help="where each letter gets its dated folder (default: ~/cover-letters)")
     ap.add_argument("--preview", action="store_true", help="also write a PNG next to the PDF (needs pymupdf)")
     args = ap.parse_args()
 
@@ -61,7 +68,10 @@ def main() -> int:
         return 1
 
     letter = tomllib.loads(src.read_text(encoding="utf-8"))
-    out = src.with_name(letter.get("file") or f"{src.stem}.pdf")
+    when = dt.date.fromisoformat(letter["date"]) if letter.get("date") else dt.date.today()
+    slug = re.sub(r"[^a-z0-9]+", "-", letter["company"].lower()).strip("-")
+    folder = args.archive.expanduser().resolve() / f"{when.isoformat()}-{slug}"
+    out = folder / (letter.get("file") or f"{slug}.pdf")
     if leaks := [p for p in (src, out) if publishable(p)]:
         print(f"{', '.join(str(p) for p in leaks)} would be committed, and this repo is public. "
               "Keep letters in letters/ (gitignored) or outside the repo.", file=sys.stderr)
@@ -74,7 +84,7 @@ def main() -> int:
     data = tomllib.loads((CV / "cv.toml").read_text(encoding="utf-8"))
     headline = next(iter(data["variants"].values()))["headline"]
     paragraphs = [p for p in re.split(r"\n\s*\n", letter["body"].strip()) if p.strip()]
-    date = letter.get("date") or dt.date.today().strftime("%-d %B %Y")
+    date = when.strftime("%-d %B %Y")
 
     env = Environment(loader=FileSystemLoader(CV), autoescape=True)
     env.filters["md"] = lambda s: Markup(cv.md(s))
@@ -82,7 +92,10 @@ def main() -> int:
         p=data["person"], l=letter, headline=headline, date=date,
         paragraphs=paragraphs, fonts=(ROOT / "fonts").as_uri())
 
-    tmp = src.with_name(f".{src.stem}.html")
+    folder.mkdir(parents=True, exist_ok=True)
+    if src != folder / "letter.toml":
+        shutil.copy(src, folder / "letter.toml")      # the text exactly as sent
+    tmp = folder / ".letter.html"
     tmp.write_text(page_html, encoding="utf-8")
     try:
         with sync_playwright() as p:
