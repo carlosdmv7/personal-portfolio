@@ -15,7 +15,9 @@ styles.css                                  design system — all colour lives i
 site.js                                     nav, accordion, reveal-on-scroll
 freshness.js                                the freshness strip's live upgrade
 data/freshness.json                          static fallback + schema reference
-cv/carlos-de-manuel-analytics-engineer.pdf   linked from the hero and Contact
+cv/cv.toml                                   the CV's single source: content + variants
+cv/carlos-de-manuel-cv.pdf                   generated; linked from the hero and Contact
+cv/variants/                                 generated; Data Engineering and Analytics & BI emphases
 docs/freshness-contract.md                   status.json schema + CI snippet
 lychee.toml                                  link-checker config (what's excluded, and why)
 .github/workflows/link-check.yml             fails the build on any 4xx link
@@ -25,6 +27,7 @@ tools/make-og-images.py                      regenerates the 1200x630 og cards
 tools/make-icons.py                          regenerates favicon/apple-touch PNGs
 tools/make-shots.py                          downscales the app screenshots (JMI, Housing Radar)
 tools/render-check.py                        renders every page at 5 widths; fails on overflow
+tools/make-cv.py                             renders every CV variant to a one-page A4 PDF
 ```
 
 ## Ground rules
@@ -136,6 +139,20 @@ same way:
 .venv/bin/python tools/make-shots.py --src ~/projects/spanish-housing-radar/docs/img \
     --out images/shr --only home opportunities
 ```
+
+## The CV
+
+The CV is generated, not edited. `cv/cv.toml` holds every fact once; each
+variant in it picks a headline, a summary, and which bullets, projects and skill
+groups to show, in what order. Edit the TOML, then:
+
+```bash
+.venv/bin/pip install jinja2 playwright
+.venv/bin/python tools/make-cv.py --preview   # fails if a variant spills onto page 2
+```
+
+The same rules as the site apply to it: figures from artefacts, and the official
+job title beside the functional one.
 
 ## Local preview
 

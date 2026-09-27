@@ -6,3 +6,5 @@ __pycache__/
 # Link checker working files (see lychee.toml)
 .lychee-cookies.jar
 .lycheecache
+cv/.*.html
+cv/**/*.png

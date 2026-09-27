@@ -1,0 +1,140 @@
+# The CV's single source. tools/make-cv.py renders every variant below from it,
+# so a fact is changed once and every PDF agrees — with each other and with the
+# site. Same rule as the site: every figure is read from an artefact, and the
+# official job title stays visible beside the functional one.
+#
+#   .venv/bin/python tools/make-cv.py            # all variants
+#   .venv/bin/python tools/make-cv.py --preview  # also PNGs, to look at
+
+[person]
+name = "Carlos De Manuel Vicente"
+email = "carlosdmv7@gmail.com"
+phone = "(+34) 601 205 213"
+location = "Valencia, Spain · open to relocation"
+linkedin = "linkedin.com/in/carlos-de-manuel"
+github = "github.com/carlosdmv7"
+portfolio = "carlosdmv7.github.io/personal-portfolio"
+
+# ---------------------------------------------------------------- variants ---
+# Each variant is the same person with a different emphasis: its own headline
+# and summary, and its own pick and order of bullets, projects and skill groups.
+
+[variants.data-analytics-engineer]
+file = "carlos-de-manuel-cv.pdf"
+headline = "Data & Analytics Engineer"
+summary = """I build the data layer a business runs on — at a global automotive \
+manufacturer, from top-management reporting down to shop-floor apps, across 20+ \
+plants in North America, APAC and EMEA — on Snowflake, dbt, Python, Prefect, AWS \
+and Power BI. I start from the process and the decision behind a number, simplify \
+before automating, and ship small, tested increments."""
+experience = ["products", "wms", "kpi", "refresh", "energy"]
+projects = ["jmi", "shr"]
+skills = ["warehouse", "languages", "platform", "quality", "bi", "ai"]
+
+[variants.data-engineering]
+file = "variants/carlos-de-manuel-cv-data-engineering.pdf"
+headline = "Data Engineer"
+summary = """I build and run production data pipelines at a global automotive \
+manufacturer: near-real-time models over 800M+ rows in Snowflake, event-driven \
+Prefect orchestration, incremental loading and CI/CD, serving 20+ plants \
+across North America, APAC and EMEA. Tested, observable, and cheap to run."""
+experience = ["wms", "incremental", "refresh", "kpi", "products"]
+projects = ["jmi", "shr"]
+skills = ["platform", "warehouse", "languages", "quality", "bi", "ai"]
+
+[variants.analytics-bi]
+file = "variants/carlos-de-manuel-cv-analytics-bi.pdf"
+headline = "Data & Analytics Engineer — BI & data products"
+summary = """I turn manual, spreadsheet-run processes into data products people \
+use every day — at a global automotive manufacturer, for top management and the \
+shop floor alike, across purchasing, finance, supply chain and production in 20+ \
+plants. I sit with the people who run a process, agree what each number means, \
+and only then build the model and the app behind it."""
+experience = ["products", "kpi", "energy", "refresh", "wms"]
+projects = ["jmi", "shr"]
+skills = ["bi", "warehouse", "languages", "platform", "quality", "ai"]
+
+# -------------------------------------------------------------- experience ---
+
+[[jobs]]
+id = "resrg"
+title = "Data & Analytics Engineer"
+official_title = "Digital Transformation Specialist"
+company = "RESRG Automotive · global automotive manufacturer"
+where = "Liria, Spain (hybrid)"
+dates = "Jan 2025 – Present"
+
+[jobs.bullets]
+products = """Replaced manual Excel trackers across **20+ plants** (NA, APAC, EMEA) \
+with self-serve data products in Streamlit and Power BI — from the executive \
+summary **200+ people** open daily to inventory apps on the shop floor, across \
+purchasing, finance, supply chain and production."""
+wms = """Built near-real-time analytical models for a warehouse management system \
+over **800M+ rows** in Snowflake, refreshed by event-driven Prefect flows that fire \
+when upstream Fivetran HVR replication lands, with the data engineering team."""
+incremental = """Cut stock data load times **~95%** with strict incremental loading \
+in SQL, and automated supply-policy calculations and role-based inventory logic."""
+kpi = """Set one definition for **130+ operational KPIs** through a KPI-governance \
+app built on dbt, with tests on every model and pipeline observability in Prometheus."""
+refresh = """Re-engineered the end-to-end refresh with CI/CD, cutting runtime \
+**~98%** and compute cost **~90%**."""
+energy = """Forecast plant electricity consumption from production variables for \
+the purchasing team, joining utility invoices with production and financial data \
+so usage normalises against sales."""
+
+[[jobs]]
+id = "bds"
+title = "Data Scientist (internship)"
+company = "Biomedical Data Science Lab, ITACA — UPV"
+where = "Valencia, Spain"
+dates = "Nov 2023 – Jul 2024"
+
+[jobs.bullets]
+framework = """Built an end-to-end Python framework and preprocessing pipelines to \
+evaluate healthcare ML models for fairness, robustness and explainability (XAI)."""
+
+# ---------------------------------------------------------------- projects ---
+# Figures: dbt counts from each project's target/manifest.json (26 Sep 2026);
+# 23 → 180 is the batching measurement recorded in JMI's ADR 0007.
+
+[projects.jmi]
+name = "Job Market Intelligence"
+url = "carlosdmv7.github.io/personal-portfolio/projects/job-market-intelligence"
+text = """Daily pipeline reading EU data-job postings from six free APIs; LLM \
+enrichment batched to read **23 → 180** postings a day on the same free quota; dbt \
+medallion on MotherDuck (9 models, 53 tests); Streamlit app ranking roles against \
+a CV. Prefect Cloud deployment, €0 a month."""
+
+[projects.shr]
+name = "Spanish Housing Radar"
+url = "carlosdmv7.github.io/personal-portfolio/projects/spanish-housing-radar"
+text = """Weekly scrape of València listings, each scored against an \
+empirical-Bayes blend of its barrio and district benchmark; dbt medallion (19 \
+models, 162 tests), Prefect Cloud, Docker, Streamlit."""
+
+# ------------------------------------------------------------------ skills ---
+
+[skills]
+warehouse = ["Warehouse & modelling", "Snowflake, dbt, DuckDB, Kimball dimensional modelling"]
+languages = ["Languages", "Python, SQL, Jinja, DAX"]
+platform = ["Platform & orchestration", "AWS, Prefect, Airflow, GitHub Actions (CI/CD), Git, Azure DevOps, Docker, Make"]
+quality = ["Quality & observability", "dbt tests, pytest, Pydantic, ruff, mypy, Prometheus"]
+bi = ["BI & data apps", "Power BI, Streamlit, Microsoft Fabric"]
+ai = ["AI & ML", "Gemini and Claude APIs, LLM evals, scikit-learn, SHAP"]
+
+# --------------------------------------------------------------- education ---
+
+[[education]]
+degree = "MSc, Data Analysis, Process Improvement & Decision Support Engineering"
+school = "Universitat Politècnica de València (UPV)"
+dates = "2024 – 2025"
+
+[[education]]
+degree = "BSc, Biomedical Engineering (ICT specialisation)"
+school = "Universitat Politècnica de València (UPV)"
+dates = "2020 – 2024"
+note = "Thesis graded 10/10 · distinction for academic performance (top 25%)"
+
+[extras]
+certifications = "AWS Certified Data Engineer – Associate and dbt Certification (both in progress, 2026)"
+languages = "Spanish (native) · English (C1, Cambridge, 194)"
