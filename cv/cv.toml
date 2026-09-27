@@ -25,9 +25,9 @@ file = "carlos-de-manuel-cv.pdf"
 headline = "Data & Analytics Engineer"
 summary = """Data & Analytics Engineer at a global automotive manufacturer. I own \
 the path from raw operational data to the products people use: Python pipelines \
-orchestrated with Prefect, tested Snowflake and dbt models, Power BI and Streamlit \
-on top, running on AWS. Used across 20+\u00A0plants in North America, APAC and \
-EMEA, from top management to the shop floor."""
+orchestrated with Prefect, Snowflake data models, and Power BI dashboards and \
+Streamlit apps on top, the apps deployed on AWS. Used across 20+\u00A0plants in \
+North America, APAC and EMEA, from top management to the shop floor."""
 experience = ["layer", "pipelines", "products", "platform"]
 projects = ["jmi", "shr"]
 skills = ["warehouse", "languages", "platform", "quality", "bi", "ai"]
@@ -42,17 +42,16 @@ where = "Liria, Spain (hybrid)"
 dates = "Jan 2025 – Present"
 
 [jobs.bullets]
-layer = """Led the move from plant Excel trackers to one governed Snowflake and dbt \
-layer for **20+\u00A0plants** in three regions: aligned business owners and \
-developers on **130+\u00A0KPIs** and their targets, and built the Streamlit app that \
-manages them, with dbt-tested write-back."""
-pipelines = """Built and orchestrated Python ETL with Prefect from REST APIs, email \
-and operational systems, including near-real-time inventory data; made stock \
-loading **~90%\u00A0faster** at **~30%\u00A0lower cost**, mostly by cutting idle time."""
-products = """Delivered the Power BI dashboards and Streamlit apps that plants and \
-leadership run on: direct labour efficiency, scrap, inventory days on hand, material \
-consumption and an energy forecast for purchasing, on Snowflake models I designed \
-and tuned."""
+layer = """Led the move from plant Excel trackers to one governed KPI layer in \
+Snowflake for **20+\u00A0plants** in three regions: aligned business owners and \
+developers on **130+\u00A0KPIs** and targets, and built the Streamlit app that \
+manages them, with dbt tests on its write-back."""
+pipelines = """Built Python ETL orchestrated with Prefect, including REST API \
+sources, and made stock loading **~90%\u00A0faster** at **~30%\u00A0lower cost** by \
+tuning its Snowflake queries and cutting idle time."""
+products = """Delivered Power BI dashboards and Streamlit apps for supply chain, \
+finance and quality, covering inventory days on hand, material consumption, part \
+quality and energy forecasting, on Snowflake models I designed and tuned."""
 platform = """Deployed the apps to production on AWS (EC2, S3, EFS) with Docker, \
 CI/CD and Prometheus monitoring."""
 
