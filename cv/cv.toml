@@ -1,7 +1,7 @@
 # The CV's single source. tools/make-cv.py renders every variant below from it,
 # so a fact is changed once and every PDF agrees — with each other and with the
-# site. Same rule as the site: every figure is read from an artefact, and the
-# official job title stays visible beside the functional one.
+# site. Same rule as the site: every figure is read from an artefact (see
+# AGENTS.md for the job-title and withdrawn-figure rules).
 #
 #   .venv/bin/python tools/make-cv.py            # all variants
 #   .venv/bin/python tools/make-cv.py --preview  # also PNGs, to look at
@@ -28,7 +28,7 @@ the path from raw operational data to the products people use: Python pipelines 
 orchestrated with Prefect, tested Snowflake and dbt models, Power BI and Streamlit \
 on top, running on AWS. Used across 20+\u00A0plants in North America, APAC and \
 EMEA, from top management to the shop floor."""
-experience = ["layer", "kpi", "pipelines", "products", "platform", "energy"]
+experience = ["layer", "pipelines", "products", "platform"]
 projects = ["jmi", "shr"]
 skills = ["warehouse", "languages", "platform", "cicd", "bi", "ai"]
 
@@ -42,22 +42,18 @@ where = "Liria, Spain (hybrid)"
 dates = "Jan 2025 – Present"
 
 [jobs.bullets]
-layer = """Replaced plant-level Excel trackers with a governed analytics layer on \
-Snowflake and dbt, now the shared source for **20+\u00A0plants** across three \
-regions, from executive reporting to the shop floor."""
-kpi = """Standardised **130+\u00A0KPIs** and their targets through a Streamlit \
-governance app, with dbt tests on every write-back to Snowflake, so every plant \
-reports the same metric the same way."""
+layer = """Replaced plant-level Excel trackers with a governed Snowflake and dbt \
+layer, now the single source for **20+\u00A0plants** in three regions: \
+**130+\u00A0KPIs** and their targets defined once, in a Streamlit app with dbt \
+tests on every write-back."""
 pipelines = """Built and orchestrated Python ETL with Prefect from REST APIs, email \
 and operational systems, including near-real-time inventory data; made stock \
 loading **~90%\u00A0faster** at **~30%\u00A0lower cost**, mostly by cutting idle time."""
-products = """Delivered Power BI dashboards and Streamlit apps for operations, \
-finance and HR, designing the Snowflake models behind them and tuning queries \
-and views for performance."""
+products = """Delivered the Power BI dashboards and Streamlit apps on that layer, \
+from material-consumption monitoring for finance to energy forecasting for \
+purchasing, designing the Snowflake models behind them and tuning queries and views."""
 platform = """Deployed the apps to production on AWS (EC2, S3, EFS) with Docker, \
 CI/CD and Prometheus monitoring."""
-energy = """Forecast plant energy consumption from production variables for \
-purchasing, normalised against sales."""
 
 [[jobs]]
 id = "bds"
@@ -96,9 +92,9 @@ GitHub Actions CI and Streamlit."""
 [skills]
 warehouse = ["Data modelling & warehousing", "Snowflake, dbt, DuckDB, dimensional modelling (Kimball)"]
 languages = ["Languages & integration", "Python, SQL, Bash, Jinja, DAX, REST APIs"]
-platform = ["Orchestration & cloud", "Prefect, Airflow, AWS (EC2, S3, EFS), Docker"]
+platform = ["Orchestration & infrastructure", "Prefect, Airflow, AWS (EC2, S3, EFS), Docker, Prometheus"]
 cicd = ["CI/CD & quality", "GitHub Actions, Azure DevOps, Git, Make, pytest, Pydantic, ruff, mypy"]
-bi = ["BI, apps & observability", "Power BI, Streamlit, Microsoft Fabric, Prometheus"]
+bi = ["BI & apps", "Power BI, Streamlit, Microsoft Fabric"]
 ai = ["AI & ML", "LLM APIs (Azure OpenAI, Gemini), LLM evaluation, scikit-learn, SHAP"]
 
 # --------------------------------------------------------------- education ---
