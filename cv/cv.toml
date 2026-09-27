@@ -22,11 +22,11 @@ portfolio = "carlosdmv7.github.io/personal-portfolio"
 [variants.data-analytics-engineer]
 file = "carlos-de-manuel-cv.pdf"
 headline = "Data & Analytics Engineer"
-summary = """I build the data layer a business runs on — at a global automotive \
-manufacturer, from top-management reporting down to shop-floor apps, across 20+ \
-plants in North America, APAC and EMEA — on Snowflake, dbt, Python, Prefect, AWS \
-and Power BI. I start from the process and the decision behind a number, simplify \
-before automating, and ship small, tested increments."""
+summary = """Data & Analytics Engineer at a global automotive manufacturer. I build \
+the models, pipelines and apps that 20+ plants in North America, APAC and EMEA \
+use every day, from the reports top management reads to the tools people use on \
+the shop floor. Stack: Snowflake, dbt, Python, SQL, Prefect, AWS, Power BI and \
+Streamlit."""
 experience = ["products", "wms", "kpi", "refresh", "energy"]
 projects = ["jmi", "shr"]
 skills = ["warehouse", "languages", "platform", "quality", "bi", "ai"]
@@ -36,20 +36,19 @@ file = "variants/carlos-de-manuel-cv-data-engineering.pdf"
 headline = "Data Engineer"
 summary = """I build and run production data pipelines at a global automotive \
 manufacturer: near-real-time models over 800M+ rows in Snowflake, event-driven \
-Prefect orchestration, incremental loading and CI/CD, serving 20+ plants \
-across North America, APAC and EMEA. Tested, observable, and cheap to run."""
+orchestration with Prefect, incremental loading and CI/CD, serving 20+ plants in \
+North America, APAC and EMEA."""
 experience = ["wms", "incremental", "refresh", "kpi", "products"]
 projects = ["jmi", "shr"]
 skills = ["platform", "warehouse", "languages", "quality", "bi", "ai"]
 
 [variants.analytics-bi]
 file = "variants/carlos-de-manuel-cv-analytics-bi.pdf"
-headline = "Data & Analytics Engineer — BI & data products"
-summary = """I turn manual, spreadsheet-run processes into data products people \
-use every day — at a global automotive manufacturer, for top management and the \
-shop floor alike, across purchasing, finance, supply chain and production in 20+ \
-plants. I sit with the people who run a process, agree what each number means, \
-and only then build the model and the app behind it."""
+headline = "Data & Analytics Engineer, BI & data products"
+summary = """I turn spreadsheet-run processes into data products people use every \
+day. At a global automotive manufacturer with 20+ plants, that means reports for \
+top management and apps for the shop floor, across purchasing, finance, supply \
+chain and production, built on Snowflake, dbt, Power BI and Streamlit."""
 experience = ["products", "kpi", "energy", "refresh", "wms"]
 projects = ["jmi", "shr"]
 skills = ["bi", "warehouse", "languages", "platform", "quality", "ai"]
@@ -59,14 +58,13 @@ skills = ["bi", "warehouse", "languages", "platform", "quality", "ai"]
 [[jobs]]
 id = "resrg"
 title = "Data & Analytics Engineer"
-official_title = "Digital Transformation Specialist"
 company = "RESRG Automotive · global automotive manufacturer"
 where = "Liria, Spain (hybrid)"
 dates = "Jan 2025 – Present"
 
 [jobs.bullets]
 products = """Replaced manual Excel trackers across **20+ plants** (NA, APAC, EMEA) \
-with self-serve data products in Streamlit and Power BI — from the executive \
+with self-serve data products in Streamlit and Power BI, from the executive \
 summary **200+ people** open daily to inventory apps on the shop floor, across \
 purchasing, finance, supply chain and production."""
 wms = """Built near-real-time analytical models for a warehouse management system \
@@ -85,7 +83,7 @@ so usage normalises against sales."""
 [[jobs]]
 id = "bds"
 title = "Data Scientist (internship)"
-company = "Biomedical Data Science Lab, ITACA — UPV"
+company = "Biomedical Data Science Lab, ITACA, UPV"
 where = "Valencia, Spain"
 dates = "Nov 2023 – Jul 2024"
 
@@ -101,40 +99,37 @@ evaluate healthcare ML models for fairness, robustness and explainability (XAI).
 name = "Job Market Intelligence"
 url = "carlosdmv7.github.io/personal-portfolio/projects/job-market-intelligence"
 repo = "github.com/carlosdmv7/job-market-intelligence"
-text = """Daily pipeline reading EU data-job postings from six free APIs; LLM \
-enrichment batched to read **23 → 180** postings a day on the same free quota; dbt \
-medallion on MotherDuck (9 models, 53 tests); Streamlit app ranking roles against \
-a CV. Prefect Cloud deployment, €0 a month."""
+text = """Reads EU data-job ads every day and ranks them against a CV: six free APIs, \
+LLM enrichment that went from **23\u00A0to\u00A0180** ads a day on the same free quota, dbt on \
+MotherDuck, Prefect Cloud and Streamlit."""
 
 [projects.shr]
 name = "Spanish Housing Radar"
 url = "carlosdmv7.github.io/personal-portfolio/projects/spanish-housing-radar"
 repo = "github.com/carlosdmv7/spanish-housing-radar"
-text = """Weekly scrape of València listings, each scored against an \
-empirical-Bayes blend of its barrio and district benchmark; dbt medallion (19 \
-models, 162 tests), Prefect Cloud, Docker, Streamlit."""
+text = """Finds under-priced flats in València by scoring every listing against its \
+neighbourhood: weekly scraping, dbt with **162 data tests**, Prefect Cloud, Docker \
+and Streamlit."""
 
 # ------------------------------------------------------------------ skills ---
 
 [skills]
 warehouse = ["Warehouse & modelling", "Snowflake, dbt, DuckDB, Kimball dimensional modelling"]
 languages = ["Languages", "Python, SQL, Jinja, DAX"]
-platform = ["Platform & orchestration", "AWS, Prefect, Airflow, GitHub Actions (CI/CD), Git, Azure DevOps, Docker, Make"]
-quality = ["Quality & observability", "dbt tests, pytest, Pydantic, ruff, mypy, Prometheus"]
+platform = ["Platform & orchestration", "AWS, Prefect, Airflow, GitHub Actions (CI/CD), Git, Azure DevOps, Docker"]
+quality = ["Quality & observability", "pytest, Pydantic, ruff, mypy, Prometheus"]
 bi = ["BI & data apps", "Power BI, Streamlit, Microsoft Fabric"]
-ai = ["AI & ML", "Gemini and Claude APIs, LLM evals, scikit-learn, SHAP"]
+ai = ["AI & ML", "Gemini and OpenAI APIs (incl. Azure OpenAI), LLM evals, scikit-learn, SHAP"]
 
 # --------------------------------------------------------------- education ---
 
 [[education]]
 degree = "MSc, Data Analysis, Process Improvement & Decision Support Engineering"
-school = "Universitat Politècnica de València (UPV)"
-dates = "2024 – 2025"
+school = "UPV, Valencia"
 
 [[education]]
 degree = "BSc, Biomedical Engineering (ICT specialisation)"
-school = "Universitat Politècnica de València (UPV)"
-dates = "2020 – 2024"
+school = "UPV, Valencia"
 note = "Thesis graded 10/10 · distinction for academic performance (top 25%)"
 
 [extras]
