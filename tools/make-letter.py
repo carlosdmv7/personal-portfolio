@@ -1,11 +1,11 @@
 """Render a cover letter to PDF in the CV's design.
 
-    make letter        # letters/letter.toml -> ~/cover-letters/<date>-<company>/
+    make letter        # letters/letter.toml -> ~/applications/<date>-<company>/
     .venv/bin/python tools/make-letter.py [letter.toml] [--archive DIR] [--preview]
 
 The first run copies cv/letter.example.toml to letters/letter.toml: the one
 working copy, edited for each application. Every run files the result in its
-own folder, ~/cover-letters/2026-09-27-acme/, holding the letter, the CV rendered
+own folder, ~/applications/2026-09-27-acme/, holding the letter, the CV rendered
 from cv/cv.toml as it stands, and a copy of both TOMLs exactly as sent, so there
 is a record of what went to whom and when. The committed CV keeps its history in
 git; this is the only place that says which version went with which letter.
@@ -37,7 +37,7 @@ from playwright.sync_api import sync_playwright
 ROOT = Path(__file__).resolve().parent.parent
 CV = ROOT / "cv"
 DEFAULT = ROOT / "letters" / "letter.toml"
-ARCHIVE = Path.home() / "cover-letters"
+ARCHIVE = Path.home() / "applications"
 cv = importlib.import_module("make-cv")   # same folder; reuse its markdown rule
 
 
@@ -53,7 +53,7 @@ def main() -> int:
     ap.add_argument("letter", type=Path, nargs="?", default=DEFAULT,
                     help="the letter's TOML (default: letters/letter.toml, gitignored)")
     ap.add_argument("--archive", type=Path, default=ARCHIVE,
-                    help="where each letter gets its dated folder (default: ~/cover-letters)")
+                    help="where each application gets its dated folder (default: ~/applications)")
     ap.add_argument("--preview", action="store_true", help="also write a PNG next to each PDF (needs pymupdf)")
     args = ap.parse_args()
 

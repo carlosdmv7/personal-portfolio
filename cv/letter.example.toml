@@ -3,7 +3,7 @@
 # Don't edit this file for an application: `make letter` copies it to
 # letters/letter.toml (gitignored, never published) the first time. Edit that
 # copy and run `make letter` again. Each run files the letter, the CV and a copy
-# of both TOMLs in ~/cover-letters/<date>-<company>/, outside the repo.
+# of both TOMLs in ~/applications/<date>-<company>/, outside the repo.
 #
 # Name, contact line and headline come from cv/cv.toml. Same rule as the CV:
 # every claim here must match it (see AGENTS.md for what Carlos stands behind).

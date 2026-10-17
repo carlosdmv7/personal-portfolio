@@ -163,7 +163,7 @@ colours, with name, contact line and headline read from `cv/cv.toml`. The first
 run copies `cv/letter.example.toml` to `letters/letter.toml`; edit that copy for
 each application and run `make letter` again. Each run files the letter, the CV
 rendered from `cv/cv.toml` as it stands, a preview of each and a copy of both
-TOMLs as sent in `~/cover-letters/<date>-<company>/`, a record of what went where
+TOMLs as sent in `~/applications/<date>-<company>/`, a record of what went where
 and when. None of it is committed: `letters/` is gitignored
 and the archive is outside the repo, because a letter names the company you are
 applying to and this repo is public; the script refuses a letter that git would
