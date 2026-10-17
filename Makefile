@@ -2,10 +2,11 @@
 # script in tools/; this file only saves typing their paths.
 #
 #   make cv      regenerate the CV from cv/cv.toml (fails on 2 pages or ATS issues)
+#                COMPANY=Booking also files it in ~/applications/<date>-booking/
 #   make check   everything to run before opening a PR
 #   make og      regenerate the 1200x630 social cards
 #   make letter  a cover letter in the CV's design, from letters/letter.toml
-#                (gitignored), filed in ~/cover-letters/<date>-<company>/
+#                (gitignored), filed with the CV in ~/applications/<date>-<company>/
 #
 # One-time setup:
 #   python3 -m venv .venv && .venv/bin/pip install pillow jinja2 playwright pypdf
@@ -16,7 +17,7 @@ PY := .venv/bin/python
 .PHONY: cv check og letter
 
 cv:
-	$(PY) tools/make-cv.py
+	$(PY) tools/make-cv.py $(if $(COMPANY),--company "$(COMPANY)")
 
 check:
 	python3 tools/contrast-check.py
