@@ -151,7 +151,12 @@ your own machine, not here — everything in this repo is published. Edit the TO
 .venv/bin/pip install jinja2 playwright pypdf
 make cv          # or: .venv/bin/python tools/make-cv.py --preview
                  # fails on a 2nd page or on text an ATS would misread
+make cv COMPANY=Booking   # also files the CV sent, a preview and cv.toml
+                          # in ~/applications/<date>-booking/
 ```
+
+The company goes on the command line, never into `cv.toml`: that file is
+published, and so would be the list of places you applied to.
 
 The same rules as the site apply to it: figures from artefacts, and the job
 title rule in AGENTS.md.

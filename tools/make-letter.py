@@ -25,7 +25,6 @@ import datetime as dt
 import importlib
 import re
 import shutil
-import subprocess
 import sys
 import tomllib
 from pathlib import Path
@@ -37,22 +36,14 @@ from playwright.sync_api import sync_playwright
 ROOT = Path(__file__).resolve().parent.parent
 CV = ROOT / "cv"
 DEFAULT = ROOT / "letters" / "letter.toml"
-ARCHIVE = Path.home() / "applications"
-cv = importlib.import_module("make-cv")   # same folder; reuse its markdown rule
-
-
-def publishable(path: Path) -> bool:
-    """True when the path is in this repo and git would not ignore it."""
-    if not path.is_relative_to(ROOT):
-        return False
-    return subprocess.run(["git", "-C", str(ROOT), "check-ignore", "-q", str(path)]).returncode != 0
+cv = importlib.import_module("make-cv")   # same folder; reuse its render and folder rules
 
 
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("letter", type=Path, nargs="?", default=DEFAULT,
                     help="the letter's TOML (default: letters/letter.toml, gitignored)")
-    ap.add_argument("--archive", type=Path, default=ARCHIVE,
+    ap.add_argument("--archive", type=Path, default=cv.ARCHIVE,
                     help="where each application gets its dated folder (default: ~/applications)")
     ap.add_argument("--preview", action="store_true", help="also write a PNG next to each PDF (needs pymupdf)")
     args = ap.parse_args()
@@ -71,8 +62,7 @@ def main() -> int:
 
     letter = tomllib.loads(src.read_text(encoding="utf-8"))
     when = dt.date.fromisoformat(letter["date"]) if letter.get("date") else dt.date.today()
-    slug = re.sub(r"[^a-z0-9]+", "-", letter["company"].lower()).strip("-")
-    folder = args.archive.expanduser().resolve() / f"{when.isoformat()}-{slug}"
+    folder = cv.application_folder(letter["company"], when, args.archive)
     data = tomllib.loads((CV / "cv.toml").read_text(encoding="utf-8"))
     person = data["person"]
     variant = letter.get("variant") or next(iter(data["variants"]))
@@ -82,7 +72,7 @@ def main() -> int:
     company = re.sub(r"[^A-Za-z0-9]+", "", letter["company"])
     out = folder / (letter.get("file") or f"{person['file_prefix']}-CoverLetter-{company}.pdf")
     cv_out = folder / f"{person['file_prefix']}-CV.pdf"
-    if leaks := [p for p in (src, out, cv_out) if publishable(p)]:
+    if leaks := [p for p in (src, out, cv_out) if cv.publishable(p)]:
         print(f"{', '.join(str(p) for p in leaks)} would be committed, and this repo is public. "
               "Keep letters in letters/ (gitignored) or outside the repo.", file=sys.stderr)
         return 1

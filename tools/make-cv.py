@@ -1,7 +1,7 @@
 """Render every CV variant in cv/cv.toml to PDF, from one template.
 
     .venv/bin/pip install jinja2 playwright pypdf && .venv/bin/playwright install chromium
-    .venv/bin/python tools/make-cv.py [--preview]
+    .venv/bin/python tools/make-cv.py [--preview] [--company NAME [--variant NAME]]
 
 One source, several emphases: a fact changes in cv.toml once and every PDF
 agrees. Each variant must fit on one A4 page; the script fails if one spills
@@ -9,13 +9,21 @@ onto a second, rather than shipping a CV whose last line sits alone on page 2.
 It also reads each PDF back the way an applicant-tracking system does and fails
 if a heading or a key term does not come out as a plain word (see ats_problems).
 --preview also writes a PNG of each page next to the PDF, to look at.
+
+--company also files the CV sent to that company, with a PNG and a copy of
+cv.toml, in ~/applications/<date>-<company>/: the same folder make-letter.py
+uses, so a CV and its letter end up together. The company goes on the command
+line and never into cv.toml, because everything in this repo is published.
 """
 
 from __future__ import annotations
 
 import argparse
+import datetime as dt
 import html
 import re
+import shutil
+import subprocess
 import sys
 import tomllib
 from pathlib import Path
@@ -25,6 +33,21 @@ from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parent.parent
 CV = ROOT / "cv"
+ARCHIVE = Path.home() / "applications"
+
+
+def application_folder(company: str, when: dt.date, archive: Path = ARCHIVE) -> Path:
+    """~/applications/2026-10-17-booking/: one folder per application, named the
+    same way whether the CV or the letter gets there first."""
+    slug = re.sub(r"[^a-z0-9]+", "-", company.lower()).strip("-")
+    return archive.expanduser().resolve() / f"{when.isoformat()}-{slug}"
+
+
+def publishable(path: Path) -> bool:
+    """True when the path is in this repo and git would not ignore it."""
+    if not path.is_relative_to(ROOT):
+        return False
+    return subprocess.run(["git", "-C", str(ROOT), "check-ignore", "-q", str(path)]).returncode != 0
 
 
 def md(text: str) -> str:
@@ -106,6 +129,10 @@ def render(browser, data: dict, name: str, out: Path, preview: bool = False) -> 
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--preview", action="store_true", help="also write a PNG per variant")
+    ap.add_argument("--company", help="also file the CV for this application in ~/applications/<date>-<company>/")
+    ap.add_argument("--variant", help="the variant sent with --company (default: the first in cv.toml)")
+    ap.add_argument("--archive", type=Path, default=ARCHIVE,
+                    help="where each application gets its dated folder (default: ~/applications)")
     args = ap.parse_args()
 
     # fonts/ is gitignored. Without it Chromium falls back to a system font and
@@ -118,11 +145,27 @@ def main() -> int:
         return 1
 
     data = tomllib.loads((CV / "cv.toml").read_text(encoding="utf-8"))
+    if args.company:
+        variant = args.variant or next(iter(data["variants"]))
+        if variant not in data["variants"]:
+            print(f"variant {variant!r} is not in cv/cv.toml: {', '.join(data['variants'])}", file=sys.stderr)
+            return 1
+        folder = application_folder(args.company, dt.date.today(), args.archive)
+        sent = folder / f"{data['person']['file_prefix']}-CV.pdf"
+        if publishable(sent):
+            print(f"{sent} would be committed, and this repo is public. "
+                  "File applications outside the repo.", file=sys.stderr)
+            return 1
+
     failures = 0
     with sync_playwright() as p:
         browser = p.chromium.launch()
         for name, v in data["variants"].items():
             failures += not render(browser, data, name, CV / v["file"], args.preview)
+        if args.company:
+            folder.mkdir(parents=True, exist_ok=True)
+            shutil.copy(CV / "cv.toml", folder / "cv.toml")   # the CV exactly as sent
+            failures += not render(browser, data, variant, sent, preview=True)
         browser.close()
     return 1 if failures else 0
 
