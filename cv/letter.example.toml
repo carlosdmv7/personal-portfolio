@@ -2,8 +2,8 @@
 #
 # Don't edit this file for an application: `make letter` copies it to
 # letters/letter.toml (gitignored, never published) the first time. Edit that
-# copy and run `make letter` again. Each run files the PDF and a copy of this
-# TOML in ~/cover-letters/<date>-<company>/, outside the repo.
+# copy and run `make letter` again. Each run files the letter, the CV and a copy
+# of both TOMLs in ~/cover-letters/<date>-<company>/, outside the repo.
 #
 # Name, contact line and headline come from cv/cv.toml. Same rule as the CV:
 # every claim here must match it (see AGENTS.md for what Carlos stands behind).
@@ -14,6 +14,7 @@ role     = "Analytics Engineer"                     # optional, beside the compa
 greeting = "Dear Acme Data Team,"
 # file   = "Other-Name.pdf"                         # optional; default CarlosDeManuel-CoverLetter-Acme.pdf
 # sign_off = "Best regards,"                        # optional
+# variant  = "data-analytics-engineer"              # optional CV variant; default the first in cv.toml
 
 # Paragraphs are separated by a blank line; **bold** works. Keep it to one page:
 # around 200 words reads in a minute. Rewrite the first and the fourth paragraph

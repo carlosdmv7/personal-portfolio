@@ -56,6 +56,53 @@ def ats_problems(pdf: Path) -> list[str]:
     return problems
 
 
+def render(browser, data: dict, name: str, out: Path, preview: bool = False) -> bool:
+    """Render one variant to `out`, print its line, and say whether it passed.
+    make-letter.py calls this too, to file the CV that went with a letter."""
+    env = Environment(loader=FileSystemLoader(CV), autoescape=True)
+    env.filters["md"] = lambda s: __import__("markupsafe").Markup(md(s))
+    # .j2, not .html: Pages would publish a .html as a page, and the link
+    # checker would try to resolve its {{ placeholders }} as URLs.
+    tpl = env.get_template("template.html.j2")
+    v = data["variants"][name]
+    jobs = []
+    for job in data["jobs"]:
+        wanted = v["experience"] if job["id"] == "resrg" else list(job["bullets"])
+        jobs.append({**job, "picked": [job["bullets"][k] for k in wanted]})
+    page_html = tpl.render(
+        p=data["person"], v=v, jobs=jobs, x=data["extras"],
+        projects=[data["projects"][k] for k in v["projects"]],
+        skills=[data["skills"][k] for k in v["skills"]],
+        education=data["education"], fonts=(ROOT / "fonts").as_uri(),
+    )
+    src = CV / f".{name}.html"          # gitignored; kept for debugging
+    src.write_text(page_html, encoding="utf-8")
+
+    page = browser.new_page()
+    page.goto(src.as_uri(), wait_until="networkidle")
+    out.parent.mkdir(parents=True, exist_ok=True)
+    page.pdf(path=str(out), format="A4", print_background=True, prefer_css_page_size=True)
+    # Chromium stamps the render time into /CreationDate and /ModDate, the
+    # only bytes that differ between two renders of the same content. Pin
+    # them (same length, so the xref offsets stay valid) and an unchanged
+    # CV regenerates byte-identical: `git status` then shows a change only
+    # when there is one.
+    out.write_bytes(re.sub(rb"(/(?:CreationDate|ModDate) \(D:)\d{14}",
+                           rb"\g<1>20260101000000", out.read_bytes()))
+    pages = len(re.findall(rb"/Type\s*/Page[^s]", out.read_bytes()))
+    ats = ats_problems(out)
+    ok = pages == 1 and not ats
+    shown = out.relative_to(ROOT) if out.is_relative_to(ROOT) else out
+    print(f"{'ok  ' if ok else 'FAIL'} {shown}  {pages} page(s)  "
+          f"{out.stat().st_size / 1024:.0f} KB" + (f"  ATS: {'; '.join(ats)}" if ats else "  ATS: ok"))
+    if preview:
+        page.set_viewport_size({"width": 794, "height": 1123})  # A4 at 96 dpi
+        page.emulate_media(media="print")
+        page.screenshot(path=str(out.with_suffix(".png")), full_page=True)
+    page.close()
+    return ok
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--preview", action="store_true", help="also write a PNG per variant")
@@ -71,52 +118,11 @@ def main() -> int:
         return 1
 
     data = tomllib.loads((CV / "cv.toml").read_text(encoding="utf-8"))
-    env = Environment(loader=FileSystemLoader(CV), autoescape=True)
-    env.filters["md"] = lambda s: __import__("markupsafe").Markup(md(s))
-    # .j2, not .html: Pages would publish a .html as a page, and the link
-    # checker would try to resolve its {{ placeholders }} as URLs.
-    tpl = env.get_template("template.html.j2")
-
     failures = 0
     with sync_playwright() as p:
         browser = p.chromium.launch()
         for name, v in data["variants"].items():
-            jobs = []
-            for job in data["jobs"]:
-                wanted = v["experience"] if job["id"] == "resrg" else list(job["bullets"])
-                jobs.append({**job, "picked": [job["bullets"][k] for k in wanted]})
-            page_html = tpl.render(
-                p=data["person"], v=v, jobs=jobs, x=data["extras"],
-                projects=[data["projects"][k] for k in v["projects"]],
-                skills=[data["skills"][k] for k in v["skills"]],
-                education=data["education"], fonts=(ROOT / "fonts").as_uri(),
-            )
-            src = CV / f".{name}.html"          # gitignored; kept for debugging
-            src.write_text(page_html, encoding="utf-8")
-
-            page = browser.new_page()
-            page.goto(src.as_uri(), wait_until="networkidle")
-            out = CV / v["file"]
-            out.parent.mkdir(parents=True, exist_ok=True)
-            page.pdf(path=str(out), format="A4", print_background=True, prefer_css_page_size=True)
-            # Chromium stamps the render time into /CreationDate and /ModDate, the
-            # only bytes that differ between two renders of the same content. Pin
-            # them (same length, so the xref offsets stay valid) and an unchanged
-            # CV regenerates byte-identical: `git status` then shows a change only
-            # when there is one.
-            out.write_bytes(re.sub(rb"(/(?:CreationDate|ModDate) \(D:)\d{14}",
-                                   rb"\g<1>20260101000000", out.read_bytes()))
-            pages = len(re.findall(rb"/Type\s*/Page[^s]", out.read_bytes()))
-            ats = ats_problems(out)
-            ok = pages == 1 and not ats
-            failures += not ok
-            print(f"{'ok  ' if ok else 'FAIL'} {out.relative_to(ROOT)}  {pages} page(s)  "
-                  f"{out.stat().st_size / 1024:.0f} KB" + (f"  ATS: {'; '.join(ats)}" if ats else "  ATS: ok"))
-            if args.preview:
-                page.set_viewport_size({"width": 794, "height": 1123})  # A4 at 96 dpi
-                page.emulate_media(media="print")
-                page.screenshot(path=str(out.with_suffix(".png")), full_page=True)
-            page.close()
+            failures += not render(browser, data, name, CV / v["file"], args.preview)
         browser.close()
     return 1 if failures else 0
 
