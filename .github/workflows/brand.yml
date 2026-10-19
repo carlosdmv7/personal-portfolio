@@ -1,0 +1,25 @@
+# The palette is generated from the shared brand package (carlosdmv7/brand).
+# This fails the build when a colour pair drops below WCAG AA, or when the token
+# block of styles.css no longer matches the pinned brand — a hand edit, or a
+# bump of BRAND_REF in the Makefile without `make brand`.
+name: Brand
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  brand:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: Contrast + token drift
+        run: make brand-check

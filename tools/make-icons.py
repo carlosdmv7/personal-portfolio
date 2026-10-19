@@ -5,20 +5,19 @@
   favicon-32.png         32x32   (legacy browsers that ignore the SVG)
   favicon-192.png       192x192  (Android / PWA)
 
-Usage:  python3 tools/make-icons.py --out images
-Requires: pillow
+Usage:  .venv/bin/python tools/make-icons.py --out images
+Requires: pillow, brand (see the Makefile's one-time setup)
 """
 from __future__ import annotations
 
 import argparse
 import pathlib
 
+from brand.tokens import PETROL_900 as PETROL
+from brand.tokens import RUST_500 as RUST
+from brand.tokens import SAND_100 as SAND
+from brand.tokens import TEAL_500 as TEAL
 from PIL import Image, ImageDraw
-
-PETROL = "#274C56"
-SAND = "#F6E2B3"
-RUST = "#D96C2C"
-TEAL = "#3E8E7E"
 
 # favicon.svg geometry, in its 64x64 viewBox
 SERIES = [(13, 44), (26, 31), (36, 38), (50, 19)]

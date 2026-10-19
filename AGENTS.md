@@ -59,7 +59,7 @@ the CV, kept off LinkedIn.
 ## Before saying it is done
 
 ```bash
-python3 tools/contrast-check.py                              # must exit 0
+make brand-check                                             # must exit 0
 lychee --config lychee.toml './**/*.html' './*.md' './docs/**/*.md'
 .venv/bin/python tools/render-check.py --shots /tmp/shots    # must exit 0
 ```
