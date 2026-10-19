@@ -12,7 +12,7 @@ Makefile                                    make cv · make check · make og
 AGENTS.md                                   repo conventions + the claims that would be false
 projects/job-market-intelligence/           case study (own URL, title, og:image)
 projects/spanish-housing-radar/             case study
-styles.css                                  design system — all colour lives in :root
+styles.css                                  design system — tokens generated from carlosdmv7/brand
 site.js                                     nav, accordion, reveal-on-scroll
 freshness.js                                the freshness strip's live upgrade
 data/freshness.json                          static fallback + schema reference
@@ -21,8 +21,8 @@ cv/carlos-de-manuel-cv.pdf                   generated; linked from the hero and
 docs/freshness-contract.md                   status.json schema + CI snippet
 lychee.toml                                  link-checker config (what's excluded, and why)
 .github/workflows/link-check.yml             fails the build on any 4xx link
+.github/workflows/brand.yml                  fails on contrast violations or token drift
 images/jmi/                                  app screenshots for the JMI case study
-tools/contrast-check.py                      WCAG checker for the palette
 tools/make-og-images.py                      regenerates the 1200x630 og cards
 tools/make-icons.py                          regenerates favicon/apple-touch PNGs
 tools/make-shots.py                          downscales the app screenshots (JMI, Housing Radar)
@@ -64,12 +64,14 @@ use `--rust-700`.
 Before shipping a colour change:
 
 ```bash
-python3 tools/contrast-check.py      # exits non-zero on any violation
+make brand-check      # exits non-zero on any violation or drift
 ```
 
-It covers all 36 pairs the stylesheet produces, and asserts that the forbidden
-pairs (`--teal-500` on `--petrol-900`, amber/sand as text on light) are not
-used as text. Add a row when you add a pair.
+The palette, the contrast pairs and the rules live in the shared
+[brand](https://github.com/carlosdmv7/brand) package. `brand contrast` covers
+every pair the stylesheet produces and lists the forbidden ones
+(`--teal-500` on `--petrol-900`, amber/sand as text on light). A colour change
+or a new pair is made there, then `make brand` brings it here.
 
 **The freshness strip** shows real pipeline state per project and must never
 show a spinner or an error. Its fallback ships in the HTML already populated;

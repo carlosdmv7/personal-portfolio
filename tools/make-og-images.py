@@ -8,25 +8,21 @@ Fonts are not vendored. Fetch them once into ./fonts (or pass --fonts):
     curl -sSLO "https://github.com/google/fonts/raw/main/ofl/publicsans/PublicSans%5Bwght%5D.ttf"
     curl -sSLO "https://github.com/google/fonts/raw/main/ofl/ibmplexmono/IBMPlexMono-Medium.ttf"
 
-Then:  python3 tools/make-og-images.py --out images
-Requires: pillow
+Then:  .venv/bin/python tools/make-og-images.py --out images
+Requires: pillow, brand (see the Makefile's one-time setup)
 """
 from __future__ import annotations
 
 import argparse
 import pathlib
 
+from brand.tokens import AMBER_500 as AMBER
+from brand.tokens import CATEGORICAL, INK_MUTED, TEAL_200
+from brand.tokens import PETROL_900 as PETROL
+from brand.tokens import RUST_500 as RUST
+from brand.tokens import SAND_100 as SAND
+from brand.tokens import TEAL_500 as TEAL
 from PIL import Image, ImageDraw, ImageFont
-
-# --- palette (authoritative tokens; keep in sync with styles.css :root) -------
-PETROL = "#274C56"
-SAND = "#F6E2B3"
-AMBER = "#E7A84E"
-RUST = "#D96C2C"
-TEAL = "#3E8E7E"
-TEAL_200 = "#7FB3A4"
-INK_MUTED = "#5C7480"
-CATEGORICAL = [PETROL, RUST, TEAL, AMBER, INK_MUTED]
 
 W, H = 1200, 630
 PAD = 82
