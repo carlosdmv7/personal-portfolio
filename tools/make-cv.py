@@ -1,7 +1,7 @@
 """Render every CV variant in cv/cv.toml to PDF, from one template.
 
     .venv/bin/pip install jinja2 playwright pypdf && .venv/bin/playwright install chromium
-    .venv/bin/python tools/make-cv.py [--preview]
+    .venv/bin/python tools/make-cv.py [--preview] [--company NAME [--variant NAME]]
 
 One source, several emphases: a fact changes in cv.toml once and every PDF
 agrees. Each variant must fit on one A4 page; the script fails if one spills
@@ -9,13 +9,21 @@ onto a second, rather than shipping a CV whose last line sits alone on page 2.
 It also reads each PDF back the way an applicant-tracking system does and fails
 if a heading or a key term does not come out as a plain word (see ats_problems).
 --preview also writes a PNG of each page next to the PDF, to look at.
+
+--company also files the CV sent to that company, with a PNG and a copy of
+cv.toml, in ~/applications/<date>-<company>/: the same folder make-letter.py
+uses, so a CV and its letter end up together. The company goes on the command
+line and never into cv.toml, because everything in this repo is published.
 """
 
 from __future__ import annotations
 
 import argparse
+import datetime as dt
 import html
 import re
+import shutil
+import subprocess
 import sys
 import tomllib
 from pathlib import Path
@@ -25,6 +33,21 @@ from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parent.parent
 CV = ROOT / "cv"
+ARCHIVE = Path.home() / "applications"
+
+
+def application_folder(company: str, when: dt.date, archive: Path = ARCHIVE) -> Path:
+    """~/applications/2026-10-17-booking/: one folder per application, named the
+    same way whether the CV or the letter gets there first."""
+    slug = re.sub(r"[^a-z0-9]+", "-", company.lower()).strip("-")
+    return archive.expanduser().resolve() / f"{when.isoformat()}-{slug}"
+
+
+def publishable(path: Path) -> bool:
+    """True when the path is in this repo and git would not ignore it."""
+    if not path.is_relative_to(ROOT):
+        return False
+    return subprocess.run(["git", "-C", str(ROOT), "check-ignore", "-q", str(path)]).returncode != 0
 
 
 def md(text: str) -> str:
@@ -56,9 +79,60 @@ def ats_problems(pdf: Path) -> list[str]:
     return problems
 
 
+def render(browser, data: dict, name: str, out: Path, preview: bool = False) -> bool:
+    """Render one variant to `out`, print its line, and say whether it passed.
+    make-letter.py calls this too, to file the CV that went with a letter."""
+    env = Environment(loader=FileSystemLoader(CV), autoescape=True)
+    env.filters["md"] = lambda s: __import__("markupsafe").Markup(md(s))
+    # .j2, not .html: Pages would publish a .html as a page, and the link
+    # checker would try to resolve its {{ placeholders }} as URLs.
+    tpl = env.get_template("template.html.j2")
+    v = data["variants"][name]
+    jobs = []
+    for job in data["jobs"]:
+        wanted = v["experience"] if job["id"] == "resrg" else list(job["bullets"])
+        jobs.append({**job, "picked": [job["bullets"][k] for k in wanted]})
+    page_html = tpl.render(
+        p=data["person"], v=v, jobs=jobs, x=data["extras"],
+        projects=[data["projects"][k] for k in v["projects"]],
+        skills=[data["skills"][k] for k in v["skills"]],
+        education=data["education"], fonts=(ROOT / "fonts").as_uri(),
+    )
+    src = CV / f".{name}.html"          # gitignored; kept for debugging
+    src.write_text(page_html, encoding="utf-8")
+
+    page = browser.new_page()
+    page.goto(src.as_uri(), wait_until="networkidle")
+    out.parent.mkdir(parents=True, exist_ok=True)
+    page.pdf(path=str(out), format="A4", print_background=True, prefer_css_page_size=True)
+    # Chromium stamps the render time into /CreationDate and /ModDate, the
+    # only bytes that differ between two renders of the same content. Pin
+    # them (same length, so the xref offsets stay valid) and an unchanged
+    # CV regenerates byte-identical: `git status` then shows a change only
+    # when there is one.
+    out.write_bytes(re.sub(rb"(/(?:CreationDate|ModDate) \(D:)\d{14}",
+                           rb"\g<1>20260101000000", out.read_bytes()))
+    pages = len(re.findall(rb"/Type\s*/Page[^s]", out.read_bytes()))
+    ats = ats_problems(out)
+    ok = pages == 1 and not ats
+    shown = out.relative_to(ROOT) if out.is_relative_to(ROOT) else out
+    print(f"{'ok  ' if ok else 'FAIL'} {shown}  {pages} page(s)  "
+          f"{out.stat().st_size / 1024:.0f} KB" + (f"  ATS: {'; '.join(ats)}" if ats else "  ATS: ok"))
+    if preview:
+        page.set_viewport_size({"width": 794, "height": 1123})  # A4 at 96 dpi
+        page.emulate_media(media="print")
+        page.screenshot(path=str(out.with_suffix(".png")), full_page=True)
+    page.close()
+    return ok
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--preview", action="store_true", help="also write a PNG per variant")
+    ap.add_argument("--company", help="also file the CV for this application in ~/applications/<date>-<company>/")
+    ap.add_argument("--variant", help="the variant sent with --company (default: the first in cv.toml)")
+    ap.add_argument("--archive", type=Path, default=ARCHIVE,
+                    help="where each application gets its dated folder (default: ~/applications)")
     args = ap.parse_args()
 
     # fonts/ is gitignored. Without it Chromium falls back to a system font and
@@ -71,52 +145,27 @@ def main() -> int:
         return 1
 
     data = tomllib.loads((CV / "cv.toml").read_text(encoding="utf-8"))
-    env = Environment(loader=FileSystemLoader(CV), autoescape=True)
-    env.filters["md"] = lambda s: __import__("markupsafe").Markup(md(s))
-    # .j2, not .html: Pages would publish a .html as a page, and the link
-    # checker would try to resolve its {{ placeholders }} as URLs.
-    tpl = env.get_template("template.html.j2")
+    if args.company:
+        variant = args.variant or next(iter(data["variants"]))
+        if variant not in data["variants"]:
+            print(f"variant {variant!r} is not in cv/cv.toml: {', '.join(data['variants'])}", file=sys.stderr)
+            return 1
+        folder = application_folder(args.company, dt.date.today(), args.archive)
+        sent = folder / f"{data['person']['file_prefix']}-CV.pdf"
+        if publishable(sent):
+            print(f"{sent} would be committed, and this repo is public. "
+                  "File applications outside the repo.", file=sys.stderr)
+            return 1
 
     failures = 0
     with sync_playwright() as p:
         browser = p.chromium.launch()
         for name, v in data["variants"].items():
-            jobs = []
-            for job in data["jobs"]:
-                wanted = v["experience"] if job["id"] == "resrg" else list(job["bullets"])
-                jobs.append({**job, "picked": [job["bullets"][k] for k in wanted]})
-            page_html = tpl.render(
-                p=data["person"], v=v, jobs=jobs, x=data["extras"],
-                projects=[data["projects"][k] for k in v["projects"]],
-                skills=[data["skills"][k] for k in v["skills"]],
-                education=data["education"], fonts=(ROOT / "fonts").as_uri(),
-            )
-            src = CV / f".{name}.html"          # gitignored; kept for debugging
-            src.write_text(page_html, encoding="utf-8")
-
-            page = browser.new_page()
-            page.goto(src.as_uri(), wait_until="networkidle")
-            out = CV / v["file"]
-            out.parent.mkdir(parents=True, exist_ok=True)
-            page.pdf(path=str(out), format="A4", print_background=True, prefer_css_page_size=True)
-            # Chromium stamps the render time into /CreationDate and /ModDate, the
-            # only bytes that differ between two renders of the same content. Pin
-            # them (same length, so the xref offsets stay valid) and an unchanged
-            # CV regenerates byte-identical: `git status` then shows a change only
-            # when there is one.
-            out.write_bytes(re.sub(rb"(/(?:CreationDate|ModDate) \(D:)\d{14}",
-                                   rb"\g<1>20260101000000", out.read_bytes()))
-            pages = len(re.findall(rb"/Type\s*/Page[^s]", out.read_bytes()))
-            ats = ats_problems(out)
-            ok = pages == 1 and not ats
-            failures += not ok
-            print(f"{'ok  ' if ok else 'FAIL'} {out.relative_to(ROOT)}  {pages} page(s)  "
-                  f"{out.stat().st_size / 1024:.0f} KB" + (f"  ATS: {'; '.join(ats)}" if ats else "  ATS: ok"))
-            if args.preview:
-                page.set_viewport_size({"width": 794, "height": 1123})  # A4 at 96 dpi
-                page.emulate_media(media="print")
-                page.screenshot(path=str(out.with_suffix(".png")), full_page=True)
-            page.close()
+            failures += not render(browser, data, name, CV / v["file"], args.preview)
+        if args.company:
+            folder.mkdir(parents=True, exist_ok=True)
+            shutil.copy(CV / "cv.toml", folder / "cv.toml")   # the CV exactly as sent
+            failures += not render(browser, data, variant, sent, preview=True)
         browser.close()
     return 1 if failures else 0
 

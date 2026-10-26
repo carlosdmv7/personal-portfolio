@@ -2,11 +2,12 @@
 # script in tools/; this file only saves typing their paths.
 #
 #   make cv      regenerate the CV from cv/cv.toml (fails on 2 pages or ATS issues)
+#                COMPANY=Booking also files it in ~/applications/<date>-booking/
 #   make check   everything to run before opening a PR
 #   make brand   rewrite the token block of styles.css from the shared brand
 #   make og      regenerate the 1200x630 social cards
 #   make letter  a cover letter in the CV's design, from letters/letter.toml
-#                (gitignored), filed in ~/cover-letters/<date>-<company>/
+#                (gitignored), filed with the CV in ~/applications/<date>-<company>/
 #
 # One-time setup:  make setup
 
@@ -26,7 +27,7 @@ setup:
 	.venv/bin/playwright install chromium
 
 cv:
-	$(PY) tools/make-cv.py
+	$(PY) tools/make-cv.py $(if $(COMPANY),--company "$(COMPANY)")
 
 check: brand-check
 	$(PY) tools/render-check.py
