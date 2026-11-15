@@ -66,6 +66,11 @@ Also from Carlos, 15 Nov 2026: he automated customer retro-billing at RESRG,
 manual figures. The amounts involved are confidential: never write euros,
 "millions", customer names or any revenue or working-capital figure for it.
 
+Usage, also from Carlos on 15 Nov 2026: **100+ users** of his apps and Power
+BI dashboards, counted from Prometheus (apps) and Power BI usage, from
+executives to plant managers and the people who report to them. Don't call
+them all executives, and don't add "weekly" or "daily" unless he gives it.
+
 ## Before saying it is done
 
 ```bash
