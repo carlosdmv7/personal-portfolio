@@ -70,23 +70,26 @@ the basis of my BSc thesis."""
 
 # ---------------------------------------------------------------- projects ---
 # Figures: dbt counts from each project's target/manifest.json (26 Sep 2026);
-# 23 → 180 is the batching measurement recorded in JMI's ADR 0007.
+# 1 in 730 is JMI's ADR 0007; 0 € is its README (ADR 0005); the 707 m² typo is
+# SHR's ADR 0009. Each line leads with what the project does and found, then
+# the stack, like the cards on the site. (An old "23 → 180 a day" figure was
+# not in ADR 0007, which records a 20-request quota at ten postings each.)
 
 [projects.jmi]
 name = "Job Market Intelligence"
 url = "carlosdmv7.github.io/personal-portfolio/projects/job-market-intelligence"
 repo = "github.com/carlosdmv7/job-market-intelligence"
-text = """Reads EU data-job ads every day and ranks them against a CV: six free APIs, \
-LLM enrichment that went from **23\u00A0to\u00A0180** ads a day on the same free quota, dbt on \
-MotherDuck, Prefect Cloud, GitHub Actions CI and Streamlit."""
+text = """Ranks open EU data jobs by how much of each ad's stack a CV covers, at **0 €** \
+running cost. Dropped its first feature, visa sponsorship, when only **1 in 730** ads offered it. \
+LLM enrichment, dbt on MotherDuck, Prefect Cloud, GitHub Actions, Streamlit."""
 
 [projects.shr]
 name = "Spanish Housing Radar"
 url = "carlosdmv7.github.io/personal-portfolio/projects/spanish-housing-radar"
 repo = "github.com/carlosdmv7/spanish-housing-radar"
-text = """Finds under-priced flats in València by scoring every listing against its \
-neighbourhood: weekly scraping, dbt with **162 data tests**, Prefect Cloud, Docker, \
-GitHub Actions CI and Streamlit."""
+text = """Scores every flat in València against similar flats in its own barrio, and screens \
+out errors like a 707 m² one-bedroom once listed as the top deal. Weekly scraping, dbt with \
+**162 data tests**, Prefect Cloud, Docker, GitHub Actions, Streamlit."""
 
 # ------------------------------------------------------------------ skills ---
 

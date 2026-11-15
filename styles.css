@@ -1167,7 +1167,7 @@ section + .freshness,
 .not-found .eyebrow { justify-content: center; }
 .not-found h1 { font-family: var(--font-display); font-size: clamp(1.9rem, 5vw, 2.8rem); font-weight: 700; letter-spacing: -0.03em; color: var(--ink); margin: 0.8rem 0 1rem; }
 .contact .container { max-width: 720px; }
-.contact h2 { font-family: var(--font-display); font-size: clamp(1.9rem, 5vw, 3rem); font-weight: 700; letter-spacing: -0.03em; margin-bottom: 1.1rem; color: var(--ink); }
+.contact h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 4.2vw, 2.5rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 1.1rem; color: var(--ink); text-wrap: balance; }
 .contact p { color: var(--ink-muted); font-size: 1.05rem; line-height: 1.75; margin-bottom: 2rem; }
 .contact-actions { display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center; }
 
@@ -1235,6 +1235,9 @@ section + .freshness,
 @media (max-width: 480px) {
     .container { padding: 0 1.15rem; }
     .logo .muted { display: none; }
+    .stack-card { padding: 0.9rem 0.85rem; }
+    .stack-list { gap: 0.45rem; }
+    .stack-row span { font-size: 0.84rem; }
     .results-grid { grid-template-columns: repeat(2, 1fr); }
     .footer .container { flex-direction: column; text-align: center; }
     .footer-links { justify-content: center; }
