@@ -56,6 +56,11 @@ chain, finance and quality, not production; he deploys the Streamlit apps on AWS
 himself, and Power BI does not run there. REST APIs are light at work: fine on
 the CV, kept off LinkedIn.
 
+Added by Carlos on 15 Nov 2026: at work he reaches OpenAI and other models
+through Azure AI Foundry (so the stack says that, not "OpenAI API"), and uses
+Fabric and Azure DevOps with Agile iterations. Airflow is coursework, not
+production: keep it in the stack, never in an experience bullet.
+
 ## Before saying it is done
 
 ```bash
