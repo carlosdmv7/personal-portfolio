@@ -97,7 +97,7 @@ languages = ["Languages & APIs", "Python, SQL, Bash, Jinja, DAX, REST APIs"]
 platform = ["Platform & CI/CD", "AWS, Prefect, Airflow, GitHub Actions, Git, Azure DevOps, Docker, Make"]
 quality = ["Quality & monitoring", "pytest, Pydantic, ruff, mypy, Prometheus"]
 bi = ["BI & apps", "Power BI, Streamlit, Microsoft Fabric"]
-ai = ["AI & ML", "LLM APIs (Gemini, Azure OpenAI), LLM evaluation, scikit-learn, SHAP"]
+ai = ["AI & ML", "LLM APIs (Gemini, Azure AI Foundry), LLM evaluation, scikit-learn, SHAP"]
 
 # --------------------------------------------------------------- education ---
 
