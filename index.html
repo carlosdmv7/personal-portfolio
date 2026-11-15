@@ -57,29 +57,34 @@
         <section class="hero">
             <div class="container">
                 <div class="hero-inner">
+                    <img class="hero-photo" src="images/profile.jpg" alt="Carlos De Manuel" width="520" height="520" fetchpriority="high" decoding="async">
+                    <div class="hero-copy">
                     <span class="status-badge"><span class="status-dot"></span>Open to Data &amp; Analytics Engineering roles</span>
 
-                    <h1 class="hero-title">
-                        Hi, I'm <span class="accent">Carlos</span>.
-                        <span class="hero-role">Data &amp; Analytics Engineer</span>
-                    </h1>
+                    <p class="hero-name">Carlos De Manuel · Data &amp; Analytics Engineer</p>
+                    <h1 class="hero-title">I turn spreadsheets into <span class="accent">data products people decide on.</span></h1>
 
                     <p class="hero-desc">
-                        I build the layer between raw data and the decisions people make on it, on a modern stack —
-                        Snowflake, dbt, Python, Prefect, AWS, Power BI. At <strong>RESRG Automotive</strong> it runs from
-                        <strong>top-management decisions down to the shop floor</strong>, across supply chain, finance,
-                        quality and purchasing, in <strong>20+ plants across North America, APAC and EMEA</strong>.
+                        At <strong>RESRG Automotive</strong>, plants ran on manual Excel trackers. I build the governed
+                        KPIs, pipelines and dashboards that replaced them, used from top management to the shop floor
+                        across North America, APAC and EMEA.
                     </p>
 
+                    <ul class="hero-proof">
+                        <li><strong>20+</strong> plants on one governed KPI layer</li>
+                        <li><strong>130+</strong> KPIs, one agreed definition each</li>
+                        <li><strong>~90%</strong> faster stock loading, at ~30% lower cost</li>
+                    </ul>
+
                     <div class="hero-buttons">
-                        <a href="cv/carlos-de-manuel-cv.pdf" class="btn btn-primary" download>
+                        <a href="#projects" class="btn btn-primary">
+                            See the projects
+                            <svg aria-hidden="true" focusable="false" class="icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+                        </a>
+                        <a href="cv/carlos-de-manuel-cv.pdf" class="btn btn-secondary" download>
                             <svg aria-hidden="true" focusable="false" class="icon" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                             Download CV
                             <span class="visually-hidden">(PDF)</span>
-                        </a>
-                        <a href="mailto:carlosdmv7@gmail.com" class="btn btn-secondary">
-                            <svg aria-hidden="true" focusable="false" class="icon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></svg>
-                            Get in touch
                         </a>
                         <a href="https://www.linkedin.com/in/carlos-de-manuel/" target="_blank" rel="noopener" class="btn btn-ghost">
                             <svg aria-hidden="true" focusable="false" class="icon" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
@@ -90,73 +95,10 @@
                             GitHub
                         </a>
                     </div>
-
+                    </div>
                 </div>
             </div>
         </section>
-
-    <!-- Freshness strip: live pipeline state, static fallback, never a spinner.
-         Contract + CI snippet: docs/freshness-contract.md -->
-    <section class="freshness" aria-labelledby="freshness-title">
-        <div class="container">
-            <div class="freshness-head">
-                <h2 id="freshness-title">Live pipeline state</h2>
-                <p data-freshness-source>Static snapshot verified 25 Sep 2026 — dbt test counts read from each project’s <code>manifest.json</code>. Both projects publish a run summary after every pipeline run, and it replaces these figures when it loads.</p>
-            </div>
-            <div class="freshness-rows">
-                    <div class="fresh-row" data-state="unknown"
-                         data-freshness-project="job-market-intelligence"
-                         data-freshness-url="https://carlosdmv7.github.io/job-market-intelligence/status.json">
-                        <a class="fresh-name" href="projects/job-market-intelligence/">
-                            <span class="fresh-dot" aria-hidden="true"></span>Job Market Intelligence
-                        </a>
-                        <dl class="fresh-cells">
-                            <div class="fresh-cell">
-                                <dt>last ingest</dt>
-                                <dd data-fresh="last_ingest">—</dd>
-                            </div>
-                            <div class="fresh-cell">
-                                <dt>rows in warehouse</dt>
-                                <dd data-fresh="rows">—</dd>
-                            </div>
-                            <div class="fresh-cell">
-                                <dt>dbt tests passing</dt>
-                                <dd data-fresh="dbt_tests">53 / 53</dd>
-                            </div>
-                            <div class="fresh-cell">
-                                <dt>last CI run</dt>
-                                <dd data-fresh="last_ci">—</dd>
-                            </div>
-                        </dl>
-                    </div>
-                    <div class="fresh-row" data-state="unknown"
-                         data-freshness-project="spanish-housing-radar"
-                         data-freshness-url="https://raw.githubusercontent.com/carlosdmv7/spanish-housing-radar/main/docs/status.json">
-                        <a class="fresh-name" href="projects/spanish-housing-radar/">
-                            <span class="fresh-dot" aria-hidden="true"></span>Spanish Housing Radar
-                        </a>
-                        <dl class="fresh-cells">
-                            <div class="fresh-cell">
-                                <dt>last ingest</dt>
-                                <dd data-fresh="last_ingest">—</dd>
-                            </div>
-                            <div class="fresh-cell">
-                                <dt>rows in warehouse</dt>
-                                <dd data-fresh="rows">—</dd>
-                            </div>
-                            <div class="fresh-cell">
-                                <dt>dbt tests passing</dt>
-                                <dd data-fresh="dbt_tests">162 / 162</dd>
-                            </div>
-                            <div class="fresh-cell">
-                                <dt>last CI run</dt>
-                                <dd data-fresh="last_ci">—</dd>
-                            </div>
-                        </dl>
-                    </div>
-            </div>
-        </div>
-    </section>
 
         <!-- Experience -->
         <section id="work">
@@ -289,6 +231,14 @@
                             <div class="impact-stat"><div class="impact-num">1.0 vs 7.9</div><span class="impact-label">Tools named per ad: teaser board vs full ads</span></div>
                         </div>
                         <p class="project-built">Built with dbt · Gemini · MotherDuck · Prefect · Streamlit — 9 models, 53 data tests</p>
+                        <!-- Live state, upgraded by freshness.js; the fallback is the verified snapshot.
+                             Contract: docs/freshness-contract.md -->
+                        <p class="card-live" data-state="unknown"
+                           data-freshness-project="job-market-intelligence"
+                           data-freshness-url="https://carlosdmv7.github.io/job-market-intelligence/status.json">
+                            <span class="fresh-dot" aria-hidden="true"></span>
+                            <span>Live · rebuilt daily<span hidden> · last run <span data-fresh="last_ingest"></span></span> · <span data-fresh="dbt_tests">53 / 53</span> tests passing</span>
+                        </p>
                         <div class="project-links">
                             <a class="plink solid" href="projects/job-market-intelligence/">Read the case study
                                 <svg aria-hidden="true" focusable="false" class="icon" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -331,6 +281,12 @@
                             <div class="impact-stat"><div class="impact-num">Weekly</div><span class="impact-label">Rebuilt and re-tested on every run</span></div>
                         </div>
                         <p class="project-built">Built with dbt · Scrapfly · MotherDuck · Prefect · Streamlit — 19 models, 162 data tests</p>
+                        <p class="card-live" data-state="unknown" data-fresh-hours="192"
+                           data-freshness-project="spanish-housing-radar"
+                           data-freshness-url="https://raw.githubusercontent.com/carlosdmv7/spanish-housing-radar/main/docs/status.json">
+                            <span class="fresh-dot" aria-hidden="true"></span>
+                            <span>Live · rebuilt weekly<span hidden> · last run <span data-fresh="last_ingest"></span></span> · <span data-fresh="dbt_tests">162 / 162</span> tests passing</span>
+                        </p>
                         <div class="project-links">
                             <a class="plink solid" href="projects/spanish-housing-radar/">Read the case study
                                 <svg aria-hidden="true" focusable="false" class="icon" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -364,9 +320,6 @@
                     <h2 class="section-title">A bit about me</h2>
                 </div>
                 <div class="about-wrap">
-                    <div class="about-photo" data-reveal>
-                        <img src="images/profile.jpg" alt="Carlos De Manuel" width="260" height="260" loading="lazy">
-                    </div>
                     <div class="about-body" data-reveal>
                         <p>What I enjoy most is the stretch between <strong>a messy process and a tool people actually use</strong>. I start with the people who run it — what they decide, what slows them down — <strong>simplify the process first</strong>, and only then build the pipeline and the app behind it. Something small <strong>in real use this week</strong> beats something complete in a slide deck.</p>
                         <p>I come from <strong>biomedical engineering</strong> and an MSc in data analysis and process improvement, and kept one rule from there: if someone is going to act on a number, they should be able to <strong>see where it came from</strong>. I build the same way outside work — both projects on this page are <strong>live, tested and rebuilt on a schedule</strong>.</p>
@@ -461,23 +414,21 @@
                 <div class="process-grid">
                     <div class="process-card card" data-reveal>
                         <svg aria-hidden="true" focusable="false" class="icon icon-lg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>
-                        <h3>Judged by the decision</h3>
-                        <p>A model is worth the decision it improves. I start from who acts on the number, and judge the work by what changes after: a cost off the P&amp;L, stock that stops sitting idle, hours a team gets back.</p>
+                        <h3>Start from the decision</h3>
+                        <p>Who acts on the number, and what would they do differently?</p>
+                        <p class="process-proof">At RESRG, 130+ KPIs agreed with their business owners.</p>
                     </div>
                     <div class="process-card card" data-reveal>
                         <svg aria-hidden="true" focusable="false" class="icon icon-lg" viewBox="0 0 24 24"><path d="M3 6h18"/><path d="M7 12h10"/><path d="M10 18h4"/></svg>
                         <h3>Simplify, then automate</h3>
-                        <p>Automating a broken process only makes it fail faster. I strip it back with the people who run it first, and build for what is left.</p>
+                        <p>Automating a broken process only makes it fail faster.</p>
+                        <p class="process-proof">Plant Excel trackers replaced, not copied into code.</p>
                     </div>
                     <div class="process-card card" data-reveal>
-                        <svg aria-hidden="true" focusable="false" class="icon icon-lg" viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></svg>
-                        <h3>Long-term solutions</h3>
-                        <p>Systems, not one-off tasks: clear definitions, tested models and lineage the next person can follow without me.</p>
-                    </div>
-                    <div class="process-card card" data-reveal>
-                        <svg aria-hidden="true" focusable="false" class="icon icon-lg" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7"/><polyline points="21 3 21 9 15 9"/></svg>
-                        <h3>Ship early, learn fast</h3>
-                        <p>Agile in practice: a working version in users' hands within days shows what is really needed before the rest gets built.</p>
+                        <svg aria-hidden="true" focusable="false" class="icon icon-lg" viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 18"/><polyline points="16 7 22 7 22 13"/></svg>
+                        <h3>Check it paid off</h3>
+                        <p>Measure what changed, and drop what the data says isn't working.</p>
+                        <p class="process-proof">Stock loading ~90% faster at ~30% lower cost.</p>
                     </div>
                 </div>
             </div>
