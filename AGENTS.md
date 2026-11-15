@@ -61,6 +61,11 @@ through Azure AI Foundry (so the stack says that, not "OpenAI API"), and uses
 Fabric and Azure DevOps with Agile iterations. Airflow is coursework, not
 production: keep it in the stack, never in an experience bullet.
 
+Also from Carlos, 15 Nov 2026: he automated customer retro-billing at RESRG,
+**~99% less manual work** (labour/SG&A) with a **100% match** against the
+manual figures. The amounts involved are confidential: never write euros,
+"millions", customer names or any revenue or working-capital figure for it.
+
 ## Before saying it is done
 
 ```bash
