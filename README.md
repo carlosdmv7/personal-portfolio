@@ -27,6 +27,7 @@ tools/make-og-images.py                      regenerates the 1200x630 og cards
 tools/make-icons.py                          regenerates favicon/apple-touch PNGs
 tools/make-shots.py                          downscales the app screenshots (JMI, Housing Radar)
 tools/render-check.py                        renders every page at 5 widths; fails on overflow
+tools/wake-apps.py                           wakes every linked Streamlit app; run every 6h by wake-apps.yml
 tools/make-cv.py                             renders every CV variant to a one-page A4 PDF
 ```
 
@@ -93,6 +94,18 @@ here. Any 4xx fails the build.
 
 ```bash
 lychee --config lychee.toml './**/*.html' './*.md' './docs/**/*.md'
+```
+
+A link can also be alive and useless. Streamlit Community Cloud puts an app to
+sleep after a stretch without visits, and a sleeping app still answers 200, so
+lychee passes it while the visitor gets a "this app has gone to sleep" page.
+`.github/workflows/wake-apps.yml` opens every Streamlit app the site links to
+in a real browser every six hours, wakes any that are asleep, and fails if one
+does not come up. The app list is read from the HTML, so a new app is covered
+as soon as a page links to it.
+
+```bash
+.venv/bin/python tools/wake-apps.py
 ```
 
 Two things are excluded on purpose, both documented in `lychee.toml`: LinkedIn
