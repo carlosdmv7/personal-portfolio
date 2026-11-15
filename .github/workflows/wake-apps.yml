@@ -1,0 +1,50 @@
+# A sleeping Streamlit app is a dead "Live app" link that the link check cannot
+# see: the URL answers 200, but the page says "Zzzz, this app has gone to
+# sleep" and asks the visitor to press a button. Both apps were found that way
+# on 15 Nov 2026.
+#
+# This visits every Streamlit app the site links to in a real browser, wakes
+# any that are asleep, and fails if one does not come up. See
+# tools/wake-apps.py.
+#
+# GitHub pauses scheduled workflows in a repo with no activity for 60 days. If
+# this stops running, re-enable it from the Actions tab.
+name: Wake apps
+
+on:
+  schedule:
+    # Every six hours, off the hour, so a visit lands well inside any
+    # idle window and the runner queue is quieter.
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+  # A change to the waker is tested on its own PR, on a real runner.
+  pull_request:
+    paths:
+      - tools/wake-apps.py
+      - .github/workflows/wake-apps.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: wake-apps
+  cancel-in-progress: false
+
+jobs:
+  wake:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Playwright
+        run: |
+          pip install playwright
+          python -m playwright install --with-deps chromium
+
+      - name: Wake every linked app
+        run: python tools/wake-apps.py
