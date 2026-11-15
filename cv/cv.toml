@@ -24,12 +24,12 @@ file_prefix = "CarlosDeManuel"   # cover letters: CarlosDeManuel-CoverLetter-<Co
 [variants.data-analytics-engineer]
 file = "carlos-de-manuel-cv.pdf"
 headline = "Data & Analytics Engineer"
-summary = """Data & Analytics Engineer at a global automotive manufacturer. I own \
-the path from raw operational data to the products people use: Python pipelines \
-orchestrated with Prefect, Snowflake data models, and Power BI dashboards and \
-Streamlit apps on top, the apps deployed on AWS. Used across 20+\u00A0plants in \
-North America, APAC and EMEA, from top management to the shop floor."""
-experience = ["layer", "pipelines", "products", "platform"]
+summary = """Data & Analytics Engineer at a global automotive manufacturer. I build \
+the data platform behind decisions in 20+\u00A0plants across North America, APAC and \
+EMEA: Python pipelines on Prefect, Snowflake data models, and Power BI dashboards and \
+Streamlit apps on AWS, used from top management to the shop floor."""
+# Ordered by impact: outcomes first, scope and platform after.
+experience = ["retrobilling", "products", "pipelines", "layer", "platform"]
 projects = ["jmi", "shr"]
 skills = ["warehouse", "languages", "platform", "quality", "bi", "ai"]
 
@@ -47,14 +47,15 @@ layer = """Led the move from plant Excel trackers to one governed KPI layer in \
 Snowflake for **20+\u00A0plants** in three regions: aligned business owners and \
 developers on **130+\u00A0KPIs** and targets, and built the Streamlit app that \
 manages them, with dbt tests on its write-back."""
+retrobilling = """Automated customer retro-billing, cutting its manual work by \
+**~99%** while matching the manual figures in full."""
 pipelines = """Built Python ETL orchestrated with Prefect, including REST API \
 sources, and made stock loading **~90%\u00A0faster** at **~30%\u00A0lower cost** by \
-tuning its Snowflake queries and cutting idle time; automated customer retro-billing \
-with **~99% less manual work**, matching the manual figures in full."""
-products = """Delivered Power BI dashboards and Streamlit apps for supply chain, \
-finance and quality, covering inventory days on hand, material consumption, part \
-quality and energy forecasting, on Snowflake models I designed and tuned."""
-platform = """Deployed the apps to production on AWS (EC2, S3, EFS) with Docker, \
+tuning its Snowflake queries and cutting idle time."""
+products = """Delivered Power BI dashboards and Streamlit apps used by \
+**100+ people**, from executives to plant managers and their teams, for supply \
+chain, finance and quality, on Snowflake models I designed and tuned."""
+platform ="""Deployed the apps to production on AWS (EC2, S3, EFS) with Docker, \
 CI/CD and Prometheus monitoring."""
 
 [[jobs]]
