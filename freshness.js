@@ -45,6 +45,8 @@
         if (!el || text == null) return false;
         el.textContent = text;
         if (title) el.title = title;
+        // A value with no honest fallback ships hidden; reveal it once it is real.
+        el.closest('[hidden]')?.removeAttribute('hidden');
         return true;
     }
 
@@ -53,11 +55,14 @@
         return { fresh: 0, stale: 1, cold: 2, failing: 3 }[state] ?? 0;
     }
 
-    function ageState(iso) {
+    /* freshMs: how old the last ingest may be and still count as on schedule.
+       A weekly pipeline that ran six days ago is fine, so a row can set its own
+       window with data-fresh-hours instead of turning amber on day three. */
+    function ageState(iso, freshMs = FRESH_MS) {
         const t = Date.parse(iso);
         if (Number.isNaN(t)) return null;
         const d = Date.now() - t;
-        if (d <= FRESH_MS) return 'fresh';
+        if (d <= freshMs) return 'fresh';
         if (d <= STALE_MS) return 'stale';
         return 'cold';
     }
@@ -97,7 +102,8 @@
             const rel = ago(d.last_ingest_at);
             if (rel && setCell(row, 'last_ingest', rel, absolute(d.last_ingest_at))) {
                 updated++;
-                bump(ageState(d.last_ingest_at));
+                const hours = Number(row.dataset.freshHours);
+                bump(ageState(d.last_ingest_at, hours > 0 ? hours * 3600 * 1000 : FRESH_MS));
             }
         }
 
@@ -146,7 +152,9 @@
             return d ? apply(row, d) : false;
         })).then((results) => {
             const live = results.filter(Boolean).length;
-            const label = document.querySelector('[data-freshness-source]');
+            // apply() marks each upgraded row with data-freshness-source too,
+            // so exclude the rows: only the strip's own caption is the label.
+            const label = document.querySelector('[data-freshness-source]:not([data-freshness-url])');
             if (!label) return;
             if (live === results.length) {
                 label.textContent = 'Live — fetched from each project’s CI just now.';

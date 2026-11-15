@@ -75,7 +75,10 @@ every pair the stylesheet produces and lists the forbidden ones
 or a new pair is made there, then `make brand` brings it here.
 
 **The freshness strip** shows real pipeline state per project and must never
-show a spinner or an error. Its fallback ships in the HTML already populated;
+show a spinner or an error. The full strip is on each case study; the home page
+shows the same feed as one line per project card, so the first screen is left
+to who Carlos is and what he gets done. A weekly pipeline sets
+`data-fresh-hours="192"` on its row, so six days old reads as on schedule. Its fallback ships in the HTML already populated;
 `freshness.js` only upgrades values on a successful fetch, reading each
 project's `docs/status.json` from `raw.githubusercontent.com`. See
 [docs/freshness-contract.md](docs/freshness-contract.md) — Job Market
