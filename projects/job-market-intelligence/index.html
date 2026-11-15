@@ -65,7 +65,7 @@
                 <header class="case-hero">
                     <span class="eyebrow">Case study</span>
                     <h1>Job Market Intelligence Engine</h1>
-                    <p class="case-lede">One question, every morning: which open data roles in the EU are asking for my stack? Six free sources, an LLM that reads each posting, a dbt medallion on MotherDuck — and a rule that a posting nobody has read yet is never reported as a miss.</p>
+                    <p class="case-lede">A morning shortlist of the open data jobs in Europe that ask for the tools I use, ranked against my CV. Built only from free sources, at no running cost, and honest about the ads it has not managed to read yet.</p>
                     <div class="tags">
                         <span class="tag accent">dbt</span>
                         <span class="tag accent">LLM enrichment</span>
@@ -93,6 +93,12 @@
                         </a>
                     </div>
                 </header>
+
+                <dl class="project-story case-brief">
+                    <div><dt>Who it is for</dt><dd>Anyone looking for a data job in Europe who knows their tools better than the job titles that might want them. I built it for my own search.</dd></div>
+                    <div><dt>The decision it helps</dt><dd>Which of today's openings are worth reading and applying to, instead of opening every ad with “data” in the title.</dd></div>
+                    <div><dt>What it changed</dt><dd>It dropped its first idea, a visa-sponsorship finder, when the data showed one explicit offer in 730 postings. And it now says how much of each country's market it can read before comparing any of them.</dd></div>
+                </dl>
 
                 <!-- Freshness strip: live pipeline state, static fallback, never a
                      spinner. Contract: ../../docs/freshness-contract.md -->
@@ -208,7 +214,7 @@
                             <h2 class="block-label">Key decisions</h2>
                             <ul class="decision-list">
                                 <li><strong>Eight times the reads on the same free quota.</strong> The free tier counts requests, not tokens, so one posting per call spent the budget on round trips. Ten per request took it from <strong>23 postings a day to 180</strong>, and each answer echoes its posting's index so a reordered reply can't mislabel a job.</li>
-                                <li><strong>A market difference that was really the source.</strong> Adzuna, which covers Spain, Germany and the Netherlands, returns a <strong>~500-character teaser</strong>; Sweden's board returns the full ad. Same classifier: <strong>~0.7 technologies per ad against ~7.9</strong>. The app now shows how much of each market it can read before comparing any of them (<a href="https://github.com/carlosdmv7/job-market-intelligence/blob/main/docs/adr/0011-market-detail-absorbs-the-visa-page.md" target="_blank" rel="noopener">ADR 0011</a>).</li>
+                                <li><strong>A market difference that was really the source.</strong> Adzuna, which covers Spain, Germany and the Netherlands, returns a <strong>~500-character teaser</strong>; Sweden's board returns the full ad. Same classifier: <strong>1.0 technologies per ad against 7.9</strong>. The app now shows how much of each market it can read before comparing any of them (<a href="https://github.com/carlosdmv7/job-market-intelligence/blob/main/docs/adr/0011-market-detail-absorbs-the-visa-page.md" target="_blank" rel="noopener">ADR 0011</a>).</li>
                                 <li><strong>The original feature, retired on its own evidence.</strong> Visa sponsorship was the first pitch. Across 730 postings the model found an explicit “yes, we sponsor” <strong>once</strong>. <a href="https://github.com/carlosdmv7/job-market-intelligence/blob/main/docs/adr/0007-fit-first-and-batched-enrichment.md" target="_blank" rel="noopener">ADR 0007</a> records the measurement and the U-turn — one of eleven decision records in the repo.</li>
                             </ul>
                         </div>
