@@ -259,9 +259,9 @@
         <section id="projects">
             <div class="container">
                 <div class="section-head">
-                    <span class="eyebrow">2 case studies · 28 dbt models · 215 data tests</span>
+                    <span class="eyebrow">2 case studies · each starts from a question</span>
                     <h2 class="section-title">Projects <span class="amp">&amp;</span> case studies</h2>
-                    <p class="section-sub">End-to-end data products I've built. Each has its own page — the business problem, the technical decisions and <em>why</em>, figures read straight from the project's dbt manifest, and where it falls short.</p>
+                    <p class="section-sub">Each one starts from a question someone actually has, and says what the answer turned out to be before it says how it is built. The case study pages cover the technical decisions, figures read from each project's dbt manifest, and where it falls short.</p>
                 </div>
 
                 <div class="projects-grid">
@@ -274,28 +274,18 @@
                             <span class="project-badge">Personal · open source</span>
                         </div>
                         <h3>Job Market Intelligence Engine</h3>
-                        <div class="tags">
-                            <span class="tag accent">dbt</span>
-                            <span class="tag accent">LLM enrichment</span>
-                            <span class="tag">DuckDB / MotherDuck</span>
-                            <span class="tag">Python</span>
-                            <span class="tag">Streamlit</span>
-                        </div>
-                        <p class="project-desc">
-                            A 0€ EU data-jobs platform answering one question every morning: <strong>which open data roles are
-                            asking for my stack?</strong> Six free job sources, an LLM reading each posting for the technologies it
-                            names, a dbt medallion on MotherDuck, and a Streamlit app that ranks every live posting from five
-                            countries against your CV. It rebuilds itself daily as a Prefect Cloud deployment.
-                        </p>
-                        <p class="project-note">
-                            Fewer than half of the roles name a stack at all — and the app measured <em>why</em>: the board
-                            covering Spain, Germany and the Netherlands publishes a teaser, not the ad.
-                        </p>
+                        <p class="project-q">Which open data jobs in Europe ask for what I already know?</p>
+                        <dl class="project-story">
+                            <div><dt>The problem</dt><dd>Job boards search by title and city. Whether a role wants your tools is buried in the ad, so you open fifty ads to find five.</dd></div>
+                            <div><dt>What it does</dt><dd>Every morning it reads each new posting, notes the tools it asks for, and ranks open roles by how much of that list your CV already covers.</dd></div>
+                            <div><dt>What it found</dt><dd>It dropped its own first idea: across 730 postings, <strong>one</strong> said outright that it sponsors visas. And Spanish, German and Dutch ads only look less technical, because their main board publishes a teaser, not the ad.</dd></div>
+                        </dl>
                         <div class="project-impact">
-                            <div class="impact-stat"><div class="impact-num">23 → 180</div><span class="impact-label">Postings read per day, same free quota</span></div>
-                            <div class="impact-stat"><div class="impact-num">9</div><span class="impact-label">dbt models</span></div>
-                            <div class="impact-stat"><div class="impact-num">53</div><span class="impact-label">dbt data tests</span></div>
+                            <div class="impact-stat"><div class="impact-num">0 €</div><span class="impact-label">To run, end to end, on free tiers</span></div>
+                            <div class="impact-stat"><div class="impact-num">1 in 730</div><span class="impact-label">Postings that explicitly offered visa sponsorship</span></div>
+                            <div class="impact-stat"><div class="impact-num">1.0 vs 7.9</div><span class="impact-label">Tools named per ad: teaser board vs full ads</span></div>
                         </div>
+                        <p class="project-built">Built with dbt · Gemini · MotherDuck · Prefect · Streamlit — 9 models, 53 data tests</p>
                         <div class="project-links">
                             <a class="plink solid" href="projects/job-market-intelligence/">Read the case study
                                 <svg aria-hidden="true" focusable="false" class="icon" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -326,24 +316,18 @@
                             <span class="project-badge">Personal · open source</span>
                         </div>
                         <h3>Spanish Housing Radar</h3>
-                        <div class="tags">
-                            <span class="tag accent">dbt</span>
-                            <span class="tag">Scrapfly</span>
-                            <span class="tag">MotherDuck</span>
-                            <span class="tag">Prefect</span>
-                            <span class="tag">Streamlit</span>
-                        </div>
-                        <p class="project-desc">
-                            An analytics pipeline that finds under-priced flats in València. Listings are
-                            scraped weekly, validated and upserted into MotherDuck, and a dbt medallion scores each one's
-                            €/m² against a benchmark that <strong>trusts each barrio only as far as its data earns</strong>
-                            — then says which benchmark it used.
-                        </p>
+                        <p class="project-q">Is this flat actually cheap, or does it just have a low price?</p>
+                        <dl class="project-story">
+                            <div><dt>The problem</dt><dd>Portals show a price, never whether it is a good one. €225,000 means nothing until you know what the flats around it ask per square metre.</dd></div>
+                            <div><dt>What it does</dt><dd>Every week it collects València's listings and scores each flat against similar ones in its own neighbourhood, and says how many flats that comparison rests on.</dd></div>
+                            <div><dt>What it found</dt><dd>A 120 m² flat in Patraix asking a third less per m² than its barrio. And its own worst mistake: the top “great deal” was once a 707 m² one-bedroom, a typo for 70. Errors like it are now screened out, in the open.</dd></div>
+                        </dl>
                         <div class="project-impact">
-                            <div class="impact-stat"><div class="impact-num">19</div><span class="impact-label">dbt models</span></div>
-                            <div class="impact-stat"><div class="impact-num">162</div><span class="impact-label">dbt data tests</span></div>
-                            <div class="impact-stat"><div class="impact-num">6</div><span class="impact-label">Streamlit pages</span></div>
+                            <div class="impact-stat"><div class="impact-num">34.6%</div><span class="impact-label">Below its barrio’s €/m²: the Patraix flat, Aug 2026</span></div>
+                            <div class="impact-stat"><div class="impact-num">0–100</div><span class="impact-label">A score per flat, with the flats it was compared against</span></div>
+                            <div class="impact-stat"><div class="impact-num">Weekly</div><span class="impact-label">Rebuilt and re-tested on every run</span></div>
                         </div>
+                        <p class="project-built">Built with dbt · Scrapfly · MotherDuck · Prefect · Streamlit — 19 models, 162 data tests</p>
                         <div class="project-links">
                             <a class="plink solid" href="projects/spanish-housing-radar/">Read the case study
                                 <svg aria-hidden="true" focusable="false" class="icon" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -382,7 +366,7 @@
                     </div>
                     <div class="about-body" data-reveal>
                         <p>What I enjoy most is the stretch between <strong>a messy process and a tool people actually use</strong>. I start with the people who run it — what they decide, what slows them down — <strong>simplify the process first</strong>, and only then build the pipeline and the app behind it. Something small <strong>in real use this week</strong> beats something complete in a slide deck.</p>
-                        <p>I come from <strong>biomedical engineering</strong> and an MSc in data analysis and process improvement, and kept one rule from there: if someone is going to act on a number, they should be able to <strong>see where it came from</strong>. I build the same way outside work — both projects on this page are <strong>live, tested and run every day</strong>.</p>
+                        <p>I come from <strong>biomedical engineering</strong> and an MSc in data analysis and process improvement, and kept one rule from there: if someone is going to act on a number, they should be able to <strong>see where it came from</strong>. I build the same way outside work — both projects on this page are <strong>live, tested and rebuilt on a schedule</strong>.</p>
                         <div class="about-facts">
                             <span class="about-fact"><svg aria-hidden="true" focusable="false" class="icon" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Valencia · open to relocation</span>
                             <span class="about-fact"><svg aria-hidden="true" focusable="false" class="icon" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>In data since Nov 2023</span>
