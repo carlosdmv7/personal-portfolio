@@ -49,7 +49,8 @@ developers on **130+\u00A0KPIs** and targets, and built the Streamlit app that \
 manages them, with dbt tests on its write-back."""
 pipelines = """Built Python ETL orchestrated with Prefect, including REST API \
 sources, and made stock loading **~90%\u00A0faster** at **~30%\u00A0lower cost** by \
-tuning its Snowflake queries and cutting idle time."""
+tuning its Snowflake queries and cutting idle time; automated customer retro-billing \
+with **~99% less manual work**, matching the manual figures in full."""
 products = """Delivered Power BI dashboards and Streamlit apps for supply chain, \
 finance and quality, covering inventory days on hand, material consumption, part \
 quality and energy forecasting, on Snowflake models I designed and tuned."""
